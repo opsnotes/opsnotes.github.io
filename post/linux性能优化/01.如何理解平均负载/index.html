@@ -371,9 +371,9 @@ if (!doNotTrack) {
 8
 [root@VM-64-25-centos ~]#
 </code></pre></div><h3 id="平均负载为多少时合理">平均负载为多少时合理</h3>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">	* 如果 1 分钟、5 分钟、15 分钟的三个值基本相同，或者相差不大，那就说明系统负载很平稳。
-	* 但如果 1 分钟的值远小于 15 分钟的值，就说明系统最近 1 分钟的负载在减少，而过去 15 分钟内却有很大的负载。
-	* 反过来，如果 1 分钟的值远大于 15 分钟的值，就说明最近 1 分钟的负载在增加，这种增加有可能只是临时性的，也有可能还会持续增加下去，所以就需要持续观察。一旦 1 分钟的平均负载接近或超过了 CPU 的个数，就意味着系统正在发生过载的问题，这时就得分析调查是哪里导致的问题，并要想办法优化了。
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">* 如果 1 分钟、5 分钟、15 分钟的三个值基本相同，或者相差不大，那就说明系统负载很平稳。
+* 但如果 1 分钟的值远小于 15 分钟的值，就说明系统最近 1 分钟的负载在减少，而过去 15 分钟内却有很大的负载。
+* 反过来，如果 1 分钟的值远大于 15 分钟的值，就说明最近 1 分钟的负载在增加，这种增加有可能只是临时性的，也有可能还会持续增加下去，所以就需要持续观察。一旦 1 分钟的平均负载接近或超过了 CPU 的个数，就意味着系统正在发生过载的问题，这时就得分析调查是哪里导致的问题，并要想办法优化了。
 
 那么，在实际生产环境中，平均负载多高时，需要我们重点关注呢？
 
@@ -389,20 +389,20 @@ if (!doNotTrack) {
 
 而 CPU 使用率，是单位时间内 CPU 繁忙情况的统计，跟平均负载并不一定完全对应。比如：
 
-	* CPU 密集型进程，使用大量 CPU 会导致平均负载升高，此时这两者是一致的；
-	* I/O 密集型进程，等待 I/O 也会导致平均负载升高，但 CPU 使用率不一定很高；
-	* 大量等待 CPU 的进程调度也会导致平均负载升高，此时的 CPU 使用率也会比较高。
+* CPU 密集型进程，使用大量 CPU 会导致平均负载升高，此时这两者是一致的；
+* I/O 密集型进程，等待 I/O 也会导致平均负载升高，但 CPU 使用率不一定很高；
+* 大量等待 CPU 的进程调度也会导致平均负载升高，此时的 CPU 使用率也会比较高。
 </code></pre></div><h3 id="平均负载案例分析">平均负载案例分析</h3>
 <div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">我们以三个示例分别来看这三种情况，并用 iostat、mpstat、pidstat 等工具，找出平均负载升高的根源。
 </code></pre></div><h4 id="测试准备工作">测试准备工作</h4>
 <div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">机器配置：2 CPU，8GB 内存。预先安装 stress 和 sysstat 包，如 apt install stress sysstat。
 
 在这里，我先简单介绍一下 stress 和 sysstat。
-	* stress 是一个 Linux 系统压力测试工具，这里我们用作异常进程模拟平均负载升高的场景。
+* stress 是一个 Linux 系统压力测试工具，这里我们用作异常进程模拟平均负载升高的场景。
 
-	* 而 sysstat 包含了常用的 Linux 性能工具，用来监控和分析系统的性能。我们的案例会用到这个包的两个命令 mpstat 和 pidstat。
-		* **mpstat 是一个常用的多核 CPU 性能分析工具，用来实时查看每个 CPU 的性能指标，以及所有 CPU 的平均指标。**
-		* **pidstat 是一个常用的进程性能分析工具，用来实时查看进程的 CPU、内存、I/O 以及上下文切换等性能指标。**
+* 而 sysstat 包含了常用的 Linux 性能工具，用来监控和分析系统的性能。我们的案例会用到这个包的两个命令 mpstat 和 pidstat。
+* **mpstat 是一个常用的多核 CPU 性能分析工具，用来实时查看每个 CPU 的性能指标，以及所有 CPU 的平均指标。**
+* **pidstat 是一个常用的进程性能分析工具，用来实时查看进程的 CPU、内存、I/O 以及上下文切换等性能指标。**
 
 **此外，每个场景都需要你开三个终端，登录到同一台 Linux 机器中。**
 </code></pre></div><h4 id="先安装stress-sysstat">先安装stress sysstat</h4>
@@ -617,12 +617,13 @@ Average:        0     27988    0.00    0.20    0.00    0.00    0.20     -  barad
 [root@VM-64-25-centos ~]#
 </code></pre></div><p>可以看出，20个进程在争抢 8 个 CPU，每个进程等待 CPU 的时间（也就是代码块中的 %wait 列）高达 60%。这些超出 CPU 计算能力的进程，最终导致 CPU 过载。</p>
 <h3 id="理解平均负载">理解平均负载</h3>
-<p>平均负载提供了一个快速查看系统整体性能的手段，反映了整体的负载情况。但只看平均负载本身，我们并不能直接发现，到底是哪里出现了瓶颈。所以，在理解平均负载时，也要注意：
-* 平均负载高有可能是 CPU 密集型进程导致的；
-* 平均负载高并不一定代表 CPU 使用率高，还有可能是 I/O 更繁忙了；
-* 当发现负载高的时候，你可以使用 mpstat、pidstat 等工具，辅助分析负载的来源。</p>
-<p>pidstat输出中没有%wait的问题，是因为CentOS默认的sysstat稍微有点老，源码或者RPM升级到11.5.5版本以后就可以看到了。而Ubuntu的包一般都比较新，没有这个问题。</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">平均负载提供了一个快速查看系统整体性能的手段，反映了整体的负载情况。但只看平均负载本身，我们并不能直接发现，到底是哪里出现了瓶颈。所以，在理解平均负载时，也要注意：
+	* 平均负载高有可能是 CPU 密集型进程导致的；
+	* 平均负载高并不一定代表 CPU 使用率高，还有可能是 I/O 更繁忙了；
+	* 当发现负载高的时候，你可以使用 mpstat、pidstat 等工具，辅助分析负载的来源。
 
+pidstat输出中没有%wait的问题，是因为CentOS默认的sysstat稍微有点老，源码或者RPM升级到11.5.5版本以后就可以看到了。而Ubuntu的包一般都比较新，没有这个问题。
+</code></pre></div>
 
         
           <div class="blog-tags">
