@@ -98,6 +98,8 @@ if (!doNotTrack) {
                 
                   <a href="/tags/kubernetes">kubernetes</a>
                 
+                  <a href="/tags/Linux%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96">Linux性能优化</a>
+                
                   <a href="/tags/prometheus">prometheus</a>
                 
                   <a href="/tags/python">python</a>
@@ -244,6 +246,144 @@ if (!doNotTrack) {
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
         <div class="posts-list">
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/java%E4%B8%ADfor%E5%BE%AA%E7%8E%AF%E7%9A%84%E4%BC%98%E5%8C%96/">
+        <h2 class="post-title">java中for循环的优化</h2>
+        
+        <h3 class="post-subtitle">
+            java中for循环的优化
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on May 6, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;207&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h3 id="作为java中三大循环之一的for循环大家应该用的特别多今天那就以我在项目中遇到的for循环优化来聊一聊for循环的优化">作为java中三大循环之一的for循环，大家应该用的特别多，今天那就以我在项目中遇到的for循环优化来聊一聊for循环的优化.</h3>
+<h3 id="首先是for循环的写法上面">首先是for循环的写法上面</h3>
+<h3 id="最原始的写法">最原始的写法</h3>
+<pre><code>public void optimalizeFor() {
+   List list = new ArrayList&lt;&gt;();
+   for (int i = 0; i &lt; list.size(); i++) { 
+      }        
+}
+</code></pre>
+<h5 id="调优写法">调优写法</h5>
+<pre><code>public void optimalizeFor() {
+   List list = new ArrayList&lt;&gt;();
+     for (int i = 0, len = list.size(); i &lt; len; i++) {
+       }
+      }
+</code></pre>
+<h5 id="结果">结果</h5>
+<pre><code>优化前用时：47871
+优化后用时：566
+</code></pre>
+<h5 id="为什么">#为什么</h5>
+<pre><code>在循环中，循环条件会被反复计算，如果不使用复杂表达式，而是使循环条件不变的话，程序将会运行的更快，所以在循环中应该避免使用复杂的表达式
+</code></pre>
+<h5 id="java之循环嵌套">java之循环嵌套</h5>
+<h5 id="外小内大型">外小内大型</h5>
+<pre><code>                for (int i = 0; i &lt; 10; i++) {
+                    for (int j = 0; j &lt; 100000; j++) {
+                    }
+                }
+</code></pre>
+<h5 id="外大内小型">外大内小型</h5>
+<pre><code>                for (int i = 0; i &lt; 100000; i++) {
+                    for (int j = 0; j &lt; 10; j++) {
+                    }
+                }
+</code></pre>
+<h5 id="结果-1">结果</h5>
+<pre><code>                优化前用时：7541608
+                优化后用时：4316
+</code></pre>
+<h5 id="为什么-1">为什么</h5>
+<pre><code>        从结果可以看出来所用时间的差异非常大，这个就像拿大文件和小文件一样的道理
+</code></pre>
+<h5 id="循环嵌套提取不需要循环的逻辑">循环嵌套提取不需要循环的逻辑</h5>
+<h5 id="无用逻辑再循环中">无用逻辑再循环中</h5>
+<pre><code>                int a = 10, b = 11;
+                for (int i = 0; i &lt; 10; i++) {
+                    i = i * a * b;
+                }
+</code></pre>
+<h5 id="无用逻辑再循环外">无用逻辑再循环外</h5>
+<pre><code>                int c = a * b;
+                for (int i = 0; i &lt; 10; i++) {
+                    i = i * c;
+                }
+</code></pre>
+<h5 id="结果-2">结果</h5>
+<pre><code>                优化前用时：48664
+                优化后用时：651
+</code></pre>
+<h5 id="为什么-2">为什么</h5>
+<pre><code>        还是像之前说到的，避免在循环中重复的计算发生
+</code></pre>
+<h5 id="异常处理">异常处理</h5>
+<h5 id="异常在循环中">异常在循环中</h5>
+<pre><code>                for (int i = 0; i &lt; 10; i++) {
+                    try {
+
+                    } catch (Exception e) {
+
+                    }
+                }
+</code></pre>
+<h5 id="异常在循环外">异常在循环外</h5>
+<pre><code>                try {
+                    for (int i = 0; i &lt; 10; i++) {
+                    }
+                } catch (Exception e) {
+
+                }
+</code></pre>
+<h5 id="结果-3">结果</h5>
+<pre><code>                优化前用时：33916
+                优化后用时：489
+</code></pre>
+<h5 id="为什么-3">为什么</h5>
+<pre><code>        每次抓捕异常时非常耗时的，应该放在循环外一次性抓取，而不是应该放在循环内去每循环一次都抓取一次异常
+</code></pre>
+
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/java/">java</a>&nbsp;
+        
+    </div>
+    
+
+</article>
           
             <article class="post-preview">
     <a href="https://opsnotes.github.io/post/docker/docker-nginx/">
@@ -973,57 +1113,6 @@ http://opsnotes.net/2014/01/21/install_zabbix_07/
     <div class="blog-tags">
         
         <a href="https://opsnotes.github.io/tags/zabbix/">zabbix</a>&nbsp;
-        
-    </div>
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="https://opsnotes.github.io/post/docker/docker_images_ssh/">
-        <h2 class="post-title">牛刀小试之docker容器系列(四)</h2>
-        
-        <h3 class="post-subtitle">
-            docker commit 创建基于ubuntu的ssh镜像
-        </h3>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on August 4, 2015
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;255&nbsp;words
-  
-  
-    
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
-    
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        Ubuntu 创建ssh容器方式 1.容器准备工作 ubuntu [root@test-devops ~]# docker run -it ubuntu:14.04 /bin/bash 2.更新安装软件 root@f7b000275a50:/# apt-get update 带宽如果慢 可以忽略 root@f7b000275a50:/# apt-get install openssh-server vim 3.创建目录启动服务 root@fb02b31b8ef1:/# mkdir -p /var/run/sshd root@fb02b31b8ef1:/# /usr/sbin/sshd -D &amp; [1] 3237 root@fb02b31b8ef1:/# 4.查看端口 root@fb02b31b8ef1:/# netstat -atlnp Active Internet connections (servers and established) Proto Recv-Q Send-Q Local Address Foreign Address State PID/Program name tcp 0 0 0.0.0.0:22 0.0.0.0:* LISTEN 3237/sshd root@fb02b31b8ef1:/# ps aux USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND root 1 0.
-        <a href="https://opsnotes.github.io/post/docker/docker_images_ssh/" class="post-read-more">[Read More]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://opsnotes.github.io/tags/docker/">docker</a>&nbsp;
         
     </div>
     

@@ -98,6 +98,8 @@ if (!doNotTrack) {
                 
                   <a href="/tags/kubernetes">kubernetes</a>
                 
+                  <a href="/tags/Linux%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96">Linux性能优化</a>
+                
                   <a href="/tags/prometheus">prometheus</a>
                 
                   <a href="/tags/python">python</a>
@@ -244,6 +246,61 @@ if (!doNotTrack) {
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
         <div class="posts-list">
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/01.%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E5%B9%B3%E5%9D%87%E8%B4%9F%E8%BD%BD/">
+        <h2 class="post-title">Linux性能优化(一)</h2>
+        
+        <h3 class="post-subtitle">
+            如何理解平均负载
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on October 21, 2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;10&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2008&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        uptime # uptime root@iZbp14ipzpabr30yllskn4Z 14:37:58 up 403 days, 1:48, 4 users, load average: 0.74, 0.63, 0.60 ~ # 而最后三个数字呢，依次则是过去 1 分钟、5 分钟、15 分钟的平均负载（Load Average）。 平均负载 平均负载是指单位时间内，系统处于可运行状态和不可中断状态的平均进程数，也就是平均活跃进程数，它和 CPU 使用率并没有直接关系。这里我先解释下，可运行状态和不可中断状态这俩词儿。
+所谓可运行状态的进程，是指正在使用 CPU 或者正在等待 CPU 的进程，也就是我们常用 ps 命令看到的，处于 R 状态（Running 或 Runnable）的进程。
+不可中断状态实际上是系统对进程和硬件设备的一种保护机制。
+既然平均的是活跃进程数，那么最理想的，就是每个 CPU 上都刚好运行着一个进程，这样每个 CPU 都得到了充分利用。比如当平均负载为 2 时，意味着什么呢？
+* 在只有 2 个 CPU 的系统上，意味着所有的 CPU 都刚好被完全占用。 * 在 4 个 CPU 的系统上，意味着 CPU 有 50% 的空闲。 * 而在只有 1 个 CPU 的系统中，则意味着有一半的进程竞争不到 CPU。  查看CPU个数 [root@VM-64-25-centos ~]# grep &#39;model name&#39; /proc/cpuinfo | wc -l 8 [root@VM-64-25-centos ~]# 平均负载为多少时合理 * 如果 1 分钟、5 分钟、15 分钟的三个值基本相同，或者相差不大，那就说明系统负载很平稳。 * 但如果 1 分钟的值远小于 15 分钟的值，就说明系统最近 1 分钟的负载在减少，而过去 15 分钟内却有很大的负载。 * 反过来，如果 1 分钟的值远大于 15 分钟的值，就说明最近 1 分钟的负载在增加，这种增加有可能只是临时性的，也有可能还会持续增加下去，所以就需要持续观察。一旦 1 分钟的平均负载接近或超过了 CPU 的个数，就意味着系统正在发生过载的问题，这时就得分析调查是哪里导致的问题，并要想办法优化了。  那么，在实际生产环境中，平均负载多高时，需要我们重点关注呢？
+        <a href="https://opsnotes.github.io/post/linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/01.%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E5%B9%B3%E5%9D%87%E8%B4%9F%E8%BD%BD/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/performance-optimization/">performance optimization</a>&nbsp;
+        
+    </div>
+    
+
+</article>
           
             <article class="post-preview">
     <a href="https://opsnotes.github.io/post/prometheus/%E8%85%BE%E8%AE%AF%E4%BA%91prometheus%E6%8C%81%E4%B9%85%E5%8C%96%E4%BF%AE%E6%94%B9%E5%8F%82%E6%95%B0/">
@@ -948,57 +1005,6 @@ mkdir pdf
         
         先决条件 1. 已知安装mac下面的docker-desktop 2. kubernetes环境已部署完成 3. Helm已经安装完成 4. 保证网络正常GFW 5. 参考资料（[Istio / Traffic Management](https://istio.io/docs/concepts/traffic-management/)）  使用helm install 1. Create a namespace for the istio-system components:  ➜ kubectl version Client Version: version.Info{Major:&#34;1&#34;, Minor:&#34;15&#34;, GitVersion:&#34;v1.15.0&#34;, GitCommit:&#34;e8462b5b5dc2584fdcd18e6bcfe9f1e4d970a529&#34;, GitTreeState:&#34;clean&#34;, BuildDate:&#34;2019-06-19T16:40:16Z&#34;, GoVersion:&#34;go1.12.5&#34;, Compiler:&#34;gc&#34;, Platform:&#34;darwin/amd64&#34;} Server Version: version.Info{Major:&#34;1&#34;, Minor:&#34;14&#34;, GitVersion:&#34;v1.14.8&#34;, GitCommit:&#34;211047e9a1922595eaa3a1127ed365e9299a6c23&#34;, GitTreeState:&#34;clean&#34;, BuildDate:&#34;2019-10-15T12:02:12Z&#34;, GoVersion:&#34;go1.12.10&#34;, Compiler:&#34;gc&#34;, Platform:&#34;linux/amd64&#34;} ➜ ➜ kubectl create namespace istio-system namespace/istio-system created ➜ 2. Install all the Istio [Custom Resource Definitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions) (CRDs) using kubectl apply:  ➜ code git clone https://github.
         <a href="https://opsnotes.github.io/post/kubernetes/helm-install-istio/" class="post-read-more">[Read More]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://opsnotes.github.io/tags/kubernetes/">kubernetes</a>&nbsp;
-        
-    </div>
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="https://opsnotes.github.io/post/kubernetes/kubernetes_orphaned/">
-        <h2 class="post-title">kubernetes故障之Orphaned pod</h2>
-        
-        <h3 class="post-subtitle">
-            kubernetes故障之Orphaned pod
-        </h3>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on November 4, 2019
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;407&nbsp;words
-  
-  
-    
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
-    
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        查看日志 [root@iZbp1c4tqwd9kaykklejmxZ ~]# journalctl -u kubelet -f -- Logs begin at Fri 2019-10-04 11:50:57 CST. -- Nov 01 13:28:21 iZbp1c4tqwd9kaykklejmxZ kubelet[9731]: E1101 13:28:21.575137 9731 kubelet_volumes.go:154] Orphaned pod &#34;bb5c8fa3-b4b1-11e9-96a8-0a1877e1c33d&#34; found, but volume paths are still present on disk : There were a total of 1 errors similar to this. Turn up verbosity to see them. Nov 01 13:28:22 iZbp1c4tqwd9kaykklejmxZ kubelet[9731]: W1101 13:28:22.826291 9731 reflector.go:270] object-&#34;monitoring&#34;/&#34;grafana-dashboard-statefulset&#34;: watch of *v1.ConfigMap ended with: too old resource version: 2345008003 (2345014010) Nov 01 13:28:23 iZbp1c4tqwd9kaykklejmxZ kubelet[9731]: E1101 13:28:23.
-        <a href="https://opsnotes.github.io/post/kubernetes/kubernetes_orphaned/" class="post-read-more">[Read More]</a>
         
     </div>
 

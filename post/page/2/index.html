@@ -98,6 +98,8 @@ if (!doNotTrack) {
                 
                   <a href="/tags/kubernetes">kubernetes</a>
                 
+                  <a href="/tags/Linux%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96">Linux性能优化</a>
+                
                   <a href="/tags/prometheus">prometheus</a>
                 
                   <a href="/tags/python">python</a>
@@ -244,6 +246,57 @@ if (!doNotTrack) {
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
         <div class="posts-list">
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/kubernetes/kubernetes_orphaned/">
+        <h2 class="post-title">kubernetes故障之Orphaned pod</h2>
+        
+        <h3 class="post-subtitle">
+            kubernetes故障之Orphaned pod
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on November 4, 2019
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;407&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        查看日志 [root@iZbp1c4tqwd9kaykklejmxZ ~]# journalctl -u kubelet -f -- Logs begin at Fri 2019-10-04 11:50:57 CST. -- Nov 01 13:28:21 iZbp1c4tqwd9kaykklejmxZ kubelet[9731]: E1101 13:28:21.575137 9731 kubelet_volumes.go:154] Orphaned pod &#34;bb5c8fa3-b4b1-11e9-96a8-0a1877e1c33d&#34; found, but volume paths are still present on disk : There were a total of 1 errors similar to this. Turn up verbosity to see them. Nov 01 13:28:22 iZbp1c4tqwd9kaykklejmxZ kubelet[9731]: W1101 13:28:22.826291 9731 reflector.go:270] object-&#34;monitoring&#34;/&#34;grafana-dashboard-statefulset&#34;: watch of *v1.ConfigMap ended with: too old resource version: 2345008003 (2345014010) Nov 01 13:28:23 iZbp1c4tqwd9kaykklejmxZ kubelet[9731]: E1101 13:28:23.
+        <a href="https://opsnotes.github.io/post/kubernetes/kubernetes_orphaned/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/kubernetes/">kubernetes</a>&nbsp;
+        
+    </div>
+    
+
+</article>
           
             <article class="post-preview">
     <a href="https://opsnotes.github.io/post/kubernetes/kubernetes_safely-drain-node/">
@@ -941,81 +994,6 @@ yum install –y grafana
     <div class="blog-tags">
         
         <a href="https://opsnotes.github.io/tags/openvpn/">openvpn</a>&nbsp;
-        
-    </div>
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="https://opsnotes.github.io/post/2016%E6%80%BB%E7%BB%93/">
-        <h2 class="post-title">2016写给自己的总结</h2>
-        
-        <h3 class="post-subtitle">
-            2016写给自己的总结
-        </h3>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on January 6, 2017
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;18&nbsp;words
-  
-  
-    
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
-    
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <p><img src="/img/2016Bye.png" alt="读书"></p>
-<p>2016结束了给自己来写一个简单的小总结.</p>
-<p>学习方面：</p>
-<pre><code>今年大概在opsnotes.net上大概写了差不多18篇文章.
-年初的时候学习了一些docker方面的资料书籍
-后半年基本学习python了.从7月份到12月份,算是大概的入门了.感觉还是蛮难的还需要多练习
-年前计算一个月读三本书的,结果到年底算了下读了23本书.其实很多书都是非技术的一些书籍.
-http://opsnotes.net/2017/01/05/读书
-</code></pre>
-<p>工作方面:</p>
-<pre><code>毕业到现在一直做运维,其他也不怎么会.从15年基本技术兼管理岗位。现在基本是沟通的多了,技术做的少了.当然沟通是一个很有趣的的事情.情商智商全局考虑都需要考虑很多.当然个人感觉做leader不管是技术还是管理一样重要.
-今年业务量前半年其实还可以,后半年基本就保持不动.所以相对今年还算平稳的一年。
-</code></pre>
-<p>生活方面：</p>
-<pre><code>今年和相恋多年的媳妇领证了.一路酸甜苦辣,算是修成正果了.感恩有你！
-房子买了算是有了一个自己的窝。努力再上海在搞一个
-带父亲来上海玩了一段时间
-大舅子以及弟弟家里小孩子出生了.顿然感觉自己平白无故的高了一辈,当时肯定是很开心的
-本来今年打算带媳妇出去旅游玩的事情,也能遗憾的没有实现,感觉蛮对不起媳妇的。
-
-
-2016年人变懒了出现惰性了,发胖了.希望2017年勤快一点.
-
-2016年基本就这样子吧.期待2017年.
-</code></pre>
-
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://opsnotes.github.io/tags/%E5%B9%B4%E5%BA%95%E6%80%BB%E7%BB%93/">年底总结</a>&nbsp;
         
     </div>
     

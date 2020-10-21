@@ -98,6 +98,8 @@ if (!doNotTrack) {
                 
                   <a href="/tags/kubernetes">kubernetes</a>
                 
+                  <a href="/tags/Linux%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96">Linux性能优化</a>
+                
                   <a href="/tags/prometheus">prometheus</a>
                 
                   <a href="/tags/python">python</a>
@@ -244,6 +246,61 @@ if (!doNotTrack) {
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
         <div class="posts-list">
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/rsync&#43;inotify%E6%96%87%E4%BB%B6%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5/">
+        <h2 class="post-title">Rsync&#43;inotify时间服务器之间文件实时同步</h2>
+        
+        <h3 class="post-subtitle">
+            Rsync&#43;inotify时间服务器之间文件实时同步
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on April 22, 2015
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;338&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        rsync介绍 与传统的cp、tar备份方式相比，rsync具有安全性高、备份迅速、支持增量备份等优点，通过rsync可以解决对实时性要求不高的数据备份需求，例如定期的备份文件服务器数据到远端服务器，对本地磁盘定期做数据镜像等 随着应用系统规模的不断扩大，对数据的安全性和可靠性也提出的更好的要求，rsync在高端业务系统中也逐渐暴露出了很多不足，首先，rsync同步数据时，需要扫描所有文件后进行比对，进行差量传输。如果文件数量达到了百万甚至千万量级，扫描所有文件将是非常耗时的。而且正在发生变化的往往是其中很少的一部分，这是非常低效的方式。其次，rsync不能实时的去监测、同步数据，虽然它可以通过linux守护进程的方式进行触发同步，但是两次触发动作一定会有时间差，这样就导致了服务端和客户端数据可能出现不一致，无法在应用故障时完全的恢复数据。基于以上原因，rsync+inotify组合出现了！ inotify介绍 Inotify 是一种强大的、细粒度的、异步的文件系统事件监控机制，linux内核从2.6.13起，加入了Inotify支持，通过Inotify可以监控文件系统中添加、删除，修改、移动等各种细微事件，利用这个内核接口，第三方软件就可以监控文件系统下文件的各种变化情况，而inotify-tools就是这样的一个第三方软件。 在上面章节中，我们讲到，rsync可以实现触发式的文件同步，但是通过crontab守护进程方式进行触发，同步的数据和实际数据会有差异，而inotify可以监控文件系统的各种变化，当文件有任何变动时，就触发rsync同步，这样刚好解决了同步数据的实时性问题。 环境介绍 1、服务器相关信息
+Server1: OS: CentOS6.7 IP: 192.168.190.129 Dir: /home/ops/test Server2: OS: CentOS7 IP: 192.168.190.131 Dir: /home/ops/test 2、安装rsync服务,在CentOS6下面.yum安装的是rsync3.0.6.为了保持和CentOS7一致版本.所以源码安装
+[root@localhost local]# cd /home/ops/ [root@localhost ops]# wget https://rsync.samba.org/ftp/rsync/src/rsync-3.0.9.tar.gz [root@localhost ops]# cd rsync-3.0.9 [root@localhost rsync-3.0.9]# ./configure --prefix=/usr/local/rsysnc [root@localhost rsync-3.0.9]# make &amp;&amp; make install 3、创建密码文件
+[root@localhost rsync-3.0.9]# cd /usr/local/rsysnc/ [root@localhost rsysnc]# echo &#34;rsync-password&#34; &gt; /usr/local/rsysnc/rsync.passwd [root@localhost rsysnc]# chmod 600 rsync.passwd 4、安装inotify 服务
+[root@localhost rsysnc]# cd /home/ops/ [root@localhost ops]# ls rsync-3.
+        <a href="https://opsnotes.github.io/post/rsync&#43;inotify%E6%96%87%E4%BB%B6%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/rsync-inotify/">Rsync inotify</a>&nbsp;
+        
+    </div>
+    
+
+</article>
           
             <article class="post-preview">
     <a href="https://opsnotes.github.io/post/install_rinetd/">
@@ -1030,87 +1087,6 @@ base:
 [root@salt_server ~]# 
 </code></pre>
         <a href="https://opsnotes.github.io/post/saltstack/saltstack_config/" class="post-read-more">[Read More]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://opsnotes.github.io/tags/saltstack/">saltstack</a>&nbsp;
-        
-    </div>
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="https://opsnotes.github.io/post/saltstack/install-saltstack/">
-        <h2 class="post-title">初识saltstack在之CentOS6上安装Saltstack  </h2>
-        
-        <h3 class="post-subtitle">
-            初识saltstack在之CentOS6上安装Saltstack  
-        </h3>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on June 26, 2014
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;262&nbsp;words
-  
-  
-    
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
-    
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <p>####系统环境：</p>
-<pre><code>[root@salt_server home]# ifconfig eth0 | grep &quot;inet addr:&quot; | awk -F: '{print $2}' | awk '{print $1}'      
-192.168.100.228      
-[root@salt_server home]# cat /etc/redhat-release       
-CentOS release 6.3 (Final)      
-[root@salt_server home]# uname -r      
-2.6.32-279.el6.x86_64      
-[root@salt_server home]#  
-</code></pre>
-<p>####下载地址  <br>
-<a href="http://ftp.linux.ncsu.edu/pub/epel/6/x86_64/">http://ftp.linux.ncsu.edu/pub/epel/6/x86_64/</a>   <br>
-####参考文章   <br>
-<a href="http://docs.saltstack.cn/topics/installation/rhel.html">http://docs.saltstack.cn/topics/installation/rhel.html</a><br>
-在安装之前需要注意几个包 <br>
-Python 不用说大家都知道 这玩意就python写的  <br>
-ZeroMQ 消息中间件相当于puppet的rabbitMQ、activeMQ   <br>
-PyCrypto  Python密码工具包   <br>
-M2Crypto    加密模块 是Python OpenSSL封装   <br>
-msgpack-python 高性能的消息交换格式   <br>
-YAML    不说大家都知道 文件格式   <br>
-Jinja2    解析Salt States (在master配置文件中配置)   <br>
-MarkupSafe    Implements a XML/HTML/XHTML Markup safe string for Python   <br>
-apache-libcloud    与大量的主流云服务提供者进行交互时统一API的Python类<br>
-在安装之前我们需要设置防火墙的端口  <br>
-lokkit  -p 4505:tcp -p 4506:tcp<br>
-#######一、安装master salt-master 2014.1.1版本  <br>
-下载安装 <br>
-记住路径下次直接安装不需要下载   <br>
-如果想本地保存需要缓存   <br>
-vim /etc/yum.conf   <br>
-keepcache=1 修改成1</p>
-        <a href="https://opsnotes.github.io/post/saltstack/install-saltstack/" class="post-read-more">[Read More]</a>
         
     </div>
 
