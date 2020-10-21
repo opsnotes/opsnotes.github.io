@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mysql on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/mysql/</link>
+    <description>Recent content in mysql on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Thu, 24 Mar 2016 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MySQL忘记密码恢复方法:</title>
+      <link>https://opsnotes.github.io/post/mysqlpassword/</link>
+      <pubDate>Thu, 24 Mar 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/mysqlpassword/</guid>
+      <description>MySQL密码的恢复方法之一 1．首先确认服务器出于安全的状态，也就是没有人能够任意地连接MySQL数据库。 因为在重新设置MySQL的root密码的期间，MySQL数据库完全出于没有密码保护的 状态下，其他的用户也可以任意地登录和修改MySQL的信息。可以采用将MySQL对外的端口封闭，并且停止Apache以及所有的用户进程的方法实现服务器的准安全状态。最安全的状态是到服务器的Console上面操作，并且拔掉网线。 2．修改MySQL的登录设置： # vi /etc/my.cnf 在[mysqld]的段中加上一句：skip-grant-tables 保存并且退出vi。 3．重新启动mysqld # /etc/init.d/mysqld restart ( service mysqld restart ) 4．登录并修改MySQL的root密码 mysql&amp;gt; USE mysql ; mysql&amp;gt; UPDATE user SET Password = password ( &amp;#39;new-password&amp;#39; ) WHERE User = &amp;#39;root&amp;#39; ; mysql&amp;gt; flush privileges ; mysql&amp;gt; quit 5．将MySQL的登录设置修改回来 # vi /etc/my.cnf 将刚才在[mysqld]的段中加上的skip-grant-tables删除 保存并且退出vi。 6．重新启动mysqld # /etc/init.d/mysqld restart ( service mysqld restart ) 7．恢复服务器的正常工作状态 将步骤一中的操作逆向操作。恢复服务器的工作状态。 MySQL密码的恢复方法之二 如果忘记了MySQL的root密码，可以用以下方法重新设置： 1. KILL掉系统里的MySQL进程； killall -TERM mysqld 2. 用以下命令启动MySQL，以不检查权限的方式启动； safe_mysqld --skip-grant-tables &amp;amp; 3.</description>
+    </item>
+    
+    <item>
+      <title>使用innobackupex在线备份及恢复mysql数据库 </title>
+      <link>https://opsnotes.github.io/post/innobackupex/</link>
+      <pubDate>Wed, 12 Mar 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/innobackupex/</guid>
+      <description>&lt;h1 id=&#34;概述&#34;&gt;概述&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;这几天一直在研究mysql备份这一块,前几天由于手误对线上生产数据库造成误操作，虽然没有太大影响,但是为了把风险度降到最低,因此最近一直在倒腾mysql的在线热备份,在线热备份有免费开源的,也收费的产品,在这里我们值讨论免费的产品，支持热备的的软件mysqlLVM以及接下来的这款Xtrabackup;Xtrabackup是由percona开发的一个开源软件，它是innodb热备工具ibbackup（收费的商业软件）的一个开源替代品。Xtrabackup由个部分组成:xtrabackup和innobackupex，其中xtrabackup工具用于备份innodb和 xtraDB引擎的表；而innobackupex工具用于备份myisam和innodb引擎的表，本文将介绍如何用innobackupex工具做全量和增量备份。    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;一安装解压&#34;&gt;一、安装解压&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;</description>
+    </item>
+    
+    <item>
+      <title>mysql5.5.25 自动化脚本安装</title>
+      <link>https://opsnotes.github.io/post/install_script_01/</link>
+      <pubDate>Sun, 22 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_script_01/</guid>
+      <description>mysql5.5.25 自动化脚本安装 #!/bin/bash#创作日期:2013.7.26#Mysql install directory and configuration files.******MYSQL_DIR=&amp;#34;/data/software&amp;#34;DATA_DIR=&amp;#34;/data/mysql/3306/data&amp;#34;BASE_DIR=&amp;#34;/usr/local/mysql&amp;#34;echo &amp;#34;please input mysql version:&amp;#34;read VERSIONecho &amp;#34;Your mysql version is mysql-$VERSION.tar.gz&amp;#34;if [ -e &amp;#34;$MYSQL_DIR/mysql-$VERSION.tar.gz&amp;#34; ]thenecho &amp;#34;Please waitting...&amp;#34;sleep 3#Install mysql package dependent.yum -y install gcc gcc-c++ gcc-g77 autoconf automake openssl zlib* fiex** libxml* \ncurses-devel libmcrypt* libtool-ltdl-devel* &amp;amp;&amp;amp; \#Install cmake.echo &amp;#34;The system is bing installed cmake,please waitting...&amp;#34;sleep 3tar -zxvf $MYSQL_DIR/cmake-2.</description>
+    </item>
+    
+  </channel>
+</rss>

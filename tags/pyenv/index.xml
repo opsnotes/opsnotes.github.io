@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pyenv on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/pyenv/</link>
+    <description>Recent content in pyenv on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Sat, 10 Sep 2016 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/pyenv/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>python基础学习06</title>
+      <link>https://opsnotes.github.io/post/python/python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%BB%83%E4%B9%A0/</link>
+      <pubDate>Sat, 10 Sep 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%BB%83%E4%B9%A0/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;概念&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;装饰器（Decorator）的基本定义：“装饰器的功能是将被装饰的函数当作参数传递给与装饰器对应的函数（名称相同的函数），并返回包装后的被装饰的函数”。
+
+装饰器的定义是：装饰器实质上是一个函数。它把一个函数作为输入并且返回另外一个函数。其实其是闭包概念的深化
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;抽离出大量函数中与函数功能本身无关的雷同代码并继续重用
+
+可以将函数“修饰”为完全不同的行为，可以有效的将业务逻辑正交分解，如用于将权限和身份验证从业务中独立出来
+
+概括的讲，装饰器的作用就是为已经存在的对象添加额外的功能
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;装饰器入门&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;In [43]: def foo():
+    ...:     print(&amp;#39;in foo()&amp;#39;)
+    ...: foo()
+    ...:
+in foo()
+
+In [44]:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;In [44]: import time
+
+In [45]: def foo():
+    ...:     start = time.clock()
+    ...:     print(&amp;#39;in foo()&amp;#39;)
+    ...:     end = time.clock()
+    ...:     print(&amp;#39;used:&amp;#39;, end - start)
+    ...: foo()
+    ...:
+in foo()
+used: 2.1999999997746045e-05
+
+In [46]:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>python基础学习04</title>
+      <link>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-04/</link>
+      <pubDate>Wed, 27 Jul 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-04/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;元组&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;元组是一个不可变结构 是不允许修改的,只查询
+In [164]: t = tuple()
+
+In [165]: t
+Out[165]: ()
+
+In [166]: t = (1,2,3)
+
+In [167]:
+
+In [171]: t.count(1)
+Out[171]: 1
+
+In [175]: t = (1)
+
+In [176]: t
+Out[176]: 1
+
+In [177]: t = (1,)
+
+In [178]: t
+Out[178]: (1,)
+
+In [179]:
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;列表和元组的区别&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;list是[]号
+元组是()号
+list可以修改
+元组不可以修改
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>python基础学习05</title>
+      <link>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-05/</link>
+      <pubDate>Wed, 27 Jul 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-05/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;1.什么是字符串&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	什么是字符串？
+		python3里面是unicode序列
+		在python2里面是byte序列
+		字符串也是不可变的
+		支持切片 也支持索引 支持解包操作
+		支持遍历
+	用在哪些特定的环境
+	为什么是内置数据结构
+	In [26]: s = &amp;#39;geek&amp;#39;
+
+In [27]: s
+Out[27]: &amp;#39;geek&amp;#39;
+
+In [28]: s[0]
+Out[28]: &amp;#39;g&amp;#39;
+
+可以反转:
+In [30]: s[::-1]
+Out[30]: &amp;#39;keeg&amp;#39;
+
+In [31]:
+支持解包
+In [36]: a = &amp;#39;geek&amp;#39;
+
+In [37]: g,*s = a
+
+In [38]: g
+Out[38]: &amp;#39;g&amp;#39;
+
+In [39]: s
+Out[39]: [&amp;#39;e&amp;#39;, &amp;#39;e&amp;#39;, &amp;#39;k&amp;#39;]
+
+In [40]:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;2.字符串的连接&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;**join使用方法：**
+In [45]: list = [&amp;#39;my&amp;#39;,&amp;#39;name&amp;#39;,&amp;#39;is &amp;#39;,&amp;#39;steven&amp;#39;]
+
+In [46]: list
+Out[46]: [&amp;#39;my&amp;#39;, &amp;#39;name&amp;#39;, &amp;#39;is &amp;#39;, &amp;#39;steven&amp;#39;]
+
+In [47]: &amp;#39; &amp;#39;.join(list)
+Out[47]: &amp;#39;my name is  steven&amp;#39;
+
+In [48]: &amp;#39;,&amp;#39;.join(list)
+Out[48]: &amp;#39;my,name,is ,steven&amp;#39;
+
+In [49]:
+
+###字符串的分割
+**split**  从左边开始分割
+**rsplit**  从右边开始分割
+**splitlines**
+**partition**
+**rpartotion**
+
+**split练习使用**
+In [119]: a = &amp;#34;my name is steven&amp;#34;
+
+In [120]: a
+Out[120]: &amp;#39;my name is steven&amp;#39;
+
+In [121]: a.split()
+Out[121]: [&amp;#39;my&amp;#39;, &amp;#39;name&amp;#39;, &amp;#39;is&amp;#39;, &amp;#39;steven&amp;#39;]
+
+In [122]: a.split(&amp;#39;is&amp;#39;)
+Out[122]: [&amp;#39;my name &amp;#39;, &amp;#39; steven&amp;#39;]
+
+In [123]: a.split(&amp;#39; &amp;#39;, 1)
+Out[123]: [&amp;#39;my&amp;#39;, &amp;#39;name is steven&amp;#39;]
+
+In [124]: a.split(&amp;#39; &amp;#39;, 2)
+Out[124]: [&amp;#39;my&amp;#39;, &amp;#39;name&amp;#39;, &amp;#39;is steven&amp;#39;]
+
+In [125]: a.split(&amp;#39; &amp;#39;, 3)
+Out[125]: [&amp;#39;my&amp;#39;, &amp;#39;name&amp;#39;, &amp;#39;is&amp;#39;, &amp;#39;steven&amp;#39;]
+
+In [126]: a.split(&amp;#39; &amp;#39;, 4)
+Out[126]: [&amp;#39;my&amp;#39;, &amp;#39;name&amp;#39;, &amp;#39;is&amp;#39;, &amp;#39;steven&amp;#39;]
+
+In [127]: a.split(&amp;#39; &amp;#39;, -1)
+Out[127]: [&amp;#39;my&amp;#39;, &amp;#39;name&amp;#39;, &amp;#39;is&amp;#39;, &amp;#39;steven&amp;#39;]
+
+案例：
+
+In [131]: line = &amp;#39;usr:http://opsnotes.net&amp;#39;
+
+In [132]: line.split()
+Out[132]: [&amp;#39;usr:http://opsnotes.net&amp;#39;]
+
+In [133]: line.split(&amp;#39;:&amp;#39;, 1)
+Out[133]: [&amp;#39;usr&amp;#39;, &amp;#39;http://opsnotes.net&amp;#39;]
+In [135]: key, value = line.split(&amp;#39;:&amp;#39;, 1)
+
+In [136]: key
+Out[136]: &amp;#39;usr&amp;#39;
+
+In [137]: value
+Out[137]: &amp;#39;http://opsnotes.net&amp;#39;
+
+In [138]:
+
+**splitlines的使用方法:**
+In [138]: text = &amp;#39;&amp;#39;&amp;#39;i an geek
+   .....: i an a boy&amp;#39;&amp;#39;&amp;#39;
+
+In [139]: text
+Out[139]: &amp;#39;i an geek\ni an a boy&amp;#39;
+
+In [140]: text.splitlines()
+Out[140]: [&amp;#39;i an geek&amp;#39;, &amp;#39;i an a boy&amp;#39;]
+
+In [141]:
+
+**partition的使用方法：**
+In [141]: a
+Out[141]: &amp;#39;my name is steven&amp;#39;
+
+In [142]: a.partition(&amp;#39; &amp;#39;)
+Out[142]: (&amp;#39;my&amp;#39;, &amp;#39; &amp;#39;, &amp;#39;name is steven&amp;#39;)
+
+In [143]: a.split(&amp;#39; &amp;#39;, 1)
+Out[143]: [&amp;#39;my&amp;#39;, &amp;#39;name is steven&amp;#39;]
+
+In [144]: line.partition(&amp;#39;:&amp;#39;)
+Out[144]: (&amp;#39;usr&amp;#39;, &amp;#39;:&amp;#39;, &amp;#39;http://opsnotes.net&amp;#39;)
+
+In [145]: key, _, value = line.partition(&amp;#39;:&amp;#39;)
+
+In [146]: key
+Out[146]: &amp;#39;usr&amp;#39;
+
+In [147]: _
+Out[147]: &amp;#39;usr&amp;#39;
+
+In [148]: value
+Out[148]: &amp;#39;http://opsnotes.net&amp;#39;
+
+In [149]:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>python基础学习03</title>
+      <link>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-03/</link>
+      <pubDate>Tue, 26 Jul 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-03/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;1.list增加的使用方法&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;1.append使用方法
+	原地修改list,给list增加一个元素,append的方法的返回值是None
+list.append(12)
+
+In [4]: list.append(12)
+
+In [5]: list
+Out[5]: [1, 2, 3, 4, 5, 12]
+In [8]: help(list.append)
+
+2.insert的使用方法,根据索引位置添加.
+	insert操作的索引超出范围,如果是正索引,等效于append,如果是负索引.等效于insert(0， object)
+In [10]: list
+Out[10]: [1, 2, 3, 4, 5, 12]
+
+In [11]: list.insert(0,7)
+
+In [12]: list
+Out[12]: [7, 1, 2, 3, 4, 5, 12]
+
+In [13]: list.insert(3,0)
+
+In [14]: list
+Out[14]: [7, 1, 2, 0, 3, 4, 5, 12]
+
+In [15]:
+超出列表不存在的话
+In [16]: list.insert(12,3)
+
+In [17]: list
+Out[17]: [7, 1, 2, 0, 3, 4, 5, 12, 3]
+
+In [18]: list.insert(13,13)
+
+In [19]:
+
+3.extend的使用方法
+	把一个list扩展到我们的list后边
+In [20]: list.extend([1,2,3])
+
+In [21]: list
+Out[21]: [7, 1, 2, 0, 3, 4, 5, 12, 3, 13, 1, 2, 3]
+
+In [22]:
+In [23]: help(list.extend)####学会使用
+Help on built-in function extend:
+
+extend(...) method of builtins.list instance
+    L.extend(iterable) -&amp;gt; None -- extend list by appending elements from the iterable
+(END)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>python基础学习01</title>
+      <link>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-02%E8%BF%90%E7%AE%97%E7%AC%A6/</link>
+      <pubDate>Mon, 11 Jul 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-02%E8%BF%90%E7%AE%97%E7%AC%A6/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;python算数运算符
+ ~/code ⮀ cat yunsuanfu1.py
+#!/usr/bin/env python
+# -*- encoding: UTF-8 -*-
+
+&amp;#39;&amp;#39;&amp;#39;
+    python算数运算符
+&amp;#39;&amp;#39;&amp;#39;
+
+a = 21
+b = 10
+c = 0
+
+c = a + b
+print &amp;#34;1 - c的值为: &amp;#34;, c
+
+c = a - b
+print &amp;#34;2 - c的值为: &amp;#34;, c
+
+c = a * b
+print &amp;#34;3 - c的值为: &amp;#34;, c
+
+c = a / b
+print &amp;#34;4 - c的值为: &amp;#34;, c
+
+c = a % b
+print &amp;#34;5 - c的值为: &amp;#34;, c
+
+
+&amp;#39;&amp;#39;&amp;#39;
+修改变量: a,b,c
+&amp;#39;&amp;#39;&amp;#39;
+
+a = 2
+b = 3
+c = a ** b
+print &amp;#34;6 - c的值为: &amp;#34;, c
+
+a = 10
+b = 5
+c = a // b
+print &amp;#34;7 - c的值为: &amp;#34;, c
+ ~/code ⮀
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>python基础学习02</title>
+      <link>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-01/</link>
+      <pubDate>Wed, 06 Jul 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-01/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;**Python range用法**
+range（[start ,] stop [, step]）
+
+
+上面方括号内的参数表示是可选的，但所有参数必须是整数。如果参数step被省略的话，它的默认值是1；如果参数start被省略的话，它的默认值将是0。但是无论如何，参数stop是不允许省略的，所以range（）函数只有一个参数时，它表示range（stop）；当range（）函数带有两个参数时，它表示range（start，stop）。
+
+我们知道range（）返回的是一个列表，列表中的整数值为[start, start + step, start + 2 * step, start + 3 * step,...]。如果参数step为正值，那么列表中最后一个元素为小于参数stop的那个最大的整数 start + i * step ；如果参数step为负值，那么列表中最后一个元素为大于参数stop的那个最小的整数 start + i * step 。但是任何时候参数step的值都不能为零。只要将上面的列举的range（）示例跟这里的一般性介绍相结合，我们就能更好的理解该内建函数的用法。
+
+需要注意，当参数step为正值时，参数start必须小于参数step；当参数step为负值时，参数start必须大于参数step，否则range（）函数将返回一个空表
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;习题练习1：写一个猜数字游戏,预先设定一个数字,游戏玩家输入一个数字,如果与预设的数字相等,玩家获胜,如果不等,提示玩家太大还是太小,玩家有三次猜数字的机会。
+!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+result =  4
+count = 3
+
+while not count == 0:
+    guess = int(raw_input(&amp;#39;Please enter Guess Number: &amp;#39;))
+    if  guess == result:
+        print u&amp;#39;猜对了,游戏结束&amp;#39;
+        break
+
+    elif guess &amp;gt; result:
+        print u&amp;#39;数字偏大,再猜一次&amp;#39;
+        count -= 1
+
+    else:
+        print u&amp;#39;数字偏小,再猜一次&amp;#39;
+        #continue
+        count -= 1
+
+else:
+    print u&amp;#39;只能猜三次游戏结束!!&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python多版本管理软件pyenv</title>
+      <link>https://opsnotes.github.io/post/python/pyenv/</link>
+      <pubDate>Mon, 04 Jul 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/pyenv/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Pyenv是什么&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;git地址：https://github.com/yyuu/pyenv
+1.pyenv是python版本多功能切换工具,对系统无任何依赖关系和损坏.
+2.能支持多个python版本
+3.可以在多个python不同版本之间切换
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;安装部署&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;环境：
+Centos7.0  阿里云
+安装:
+1.curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+2.修改配置/etc/profile文件,添加如下文件
+export PATH=&amp;#34;/root/.pyenv/bin:$PATH&amp;#34;
+eval &amp;#34;$(pyenv init -)&amp;#34;
+eval &amp;#34;$(pyenv virtualenv-init -)&amp;#34;
+3. source /etc/profile
+更新pyenv版本：
+pyenv update
+删除pyenv:
+只需要删掉目录就可以(注意是隐藏文件)
+rm -fr ~/.pyenv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;使用pyenv在CentOS7.1上安装python3.5.2&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;1.先解决依赖关系
+yum -y install gcc patch make gdbm-devel openssl-devel sqlite-devel zlib-devel bzip2-devel readline-devel
+2.下载python3.5.2压缩包
+wget http://7d9qvq.com1.z0.glb.clouddn.com/Python-3.5.2.tgz
+3.把下载的文件重命名移动到如下目录
+[root@zm-test-ops-01 ~]# mkdir /root/.pyenv/cache
+[root@zm-test-ops-01 ~]# mv Python-3.5.2.tar.gz /root/.pyenv/cache/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python学习之邮件发送</title>
+      <link>https://opsnotes.github.io/post/python/pymail/</link>
+      <pubDate>Sun, 15 Feb 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/pymail/</guid>
+      <description>&lt;h4 id=&#34;测试环境&#34;&gt;测试环境&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;Python 2.7.6  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;脚本如下&#34;&gt;脚本如下&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;zhangkeyuan@opsnotes:~/Test/smtplib » cat simple2.py  
+#!/usr/bin/python  
+#coding: utf-8  
+import smtplib  
+from email.mime.text import MIMEText  
+HOST = &amp;quot;smtp.qq.com&amp;quot;  
+SUBJECT = u&amp;quot;博客流量数据统计&amp;quot;  
+TO = &amp;quot;zhangky@jiagouyun.com&amp;quot;  
+FROM = &amp;quot;431054426@qq.com&amp;quot;  
+msg = MIMEText(&amp;quot;&amp;quot;&amp;quot;  
+    &amp;lt;table width=&amp;quot;800&amp;quot; border=&amp;quot;0&amp;quot; cellspacing=&amp;quot;0&amp;quot; cellpadding=&amp;quot;4&amp;quot;&amp;gt;  
+    &amp;lt;tr&amp;gt;  
+        &amp;lt;td bgcolor=&amp;quot;#CECFAD&amp;quot; height=&amp;quot;20&amp;quot; style=&amp;quot;font-size:14px&amp;quot;&amp;gt;* 博客数据 &amp;lt;a href=&amp;quot;opsnotes.net&amp;quot;&amp;gt;更多&amp;gt;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;  
+    &amp;lt;/tr&amp;gt;  
+    &amp;lt;tr&amp;gt;  
+        &amp;lt;td bgcolor=&amp;quot;#EFEBDE&amp;quot; height=&amp;quot;100&amp;quot; style=&amp;quot;font-size:13px&amp;quot;&amp;gt;  
+        1) 日访问量: &amp;lt;font color=red&amp;gt;154333&amp;lt;/font&amp;gt; 访问次数:12834 页面浏览:12345 点击数:12306 数据流量:521MB&amp;lt;br&amp;gt;  
+        2) 状态码信息&amp;lt;br&amp;gt;  
+        &amp;amp;nbsp;&amp;amp;nbsp;500:105 404:3264 503:214&amp;lt;br&amp;gt;  
+        3) 访问浏览信息&amp;lt;br&amp;gt;  
+        &amp;amp;nbsp;&amp;amp;nbsp;IE:50% firefox:10% chrome:30% other:10%&amp;lt;br&amp;gt;  
+        4) 页面信息&amp;lt;br&amp;gt;  
+        &amp;amp;nbsp;&amp;amp;nbsp/index.php 42153&amp;lt;br&amp;gt;  
+        &amp;amp;nbsp;&amp;amp;nbsp/viwe.php 21451&amp;lt;br&amp;gt;  
+        &amp;amp;nbsp;&amp;amp;nbsp/login.php 5112&amp;lt;br&amp;gt;  
+        &amp;lt;/td&amp;gt;  
+    &amp;lt;/tr&amp;gt;  
+    &amp;lt;/table&amp;gt;&amp;quot;&amp;quot;&amp;quot;,&amp;quot;html&amp;quot;,&amp;quot;utf-8&amp;quot;)  
+
+msg[&#39;Subject&#39;] = SUBJECT  
+msg[&#39;From&#39;] = FROM  
+msg[&#39;To&#39;] = TO  
+try:  
+        server = smtplib.SMTP()  
+        server.connect(HOST, &amp;quot;25&amp;quot;)  
+        server.starttls()  
+        server.login(&amp;quot;431054426@qq.com&amp;quot;,&amp;quot;XXWWXX))000&amp;quot;)  
+        server.sendmail(FROM, TO, msg.as_string())  
+        server.quit()  
+         print &amp;quot;邮件发送成功!&amp;quot;  
+except Exceotion, e:  
+        print &amp;quot;失败: &amp;quot;+str(e)  
+zhangkeyuan@opsnotes:~/Test/smtplib »  
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

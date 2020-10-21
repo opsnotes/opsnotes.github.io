@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ansible on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/categories/ansible/</link>
+    <description>Recent content in ansible on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Thu, 19 May 2016 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/categories/ansible/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ansible源码安装zabbix agent</title>
+      <link>https://opsnotes.github.io/post/ansible/ansible_zabbix/</link>
+      <pubDate>Thu, 19 May 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/ansible/ansible_zabbix/</guid>
+      <description>&lt;h5 id=&#34;名词解释&#34;&gt;名词解释&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	[root@iZ23nvakegvZ zabbix_agent]# ls  
+	files  需要安装包  
+	handlers  重启相关信息  
+	meta  galaxy_info相关信息  
+	tasks  安装部署的任务  
+	templates  相关的模板配置文件 
+	vars   变量配置文件  
+	[root@iZ23nvakegvZ zabbix_agent]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;目录结构&#34;&gt;目录结构&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	[root@iZ23nvakegvZ zabbix_agent]# tree
+	
+	.
+	
+	├── hosts
+	├── roles
+	│   └── zabbix_agent
+	│       ├── files
+	│       │   └── zabbix-2.4.5.tar.gz
+	│       ├── handlers
+	│       ├── meta
+	│       │   └── main.yml
+	│       ├── tasks
+	│       │   ├── copy.yml
+	│       │   ├── delete.yml
+	│       │   ├── install.yml
+	│       │   └── main.yml
+	│       ├── templates
+	│       │   ├── zabbix_agentd
+	│       │   └── zabbix_agentd.conf
+	│       └── vars
+	│           └── main.yml
+	└── site.yml
+	
+	8 directories, 11 files
+	
+	[root@iZ23nvakegvZ zabbix_agent]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>ansible-playbook语法检查</title>
+      <link>https://opsnotes.github.io/post/ansible/ansible-playbook%E8%AF%AD%E6%B3%95%E6%A3%80%E6%9F%A5/</link>
+      <pubDate>Wed, 04 May 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/ansible/ansible-playbook%E8%AF%AD%E6%B3%95%E6%A3%80%E6%9F%A5/</guid>
+      <description>&lt;h3 id=&#34;列出主机&#34;&gt;列出主机&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	[root@ops-test-01 nginx_v2]# ansible-playbook -i hosts --list-hosts web-tls.yml
+	
+	playbook: web-tls.yml
+	
+	  play #1 (Configure webserver with nginx and tls): host count=1
+	
+	    web_test01
+	
+	[root@ops-test-01 nginx_v2]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;语法检查&#34;&gt;语法检查&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	[root@ops-test-01 nginx_v2]# ansible-playbook --syntax-check  web-tls.yml
+	
+	playbook: web-tls.yml
+	
+	[root@ops-test-01 nginx_v2]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>ansible playbook</title>
+      <link>https://opsnotes.github.io/post/ansible/ansible_nginx_https/</link>
+      <pubDate>Tue, 03 May 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/ansible/ansible_nginx_https/</guid>
+      <description>&lt;h3 id=&#34;查看目录结构&#34;&gt;查看目录结构&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;    [root@iZ23nvakegvZ nginx_v2]# tree
+
+    .
+
+    ├── files
+
+    │   ├── nginx.crt
+
+    │   ├── nginx.key
+
+    ├── hosts
+
+    ├── templates
+
+    │   ├── index.html.j2
+
+    │   └── test.conf.j2
+
+    └── web-tls.yml
+
+
+
+    2 directories, 8 files
+
+    [root@iZ23nvakegvZ nginx_v2]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

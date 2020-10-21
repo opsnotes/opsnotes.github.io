@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>OpsNotes随思录 - OpsNotes随思录</title>
+  <meta name="author" content="Kenng zhang"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "OpsNotes随思录",
+    
+    "url": "https:\/\/opsnotes.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/opsnotes.github.io"
+  
+  
+  
+  
+}
+</script>
+
+<meta property="og:title" content="OpsNotes随思录" />
+<meta property="og:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+<meta property="og:url" content="https://opsnotes.github.io/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="OpsNotes随思录" />
+
+  <meta name="twitter:title" content="OpsNotes随思录" />
+  <meta name="twitter:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@opsnotes" />
+  <meta name="twitter:creator" content="@opsnotes" />
+  <link href='https://opsnotes.github.io/img/avatar-icon.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.62.2" />
+  <link rel="alternate" href="https://opsnotes.github.io/index.xml" type="application/rss+xml" title="OpsNotes随思录"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://opsnotes.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://opsnotes.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://opsnotes.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '46663382', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://opsnotes.github.io">OpsNotes随思录</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="arts打卡" href="/tags/arts%e6%89%93%e5%8d%a1">arts打卡</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="/tags/kubernetes">kubernetes</a>
+                
+                  <a href="/tags/prometheus">prometheus</a>
+                
+                  <a href="/tags/python">python</a>
+                
+                  <a href="/tags">Tags</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="OpsNotes随思录" href="https://opsnotes.github.io">
+            <img class="avatar-img" src="https://opsnotes.github.io/img/avatar-icon.png" alt="OpsNotes随思录" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="page-heading">
+              
+                <h1>OpsNotes随思录</h1>
+              
+              
+                <hr class="small">
+              
+              
+                
+                  <span class="page-subheading">我是Kenng,终身学习者, 关注 Kubernetes、Istio、DevOps、Prometheus、Python、Golang、云原生、微服务等技术</span>
+                
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+  <div role="main" class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+
+        <div class="posts-list">
+          
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/install_zabbix_01/">
+        <h2 class="post-title">企业级监控软件zabbix搭建部署之zabbix server的安装 </h2>
+        
+        <h3 class="post-subtitle">
+            企业级监控软件zabbix搭建部署之zabbix server的安装
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on December 22, 2013
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;574&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h3 id="企业级监控软件zabbix搭建部署之zabbix-server的安装">企业级监控软件zabbix搭建部署之zabbix server的安装</h3>
+<h3 id="zabbix线上已经应用半年多了关于zabbix在生产环境中的使用心得以及一些经验写下来希望让大家少走弯路共同学习">zabbix线上已经应用半年多了,关于zabbix在生产环境中的使用心得，以及一些经验写下来，希望让大家少走弯路，共同学习！</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">	环境：  
+		Server:CentOS6.3_X86.64  
+		Zabbix:zabbix-2.0.8.tar  
+		Zabbix_agents:zabbix_agents_2.0.8.linux2_6.amd64.tar  
+
+	服务器命名规则：  
+		Zabbix-Server:192.168.100.239  
+		Zabbix-Agent01:192.168.100.240
+</code></pre></div>
+        <a href="https://opsnotes.github.io/post/install_zabbix_01/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/zabbix-server/">zabbix server</a>&nbsp;
+        
+        <a href="https://opsnotes.github.io/tags/zabbix/">zabbix</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/kubernetes/kubernetes_rest_api/">
+        <h2 class="post-title">Kubernetest REST API</h2>
+        
+        <h3 class="post-subtitle">
+            Kubernetest REST API 
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 1, 0001
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;206&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        启动proxy ➜ _posts kubectl proxy --port=8080 Starting to serve on 127.0.0.1:8080 查看APIserver ➜ http 127.0.0.1:8080 HTTP/1.1 200 OK Content-Length: 2644 Content-Type: application/json Date: Tue, 15 Jan 2019 05:19:42 GMT { &#34;paths&#34;: [ &#34;/api&#34;, &#34;/api/v1&#34;, &#34;/apis&#34;, &#34;/apis/&#34;, &#34;/apis/admissionregistration.k8s.io&#34;, &#34;/apis/admissionregistration.k8s.io/v1beta1&#34;, &#34;/apis/apiextensions.k8s.io&#34;, &#34;/apis/apiextensions.k8s.io/v1beta1&#34;, &#34;/apis/apiregistration.k8s.io&#34;, &#34;/apis/apiregistration.k8s.io/v1&#34;, &#34;/apis/apiregistration.k8s.io/v1beta1&#34;, &#34;/apis/apps&#34;, &#34;/apis/apps/v1&#34;, &#34;/apis/apps/v1beta1&#34;, &#34;/apis/apps/v1beta2&#34;, &#34;/apis/authentication.k8s.io&#34;, &#34;/apis/authentication.k8s.io/v1&#34;, &#34;/apis/authentication.k8s.io/v1beta1&#34;, &#34;/apis/authorization.k8s.io&#34;, &#34;/apis/authorization.k8s.io/v1&#34;, &#34;/apis/authorization.k8s.io/v1beta1&#34;, &#34;/apis/autoscaling&#34;, &#34;/apis/autoscaling/v1&#34;, &#34;/apis/autoscaling/v2beta1&#34;, &#34;/apis/batch&#34;, &#34;/apis/batch/v1&#34;, &#34;/apis/batch/v1beta1&#34;, &#34;/apis/ceph.rook.io&#34;, &#34;/apis/ceph.rook.io/v1&#34;, &#34;/apis/certificates.k8s.io&#34;, &#34;/apis/certificates.k8s.io/v1beta1&#34;, &#34;/apis/compose.docker.com&#34;, &#34;/apis/compose.docker.com/v1beta1&#34;, &#34;/apis/compose.docker.com/v1beta2&#34;, &#34;/apis/events.k8s.io&#34;, &#34;/apis/events.k8s.io/v1beta1&#34;, &#34;/apis/extensions&#34;, &#34;/apis/extensions/v1beta1&#34;, &#34;/apis/networking.
+        <a href="https://opsnotes.github.io/post/kubernetes/kubernetes_rest_api/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/kubernetes/">kubernetes</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/prometheus/01-%E5%AE%89%E8%A3%85prometheus%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+        <h2 class="post-title">prometheus学习系列(一)</h2>
+        
+        <h3 class="post-subtitle">
+            安装prometheus报错解决方法
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 1, 0001
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;310&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        下载源代码安装prometheus-operator的时候报错 git clone https://github.com/coreos/kube-prometheus.git 执行 kubectl apply -f manifests/ 报错 unable to recognize “manifests/0prometheus-operator-serviceMonitor.yaml”: no matches for kind “ServiceMonitor” in version “monitoring.coreos.com/v1” unable to recognize “manifests/alertmanager-alertmanager.yaml”: no matches for kind “Alertmanager” in version “monitoring.coreos.com/v1” unable to recognize &#34;manifests/alertmanager-serviceMonitor.yaml&#34;: no matches for kind &#34;ServiceMonitor&#34; in version &#34;monitoring.coreos.com/v1&#34; unable to recognize &#34;manifests/kube-state-metrics-serviceMonitor.yaml&#34;: no matches for kind &#34;ServiceMonitor&#34; in version &#34;monitoring.coreos.com/v1&#34; unable to recognize “manifests/node-exporter-serviceMonitor.yaml”: no matches for kind “ServiceMonitor” in version “monitoring.coreos.com/v1” unable to recognize “manifests/prometheus-prometheus.
+        <a href="https://opsnotes.github.io/post/prometheus/01-%E5%AE%89%E8%A3%85prometheus%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/prometheus/">prometheus</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/prometheus/03-%E5%9C%A8minikube%E4%B8%AD%E5%AE%89%E8%A3%85prometheus-operator/">
+        <h2 class="post-title">prometheus学习系列(三)</h2>
+        
+        <h3 class="post-subtitle">
+            在minikube中安装Prometheus Operator
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 1, 0001
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;349&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        参考资料 GitHub - coreos/prometheus-operator: Prometheus Operator creates/configures/manages Prometheus clusters atop Kubernetes
+git clone kube-prometheus;需要注意的是,代码已经从原来的地址迁移到这个地址 git clone https://github.com/coreos/prometheus-operator.git minikube安装部署,请参考另外一篇文章 安装 # create namespace and CRDs kubectl apply -f manifests/setup # wait for CRD creation to complete until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo &#34;&#34;; done # create monitoring components kubectl apply -f manifests/ 查看 ➜ kube-prometheus git:(master) ✗ k get pods -n monitoring NAME READY STATUS RESTARTS AGE alertmanager-main-0 2/2 Running 4 104m alertmanager-main-1 2/2 Running 4 104m alertmanager-main-2 2/2 Running 4 104m grafana-58dc7468d7-tzsnh 1/1 Running 2 105m kube-state-metrics-769f4fd4d5-85f7p 3/3 Running 7 105m node-exporter-22l2n 2/2 Running 4 105m prometheus-adapter-5cd5798d96-ttfm2 1/1 Running 3 105m prometheus-k8s-0 3/3 Running 7 61m prometheus-k8s-1 3/3 Running 0 51m prometheus-operator-99dccdc56-klb8r 1/1 Running 4 105m ➜ kube-prometheus git:(master) ✗ 查看创建的服务,需要注意的是,我们需要修改prometheus-k8s和grafana这两个service的类型为NodePort;如下操作: ➜ kube-prometheus git:(master) ✗ k edit svc grafana -n monitoring ➜ kube-prometheus git:(master) ✗ k edit svc prometheus-k8s -n monitoring 查看修改完成的service; ➜ kube-prometheus git:(master) ✗ k get svc -n monitoring NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE alertmanager-main ClusterIP 10.
+        <a href="https://opsnotes.github.io/post/prometheus/03-%E5%9C%A8minikube%E4%B8%AD%E5%AE%89%E8%A3%85prometheus-operator/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/prometheus/">prometheus</a>&nbsp;
+        
+        <a href="https://opsnotes.github.io/tags/kubernetes/">“kubernetes”</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/prometheus/02-minikube-for-mac-install/">
+        <h2 class="post-title">prometheus学习系列(二)</h2>
+        
+        <h3 class="post-subtitle">
+            minikube for Mac install
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 1, 0001
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;104&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h4 id="prerequisites">Prerequisites:</h4>
+<pre><code>* macOS 10.12 (Sierra)
+* A hypervisor such as Hyperkit, Parallels, VirtualBox, or VMware Fusion
+</code></pre>
+<h4 id="installation">Installation:</h4>
+<p><strong>brew install minikube</strong></p>
+<h4 id="upgrading-minikube">Upgrading minikube:</h4>
+<p><strong>brew update</strong>
+<strong>brew upgrade minikube</strong></p>
+<h4 id="hypervisor-setup-for-hypervisor">Hypervisor Setup for Hypervisor</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">**Usage**
+Start a cluster using the hyperkit driver:
+minikube start —vm-driver**=**hyperkit
+To make hyperkit the default driver:
+minikube config set vm-driver hyperkit
+</code></pre></div><h4 id="increasing-memory-allocation">Increasing memory allocation:</h4>
+<p><strong>minikube config set memory 4096</strong></p>
+<h4 id="常用命令">常用命令:</h4>
+<p><strong>Start a cluster by running:</strong>
+minikube start
+<strong>Access the Kubernetes Dashboard running within the</strong> 		minikube cluster:
+minikube dashboard
+<strong>minikube service list</strong>
+<strong>Stop your local cluster:</strong>
+minikube stop
+<strong>Delete your local cluster:</strong>
+minikube delete
+<strong>Delete all local clusters and profiles</strong>
+minikube delete —all</p>
+
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/prometheus/">prometheus</a>&nbsp;
+        
+        <a href="https://opsnotes.github.io/tags/kubernetes/">“kubernetes”</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/prometheus/05-prometheus-operator%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%8E%A7nginx/">
+        <h2 class="post-title">prometheus学习系列(五)</h2>
+        
+        <h3 class="post-subtitle">
+            prometheus Operator自定义监控nginx
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 1, 0001
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;374&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        目标 在生产环境中,我们需要除了监控kubernetes中的一些资源对象、节点以及组件,有时候还需要根据实际的业务添加自定义监控.添加自定义步骤如下: 1. 先创建一个ServiceMonitor对象,用于为Prometheus添加监控项 2. 将ServiceMonitor对象关联metrics数据接口的一个Service对象; 3. Service对象可以正确获取metrics数据
+查看nginx完整的带metrics的文件 ➜ manifests git:(master) ✗ cat nginx.yaml apiVersion: apps/v1 kind: Deployment metadata: name: nginx labels: app: nginx spec: replicas: 1 selector: matchLabels: app: nginx template: metadata: labels: app: nginx spec: containers: - name: nginx image: billy98/nginx-prometheus-metrics:latest ports: - name: http-metrics containerPort: 9527 - name: web containerPort: 80 - name: test containerPort: 1314 imagePullPolicy: IfNotPresent --- apiVersion: v1 kind: Service metadata: labels: app: nginx name: nginx namespace: default spec: ports: - name: http-metrics port: 9527 protocol: TCP targetPort: 9527 - name: web port: 80 protocol: TCP targetPort: 80 - name: test port: 1314 protocol: TCP targetPort: 1314 selector: app: nginx type: NodePort ➜ manifests git:(master) ✗ 配置prometheus监控 ➜ manifests git:(master) ✗ cat prometheus-serviceMonitornginx.
+        <a href="https://opsnotes.github.io/post/prometheus/05-prometheus-operator%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%8E%A7nginx/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/prometheus/">prometheus</a>&nbsp;
+        
+        <a href="https://opsnotes.github.io/tags/kubernetes/">“kubernetes”</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/prometheus/06-prometheus-mail-&#43;-wechat%E6%8A%A5%E8%AD%A6/">
+        <h2 class="post-title">prometheus学习系列(六)</h2>
+        
+        <h3 class="post-subtitle">
+            prometheus mail &#43; wechat报警
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 1, 0001
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;628&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        首先把alertmanager-main这个service改为NodePort的server. ➜ manifests git:(master) ✗ k get svc -n monitoring NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE alertmanager-main NodePort 10.96.120.87 &lt;none&gt; 9093:31175/TCP 29h alertmanager-operated ClusterIP None &lt;none&gt; 9093/TCP,9094/TCP,9094/UDP 29h grafana NodePort 10.96.163.124 &lt;none&gt; 3000:31263/TCP 29h kube-state-metrics ClusterIP None &lt;none&gt; 8443/TCP,9443/TCP 29h node-exporter ClusterIP None &lt;none&gt; 9100/TCP 29h prometheus-adapter ClusterIP 10.96.121.50 &lt;none&gt; 443/TCP 29h prometheus-k8s NodePort 10.96.129.132 &lt;none&gt; 9090:30525/TCP 29h prometheus-operated ClusterIP None &lt;none&gt; 9090/TCP 29h prometheus-operator ClusterIP None &lt;none&gt; 8080/TCP 29h ➜ manifests git:(master) ✗ 可以使用svc“alertmanager-main”的nodeport查看Alertmanager的Status状态,获取访问prometheus地址和alertmanager地址.
+        <a href="https://opsnotes.github.io/post/prometheus/06-prometheus-mail-&#43;-wechat%E6%8A%A5%E8%AD%A6/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/prometheus/">prometheus</a>&nbsp;
+        
+        <a href="https://opsnotes.github.io/tags/kubernetes/">“kubernetes”</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/prometheus/04-prometheus-service-%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0%E9%85%8D%E7%BD%AE/">
+        <h2 class="post-title">prometheus学习系列(四)</h2>
+        
+        <h3 class="post-subtitle">
+            prometheus service 自动发现配置
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 1, 0001
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;441&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        注意所在操作都在,manifests目录下面创建, ➜ manifests git:(master) ✗ cat prometheus-additional.yaml - job_name: ‘kubernetes-service-endpoints&#39; kubernetes_sd_configs: - role: endpoints relabel_configs: - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape] action: keep regex: true - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scheme] action: replace target_label: __scheme__ regex: (https?) - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path] action: replace target_label: __metrics_path__ regex: (.+) - source_labels: [__address__, __meta_kubernetes_service_annotation_prometheus_io_port] action: replace target_label: __address__ regex: ([^:]+)(?::\d+)?;(\d+) replacement: $1:$2 - action: labelmap regex: __meta_kubernetes_service_label_(.+) - source_labels: [__meta_kubernetes_namespace] action: replace target_label: kubernetes_namespace - source_labels: [__meta_kubernetes_service_name] action: replace target_label: kubernetes_name ➜ manifests git:(master) ✗ 使用这个文件创建一个secret对象并查看 ➜ manifests git:(master) ✗ kubectl create secret generic additional-configs --from-file=prometheus-additional.
+        <a href="https://opsnotes.github.io/post/prometheus/04-prometheus-service-%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0%E9%85%8D%E7%BD%AE/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/prometheus/">prometheus</a>&nbsp;
+        
+        <a href="https://opsnotes.github.io/tags/kubernetes/">“kubernetes”</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/docker/dockerfile_centos_ssh/">
+        <h2 class="post-title">牛刀小试之docker容器系列(九)</h2>
+        
+        <h3 class="post-subtitle">
+            使用dockerfile创建基于centos的ssh容器
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 1, 0001
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;623&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h4 id="使用dockerfile创建基于centos的ssh容器">使用dockerfile创建基于centos的ssh容器：</h4>
+<pre><code>需求：
+   打包的镜像需要支持SSH key和密码登录
+1.首先创建目录/home/sshd_centos
+[root@test-devops sshd_centos]# pwd
+/home/sshd_centos
+[root@test-devops sshd_centos]#
+
+2.查看autorized.keys,需要注意的是,需要哪个机器使用key登录就把哪个客户的pub文件进去
+[root@test-devops sshd_centos]# cat authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0OaHTmgsdKIrPCgULUk1XyRGhicQbPPJgQN85QTZNfA2iuK7PmkhoPnXLaRtMZl4se6xsBEuCn0Yougx4vFRzszDv/62XxjErqqC0vQBEWL4KaGCmDgEtwaE3oOBPA+kfIU0XITZuZx7KdPsaX2pngrv+EK3urs5kYUbwfQzE8G9JcqhWmGUxNWx+SvyspH5GaEMvxdpmZtitevEDfAGTnfp0DvR/C/5EcieS9MBHOAMEwm5mzVzvTV+HEN2GMmZAuooEUGlzTVyCRzJvddzzPDsVKZzLPhA8QYWYGg/bSDkrh5IFYBc5T/yDhD6xBbbFG+R4vT98iOqB7m9vXst9 zhangkeyuan@zhangkeyuandeMacBook-Air.local
+[root@test-devops sshd_centos]#
+3.给文件授权
+[root@test-devops sshd_centos]# ll authorized_keys
+-rw------- 1 root root 424 7月   2 17:43 authorized_keys
+[root@test-devops sshd_centos]#
+</code></pre>
+        <a href="https://opsnotes.github.io/post/docker/dockerfile_centos_ssh/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/docker/">docker</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/docker/dockerfile_ubuntu_ssh/">
+        <h2 class="post-title">牛刀小试之docker容器系列(十)</h2>
+        
+        <h3 class="post-subtitle">
+            使用dockerfile创建基于ubuntu的ssh容器
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 1, 0001
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;374&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h4 id="使用dockerfile创建基于ubuntu的ssh容器">使用dockerfile创建基于ubuntu的ssh容器：</h4>
+<pre><code>1.创建目录
+[root@test-devops home]# mkdir sshd_ubuntu
+[root@test-devops home]# cd sshd_ubuntu/
+[root@test-devops sshd_ubuntu]# touch Dockerfile run.sh
+[root@test-devops sshd_ubuntu]#
+
+2.编写run.sh脚本和认证文件
+[root@test-devops sshd_ubuntu]# cat run.sh
+#!/bin/bash
+/usr/sbin/sshd -D
+[root@test-devops sshd_ubuntu]# chmod +x run.sh
+[root@test-devops sshd_ubuntu]#
+
+[root@test-devops sshd_ubuntu]# chmod 400 authorized_keys
+
+3.编写dockerFile
+[root@test-devops sshd_ubuntu]# cat Dockerfile
+# 继承的镜像
+FROM ubuntu:14.04
+
+# 作者信息
+MAINTAINER from steven (www.opsnotes.net)
+
+# 安装SSH服务和VIM服务
+RUN apt-get install -y openssh-server vim
+RUN mkdir -p /var/run/sshd
+RUN mkdir -p /root/.ssh
+RUN echo 'root:123qwer' |chpasswd
+RUN sed -i &quot;s/#UsePrivilegeSeparation.*/UsePrivilegeSeparation no/g&quot; /etc/ssh/sshd_config
+RUN sed -i &quot;s/UsePAM.*/UsePAM no/g&quot; /etc/ssh/sshd_config
+RUN sed -i 's/^PermitRootLogin without-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+
+# 取消PAM限制
+RUN sed -i '/pam_loginuid.so/c session    optional     pam_loginuid.so'  /etc/pam.d/sshd
+
+# 复制文件，给脚本可执行权限
+ADD authorized_keys /root/.ssh/authorized_keys
+ADD run.sh /run.sh
+RUN chmod +x /run.sh
+
+# 设置开放端口
+EXPOSE 22
+
+# 设置自动开启命令
+CMD [&quot;/run.sh&quot;]
+[root@test-devops sshd_ubuntu]#
+</code></pre>
+        <a href="https://opsnotes.github.io/post/docker/dockerfile_ubuntu_ssh/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/docker/">docker</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+        </div>
+
+        
+          <ul class="pager main-pager">
+            
+              <li class="previous">
+                <a href="https://opsnotes.github.io/page/7/">&larr; Newer Posts</a>
+              </li>
+            
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+
+      
+    <div class="page-meta">
+  
+  
+  
+</div>
+
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:zky.linux@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/username" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/opsnotes" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/opsnotes" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://username.slack.com/" title="Slack">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-slack fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://reddit.com/u/keengz" title="Reddit">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-reddit-alien fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/XXXXXXX/username" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/kenng.z" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://telegram.me/Ke_zz" title="Telegram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://weibo.com/angerdevil" title="Weibo">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="opsnotes.net">Kenng zhang</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://opsnotes.github.io">OpsNotes随思录</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.62.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://opsnotes.github.io/js/main.js"></script>
+<script src="https://opsnotes.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://opsnotes.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

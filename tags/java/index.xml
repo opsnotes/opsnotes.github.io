@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/java/</link>
+    <description>Recent content in java on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Fri, 06 May 2016 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>java中for循环的优化</title>
+      <link>https://opsnotes.github.io/post/java%E4%B8%ADfor%E5%BE%AA%E7%8E%AF%E7%9A%84%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Fri, 06 May 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/java%E4%B8%ADfor%E5%BE%AA%E7%8E%AF%E7%9A%84%E4%BC%98%E5%8C%96/</guid>
+      <description>作为java中三大循环之一的for循环，大家应该用的特别多，今天那就以我在项目中遇到的for循环优化来聊一聊for循环的优化. 首先是for循环的写法上面 最原始的写法 public void optimalizeFor() { List list = new ArrayList&amp;lt;&amp;gt;(); for (int i = 0; i &amp;lt; list.size(); i++) { } }  调优写法 public void optimalizeFor() { List list = new ArrayList&amp;lt;&amp;gt;(); for (int i = 0, len = list.size(); i &amp;lt; len; i++) { } }  结果 优化前用时：47871 优化后用时：566  #为什么 在循环中，循环条件会被反复计算，如果不使用复杂表达式，而是使循环条件不变的话，程序将会运行的更快，所以在循环中应该避免使用复杂的表达式  java之循环嵌套 外小内大型  for (int i = 0; i &amp;lt; 10; i++) { for (int j = 0; j &amp;lt; 100000; j++) { } }  外大内小型  for (int i = 0; i &amp;lt; 100000; i++) { for (int j = 0; j &amp;lt; 10; j++) { } }  结果  优化前用时：7541608 优化后用时：4316  为什么  从结果可以看出来所用时间的差异非常大，这个就像拿大文件和小文件一样的道理  循环嵌套提取不需要循环的逻辑 无用逻辑再循环中  int a = 10, b = 11; for (int i = 0; i &amp;lt; 10; i++) { i = i * a * b; }  无用逻辑再循环外  int c = a * b; for (int i = 0; i &amp;lt; 10; i++) { i = i * c; }  结果  优化前用时：48664 优化后用时：651  为什么  还是像之前说到的，避免在循环中重复的计算发生  异常处理 异常在循环中  for (int i = 0; i &amp;lt; 10; i++) { try { } catch (Exception e) { } }  异常在循环外  try { for (int i = 0; i &amp;lt; 10; i++) { } } catch (Exception e) { }  结果  优化前用时：33916 优化后用时：489  为什么  每次抓捕异常时非常耗时的，应该放在循环外一次性抓取，而不是应该放在循环内去每循环一次都抓取一次异常  </description>
+    </item>
+    
+  </channel>
+</rss>

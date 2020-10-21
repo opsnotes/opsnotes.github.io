@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>G云测试 on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/categories/g%E4%BA%91%E6%B5%8B%E8%AF%95/</link>
+    <description>Recent content in G云测试 on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Fri, 01 Dec 2017 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/categories/g%E4%BA%91%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>G云云主机性能测试</title>
+      <link>https://opsnotes.github.io/post/g%E4%BA%91%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Fri, 01 Dec 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/g%E4%BA%91%E6%B5%8B%E8%AF%95/</guid>
+      <description>&lt;p&gt;公司最近要上个新业务，正在选择云平台，国内的几家都测试过，把G云的测试结果发出来，大家参考下。总体还不错，号称私有云，资源独享。G云官网：http://gicloud.com.cn&lt;/p&gt;
+&lt;h3 id=&#34;一网络测试&#34;&gt;一、网络测试&lt;/h3&gt;
+&lt;p&gt;PING测试在一定程度上可以代表服务器的宽带速度。使用站长工具提供的Ping服务 ( &lt;a href=&#34;http://ping.chinaz.com&#34;&gt;http://ping.chinaz.com&lt;/a&gt; )，来测试各个地区的速度，以便做一个直观的了解。
+&lt;img src=&#34;https://opsnotes.github.io/img/G11.png&#34; alt=&#34;Gyun&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

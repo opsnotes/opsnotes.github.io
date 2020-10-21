@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>python基础学习03 - OpsNotes随思录</title>
+  <meta name="description" content="对文章的简要描述 SEO used for description">
+  <meta name="author" content="Kenng zhang"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "OpsNotes随思录",
+    
+    "url": "https:\/\/opsnotes.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/opsnotes.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io\/post\/python\/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-03\/",
+          "name": "Python基础学习03"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Kenng zhang"
+  },
+  "headline": "python基础学习03",
+  "description" : "对文章的简要描述 SEO used for description",
+  "inLanguage" : "en",
+  "wordCount":  769 ,
+  "datePublished" : "2016-07-26T20:18:57",
+  "dateModified" : "2016-07-26T20:18:57",
+  "image" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+  "keywords" : [ "python, pyenv" ],
+  "mainEntityOfPage" : "https:\/\/opsnotes.github.io\/post\/python\/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-03\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/opsnotes.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="python基础学习03" />
+<meta property="og:description" content="对文章的简要描述 SEO used for description">
+<meta property="og:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+<meta property="og:url" content="https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-03/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="OpsNotes随思录" />
+
+  <meta name="twitter:title" content="python基础学习03" />
+  <meta name="twitter:description" content="对文章的简要描述 SEO used for description">
+  <meta name="twitter:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@opsnotes" />
+  <meta name="twitter:creator" content="@opsnotes" />
+  <link href='https://opsnotes.github.io/img/avatar-icon.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.62.2" />
+  <link rel="alternate" href="https://opsnotes.github.io/index.xml" type="application/rss+xml" title="OpsNotes随思录"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://opsnotes.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://opsnotes.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://opsnotes.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '46663382', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://opsnotes.github.io">OpsNotes随思录</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="arts打卡" href="/tags/arts%e6%89%93%e5%8d%a1">arts打卡</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="/tags/kubernetes">kubernetes</a>
+                
+                  <a href="/tags/prometheus">prometheus</a>
+                
+                  <a href="/tags/python">python</a>
+                
+                  <a href="/tags">Tags</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="OpsNotes随思录" href="https://opsnotes.github.io">
+            <img class="avatar-img" src="https://opsnotes.github.io/img/avatar-icon.png" alt="OpsNotes随思录" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 
+      
+         
+          data-img-src-1="https://tva1.sinaimg.cn/large/006tNbRwly1g9tpqtdm7xj31ee0lygth.jpg" 
+         
+         
+      ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>python基础学习03</h1>
+                  
+                    
+                      <h2 class="post-subheading">python基础语法学习-list使用 </h2>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 26, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;769&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>python基础学习03</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">python基础语法学习-list使用 </h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 26, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;769&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p><strong>1.list增加的使用方法</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">1.append使用方法
+	原地修改list,给list增加一个元素,append的方法的返回值是None
+list.append(12)
+
+In [4]: list.append(12)
+
+In [5]: list
+Out[5]: [1, 2, 3, 4, 5, 12]
+In [8]: help(list.append)
+
+2.insert的使用方法,根据索引位置添加.
+	insert操作的索引超出范围,如果是正索引,等效于append,如果是负索引.等效于insert(0， object)
+In [10]: list
+Out[10]: [1, 2, 3, 4, 5, 12]
+
+In [11]: list.insert(0,7)
+
+In [12]: list
+Out[12]: [7, 1, 2, 3, 4, 5, 12]
+
+In [13]: list.insert(3,0)
+
+In [14]: list
+Out[14]: [7, 1, 2, 0, 3, 4, 5, 12]
+
+In [15]:
+超出列表不存在的话
+In [16]: list.insert(12,3)
+
+In [17]: list
+Out[17]: [7, 1, 2, 0, 3, 4, 5, 12, 3]
+
+In [18]: list.insert(13,13)
+
+In [19]:
+
+3.extend的使用方法
+	把一个list扩展到我们的list后边
+In [20]: list.extend([1,2,3])
+
+In [21]: list
+Out[21]: [7, 1, 2, 0, 3, 4, 5, 12, 3, 13, 1, 2, 3]
+
+In [22]:
+In [23]: help(list.extend)####学会使用
+Help on built-in function extend:
+
+extend(...) method of builtins.list instance
+    L.extend(iterable) -&gt; None -- extend list by appending elements from the iterable
+(END)
+</code></pre></div><p><strong>2.list删除练习</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">###删除的使用方法
+1.pop的使用方法
+	index默认为-1 如果index超出索引范围.会抛出indexError
+In [24]: list
+Out[24]: [7, 1, 2, 0, 3, 4, 5, 12, 3, 13, 1, 2, 3]
+
+In [25]: list.pop()
+Out[25]: 3
+
+In [26]: list
+Out[26]: [7, 1, 2, 0, 3, 4, 5, 12, 3, 13, 1, 2]
+
+In [27]:
+Help on built-in function pop:
+
+pop(...) method of builtins.list instance
+    L.pop([index]) -&gt; item -- remove and return item at index (default last).
+    Raises IndexError if list is empty or index is out of range.
+
+In [29]: list.pop(0)###从正数第一个开始删除
+Out[29]: 7
+
+In [30]: list
+Out[30]: [1, 2, 0, 3, 4, 5, 12, 3, 13, 1, 2]
+
+In [31]:
+
+In [31]: list
+Out[31]: [1, 2, 0, 3, 4, 5, 12, 3, 13, 1, 2]
+
+In [32]: list.pop(-1)###从负数第一个开始删除
+Out[32]: 2
+
+In [33]: list
+Out[33]: [1, 2, 0, 3, 4, 5, 12, 3, 13, 1]
+
+In [34]:
+
+2.remove的方法使用
+	pop和remove比较
+	pop是针对的索引 remove是针对的值
+	pop 是弹出索引对应的值
+	remove 是删除最左边的一个值
+	
+In [34]: help(list.remove)	
+Help on built-in function remove:
+
+remove(...) method of builtins.list instance
+    L.remove(value) -&gt; None -- remove first occurrence of value.
+    Raises ValueError if the value is not present.
+In [35]: list
+Out[35]: [1, 2, 0, 3, 4, 5, 12, 3, 13, 1]
+
+In [36]: list.remove(2)
+
+In [37]: list
+Out[37]: [1, 0, 3, 4, 5, 12, 3, 13, 1]
+
+In [38]:
+
+3.del删除的方式#使用比较少
+
+4.clear的使用方法
+	####python2 没有copy这个参数
+	clear方式是删除所有的元素
+In [38]: list
+Out[38]: [1, 0, 3, 4, 5, 12, 3, 13, 1]
+
+In [39]: list.clear()
+
+In [40]: list
+Out[40]: []
+
+In [41]:
+</code></pre></div><p><strong>3.list查询统计练习</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">1.index的使用方法
+In [43]: help(list.index)
+Help on built-in function index:
+
+index(...) method of builtins.list instance
+    L.index(value, [start, [stop]]) -&gt; integer -- return first index of value.
+    Raises ValueError if the value is not present.
+In [44]: list=[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;]
+
+In [46]: list.index(&#39;b&#39;)
+Out[46]: 1
+
+In [47]: list.append(&#39;b&#39;)
+
+In [48]: list.index(&#39;b&#39;)
+Out[48]: 1
+
+In [49]: list
+Out[49]: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;b&#39;]
+
+In [50]: list.index(&#39;b&#39;)
+Out[50]: 1
+
+In [51]:
+
+In [51]: list.index(&#39;b&#39;, 2)
+Out[51]: 4
+
+In [52]:
+####总结
+	如果不存在会抛出一个ValueError
+	start 包含 stop不包含
+	index 是根据值来找索引
+	
+2.count的使用方法
+	统计列表中有函数的个数
+In [64]: list
+Out[64]: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;b&#39;]
+
+In [65]: list.count(&#39;b&#39;)
+Out[65]: 2
+
+In [66]:
+
+3.len的使用方法
+	列表里面全部值的个数
+	
+In [67]: list
+Out[67]: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;b&#39;]
+
+In [68]: len(list)
+Out[68]: 5
+
+In [69]:
+</code></pre></div><p><strong>4.list修改列表练习</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">1.sort的使用方法
+
+In [70]: help(list.sort)
+Help on built-in function sort:
+
+sort(...) method of builtins.list instance
+    L.sort(key=None, reverse=False) -&gt; None -- stable sort *IN PLACE*
+
+In [71]: help(list.sort)
+
+
+In [72]: list.sort()
+
+In [73]: list
+Out[73]: [&#39;a&#39;, &#39;b&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
+
+In [74]:
+####倒排序
+In [74]: list.sort(reverse=True)
+
+In [75]: list
+Out[75]: [&#39;d&#39;, &#39;c&#39;, &#39;b&#39;, &#39;b&#39;, &#39;a&#39;]
+
+In [76]:
+
+2.reverse的使用方法
+In [76]: help(list.reverse)
+
+
+In [77]: list.reverse()
+
+In [78]: list
+Out[78]: [&#39;a&#39;, &#39;b&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
+
+In [79]:
+
+3.copy的使用方法
+	####python2 没有copy这个参数
+In [80]: list1 = [1,3,2,4,6,5,7]
+
+In [81]: list1
+Out[81]: [1, 3, 2, 4, 6, 5, 7]
+
+In [82]: list1.reverse()
+
+In [83]: list1
+Out[83]: [7, 5, 6, 4, 2, 3, 1]
+
+In [84]: list1.reverse()
+
+In [85]: list1
+Out[85]: [1, 3, 2, 4, 6, 5, 7]
+
+In [86]: list1.remove(2)
+
+In [87]: list1
+Out[87]: [1, 3, 4, 6, 5, 7]
+
+In [88]:
+
+In [88]: list1 = list
+
+In [89]: list1
+Out[89]: [&#39;a&#39;, &#39;b&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
+
+In [90]: list
+Out[90]: [&#39;a&#39;, &#39;b&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
+
+In [93]: list
+Out[93]: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
+
+In [94]: list1
+Out[94]: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
+
+In [95]:
+###如果为了不影响原来的可以使用list.copy,这样我们可以保证两个互相不影响
+In [95]: list2 = list.copy()
+
+In [96]: list2
+Out[96]: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
+
+In [97]: list
+Out[97]: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
+
+In [98]: id(list)
+Out[98]: 140378675610824
+
+In [99]: id(list2)
+Out[99]: 140378675977352
+
+In [100]: list.remove(&#39;a&#39;)
+
+In [101]: list
+Out[101]: [&#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
+
+In [102]: list2
+Out[102]: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
+
+In [103]: list2.remove(&#39;d&#39;)
+
+In [104]: list2
+Out[104]: [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+
+In [105]: list
+Out[105]: [&#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
+
+In [106]:
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">素数作业案例
+import datetime
+start = datetime.datetime.now()
+In [160]: for n in range(2, 101):
+   .....:     for x in list:
+   .....:         if n % x == 0:
+   .....:             break
+   .....:     else:
+   .....:         list.append(n)
+   .....:         print (n)
+   .....:print(datetime.datetime.now()-start)
+</code></pre></div>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://opsnotes.github.io/tags/python/">python</a>&nbsp;
+            
+              <a href="https://opsnotes.github.io/tags/pyenv/">pyenv</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fpython%2fpython%25E5%259F%25BA%25E7%25A1%2580%25E8%25AF%25AD%25E6%25B3%2595%25E5%25AD%25A6%25E4%25B9%25A0-03%2f&amp;text=python%e5%9f%ba%e7%a1%80%e5%ad%a6%e4%b9%a003&amp;via=opsnotes" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fopsnotes.github.io%2fpost%2fpython%2fpython%25E5%259F%25BA%25E7%25A1%2580%25E8%25AF%25AD%25E6%25B3%2595%25E5%25AD%25A6%25E4%25B9%25A0-03%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fpython%2fpython%25E5%259F%25BA%25E7%25A1%2580%25E8%25AF%25AD%25E6%25B3%2595%25E5%25AD%25A6%25E4%25B9%25A0-03%2f&amp;title=python%e5%9f%ba%e7%a1%80%e5%ad%a6%e4%b9%a003" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fpython%2fpython%25E5%259F%25BA%25E7%25A1%2580%25E8%25AF%25AD%25E6%25B3%2595%25E5%25AD%25A6%25E4%25B9%25A0-03%2f&amp;title=python%e5%9f%ba%e7%a1%80%e5%ad%a6%e4%b9%a003" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fpython%2fpython%25E5%259F%25BA%25E7%25A1%2580%25E8%25AF%25AD%25E6%25B3%2595%25E5%25AD%25A6%25E4%25B9%25A0-03%2f&amp;title=python%e5%9f%ba%e7%a1%80%e5%ad%a6%e4%b9%a003" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fpython%2fpython%25E5%259F%25BA%25E7%25A1%2580%25E8%25AF%25AD%25E6%25B3%2595%25E5%25AD%25A6%25E4%25B9%25A0-03%2f&amp;description=python%e5%9f%ba%e7%a1%80%e5%ad%a6%e4%b9%a003" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/python/python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%BB%83%E4%B9%A0/">python基础学习06</a></li>
+                
+                    <li><a href="/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-04/">python基础学习04</a></li>
+                
+                    <li><a href="/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-05/">python基础学习05</a></li>
+                
+                    <li><a href="/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-02%E8%BF%90%E7%AE%97%E7%AC%A6/">python基础学习01</a></li>
+                
+                    <li><a href="/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-01/">python基础学习02</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-02%E8%BF%90%E7%AE%97%E7%AC%A6/" data-toggle="tooltip" data-placement="top" title="python基础学习01">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-05/" data-toggle="tooltip" data-placement="top" title="python基础学习05">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:zky.linux@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/username" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/opsnotes" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/opsnotes" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://username.slack.com/" title="Slack">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-slack fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://reddit.com/u/keengz" title="Reddit">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-reddit-alien fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/XXXXXXX/username" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/kenng.z" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://telegram.me/Ke_zz" title="Telegram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://weibo.com/angerdevil" title="Weibo">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="opsnotes.net">Kenng zhang</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://opsnotes.github.io">OpsNotes随思录</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.62.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://opsnotes.github.io/js/main.js"></script>
+<script src="https://opsnotes.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://opsnotes.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

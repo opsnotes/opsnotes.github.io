@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ELK on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/categories/elk/</link>
+    <description>Recent content in ELK on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Fri, 22 May 2015 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/categories/elk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>elasticsearch&#43;logstash&#43;kibana分析windowns日志</title>
+      <link>https://opsnotes.github.io/post/install_elk_windows/</link>
+      <pubDate>Fri, 22 May 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_elk_windows/</guid>
+      <description>&lt;h3 id=&#34;项目背景&#34;&gt;项目背景&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;客户需求需要监控windows下面的IIS相关日志,无解只能上去安装部署了,但是这东西只在Linux上玩过，为了以后少走弯路特此记录下。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;准备工作&#34;&gt;准备工作：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1台windows2008 x86_64
+JAVA jdk包
+nssm包
+logstash包
+设置环境变量
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;下载java-jdk包-选择x86_64&#34;&gt;下载JAVA jdk包 选择x86_64&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;下载nssm-为了把启动logstash已服务器的方式启动&#34;&gt;下载nssm 为了把启动logstash已服务器的方式启动&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;https://nssm.cc/ci/nssm-2.24-23-gfb96938.zip  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;下载logstash142文件&#34;&gt;下载logstash1.4.2文件&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.zip  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;安装java包安装步骤省略&#34;&gt;安装JAVA包,安装步骤省略&lt;/h3&gt;
+&lt;h3 id=&#34;设置环境变量&#34;&gt;设置环境变量&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://opsnotes.github.io/img/logstash_env.png&#34; alt=&#34;elk&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;解压logstash-142zip包文件到clogstash-142-省略&#34;&gt;解压logstash-1.4.2.zip包文件到C:/logstash-1.4.2 省略&lt;/h3&gt;</description>
+    </item>
+    
+    <item>
+      <title>CentOS6.5安装elasticsearch&#43;logstash&#43;kibana </title>
+      <link>https://opsnotes.github.io/post/install_elk/</link>
+      <pubDate>Tue, 03 Mar 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_elk/</guid>
+      <description>&lt;h3 id=&#34;首先安装-java环境&#34;&gt;首先安装 java环境&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	yum install java-1.7.0-openjdk httpd  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;安装es环境-elasticsearch&#34;&gt;安装ES环境 elasticsearch&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.1.noarch.rpm &amp;amp;&amp;amp;  yum install elasticsearch-1.4.1.noarch.rpm -y   
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;安装logstash环境&#34;&gt;安装logstash环境&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

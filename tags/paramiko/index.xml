@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>paramiko on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/paramiko/</link>
+    <description>Recent content in paramiko on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Mon, 01 Dec 2014 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/paramiko/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用paramiko来上传文件到远端服务器</title>
+      <link>https://opsnotes.github.io/post/python/paramiko_up/</link>
+      <pubDate>Mon, 01 Dec 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/paramiko_up/</guid>
+      <description>&lt;h3 id=&#34;需求&#34;&gt;需求：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;使用paramiko来批量上传文件到Linux远端服务器  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;脚本如下&#34;&gt;脚本如下：&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用paramiko在windows下批量登陆linux服务器</title>
+      <link>https://opsnotes.github.io/post/python/paramiko_ssh/</link>
+      <pubDate>Thu, 27 Nov 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/paramiko_ssh/</guid>
+      <description>&lt;h3 id=&#34;环境&#34;&gt;环境：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;windows8.1 X86_64  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;被测试的机器&#34;&gt;被测试的机器：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;192.168.100.228,192.168.100.240
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;脚本如下&#34;&gt;脚本如下：&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	#!/bin/env python
+	import paramiko
+	import os
+	import datetime
+	from ConfigParser import ConfigParser
+
+	ConfigFile = &amp;#39;ipaddr.txt&amp;#39;
+	config = ConfigParser()
+	config.read(ConfigFile)
+	hostname1=&amp;#39;&amp;#39;.join(config.get(&amp;#39;IP&amp;#39;,&amp;#39;ipaddr&amp;#39;))
+	address=hostname1.split(&amp;#39;;&amp;#39;)
+	print address
+	username = &amp;#39;root&amp;#39;
+	password = &amp;#39;123456&amp;#39;
+	port = 22
+	if __name__==&amp;#34;__main__&amp;#34;:
+		for ip in address:
+			paramiko.util.log_to_file(&amp;#39;paramiko-ssh1.log&amp;#39;)
+			ssh = paramiko.SSHClient()
+			ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+			ssh.connect(hostname=ip,username=username,password=password)
+			stdin,stdout,stderr=ssh.exec_command(&amp;#39;ifconfig eth0;free -m&amp;#39;)
+			print stdout.read()
+			ssh.close()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>在windows上安装paramiko模块</title>
+      <link>https://opsnotes.github.io/post/python/paramiko_windows/</link>
+      <pubDate>Mon, 24 Nov 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/paramiko_windows/</guid>
+      <description>&lt;h3 id=&#34;环境&#34;&gt;环境：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;windows8.1 X86_64  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;需求&#34;&gt;需求：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Python中使用SSH需要用到OpenSSH，而OpenSSH依赖于paramiko模块，而paramiko模块又依赖于   pycrypto模块，因此要在Python中使用SSH。所以我们需要先安装pycrypto工具，然后再安装paramiko模块才能使用。  
+安装Parmiko首先要保证Python 已经安装完成。  
+PS：	linux的安装相对简单,只需要下载安装就OK  
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

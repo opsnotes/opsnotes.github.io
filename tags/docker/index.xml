@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/docker/</link>
+    <description>Recent content in docker on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Fri, 06 May 2016 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>牛刀小试之docker容器系列(八)</title>
+      <link>https://opsnotes.github.io/post/docker/docker-nginx/</link>
+      <pubDate>Fri, 06 May 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker-nginx/</guid>
+      <description>&lt;h5 id=&#34;查看目录文件&#34;&gt;查看目录文件&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;[root@test-devops nginx_ubuntu]# pwd
+
+/home/docker/nginx_ubuntu
+
+[root@test-devops nginx_ubuntu]# tree
+
+.
+
+├── Dockerfile
+
+└── run.sh
+
+
+
+0 directories, 2 files
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;查看dockerfile文件&#34;&gt;查看Dockerfile文件&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;[root@test-devops nginx_ubuntu]# cat Dockerfile
+
+# 继承的镜像
+
+FROM sshd/ubuntu
+
+
+
+# 作者信息
+
+MAINTAINER from steven (www.opsnotes.net)
+
+
+
+# install
+
+RUN apt-get install -y nginx
+
+RUN sed -i &#39;s/listen \[\:\:\]:80 default_server ipv6only=on;/#listen \[\:\:\]:80 default_server ipv6only=on;/g&#39; /etc/nginx/sites-enabled/default
+
+RUN echo &amp;quot;\ndaemon off;&amp;quot; &amp;gt;&amp;gt; /etc/nginx/nginx.conf
+
+
+
+# add scripts
+
+ADD run.sh /run.sh
+
+RUN chmod +x /*.sh
+
+
+
+WORKDIR /etc/nginx
+
+
+
+# Expose ports.
+
+EXPOSE 80
+
+
+
+# Define default command.
+
+CMD [&amp;quot;/run.sh&amp;quot;]
+
+[root@test-devops nginx_ubuntu]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(三)</title>
+      <link>https://opsnotes.github.io/post/docker/docker_apache_php/</link>
+      <pubDate>Tue, 15 Mar 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker_apache_php/</guid>
+      <description>&lt;h4 id=&#34;查看当前路径以及目录&#34;&gt;查看当前路径以及目录&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	[root@test-devops apache_ubuntu]# pwd
+
+	/home/docker/apache_ubuntu
+
+	[root@test-devops apache_ubuntu]# tree
+
+	.
+
+	├── Dockerfile
+
+	├── run.sh
+
+	└── sample
+
+	    ├── index.html
+
+	    └── index.php
+
+
+
+	1 directory, 4 files
+
+	[root@test-devops apache_ubuntu]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;查看dockerfiler&#34;&gt;查看dockerfiler&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(四)</title>
+      <link>https://opsnotes.github.io/post/docker/docker_images_ssh/</link>
+      <pubDate>Tue, 04 Aug 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker_images_ssh/</guid>
+      <description>Ubuntu 创建ssh容器方式 1.容器准备工作 ubuntu [root@test-devops ~]# docker run -it ubuntu:14.04 /bin/bash 2.更新安装软件 root@f7b000275a50:/# apt-get update 带宽如果慢 可以忽略 root@f7b000275a50:/# apt-get install openssh-server vim 3.创建目录启动服务 root@fb02b31b8ef1:/# mkdir -p /var/run/sshd root@fb02b31b8ef1:/# /usr/sbin/sshd -D &amp;amp; [1] 3237 root@fb02b31b8ef1:/# 4.查看端口 root@fb02b31b8ef1:/# netstat -atlnp Active Internet connections (servers and established) Proto Recv-Q Send-Q Local Address Foreign Address State PID/Program name tcp 0 0 0.0.0.0:22 0.0.0.0:* LISTEN 3237/sshd root@fb02b31b8ef1:/# ps aux USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND root 1 0.</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(六)</title>
+      <link>https://opsnotes.github.io/post/docker/docker_volume/</link>
+      <pubDate>Tue, 21 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker_volume/</guid>
+      <description>&lt;h3 id=&#34;重点思想&#34;&gt;重点思想:&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;数据卷可以在容器之间共享和重用  
+对数据卷的修改会立马生效  
+对数据卷的更新不会影响镜像  
+卷会一直存在,直到没有容器使用  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;语法操作&#34;&gt;语法操作：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1.数据卷的使用,类似linux下面的mount操作。
+在docker run 启动的时候 可以加-v参数来创建一个容器卷。注意多次创建可以使用-v标记多个数据卷。
+
+[root@docker ~]# docker run -d -P --name web -v /webapp training/webapp echo &amp;quot;hello world&amp;quot;
+d7a7b8a6e1a6f21828833ca3fc32fa15110704830ff5d19962728d0e269732b8
+
+2.本地硬盘挂载
+[root@docker ~]# docker run -d -P --name web -v /srv/webapp:/opt/webapp/ training/webapp echo &amp;quot;hello world&amp;quot;
+b9136b0dbe333ac0bbdae76925db6de4cf272433ec92cf65fd17660bd59f0c19
+[root@docker ~]#
+3.本地硬盘挂载一个只读的 -ro参数
+[root@docker ~]# docker run -d -P --name web -v /srv/webapp:/opt/webapp/:ro training/webapp echo &amp;quot;hello test&amp;quot;
+252a677db3a2cfe679c11983b1a27934820a31746ba0cdb49e6c6105cf80623e
+[root@docker ~]#
+
+4.挂载一个本地主机文件作为数据卷,建议一般不要挂载一个文件
+[root@docker ~]# docker run --rm -it -v ~/.bash_history:/.bash_history centos:6 /bin/bash
+[root@a5570545c53f /]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(一)</title>
+      <link>https://opsnotes.github.io/post/docker/docker_connection/</link>
+      <pubDate>Tue, 07 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker_connection/</guid>
+      <description>&lt;h3 id=&#34;docker容器的连接方式&#34;&gt;docker容器的连接方式:&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	容器有三种连接方式,attach exec nsenter工具,其他工具比较简单我们重点讲解下nsenter工具。 
+
+	1.首先我们已后台的方式登陆到容器。
+    [root@docker ~]# docker run -idt ubuntu
+    7d3d35cb9c40388aa799ba922f92e6f54f27c3a889a8c28d0feb42bf060766f4
+    You have new mail in /var/spool/mail/root
+    [root@docker ~]#
+    2.查看容器是不是启动
+    [root@docker ~]# docker ps
+    CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS              PORTS               NAMES
+    7d3d35cb9c40        ubuntu:14.04        &amp;#34;/bin/bash&amp;#34;            8 seconds ago       Up 7 seconds                            elegant_brattain
+    6aa9905ab9bc        ubuntu:14.04        &amp;#34;/bin/bash -c &amp;#39;while   10 minutes ago      Up 5 minutes                            jovial_elion
+    [root@docker ~]# docker stop 6aa
+    6aa
+    [root@docker ~]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;exec用法&#34;&gt;exec用法：&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;    docker 1.3 版本之后自带命令,可以在容器直接运行命令,启动一个bash,
+    exec工具相对比较简单，
+    [root@docker ~]# docker exec -ti 7d3d35cb9c40 /bin/bash
+    root@7d3d35cb9c40:/#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(七)</title>
+      <link>https://opsnotes.github.io/post/docker/docker_importexport/</link>
+      <pubDate>Tue, 07 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker_importexport/</guid>
+      <description>&lt;h3 id=&#34;导出容器是指一个已经创建的容器到一个文件不管这个容器是否在运行状态&#34;&gt;导出容器是指一个已经创建的容器到一个文件，不管这个容器是否在运行状态。&lt;/h3&gt;
+&lt;h4 id=&#34;先查看容器&#34;&gt;先查看容器:&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;[root@docker tmp]# docker ps -a
+CONTAINER ID        IMAGE                    COMMAND                CREATED             STATUS                         PORTS               NAMES
+a457769fdd92        ubuntu:14.04             &amp;quot;/bin/bash&amp;quot;            33 minutes ago      Up 33 minutes                                      backstabbing_fermi
+7d3d35cb9c40        ubuntu:14.04             &amp;quot;/bin/bash&amp;quot;            49 minutes ago      Up 49 minutes                                      elegant_brattain
+6aa9905ab9bc        ubuntu:14.04             &amp;quot;/bin/bash -c &#39;while   59 minutes ago      Exited (-1) 49 minutes ago                         jovial_elion
+10f115a0aa25        ubuntu:14.04             &amp;quot;/bin/bash&amp;quot;            About an hour ago   Exited (0) About an hour ago                       compassionate_elion
+e192cf610bda        ubuntu:14.04             &amp;quot;/bin/echo test&amp;quot;       About an hour ago   Exited (0) About an hour ago                       goofy_pasteur
+c535b42dc3f2        ubuntu:14.04             &amp;quot;/bin/echo &#39;hello wo   About an hour ago   Exited (0) About an hour ago                       compassionate_wozniak
+713e34e2b463        ubuntu:14.04             &amp;quot;/bin/bash&amp;quot;            About an hour ago                                                      cocky_bell
+c72ad6c5adcd        ubuntu:14.04             &amp;quot;/bin/bash&amp;quot;            3 hours ago         Exited (0) 3 hours ago                             suspicious_feynman
+8703418b2dec        training/webapp:latest   &amp;quot;echo &#39;hello world&#39;&amp;quot;   3 hours ago         Exited (0) 3 hours ago                             pensive_curie
+7f3491707dd4        ubuntu:14.04             &amp;quot;/bin/bash&amp;quot;            3 hours ago         Exited (0) 3 hours ago                             ecstatic_poincare
+[root@docker tmp]#
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;分别导出a457769fdd92--7d3d35cb9c40--容器到test_for_runtar-test_for_stoptar&#34;&gt;分别导出a457769fdd92  7d3d35cb9c40  容器到test_for_run.tar test_for_stop.tar:&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;可以将这些文件传输到其他机器上来实现容器的迁移。
+[root@docker tmp]# docker export a457 &amp;gt; test_for_run.tar
+[root@docker tmp]# ls test_for_run.tar
+test_for_run.tar
+[root@docker tmp]# docker export 7d3 &amp;gt; test_for_stop.tar
+[root@docker tmp]# ls test_for_*
+test_for_run.tar  test_for_stop.tar
+[root@docker tmp]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(二)</title>
+      <link>https://opsnotes.github.io/post/docker/docker_container/</link>
+      <pubDate>Tue, 07 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker_container/</guid>
+      <description>&lt;h3 id=&#34;什么是容器&#34;&gt;什么是容器？&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	容器是docker镜像运行的一个实例,所不同的是,他带有额外的可写文件
+
+	docker的容器十分轻量级,用户可以随意删除或者创建
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;docker创建容器的方式&#34;&gt;docker创建容器的方式：&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	默认情况下docker create创建的容器是停止状态,一般我们可以使用docker start命令来启动容器,使用docker stop命令来停止容器。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;docker容器创建&#34;&gt;docker容器创建：&lt;/h3&gt;
+&lt;h4 id=&#34;一新建容器&#34;&gt;一、新建容器：&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;[root@docker ~]# docker create -it ubuntu:latest
+713e34e2b4638d824cf663ee0ec7dfc1a3664d6d0ba2fafd72202d3bfdde6a50
+[root@docker ~]#
+[root@docker ~]# docker ps -a
+CONTAINER ID        IMAGE                    COMMAND                CREATED             STATUS                         PORTS                     NAMES
+713e34e2b463        ubuntu:14.04             &amp;quot;/bin/bash&amp;quot;            18 seconds ago                                                               cocky_bell
+[root@docker ~]#
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;二启动容器有两种方式&#34;&gt;二、启动容器有两种方式&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	1.基于镜像新建一个容器并且启动
+	2.把在终止的状态容器重新启动
+	docker run 相当于 docker create + docker start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;三如下&#34;&gt;三、如下：&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	[root@docker ~]# docker run ubuntu /bin/echo &amp;#34;hello world&amp;#34;
+	hello world
+	You have new mail in /var/spool/mail/root
+	[root@docker ~]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(0)</title>
+      <link>https://opsnotes.github.io/post/docker/docker_install/</link>
+      <pubDate>Mon, 06 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker_install/</guid>
+      <description>&lt;h3 id=&#34;安装&#34;&gt;安装&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;    [root@docker-master yum.repos.d]#  curl https://git.oschina.net/feedao/Docker_shell/raw/start/ali-centos.sh | sh
+    [root@docker-master yum.repos.d]#  yum install docker-io
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;启动&#34;&gt;启动&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;    [root@docker-master yum.repos.d]# service docker start
+    Starting cgconfig service:                                 [  OK  ]
+    Starting docker:                                        [  OK  ]
+    [root@docker-master yum.repos.d]# chkconfig --level 35 docker on
+    [root@docker-master yum.repos.d]#
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;查看版本&#34;&gt;查看版本&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;    [root@test-devops mysql]#
+    [root@test-devops mysql]# docker version
+    Client version: 1.5.0
+    Client API version: 1.17
+    Go version (client): go1.3.3
+    Git commit (client): a8a31ef/1.5.0
+    OS/Arch (client): linux/amd64
+    Server version: 1.5.0
+    Server API version: 1.17
+    Go version (server): go1.3.3
+    Git commit (server): a8a31ef/1.5.0
+    [root@test-devops mysql]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(五)</title>
+      <link>https://opsnotes.github.io/post/docker/docker_images/</link>
+      <pubDate>Sun, 05 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker_images/</guid>
+      <description>&lt;h3 id=&#34;获取镜像&#34;&gt;获取镜像&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;[root@docker ~]# docker pull ubuntu
+Pulling repository ubuntu
+6d4946999d4f: Pulling dependent layers
+6d4946999d4f: Download complete
+428b411c28f0: Download complete
+435050075b3f: Download complete
+9fd3c8c9af32: Download complete
+Status: Downloaded newer image for ubuntu:latest
+[root@docker ~]#
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;可以使用如下方法下载一个特定的镜像&#34;&gt;可以使用如下方法下载一个特定的镜像&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;[root@docker ~]# docker pull ubuntu:12.10
+
+如上命令相当于docker pull registry.hub.docker.com/ubuntu:latest.是从docker默认的服务器下载latest镜像
+
+也可以从dockerpool地方下载镜像
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;下载完成之后就可以使用镜像&#34;&gt;下载完成之后就可以使用镜像：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;[root@docker ~]# docker run -t -i ubuntu /bin/bash
+root@b89ee17998ec:/#
+root@b89ee17998ec:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@b89ee17998ec:/# ifconfig
+eth0      Link encap:Ethernet  HWaddr 02:42:ac:11:00:02
+          inet addr:172.17.0.2  Bcast:0.0.0.0  Mask:255.255.0.0
+          inet6 addr: fe80::42:acff:fe11:2/64 Scope:Link
+          UP BROADCAST RUNNING  MTU:1500  Metric:1
+          RX packets:3 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:3 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:238 (238.0 B)  TX bytes:238 (238.0 B)
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+root@b89ee17998ec:/#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(九)</title>
+      <link>https://opsnotes.github.io/post/docker/dockerfile_centos_ssh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/dockerfile_centos_ssh/</guid>
+      <description>&lt;h4 id=&#34;使用dockerfile创建基于centos的ssh容器&#34;&gt;使用dockerfile创建基于centos的ssh容器：&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;需求：
+   打包的镜像需要支持SSH key和密码登录
+1.首先创建目录/home/sshd_centos
+[root@test-devops sshd_centos]# pwd
+/home/sshd_centos
+[root@test-devops sshd_centos]#
+
+2.查看autorized.keys,需要注意的是,需要哪个机器使用key登录就把哪个客户的pub文件进去
+[root@test-devops sshd_centos]# cat authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0OaHTmgsdKIrPCgULUk1XyRGhicQbPPJgQN85QTZNfA2iuK7PmkhoPnXLaRtMZl4se6xsBEuCn0Yougx4vFRzszDv/62XxjErqqC0vQBEWL4KaGCmDgEtwaE3oOBPA+kfIU0XITZuZx7KdPsaX2pngrv+EK3urs5kYUbwfQzE8G9JcqhWmGUxNWx+SvyspH5GaEMvxdpmZtitevEDfAGTnfp0DvR/C/5EcieS9MBHOAMEwm5mzVzvTV+HEN2GMmZAuooEUGlzTVyCRzJvddzzPDsVKZzLPhA8QYWYGg/bSDkrh5IFYBc5T/yDhD6xBbbFG+R4vT98iOqB7m9vXst9 zhangkeyuan@zhangkeyuandeMacBook-Air.local
+[root@test-devops sshd_centos]#
+3.给文件授权
+[root@test-devops sshd_centos]# ll authorized_keys
+-rw------- 1 root root 424 7月   2 17:43 authorized_keys
+[root@test-devops sshd_centos]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(十)</title>
+      <link>https://opsnotes.github.io/post/docker/dockerfile_ubuntu_ssh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/dockerfile_ubuntu_ssh/</guid>
+      <description>&lt;h4 id=&#34;使用dockerfile创建基于ubuntu的ssh容器&#34;&gt;使用dockerfile创建基于ubuntu的ssh容器：&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;1.创建目录
+[root@test-devops home]# mkdir sshd_ubuntu
+[root@test-devops home]# cd sshd_ubuntu/
+[root@test-devops sshd_ubuntu]# touch Dockerfile run.sh
+[root@test-devops sshd_ubuntu]#
+
+2.编写run.sh脚本和认证文件
+[root@test-devops sshd_ubuntu]# cat run.sh
+#!/bin/bash
+/usr/sbin/sshd -D
+[root@test-devops sshd_ubuntu]# chmod +x run.sh
+[root@test-devops sshd_ubuntu]#
+
+[root@test-devops sshd_ubuntu]# chmod 400 authorized_keys
+
+3.编写dockerFile
+[root@test-devops sshd_ubuntu]# cat Dockerfile
+# 继承的镜像
+FROM ubuntu:14.04
+
+# 作者信息
+MAINTAINER from steven (www.opsnotes.net)
+
+# 安装SSH服务和VIM服务
+RUN apt-get install -y openssh-server vim
+RUN mkdir -p /var/run/sshd
+RUN mkdir -p /root/.ssh
+RUN echo &#39;root:123qwer&#39; |chpasswd
+RUN sed -i &amp;quot;s/#UsePrivilegeSeparation.*/UsePrivilegeSeparation no/g&amp;quot; /etc/ssh/sshd_config
+RUN sed -i &amp;quot;s/UsePAM.*/UsePAM no/g&amp;quot; /etc/ssh/sshd_config
+RUN sed -i &#39;s/^PermitRootLogin without-password/PermitRootLogin yes/g&#39; /etc/ssh/sshd_config
+
+# 取消PAM限制
+RUN sed -i &#39;/pam_loginuid.so/c session    optional     pam_loginuid.so&#39;  /etc/pam.d/sshd
+
+# 复制文件，给脚本可执行权限
+ADD authorized_keys /root/.ssh/authorized_keys
+ADD run.sh /run.sh
+RUN chmod +x /run.sh
+
+# 设置开放端口
+EXPOSE 22
+
+# 设置自动开启命令
+CMD [&amp;quot;/run.sh&amp;quot;]
+[root@test-devops sshd_ubuntu]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

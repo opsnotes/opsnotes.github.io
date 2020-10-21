@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>初识saltstack在之CentOS6上安装Saltstack   - OpsNotes随思录</title>
+  <meta name="description" content="对文章的简要描述 SEO used for description">
+  <meta name="author" content="Kenng zhang"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "OpsNotes随思录",
+    
+    "url": "https:\/\/opsnotes.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/opsnotes.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io\/post\/saltstack\/install-saltstack\/",
+          "name": "初识saltstack在之 cent o s6上安装 saltstack "
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Kenng zhang"
+  },
+  "headline": "初识saltstack在之CentOS6上安装Saltstack  ",
+  "description" : "对文章的简要描述 SEO used for description",
+  "inLanguage" : "en",
+  "wordCount":  262 ,
+  "datePublished" : "2014-06-26T20:18:57",
+  "dateModified" : "2014-06-26T20:18:57",
+  "image" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+  "keywords" : [ "saltstack" ],
+  "mainEntityOfPage" : "https:\/\/opsnotes.github.io\/post\/saltstack\/install-saltstack\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/opsnotes.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="初识saltstack在之CentOS6上安装Saltstack  " />
+<meta property="og:description" content="对文章的简要描述 SEO used for description">
+<meta property="og:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+<meta property="og:url" content="https://opsnotes.github.io/post/saltstack/install-saltstack/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="OpsNotes随思录" />
+
+  <meta name="twitter:title" content="初识saltstack在之CentOS6上安装Saltstack  " />
+  <meta name="twitter:description" content="对文章的简要描述 SEO used for description">
+  <meta name="twitter:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@opsnotes" />
+  <meta name="twitter:creator" content="@opsnotes" />
+  <link href='https://opsnotes.github.io/img/avatar-icon.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.62.2" />
+  <link rel="alternate" href="https://opsnotes.github.io/index.xml" type="application/rss+xml" title="OpsNotes随思录"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://opsnotes.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://opsnotes.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://opsnotes.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '46663382', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://opsnotes.github.io">OpsNotes随思录</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="arts打卡" href="/tags/arts%e6%89%93%e5%8d%a1">arts打卡</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="/tags/kubernetes">kubernetes</a>
+                
+                  <a href="/tags/prometheus">prometheus</a>
+                
+                  <a href="/tags/python">python</a>
+                
+                  <a href="/tags">Tags</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="OpsNotes随思录" href="https://opsnotes.github.io">
+            <img class="avatar-img" src="https://opsnotes.github.io/img/avatar-icon.png" alt="OpsNotes随思录" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 
+      
+         
+          data-img-src-1="https://tva1.sinaimg.cn/large/006tNbRwly1g9tpqtdm7xj31ee0lygth.jpg" 
+         
+         
+      ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>初识saltstack在之CentOS6上安装Saltstack  </h1>
+                  
+                    
+                      <h2 class="post-subheading">初识saltstack在之CentOS6上安装Saltstack  </h2>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on June 26, 2014
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;262&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>初识saltstack在之CentOS6上安装Saltstack  </h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">初识saltstack在之CentOS6上安装Saltstack  </h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on June 26, 2014
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;262&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>####系统环境：</p>
+<pre><code>[root@salt_server home]# ifconfig eth0 | grep &quot;inet addr:&quot; | awk -F: '{print $2}' | awk '{print $1}'      
+192.168.100.228      
+[root@salt_server home]# cat /etc/redhat-release       
+CentOS release 6.3 (Final)      
+[root@salt_server home]# uname -r      
+2.6.32-279.el6.x86_64      
+[root@salt_server home]#  
+</code></pre>
+<p>####下载地址  <br>
+<a href="http://ftp.linux.ncsu.edu/pub/epel/6/x86_64/">http://ftp.linux.ncsu.edu/pub/epel/6/x86_64/</a>   <br>
+####参考文章   <br>
+<a href="http://docs.saltstack.cn/topics/installation/rhel.html">http://docs.saltstack.cn/topics/installation/rhel.html</a><br>
+在安装之前需要注意几个包 <br>
+Python 不用说大家都知道 这玩意就python写的  <br>
+ZeroMQ 消息中间件相当于puppet的rabbitMQ、activeMQ   <br>
+PyCrypto  Python密码工具包   <br>
+M2Crypto    加密模块 是Python OpenSSL封装   <br>
+msgpack-python 高性能的消息交换格式   <br>
+YAML    不说大家都知道 文件格式   <br>
+Jinja2    解析Salt States (在master配置文件中配置)   <br>
+MarkupSafe    Implements a XML/HTML/XHTML Markup safe string for Python   <br>
+apache-libcloud    与大量的主流云服务提供者进行交互时统一API的Python类<br>
+在安装之前我们需要设置防火墙的端口  <br>
+lokkit  -p 4505:tcp -p 4506:tcp<br>
+#######一、安装master salt-master 2014.1.1版本  <br>
+下载安装 <br>
+记住路径下次直接安装不需要下载   <br>
+如果想本地保存需要缓存   <br>
+vim /etc/yum.conf   <br>
+keepcache=1 修改成1</p>
+<p>二、安装master 17.0.5版本,首先要安装好本地源码   <br>
+[root@salt_server mnt]# yum install python-jinja2   <br>
+[root@salt_server mnt]# yum install salt-master<br>
+安装minion 17.0.5版本  <br>
+[root@salt_client1 ~]# yum install python-jinja2   <br>
+[root@salt_client1 ~]# yum install salt-minion<br>
+三、启动master <br>
+[root@salt_server ~]# vim /etc/salt/master  如下是正确写法不然会报错 <br>
+#interface: 0.0.0.0 <br>
+interface: 192.168.100.228 <br>
+[root@salt_server ~]# /etc/rc.d/init.d/salt-master start <br>
+Starting salt-master daemon:                               [  OK  ] <br>
+[root@salt_server ~]# chkconfig &ndash;level 35 salt-master on <br>
+[root@salt_server ~]#
+四、修改minion然后启动<br>
+[root@salt_client1 ~]# cat  /etc/salt/minion | grep 100.228 <br>
+master: 192.168.100.228                这个maste可以填写maste的主机名也可以使ip地址 <br>
+[root@salt_client1 ~]#
+还需要修改id 这个ID是服务器标识客户端的东西，如果配置ID 服务端将是以ID的 名字为标准,需要注意 <br>
+id: salt_client1
+[root@salt_client1 ~]# /etc/rc.d/init.d/salt-minion start<br>
+Starting salt-minion daemon:                               [  OK  ] <br>
+[root@salt_client1 ~]# chkconfig &ndash;level 35 salt-minion on <br>
+[root@salt_client1 ~]#
+五、在master上查看是否有客户端key的请求<br>
+[root@salt_server ~]# salt-key -L <br>
+Accepted Keys: <br>
+Unaccepted Keys: <br>
+salt_client1 <br>
+Rejected Keys: <br>
+[root@salt_server ~]#<br>
+六、master来批准客户端的请求文件<br>
+-A是通过客户端全部的请求文件 <br>
+-d是这个选项是删除证书请求文件 <br>
+[root@salt_server ~]# salt-key -a salt_client1   <br>
+The following keys are going to be accepted: <br>
+Unaccepted Keys: <br>
+salt_client1 <br>
+Proceed? [n/Y] Y <br>
+Key for minion salt_client1 accepted. <br>
+[root@salt_server ~]#
+如果不想去手动确认，那么我们修改配置文件就可以自动确认 <br>
+修改配置文件vim /etc/salt/master <br>
+#auto_accept: False  <br>
+去掉其中的#号 把False修改成True就可以<br>
+查看key <br>
+[root@salt_server base]# salt-key -f salt_client1 <br>
+Accepted Keys: <br>
+salt_client1:  20:a6:2d:6b:24:4a:a9:bc:77:72:ba:6f:30:22:20:7f <br>
+[root@salt_server base]# salt &lsquo;salt_client1&rsquo; cmd.run &lsquo;salt-call key.finger &ndash;local&rsquo; <br>
+salt_client1: <br>
+local: <br>
+20:a6:2d:6b:24:4a:a9:bc:77:72:ba:6f:30:22:20:7f <br>
+[root@salt_server base]#<br>
+######测试：<br>
+[root@salt_server ~]# salt &lsquo;salt*&rsquo; test.ping<br>
+salt_client1: <br>
+True <br>
+salt_client2: <br>
+True <br>
+[root@salt_server ~]#</p>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://opsnotes.github.io/tags/saltstack/">saltstack</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fsaltstack%2finstall-saltstack%2f&amp;text=%e5%88%9d%e8%af%86saltstack%e5%9c%a8%e4%b9%8bCentOS6%e4%b8%8a%e5%ae%89%e8%a3%85Saltstack%20%20&amp;via=opsnotes" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fopsnotes.github.io%2fpost%2fsaltstack%2finstall-saltstack%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fsaltstack%2finstall-saltstack%2f&amp;title=%e5%88%9d%e8%af%86saltstack%e5%9c%a8%e4%b9%8bCentOS6%e4%b8%8a%e5%ae%89%e8%a3%85Saltstack%20%20" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fsaltstack%2finstall-saltstack%2f&amp;title=%e5%88%9d%e8%af%86saltstack%e5%9c%a8%e4%b9%8bCentOS6%e4%b8%8a%e5%ae%89%e8%a3%85Saltstack%20%20" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fsaltstack%2finstall-saltstack%2f&amp;title=%e5%88%9d%e8%af%86saltstack%e5%9c%a8%e4%b9%8bCentOS6%e4%b8%8a%e5%ae%89%e8%a3%85Saltstack%20%20" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fsaltstack%2finstall-saltstack%2f&amp;description=%e5%88%9d%e8%af%86saltstack%e5%9c%a8%e4%b9%8bCentOS6%e4%b8%8a%e5%ae%89%e8%a3%85Saltstack%20%20" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/zabbix/%E4%BD%BF%E7%94%A8saltstack%E9%83%A8%E7%BD%B2zabbix%E7%9B%91%E6%8E%A7mysql%E4%B8%BB%E4%BB%8E/">使用saltstack部署zabbix监控mysql主从</a></li>
+                
+                    <li><a href="/post/zabbix/%E4%BD%BF%E7%94%A8salt%E6%89%B9%E9%87%8F%E9%83%A8%E7%BD%B2zabbix%E7%AB%AF%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0/">使用salt批量部署zabbix自动发现监控(二)</a></li>
+                
+                    <li><a href="/post/saltstack/saltstack_zabbix-angent/">使用saltstack部署zabbix agent</a></li>
+                
+                    <li><a href="/post/saltstack/saltstack_mysql/">使用saltstack来源码安装mysql</a></li>
+                
+                    <li><a href="/post/saltstack_nginx/">使用saltstack来源码安装nginx</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://opsnotes.github.io/post/install_zabbix_11/" data-toggle="tooltip" data-placement="top" title="zabbix优化记一次惨痛的zabbix数据库优化">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://opsnotes.github.io/post/saltstack/saltstack_config/" data-toggle="tooltip" data-placement="top" title="初识salt之saltstack配置应用以及基础用法">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:zky.linux@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/username" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/opsnotes" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/opsnotes" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://username.slack.com/" title="Slack">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-slack fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://reddit.com/u/keengz" title="Reddit">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-reddit-alien fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/XXXXXXX/username" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/kenng.z" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://telegram.me/Ke_zz" title="Telegram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://weibo.com/angerdevil" title="Weibo">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="opsnotes.net">Kenng zhang</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://opsnotes.github.io">OpsNotes随思录</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.62.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://opsnotes.github.io/js/main.js"></script>
+<script src="https://opsnotes.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://opsnotes.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kafka on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/categories/kafka/</link>
+    <description>Recent content in kafka on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Fri, 15 Jan 2016 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/categories/kafka/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CentOS6部署安装kafka和zookeeper集群</title>
+      <link>https://opsnotes.github.io/post/kafak_zk/</link>
+      <pubDate>Fri, 15 Jan 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/kafak_zk/</guid>
+      <description>&lt;h3 id=&#34;安装之前准备工作&#34;&gt;安装之前准备工作&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;    1.修改hostname,修改hosts文件  
+    2.ssh三台机器之前打通,我这边使用的key方式登陆
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;zookeeper安装方法&#34;&gt;zookeeper安装方法&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

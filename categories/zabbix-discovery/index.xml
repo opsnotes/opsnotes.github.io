@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zabbix discovery on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/categories/zabbix-discovery/</link>
+    <description>Recent content in zabbix discovery on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Wed, 03 May 2017 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/categories/zabbix-discovery/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>zabbix自动发现端口监控(一)</title>
+      <link>https://opsnotes.github.io/post/zabbix_discovery_port/</link>
+      <pubDate>Wed, 03 May 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/zabbix_discovery_port/</guid>
+      <description>查看获取端口的脚本 [root@iZbp113qvinee7jxepbagqZ ~]# cat /opt/discovery_port.sh #!/bin/bash portarray=(`sudo netstat -tnlp|egrep -i &amp;#34;$1&amp;#34;|awk {&amp;#39;print $4&amp;#39;}|awk -F&amp;#39;:&amp;#39; &amp;#39;{if ($NF~/^[0-9]*$/) print $NF}&amp;#39;|sort|uniq`) length=${#portarray[@]} printf &amp;#34;{\n&amp;#34; printf &amp;#39;\t&amp;#39;&amp;#34;\&amp;#34;data\&amp;#34;:[&amp;#34; for ((i=0;i&amp;lt;$length;i++)) do printf &amp;#39;\n\t\t{&amp;#39; printf &amp;#34;\&amp;#34;{#TCP_PORT}\&amp;#34;:\&amp;#34;${portarray[$i]}\&amp;#34;}&amp;#34; if [ $i -lt $[$length-1] ];then printf &amp;#39;,&amp;#39; fi done printf &amp;#34;\n\t]\n&amp;#34; printf &amp;#34;}\n&amp;#34; [root@iZbp113qvinee7jxepbagqZ ~]# 授权,要让zabbix用户有执行权限 [root@iZbp113qvinee7jxepbagqZ ~]# chmod +x /opt/discovery_port.sh [root@iZbp113qvinee7jxepbagqZ ~]# 查看zabbix自定义key文件 [root@iZbp113qvinee7jxepbagqZ ~]# cat /etc/zabbix/zabbix_agentd.d/userparameter_discovery_port.conf UserParameter=tcpportlisten,/opt/discovery_port.sh &amp;#34;$1&amp;#34; [root@iZbp113qvinee7jxepbagqZ ~]# 重启zabbix agent [root@iZbp146uf9ftw85i3zaol9Z ~]# service zabbix-agent restart Shutting down Zabbix agent: [ OK ] Starting Zabbix agent: [ OK ] [root@iZbp146uf9ftw85i3zaol9Z ~]# 服务端测试 [root@iZbp14ipzpabr30yllskn4Z tmp]# zabbix_get -s 10.</description>
+    </item>
+    
+  </channel>
+</rss>

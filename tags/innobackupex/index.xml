@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>“innobackupex” on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/innobackupex/</link>
+    <description>Recent content in “innobackupex” on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Wed, 12 Mar 2014 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/innobackupex/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用innobackupex在线备份及恢复mysql数据库 </title>
+      <link>https://opsnotes.github.io/post/innobackupex/</link>
+      <pubDate>Wed, 12 Mar 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/innobackupex/</guid>
+      <description>&lt;h1 id=&#34;概述&#34;&gt;概述&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;这几天一直在研究mysql备份这一块,前几天由于手误对线上生产数据库造成误操作，虽然没有太大影响,但是为了把风险度降到最低,因此最近一直在倒腾mysql的在线热备份,在线热备份有免费开源的,也收费的产品,在这里我们值讨论免费的产品，支持热备的的软件mysqlLVM以及接下来的这款Xtrabackup;Xtrabackup是由percona开发的一个开源软件，它是innodb热备工具ibbackup（收费的商业软件）的一个开源替代品。Xtrabackup由个部分组成:xtrabackup和innobackupex，其中xtrabackup工具用于备份innodb和 xtraDB引擎的表；而innobackupex工具用于备份myisam和innodb引擎的表，本文将介绍如何用innobackupex工具做全量和增量备份。    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;一安装解压&#34;&gt;一、安装解压&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

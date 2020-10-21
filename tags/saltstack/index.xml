@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>saltstack on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/saltstack/</link>
+    <description>Recent content in saltstack on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Thu, 27 Apr 2017 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/saltstack/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用saltstack部署zabbix监控mysql主从</title>
+      <link>https://opsnotes.github.io/post/zabbix/%E4%BD%BF%E7%94%A8saltstack%E9%83%A8%E7%BD%B2zabbix%E7%9B%91%E6%8E%A7mysql%E4%B8%BB%E4%BB%8E/</link>
+      <pubDate>Thu, 27 Apr 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/zabbix/%E4%BD%BF%E7%94%A8saltstack%E9%83%A8%E7%BD%B2zabbix%E7%9B%91%E6%8E%A7mysql%E4%B8%BB%E4%BB%8E/</guid>
+      <description>思路 首先在/srv/salt/下面创建zabbix_mysql目录,然后创建init.sls. 需要注意的前提必须是zabbix agent已经安装部署. 复制我们自己监控创建的监控项目到客户端 重启zabbix agent 查看表结构 ~/Desktop/salt &amp;gt; tree zabbix_mysql zabbix_mysql ├── files │ ├── mysql_grant.sh │ ├── mysql_low_discovery.sh │ ├── sudoers.sh │ └── userparameter_discovery_mysql.conf └── init.sls 1 directory, 5 files zabbix discovery ~/Desktop/salt &amp;gt; cat zabbix_mysql/files/userparameter_discovery_mysql.conf UserParameter=zabbix_low_discovery[*],/bin/bash /opt/mysql_low_discovery.sh $1 UserParameter=mysql_stats[*],mysql -h localhost -P $1 -uzabbix -pzabbix -e &amp;#34;show global status&amp;#34;|grep &amp;#34;\&amp;lt;$2\&amp;gt;&amp;#34;|cut -f2 UserParameter=mysql_stats_slave[*],mysql -h localhost -P $1 -uzabbix -pzabbix -e &amp;#34;show slave status\G&amp;#34;|grep &amp;#34;\&amp;lt;$2\&amp;gt;&amp;#34;|awk &amp;#39;{if($NF==&amp;#34;Yes&amp;#34;) {print 1} else {print 0}}&amp;#39; ~/Desktop/salt &amp;gt; mysql授权 ~/Desktop/salt &amp;gt; cat zabbix_mysql/files/mysql_grant.</description>
+    </item>
+    
+    <item>
+      <title>使用salt批量部署zabbix自动发现监控(二)</title>
+      <link>https://opsnotes.github.io/post/zabbix/%E4%BD%BF%E7%94%A8salt%E6%89%B9%E9%87%8F%E9%83%A8%E7%BD%B2zabbix%E7%AB%AF%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0/</link>
+      <pubDate>Thu, 27 Apr 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/zabbix/%E4%BD%BF%E7%94%A8salt%E6%89%B9%E9%87%8F%E9%83%A8%E7%BD%B2zabbix%E7%AB%AF%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0/</guid>
+      <description>查看目录结构 [root@iZbp14ipzpabr30yllskn4Z salt]# tree discovery_port/ discovery_port/ ├── files │ ├── discovery_port.sh │ ├── sudoers.sh │ └── userparameter_discovery_port.conf └── init.sls 1 directory, 4 files [root@iZbp14ipzpabr30yllskn4Z salt]# 查看主配置文件init.sls [root@iZbp14ipzpabr30yllskn4Z salt]# more discovery_port/init.sls ### zabbix mysql config discovery_port: file.managed: - name: /etc/zabbix/zabbix_agentd.d/userparameter_discovery_port.conf - user: root - mode: 755 - source: salt://discovery_port/files/userparameter_discovery_port.conf discovery_port_sh: file.managed: - name: /opt/discovery_port.sh - user: root - mode: 755 - source: salt://discovery_port/files/discovery_port.sh sudoers_manager: file.managed: - name: /opt/sudoers.sh - user: root - mode: 755 - source: salt://discovery_port/files/sudoers.</description>
+    </item>
+    
+    <item>
+      <title>使用saltstack部署zabbix agent</title>
+      <link>https://opsnotes.github.io/post/saltstack/saltstack_zabbix-angent/</link>
+      <pubDate>Wed, 29 Apr 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/saltstack/saltstack_zabbix-angent/</guid>
+      <description>&lt;h4 id=&#34;环境&#34;&gt;环境：&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;master：121.40.28.126
+client：121.41.118.184
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;客户端安装配置&#34;&gt;客户端安装配置&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;1.安装saltstack 客户端以及修改配置文件  
+[root@zy_mongo02 ~]# yum -y install salt-minion  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;查看zabbix模块结构&#34;&gt;查看zabbix模块结构&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;[root@srv-zy-ops salt]# tree zabbix/
+zabbix/
+├── config.sls
+├── file
+│   ├── zabbix-2.4.zip   ###包需要自己去下载
+│   ├── zabbix_agentd
+│   └── zabbix_agentd.conf
+├── init.sls
+└── install.sls
+
+1 directory, 6 files
+[root@srv-zy-ops salt]#
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;查看topsls配置文件&#34;&gt;查看top.sls配置文件&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;[root@srv-zy-ops salt]# cat top.sls
+base:
+&#39;*&#39;:
+    - zabbix.install
+    - zabbix.config
+[root@srv-zy-ops salt]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用saltstack来源码安装mysql</title>
+      <link>https://opsnotes.github.io/post/saltstack/saltstack_mysql/</link>
+      <pubDate>Wed, 30 Jul 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/saltstack/saltstack_mysql/</guid>
+      <description>&lt;h2 id=&#34;环境&#34;&gt;环境：&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;salt_master:	192.168.100.228
+salt_client1:	192.168.100.245
+
+master client 版本一致
+[root@salt_server base]# salt --versions-report
+       Salt: 0.17.5
+     Python: 2.6.6 (r266:84292, Jun 18 2012, 14:18:47)
+     Jinja2: unknown
+   M2Crypto: 0.20.2
+ msgpack-python: 0.1.13
+   msgpack-pure: Not Installed
+   pycrypto: 2.0.1
+     PyYAML: 3.10
+      PyZMQ: 2.2.0.1
+        ZMQ: 3.2.3
+[root@salt_server base]# 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;开始安装部署文件&#34;&gt;开始安装部署文件：&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;top.sls文件
+[root@salt_server base]# cat top.sls 
+base:
+  &#39;salt_client*&#39;:
+      - mysql
+[root@salt_server base]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用saltstack来源码安装nginx</title>
+      <link>https://opsnotes.github.io/post/saltstack_nginx/</link>
+      <pubDate>Tue, 29 Jul 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/saltstack_nginx/</guid>
+      <description>&lt;h3 id=&#34;环境&#34;&gt;环境：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;salt_master: 192.168.100.228
+salt_client1: 192.168.100.245
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;结构&#34;&gt;结构：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;[root@salt_server base]# pwd
+/srv/salt/base
+[root@salt_server base]#
+[root@salt_server base]# cat top.sls 
+base:
+  &#39;salt_client*&#39;:
+      - nginx
+[root@salt_server base]# 
+[root@salt_server base]# tree nginx
+nginx
+├── conf.sls
+├── files
+│   ├── nginx
+│   ├── nginx-1.7.3.tar.gz
+│   ├── nginx.conf
+│   └── vhost.conf
+├── init.sls
+├── install.sls
+└── vhost.sls
+
+1 directory, 9 files
+[root@salt_server base]# 
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>在CentOS6上使用saltstack配置Apache ssh模块 </title>
+      <link>https://opsnotes.github.io/post/saltstack/saltstack_config_01/</link>
+      <pubDate>Fri, 04 Jul 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/saltstack/saltstack_config_01/</guid>
+      <description>&lt;p&gt;####如下的salt states是我们需要安装的，Salt的状态系统文件
+一、使用salt来同步一个第一个简单的文件 
+&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;修改master配置文件,切记需要重启master
+[root@salt_server ~]# vim /etc/salt/master
+file_roots:
+base:
+- /srv/salt/base
+默认这个目录是没有的,我们需要创建一个目录；然后我们需要创建一个文件top.sls,如果玩过puppet就知道这个文件就相当puppet文件的site.pp
+[root@salt_server ~]# mkdir /srv/salt/base
+[root@salt_server ~]# cd /srv/salt/base
+[root@salt_server base]# echo &amp;ldquo;test salt first file&amp;rdquo; &amp;raquo; first.txt
+[root@salt_server base]# salt &amp;lsquo;salt_client1&amp;rsquo; cp.get_file salt://first.txt /home/first.txt
+salt_client1:
+/home/first.txt
+[root@salt_server salt]# 
+在客户端查看
+[root@salt_client1 home]# pwd
+/home
+[root@salt_client1 home]# cat first.txt 
+test salt first file
+[root@salt_client1 home]# 
+二、来创建第一个文件
+[root@salt_server base]# pwd
+/srv/salt/base
+[root@salt_server base]# mkdir httpd
+[root@salt_server base]# cat top.sls
+base:
+&amp;lsquo;salt_client1&amp;rsquo;:
+- httpd.pack
+[root@salt_server base]#&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>初识salt之saltstack配置应用以及基础用法</title>
+      <link>https://opsnotes.github.io/post/saltstack/saltstack_config/</link>
+      <pubDate>Wed, 02 Jul 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/saltstack/saltstack_config/</guid>
+      <description>&lt;h3 id=&#34;实施如下&#34;&gt;实施如下：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;一、测试是否能管理client  
+    使用模块cmd.run 可以查看到client的ip地址  
+    [root@salt_server ~]# salt &#39;*&#39; cmd.run &#39;ip a&#39;     
+    salt_client1:    
+    lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu 16436 qdisc noqueue state UNKNOWN  
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00  
+    inet 127.0.0.1/8 scope host lo   
+    inet6 ::1/128 scope host     
+    valid_lft forever preferred_lft forever     
+    eth0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000   
+    link/ether 00:0c:29:f4:4f:0b brd ff:ff:ff:ff:ff:ff  
+    inet 192.168.100.245/24 brd 192.168.100.255 scope global eth0  
+    inet6 fe80::20c:29ff:fef4:4f0b/64 scope link   
+    valid_lft forever preferred_lft forever  
+    [root@salt_server ~]#   
+
+二、查看版本    
+[root@salt_server ~]# salt --versions-report  
+           Salt: 2014.1.0  
+         Python: 2.6.6 (r266:84292, Jun 18 2012, 14:18:47)
+         Jinja2: unknown
+       M2Crypto: 0.20.2
+ msgpack-python: 0.1.13
+   msgpack-pure: Not Installed
+       pycrypto: 2.0.1
+         PyYAML: 3.09
+          PyZMQ: 2.2.0.1
+            ZMQ: 3.2.4
+[root@salt_server ~]# 
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>初识saltstack在之CentOS6上安装Saltstack  </title>
+      <link>https://opsnotes.github.io/post/saltstack/install-saltstack/</link>
+      <pubDate>Thu, 26 Jun 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/saltstack/install-saltstack/</guid>
+      <description>&lt;p&gt;####系统环境：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[root@salt_server home]# ifconfig eth0 | grep &amp;quot;inet addr:&amp;quot; | awk -F: &#39;{print $2}&#39; | awk &#39;{print $1}&#39;      
+192.168.100.228      
+[root@salt_server home]# cat /etc/redhat-release       
+CentOS release 6.3 (Final)      
+[root@salt_server home]# uname -r      
+2.6.32-279.el6.x86_64      
+[root@salt_server home]#  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;####下载地址  &lt;br&gt;
+&lt;a href=&#34;http://ftp.linux.ncsu.edu/pub/epel/6/x86_64/&#34;&gt;http://ftp.linux.ncsu.edu/pub/epel/6/x86_64/&lt;/a&gt;   &lt;br&gt;
+####参考文章   &lt;br&gt;
+&lt;a href=&#34;http://docs.saltstack.cn/topics/installation/rhel.html&#34;&gt;http://docs.saltstack.cn/topics/installation/rhel.html&lt;/a&gt;&lt;br&gt;
+在安装之前需要注意几个包 &lt;br&gt;
+Python 不用说大家都知道 这玩意就python写的  &lt;br&gt;
+ZeroMQ 消息中间件相当于puppet的rabbitMQ、activeMQ   &lt;br&gt;
+PyCrypto  Python密码工具包   &lt;br&gt;
+M2Crypto    加密模块 是Python OpenSSL封装   &lt;br&gt;
+msgpack-python 高性能的消息交换格式   &lt;br&gt;
+YAML    不说大家都知道 文件格式   &lt;br&gt;
+Jinja2    解析Salt States (在master配置文件中配置)   &lt;br&gt;
+MarkupSafe    Implements a XML/HTML/XHTML Markup safe string for Python   &lt;br&gt;
+apache-libcloud    与大量的主流云服务提供者进行交互时统一API的Python类&lt;br&gt;
+在安装之前我们需要设置防火墙的端口  &lt;br&gt;
+lokkit  -p 4505:tcp -p 4506:tcp&lt;br&gt;
+#######一、安装master salt-master 2014.1.1版本  &lt;br&gt;
+下载安装 &lt;br&gt;
+记住路径下次直接安装不需要下载   &lt;br&gt;
+如果想本地保存需要缓存   &lt;br&gt;
+vim /etc/yum.conf   &lt;br&gt;
+keepcache=1 修改成1&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/categories/python/</link>
+    <description>Recent content in python on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Mon, 11 Jul 2016 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>python基础学习01</title>
+      <link>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-02%E8%BF%90%E7%AE%97%E7%AC%A6/</link>
+      <pubDate>Mon, 11 Jul 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-02%E8%BF%90%E7%AE%97%E7%AC%A6/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;python算数运算符
+ ~/code ⮀ cat yunsuanfu1.py
+#!/usr/bin/env python
+# -*- encoding: UTF-8 -*-
+
+&amp;#39;&amp;#39;&amp;#39;
+    python算数运算符
+&amp;#39;&amp;#39;&amp;#39;
+
+a = 21
+b = 10
+c = 0
+
+c = a + b
+print &amp;#34;1 - c的值为: &amp;#34;, c
+
+c = a - b
+print &amp;#34;2 - c的值为: &amp;#34;, c
+
+c = a * b
+print &amp;#34;3 - c的值为: &amp;#34;, c
+
+c = a / b
+print &amp;#34;4 - c的值为: &amp;#34;, c
+
+c = a % b
+print &amp;#34;5 - c的值为: &amp;#34;, c
+
+
+&amp;#39;&amp;#39;&amp;#39;
+修改变量: a,b,c
+&amp;#39;&amp;#39;&amp;#39;
+
+a = 2
+b = 3
+c = a ** b
+print &amp;#34;6 - c的值为: &amp;#34;, c
+
+a = 10
+b = 5
+c = a // b
+print &amp;#34;7 - c的值为: &amp;#34;, c
+ ~/code ⮀
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python学习之邮件发送</title>
+      <link>https://opsnotes.github.io/post/python/pymail/</link>
+      <pubDate>Sun, 15 Feb 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/pymail/</guid>
+      <description>&lt;h4 id=&#34;测试环境&#34;&gt;测试环境&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;Python 2.7.6  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;脚本如下&#34;&gt;脚本如下&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;zhangkeyuan@opsnotes:~/Test/smtplib » cat simple2.py  
+#!/usr/bin/python  
+#coding: utf-8  
+import smtplib  
+from email.mime.text import MIMEText  
+HOST = &amp;quot;smtp.qq.com&amp;quot;  
+SUBJECT = u&amp;quot;博客流量数据统计&amp;quot;  
+TO = &amp;quot;zhangky@jiagouyun.com&amp;quot;  
+FROM = &amp;quot;431054426@qq.com&amp;quot;  
+msg = MIMEText(&amp;quot;&amp;quot;&amp;quot;  
+    &amp;lt;table width=&amp;quot;800&amp;quot; border=&amp;quot;0&amp;quot; cellspacing=&amp;quot;0&amp;quot; cellpadding=&amp;quot;4&amp;quot;&amp;gt;  
+    &amp;lt;tr&amp;gt;  
+        &amp;lt;td bgcolor=&amp;quot;#CECFAD&amp;quot; height=&amp;quot;20&amp;quot; style=&amp;quot;font-size:14px&amp;quot;&amp;gt;* 博客数据 &amp;lt;a href=&amp;quot;opsnotes.net&amp;quot;&amp;gt;更多&amp;gt;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;  
+    &amp;lt;/tr&amp;gt;  
+    &amp;lt;tr&amp;gt;  
+        &amp;lt;td bgcolor=&amp;quot;#EFEBDE&amp;quot; height=&amp;quot;100&amp;quot; style=&amp;quot;font-size:13px&amp;quot;&amp;gt;  
+        1) 日访问量: &amp;lt;font color=red&amp;gt;154333&amp;lt;/font&amp;gt; 访问次数:12834 页面浏览:12345 点击数:12306 数据流量:521MB&amp;lt;br&amp;gt;  
+        2) 状态码信息&amp;lt;br&amp;gt;  
+        &amp;amp;nbsp;&amp;amp;nbsp;500:105 404:3264 503:214&amp;lt;br&amp;gt;  
+        3) 访问浏览信息&amp;lt;br&amp;gt;  
+        &amp;amp;nbsp;&amp;amp;nbsp;IE:50% firefox:10% chrome:30% other:10%&amp;lt;br&amp;gt;  
+        4) 页面信息&amp;lt;br&amp;gt;  
+        &amp;amp;nbsp;&amp;amp;nbsp/index.php 42153&amp;lt;br&amp;gt;  
+        &amp;amp;nbsp;&amp;amp;nbsp/viwe.php 21451&amp;lt;br&amp;gt;  
+        &amp;amp;nbsp;&amp;amp;nbsp/login.php 5112&amp;lt;br&amp;gt;  
+        &amp;lt;/td&amp;gt;  
+    &amp;lt;/tr&amp;gt;  
+    &amp;lt;/table&amp;gt;&amp;quot;&amp;quot;&amp;quot;,&amp;quot;html&amp;quot;,&amp;quot;utf-8&amp;quot;)  
+
+msg[&#39;Subject&#39;] = SUBJECT  
+msg[&#39;From&#39;] = FROM  
+msg[&#39;To&#39;] = TO  
+try:  
+        server = smtplib.SMTP()  
+        server.connect(HOST, &amp;quot;25&amp;quot;)  
+        server.starttls()  
+        server.login(&amp;quot;431054426@qq.com&amp;quot;,&amp;quot;XXWWXX))000&amp;quot;)  
+        server.sendmail(FROM, TO, msg.as_string())  
+        server.quit()  
+         print &amp;quot;邮件发送成功!&amp;quot;  
+except Exceotion, e:  
+        print &amp;quot;失败: &amp;quot;+str(e)  
+zhangkeyuan@opsnotes:~/Test/smtplib »  
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

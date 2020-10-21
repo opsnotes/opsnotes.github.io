@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker安装 on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/docker%E5%AE%89%E8%A3%85/</link>
+    <description>Recent content in docker安装 on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Tue, 15 Mar 2016 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/docker%E5%AE%89%E8%A3%85/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>牛刀小试之docker容器系列(三)</title>
+      <link>https://opsnotes.github.io/post/docker/docker_apache_php/</link>
+      <pubDate>Tue, 15 Mar 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker_apache_php/</guid>
+      <description>&lt;h4 id=&#34;查看当前路径以及目录&#34;&gt;查看当前路径以及目录&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	[root@test-devops apache_ubuntu]# pwd
+
+	/home/docker/apache_ubuntu
+
+	[root@test-devops apache_ubuntu]# tree
+
+	.
+
+	├── Dockerfile
+
+	├── run.sh
+
+	└── sample
+
+	    ├── index.html
+
+	    └── index.php
+
+
+
+	1 directory, 4 files
+
+	[root@test-devops apache_ubuntu]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;查看dockerfiler&#34;&gt;查看dockerfiler&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

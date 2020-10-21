@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>牛刀小试之docker容器系列(0) - OpsNotes随思录</title>
+  <meta name="description" content="kubernetes docker">
+  <meta name="author" content="Kenng zhang"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "OpsNotes随思录",
+    
+    "url": "https:\/\/opsnotes.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/opsnotes.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io\/post\/docker\/docker_install\/",
+          "name": "牛刀小试之docker容器系列(0)"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Kenng zhang"
+  },
+  "headline": "牛刀小试之docker容器系列(0)",
+  "description" : "kubernetes docker",
+  "inLanguage" : "en",
+  "wordCount":  671 ,
+  "datePublished" : "2015-07-06T20:18:57",
+  "dateModified" : "2015-07-06T20:18:57",
+  "image" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+  "keywords" : [ "docker" ],
+  "mainEntityOfPage" : "https:\/\/opsnotes.github.io\/post\/docker\/docker_install\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/opsnotes.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="牛刀小试之docker容器系列(0)" />
+<meta property="og:description" content="kubernetes docker">
+<meta property="og:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+<meta property="og:url" content="https://opsnotes.github.io/post/docker/docker_install/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="OpsNotes随思录" />
+
+  <meta name="twitter:title" content="牛刀小试之docker容器系列(0)" />
+  <meta name="twitter:description" content="kubernetes docker">
+  <meta name="twitter:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@opsnotes" />
+  <meta name="twitter:creator" content="@opsnotes" />
+  <link href='https://opsnotes.github.io/img/avatar-icon.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.62.2" />
+  <link rel="alternate" href="https://opsnotes.github.io/index.xml" type="application/rss+xml" title="OpsNotes随思录"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://opsnotes.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://opsnotes.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://opsnotes.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '46663382', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://opsnotes.github.io">OpsNotes随思录</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="arts打卡" href="/tags/arts%e6%89%93%e5%8d%a1">arts打卡</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="/tags/kubernetes">kubernetes</a>
+                
+                  <a href="/tags/prometheus">prometheus</a>
+                
+                  <a href="/tags/python">python</a>
+                
+                  <a href="/tags">Tags</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="OpsNotes随思录" href="https://opsnotes.github.io">
+            <img class="avatar-img" src="https://opsnotes.github.io/img/avatar-icon.png" alt="OpsNotes随思录" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 
+      
+         
+          data-img-src-1="https://tva1.sinaimg.cn/large/006tNbRwly1g9tpqtdm7xj31ee0lygth.jpg" 
+         
+         
+      ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>牛刀小试之docker容器系列(0)</h1>
+                  
+                    
+                      <h2 class="post-subheading">牛刀小试之docker安装部署</h2>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 6, 2015
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;671&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>牛刀小试之docker容器系列(0)</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">牛刀小试之docker安装部署</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 6, 2015
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;671&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <h3 id="安装">安装</h3>
+<pre><code>    [root@docker-master yum.repos.d]#  curl https://git.oschina.net/feedao/Docker_shell/raw/start/ali-centos.sh | sh
+    [root@docker-master yum.repos.d]#  yum install docker-io
+</code></pre>
+<h3 id="启动">启动</h3>
+<pre><code>    [root@docker-master yum.repos.d]# service docker start
+    Starting cgconfig service:                                 [  OK  ]
+    Starting docker:                                        [  OK  ]
+    [root@docker-master yum.repos.d]# chkconfig --level 35 docker on
+    [root@docker-master yum.repos.d]#
+</code></pre>
+<h3 id="查看版本">查看版本</h3>
+<pre><code>    [root@test-devops mysql]#
+    [root@test-devops mysql]# docker version
+    Client version: 1.5.0
+    Client API version: 1.17
+    Go version (client): go1.3.3
+    Git commit (client): a8a31ef/1.5.0
+    OS/Arch (client): linux/amd64
+    Server version: 1.5.0
+    Server API version: 1.17
+    Go version (server): go1.3.3
+    Git commit (server): a8a31ef/1.5.0
+    [root@test-devops mysql]#
+</code></pre>
+<h3 id="使用docker获取镜像">使用docker获取镜像</h3>
+<pre><code>    [root@docker-master ~]# docker pull ubuntu:12.04
+    Pulling repository ubuntu
+    28a945b4333c: Pulling image (12.04) from ubuntu, endpoint: https://registry-1.docker.io/v128a945b4333c: Download complete
+    511136ea3c5a: Download complete
+    a0ab785b06af: Download complete
+    db7c9bd0e843: Download complete
+    14500324c585: Download complete
+    Status: Downloaded newer image for ubuntu:12.04
+    [root@docker-master ~]#
+</code></pre>
+<h3 id="也可以如下方式安装">也可以如下方式安装：</h3>
+<pre><code>    [root@docker-master ~]# docker pull dl.dockerpool.com:5000/ubuntu:12.04
+</code></pre>
+<h3 id="下载完成之后使用镜像创建容器">下载完成之后使用镜像创建容器：</h3>
+<pre><code>    [root@docker-master ~]# docker run -t -i ubuntu:12.04 /bin/bash
+    root@a38b24272f39:/# pwd
+    /
+    root@a38b24272f39:/# hostname
+    a38b24272f39
+    root@a38b24272f39:/#
+    －t 是指分派一个伪终端
+    －i 是让容器标准输出打开
+</code></pre>
+<h3 id="列出本地镜像">列出本地镜像：</h3>
+<pre><code>    [root@docker-master ~]# docker images
+    REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+    ubuntu              12.04               28a945b4333c        3 days ago          130.3 MB
+    ubuntu              12.04.5             28a945b4333c        3 days ago          130.3 MB
+    ubuntu              precise             28a945b4333c        3 days ago          130.3 MB
+    [root@docker-master ~]#
+
+
+    REPOSITORY  来自哪个仓库
+    TAG                   标签
+    ImageID             唯一ID
+    Created              创建时间
+    Size                   镜像大小
+</code></pre>
+<h3 id="新建使用">新建使用：</h3>
+<pre><code>    [root@docker-master test]# docker run ubuntu:12.04 /bin/echo &quot;hello world&quot;
+    hello world
+    [root@docker-master test]#
+
+    导出导入容器：
+</code></pre>
+<h3 id="查看-id">#查看 ID</h3>
+<pre><code>    [root@docker-master ~]# docker ps a
+    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+    7582b0eaf376        ubuntu:latest       &quot;/bin/bash&quot;         12 minutes ago      Up 12 minutes                           desperate_feynman
+    268b9fc77889        ubuntu:12.04        &quot;/bin/bash&quot;         29 minutes ago      Up 29 minutes                           tender_galileo
+</code></pre>
+<h3 id="备份id镜像">#备份id镜像</h3>
+<pre><code>    [root@docker-master ~]# docker export 7582b0eaf376 &gt; ubuntu.tar
+    [root@docker-master ~]# cat ubuntu.tar | docker import - test/buntu:v1.0
+    bcbf83ff7331f3a222a0c18a94379ab7e95aea60202751ccd5c1ab651528cb85
+</code></pre>
+<h3 id="导入备份id">#导入备份ID</h3>
+<pre><code>    [root@docker-master ~]# docker images
+    REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+    test/buntu          v1.0                bcbf83ff7331        30 seconds ago      192.5 MB
+    &lt;none&gt;              &lt;none&gt;              3039b31f25fe        3 hours ago         222 MB
+    ubuntu              precise             28a945b4333c        4 days ago          130.3 MB
+    ubuntu              12.04               28a945b4333c        4 days ago          130.3 MB
+    ubuntu              12.04.5             28a945b4333c        4 days ago          130.3 MB
+    ubuntu              latest              04c5d3b7b065        2 weeks ago         192.7 MB
+    centos              centos6             25c5298b1a36        4 weeks ago         215.8 MB
+    jpetazzo/nsenter    latest              6ed3da1d7fa6        5 weeks ago         367.7 MB
+    [root@docker-master ~]#
+</code></pre>
+<h3 id="删除images">删除images</h3>
+<pre><code>    [root@docker-master ~]# docker images
+    REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+    test/buntu          v1.0                bcbf83ff7331        19 minutes ago      192.5 MB
+    &lt;none&gt;              &lt;none&gt;              3039b31f25fe        4 hours ago         222 MB
+    ubuntu              12.04               28a945b4333c        4 days ago          130.3 MB
+    ubuntu              12.04.5             28a945b4333c        4 days ago          130.3 MB
+    ubuntu              precise             28a945b4333c        4 days ago          130.3 MB
+    ubuntu              latest              04c5d3b7b065        2 weeks ago         192.7 MB
+    centos              centos6             25c5298b1a36        4 weeks ago         215.8 MB
+    jpetazzo/nsenter    latest              6ed3da1d7fa6        5 weeks ago         367.7 MB
+    [root@docker-master ~]# docker rmi test/buntu:v1.0
+    Untagged: test/buntu:v1.0
+    Deleted: bcbf83ff7331f3a222a0c18a94379ab7e95aea60202751ccd5c1ab651528cb85
+    [root@docker-master ~]# docker images
+    REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+    &lt;none&gt;              &lt;none&gt;              3039b31f25fe        4 hours ago         222 MB
+    ubuntu              12.04.5             28a945b4333c        4 days ago          130.3 MB
+    ubuntu              precise             28a945b4333c        4 days ago          130.3 MB
+    ubuntu              12.04               28a945b4333c        4 days ago          130.3 MB
+    ubuntu              latest              04c5d3b7b065        2 weeks ago         192.7 MB
+    centos              centos6             25c5298b1a36        4 weeks ago         215.8 MB
+    jpetazzo/nsenter    latest              6ed3da1d7fa6        5 weeks ago         367.7 MB
+    [root@docker-master ~]#
+</code></pre>
+<h3 id="搜索ios">搜索IOS</h3>
+<pre><code>    [root@docker-master ~]# docker search centos
+    可以查看到镜像的名字 描述 星级 是否官方创建 是否自动创建等等。
+</code></pre>
+<h3 id="下载ios镜像">下载IOS镜像</h3>
+<pre><code>    [root@docker-master ~]# docker pull centos
+    Pulling repository centos
+    acc1b23376ec: Download complete
+    511136ea3c5a: Download complete
+    5b12ef8fd570: Download complete
+    Status: Downloaded newer image for centos:latest
+    [root@docker-master ~]# docker images
+    REPOSITORY          TAG                 IMAGE ID            CREATED                  VIRTUAL SIZE
+    centos              latest              acc1b23376ec        Less than a second ago   224 MB
+    centos              centos7             acc1b23376ec        Less than a second ago   224 MB
+    &lt;none&gt;              &lt;none&gt;              3039b31f25fe        4 hours ago              222 MB
+    ubuntu              12.04               28a945b4333c        4 days ago               130.3 MB
+    ubuntu              12.04.5             28a945b4333c        4 days ago               130.3 MB
+    ubuntu              latest              04c5d3b7b065        2 weeks ago              192.7 MB
+    jpetazzo/nsenter    latest              6ed3da1d7fa6        5 weeks ago              367.7 MB
+    [root@docker-master ~]# docker images
+    REPOSITORY          TAG                 IMAGE ID            CREATED                  VIRTUAL SIZE
+    centos              centos7             acc1b23376ec        Less than a second ago   224 MB
+    centos              latest              acc1b23376ec        Less than a second ago   224 MB
+    &lt;none&gt;              &lt;none&gt;              3039b31f25fe        4 hours ago              222 MB
+    ubuntu              12.04               28a945b4333c        4 days ago               130.3 MB
+    ubuntu              12.04.5             28a945b4333c        4 days ago               130.3 MB
+    ubuntu              latest              04c5d3b7b065        2 weeks ago              192.7 MB
+    jpetazzo/nsenter    latest              6ed3da1d7fa6        5 weeks ago              367.7 MB
+    [root@docker-master ~]#
+</code></pre>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://opsnotes.github.io/tags/docker/">docker</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fdocker%2fdocker_install%2f&amp;text=%e7%89%9b%e5%88%80%e5%b0%8f%e8%af%95%e4%b9%8bdocker%e5%ae%b9%e5%99%a8%e7%b3%bb%e5%88%97%280%29&amp;via=opsnotes" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fopsnotes.github.io%2fpost%2fdocker%2fdocker_install%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fdocker%2fdocker_install%2f&amp;title=%e7%89%9b%e5%88%80%e5%b0%8f%e8%af%95%e4%b9%8bdocker%e5%ae%b9%e5%99%a8%e7%b3%bb%e5%88%97%280%29" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fdocker%2fdocker_install%2f&amp;title=%e7%89%9b%e5%88%80%e5%b0%8f%e8%af%95%e4%b9%8bdocker%e5%ae%b9%e5%99%a8%e7%b3%bb%e5%88%97%280%29" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fdocker%2fdocker_install%2f&amp;title=%e7%89%9b%e5%88%80%e5%b0%8f%e8%af%95%e4%b9%8bdocker%e5%ae%b9%e5%99%a8%e7%b3%bb%e5%88%97%280%29" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fdocker%2fdocker_install%2f&amp;description=%e7%89%9b%e5%88%80%e5%b0%8f%e8%af%95%e4%b9%8bdocker%e5%ae%b9%e5%99%a8%e7%b3%bb%e5%88%97%280%29" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/docker/docker-nginx/">牛刀小试之docker容器系列(八)</a></li>
+                
+                    <li><a href="/post/docker/docker_apache_php/">牛刀小试之docker容器系列(三)</a></li>
+                
+                    <li><a href="/post/docker/docker_images_ssh/">牛刀小试之docker容器系列(四)</a></li>
+                
+                    <li><a href="/post/docker/docker_volume/">牛刀小试之docker容器系列(六)</a></li>
+                
+                    <li><a href="/post/docker/docker_connection/">牛刀小试之docker容器系列(一)</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://opsnotes.github.io/post/docker/docker_images/" data-toggle="tooltip" data-placement="top" title="牛刀小试之docker容器系列(五)">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://opsnotes.github.io/post/docker/docker_container/" data-toggle="tooltip" data-placement="top" title="牛刀小试之docker容器系列(二)">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:zky.linux@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/username" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/opsnotes" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/opsnotes" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://username.slack.com/" title="Slack">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-slack fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://reddit.com/u/keengz" title="Reddit">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-reddit-alien fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/XXXXXXX/username" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/kenng.z" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://telegram.me/Ke_zz" title="Telegram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://weibo.com/angerdevil" title="Weibo">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="opsnotes.net">Kenng zhang</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://opsnotes.github.io">OpsNotes随思录</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.62.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://opsnotes.github.io/js/main.js"></script>
+<script src="https://opsnotes.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://opsnotes.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

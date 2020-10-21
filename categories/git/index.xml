@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/categories/git/</link>
+    <description>Recent content in git on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Thu, 09 Jul 2015 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>git日常使用经验总结</title>
+      <link>https://opsnotes.github.io/post/others/gitconfig/</link>
+      <pubDate>Thu, 09 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/others/gitconfig/</guid>
+      <description>&lt;h3 id=&#34;初始化一个git仓库&#34;&gt;初始化一个git仓库&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;初始化一个仓库,用如下命令。
+git init   
+创建一个文件
+echo &amp;quot;Git is a version contron system.&amp;quot;&amp;gt; readme.txt 
+提交一个文件，提交文件到仓库
+git add readme.txt
+git commit -m &amp;quot;write a readme file&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;案例1创建一个git库&#34;&gt;案例1:创建一个git库&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;[root@test-devops git]# yum install git -y
+[root@test-devops git]# mkdir /home/docker/git
+[root@test-devops git]# cd /home/docker/git
+[root@test-devops git]# git init
+[root@test-devops git]# git config --global user.name &amp;quot;Steven&amp;quot;
+[root@test-devops git]# git config --global user.email &amp;quot;admin@opsnotes.net&amp;quot;
+[root@test-devops git]# git add file1.txt
+[root@test-devops git]# git commit -m &#39;add file1.txt&#39;
+[master 812c99b] add file1.txt
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+ create mode 100644 file1.txt
+[root@test-devops git]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

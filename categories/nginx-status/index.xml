@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nginx status on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/categories/nginx-status/</link>
+    <description>Recent content in nginx status on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Fri, 11 Sep 2015 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/categories/nginx-status/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>编译nginx status模块以及zabbix监控nginx状态</title>
+      <link>https://opsnotes.github.io/post/nginx/nginx_module/</link>
+      <pubDate>Fri, 11 Sep 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/nginx/nginx_module/</guid>
+      <description>&lt;h5 id=&#34;背景原因&#34;&gt;背景原因：&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;因刚换工作,突然发现nginx status状态没有被监控,然后在准备添加nginx status的时候,发现之前同事在编译nginx的时候没有编译nginx status模块,可恶,常用的模块都不编译.主要两部分,
+第一部分：编译nginx模块
+第二部分：zabbix 监控nginx status,其实之前写过,稍微把监控方式优化了下。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;一nginx-编译模块&#34;&gt;一、nginx 编译模块&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;1.下载nginx安装包
+root@gcs:/home/steven# wget http://nginx.org/download/nginx-1.6.3.tar.gz
+--2015-09-09 17:27:40--  http://nginx.org/download/nginx-1.6.3.tar.gz
+Resolving nginx.org (nginx.org)... 206.251.255.63, 2606:7100:1:69::3f
+Connecting to nginx.org (nginx.org)|206.251.255.63|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 805253 (786K) [application/octet-stream]
+Saving to: ‘nginx-1.6.3.tar.gz’
+
+100%[============================================================================================================&amp;gt;] 805,253      569KB/s   in 1.4s
+
+2015-09-09 17:27:42 (569 KB/s) - ‘nginx-1.6.3.tar.gz’ saved [805253/805253]
+
+root@gcs:/home/steven# ls
+nginx-1.6.3.tar.gz
+root@gcs:/home/steven#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件使用zabbix监控nginx status</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_09/</link>
+      <pubDate>Thu, 15 May 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_09/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;因业务需要需要用zabbix来监控nginx的status,具体是如下的做法：  
+1.	首先在nginx的配置文件中添加如下内容,需要注意的是nginx的文件格式，在allow中我们需要注意的是需要添加zabbix server的IP地址,不然无法采集到数据. 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://opsnotes.github.io/img/nginx01.png&#34; alt=&#34;zabbix&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

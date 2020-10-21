@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zabbix mail on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/categories/zabbix-mail/</link>
+    <description>Recent content in zabbix mail on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Thu, 13 Aug 2015 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/categories/zabbix-mail/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>zabbix使用python mail报警</title>
+      <link>https://opsnotes.github.io/post/zabbix_python_mail/</link>
+      <pubDate>Thu, 13 Aug 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/zabbix_python_mail/</guid>
+      <description>前提: 好久不弄zabbix了,刚换工作,我司运维情况还在百废待兴,在zabiix使用邮件报警的适合我们使用python写得邮件报警,以前使用的是shell编写的脚本.之前的邮件报警和配置可以参考我以前写得文章.
+具体相关配置请参考我以前写得文章: http://opsnotes.net/2013/12/31/install_zabbix_06/
+http://opsnotes.net/2014/01/21/install_zabbix_07/
+如下是python mail脚本文件： root@dgz-zabbixserver01:/usr/lib/zabbix/alertscripts# cat mail.py #!/usr/bin/env python #coding:utf-8 import smtplib from email.mime.text import MIMEText import sys mail_host = &amp;#39;smtp.qq.com&amp;#39; mail_user = &amp;#39;username&amp;#39; mail_pass = &amp;#39;passwd&amp;#39; mail_postfix = &amp;#39;qq.com&amp;#39; def send_mail(to_list,subject,content): me = mail_user+&amp;#34;&amp;lt;&amp;#34;+mail_user+&amp;#34;@&amp;#34;+mail_postfix+&amp;#34;&amp;gt;&amp;#34; msg = MIMEText(content) msg[&amp;#39;Subject&amp;#39;] = subject msg[&amp;#39;From&amp;#39;] = me msg[&amp;#39;to&amp;#39;] = to_list try: s = smtplib.SMTP() s.connect(mail_host) s.login(mail_user,mail_pass) s.sendmail(me,to_list,msg.as_string()) s.close() return True except Exception,e: print str(e) return False if __name__ == &amp;#34;__main__&amp;#34;: send_mail(sys.</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件Zabbix搭建部署之使用脚本来发送zabbix邮件报警</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_07/</link>
+      <pubDate>Tue, 21 Jan 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_07/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;上篇文章中我们已经部署完成zabbix邮件报警的前期工作了,那么接下来我们来应用zabbix邮件报警，如果对邮件报警不了解可以看我的博文：  
+http://opsnotes.net/2013/12/31/install_zabbix_06/  
+
+01.	首先在创建之前修改zabbix配置文件，根据安装的位置来查找相应的路径：  
+[root@dota-db-14 alertscripts]# pwd  
+/usr/local/share/zabbix/alertscripts  
+[root@dota-db-14 alertscripts]#  
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件Zabbix搭建部署之使用mutt&#43;msmtp配置Zabbix邮件报警</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_06/</link>
+      <pubDate>Tue, 31 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_06/</guid>
+      <description>&lt;h3 id=&#34;企业级监控软件zabbix搭建部署之使用muttmsmtp配置zabbix邮件报警&#34;&gt;企业级监控软件Zabbix搭建部署之使用mutt+msmtp配置Zabbix邮件报警&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;[root@Zabbix-Server ~]# wget http://nchc.dl.sourceforge.net/sourceforge/msmtp/msmtp-1.4.17.tar.bz2   
+[root@Zabbix-Server ~]# tar xf msmtp-1.4.17.tar.bz2   
+[root@Zabbix-Server ~]# cd msmtp-1.4.17  
+[root@Zabbix-Server msmtp-1.4.17]# mkdir /usr/local/msmtp  
+[root@Zabbix-Server msmtp-1.4.17]# yum -y install gnutls-devel gnutls  
+[root@Zabbix-Server msmtp-1.4.17]# ./configure --prefix=/usr/local/msmtp
+[root@Zabbix-Server msmtp-1.4.17]# make    
+[root@Zabbix-Server msmtp-1.4.17]# make install  
+
+[root@Zabbix-Server msmtp-1.4.17]# cd /usr/local/msmtp/  
+[root@Zabbix-Server msmtp]# ls  
+bin  share  
+[root@Zabbix-Server msmtp]# mkdir etc		创建目录  
+[root@Zabbix-Server msmtp]# cd etc/  
+[root@Zabbix-Server etc]# ls  
+[root@Zabbix-Server etc]# vim msmtprc  创建配置文件  
+配置文件如下：   
+account default  
+host smtp.ym.163.com			#发送邮件服务器  
+port 25										#发送端口   
+from noreply@youlongteng.com		#发送的邮箱  
+auth login    
+tls off										#这里如果使用on的话会报 &amp;quot;msmtp: cannot use a secure authenti  cation method&amp;quot;错误  
+user noreply@youlongteng.com				#邮箱用户  
+password 123.com.					#邮箱的密码，明文保存的需要注意，可以设置权限  
+logfile /var/log/mmlog		#日志的路径  
+[root@Zabbix-Server etc]# ll /usr/local/msmtp/etc/msmtprc   
+-rwxr-xr-x 1 zabbix root 195 Oct 11 23:52 /usr/local/msmtp/etc/msmtprc  
+[root@Zabbix-Server etc]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

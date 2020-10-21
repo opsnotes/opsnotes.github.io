@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nginx on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/nginx/</link>
+    <description>Recent content in nginx on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Thu, 19 May 2016 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ansible源码安装zabbix agent</title>
+      <link>https://opsnotes.github.io/post/ansible/ansible_zabbix/</link>
+      <pubDate>Thu, 19 May 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/ansible/ansible_zabbix/</guid>
+      <description>&lt;h5 id=&#34;名词解释&#34;&gt;名词解释&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	[root@iZ23nvakegvZ zabbix_agent]# ls  
+	files  需要安装包  
+	handlers  重启相关信息  
+	meta  galaxy_info相关信息  
+	tasks  安装部署的任务  
+	templates  相关的模板配置文件 
+	vars   变量配置文件  
+	[root@iZ23nvakegvZ zabbix_agent]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;目录结构&#34;&gt;目录结构&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	[root@iZ23nvakegvZ zabbix_agent]# tree
+	
+	.
+	
+	├── hosts
+	├── roles
+	│   └── zabbix_agent
+	│       ├── files
+	│       │   └── zabbix-2.4.5.tar.gz
+	│       ├── handlers
+	│       ├── meta
+	│       │   └── main.yml
+	│       ├── tasks
+	│       │   ├── copy.yml
+	│       │   ├── delete.yml
+	│       │   ├── install.yml
+	│       │   └── main.yml
+	│       ├── templates
+	│       │   ├── zabbix_agentd
+	│       │   └── zabbix_agentd.conf
+	│       └── vars
+	│           └── main.yml
+	└── site.yml
+	
+	8 directories, 11 files
+	
+	[root@iZ23nvakegvZ zabbix_agent]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>ansible-playbook语法检查</title>
+      <link>https://opsnotes.github.io/post/ansible/ansible-playbook%E8%AF%AD%E6%B3%95%E6%A3%80%E6%9F%A5/</link>
+      <pubDate>Wed, 04 May 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/ansible/ansible-playbook%E8%AF%AD%E6%B3%95%E6%A3%80%E6%9F%A5/</guid>
+      <description>&lt;h3 id=&#34;列出主机&#34;&gt;列出主机&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	[root@ops-test-01 nginx_v2]# ansible-playbook -i hosts --list-hosts web-tls.yml
+	
+	playbook: web-tls.yml
+	
+	  play #1 (Configure webserver with nginx and tls): host count=1
+	
+	    web_test01
+	
+	[root@ops-test-01 nginx_v2]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;语法检查&#34;&gt;语法检查&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	[root@ops-test-01 nginx_v2]# ansible-playbook --syntax-check  web-tls.yml
+	
+	playbook: web-tls.yml
+	
+	[root@ops-test-01 nginx_v2]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>ansible playbook</title>
+      <link>https://opsnotes.github.io/post/ansible/ansible_nginx_https/</link>
+      <pubDate>Tue, 03 May 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/ansible/ansible_nginx_https/</guid>
+      <description>&lt;h3 id=&#34;查看目录结构&#34;&gt;查看目录结构&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;    [root@iZ23nvakegvZ nginx_v2]# tree
+
+    .
+
+    ├── files
+
+    │   ├── nginx.crt
+
+    │   ├── nginx.key
+
+    ├── hosts
+
+    ├── templates
+
+    │   ├── index.html.j2
+
+    │   └── test.conf.j2
+
+    └── web-tls.yml
+
+
+
+    2 directories, 8 files
+
+    [root@iZ23nvakegvZ nginx_v2]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用nginx模块简单防止ddos攻击</title>
+      <link>https://opsnotes.github.io/post/nginx/nginx_ddos/</link>
+      <pubDate>Wed, 09 Mar 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/nginx/nginx_ddos/</guid>
+      <description>第一种方法： 官方模块：http://nginx.org/en/docs/http/ngx_http_limit_conn_module.html  1.在Nginx配置文件nginx.conf的http选项中添加如下内容
+ 在nginx.conf的配置中添加了Nginx白名单 ### Nginx Limint config geo $limited{ default 1; 127.0.0.1 0; 192.168.100.18 0; } map $limited $limit{ 1 $binary_remote_addr; 0 &amp;quot;&amp;quot;; } limit_req_zone $limit zone=one:10m rate=5r/s;  2.在虚拟目录中直接应用
+[root@frontend-01 ~]# cat /etc/nginx/conf.d/test.conf server{ listen 80; server_name yourdomain.com; root /yourdist/; access_log /yourdomain.com.access.log json; error_log /yourdomain.com.error.log warn; location /test/api/v3/ { ## 只针对api接口调用做Nginx IP地址限速 limit_req zone=one burst=10 nodelay; proxy_pass http://test; proxy_set_header X-Forwarded-For $remote_addr; proxy_set_header X-Forwarded-Host $server_name; proxy_set_header Host $host; add_header Access-Control-Allow-Origin *; add_header Access-Control-Allow-Headers &amp;quot;accept, content-type&amp;quot;; } location /test/auth/v3/ { proxy_pass http://test; proxy_set_header X-Forwarded-For $remote_addr; proxy_set_header X-Forwarded-Host $server_name; proxy_set_header Host $host; add_header Access-Control-Allow-Origin *; add_header Access-Control-Allow-Headers &amp;quot;accept, content-type&amp;quot;; } } [root@frontend-01 ~]#  3.</description>
+    </item>
+    
+    <item>
+      <title>编译nginx status模块以及zabbix监控nginx状态</title>
+      <link>https://opsnotes.github.io/post/nginx/nginx_module/</link>
+      <pubDate>Fri, 11 Sep 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/nginx/nginx_module/</guid>
+      <description>&lt;h5 id=&#34;背景原因&#34;&gt;背景原因：&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;因刚换工作,突然发现nginx status状态没有被监控,然后在准备添加nginx status的时候,发现之前同事在编译nginx的时候没有编译nginx status模块,可恶,常用的模块都不编译.主要两部分,
+第一部分：编译nginx模块
+第二部分：zabbix 监控nginx status,其实之前写过,稍微把监控方式优化了下。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;一nginx-编译模块&#34;&gt;一、nginx 编译模块&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;1.下载nginx安装包
+root@gcs:/home/steven# wget http://nginx.org/download/nginx-1.6.3.tar.gz
+--2015-09-09 17:27:40--  http://nginx.org/download/nginx-1.6.3.tar.gz
+Resolving nginx.org (nginx.org)... 206.251.255.63, 2606:7100:1:69::3f
+Connecting to nginx.org (nginx.org)|206.251.255.63|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 805253 (786K) [application/octet-stream]
+Saving to: ‘nginx-1.6.3.tar.gz’
+
+100%[============================================================================================================&amp;gt;] 805,253      569KB/s   in 1.4s
+
+2015-09-09 17:27:42 (569 KB/s) - ‘nginx-1.6.3.tar.gz’ saved [805253/805253]
+
+root@gcs:/home/steven# ls
+nginx-1.6.3.tar.gz
+root@gcs:/home/steven#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

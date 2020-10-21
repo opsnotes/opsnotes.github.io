@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>mongodb集群之副本集安装配置 - OpsNotes随思录</title>
+  <meta name="description" content="对文章的简要描述 SEO used for description">
+  <meta name="author" content="Kenng zhang"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "OpsNotes随思录",
+    
+    "url": "https:\/\/opsnotes.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/opsnotes.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io\/post\/replset\/",
+          "name": "Mongodb集群之副本集安装配置"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Kenng zhang"
+  },
+  "headline": "mongodb集群之副本集安装配置",
+  "description" : "对文章的简要描述 SEO used for description",
+  "inLanguage" : "en",
+  "wordCount":  1341 ,
+  "datePublished" : "2015-04-22T20:18:57",
+  "dateModified" : "2015-04-22T20:18:57",
+  "image" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+  "keywords" : [ "mongodb" ],
+  "mainEntityOfPage" : "https:\/\/opsnotes.github.io\/post\/replset\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/opsnotes.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="mongodb集群之副本集安装配置" />
+<meta property="og:description" content="对文章的简要描述 SEO used for description">
+<meta property="og:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+<meta property="og:url" content="https://opsnotes.github.io/post/replset/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="OpsNotes随思录" />
+
+  <meta name="twitter:title" content="mongodb集群之副本集安装配置" />
+  <meta name="twitter:description" content="对文章的简要描述 SEO used for description">
+  <meta name="twitter:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@opsnotes" />
+  <meta name="twitter:creator" content="@opsnotes" />
+  <link href='https://opsnotes.github.io/img/avatar-icon.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.62.2" />
+  <link rel="alternate" href="https://opsnotes.github.io/index.xml" type="application/rss+xml" title="OpsNotes随思录"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://opsnotes.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://opsnotes.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://opsnotes.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '46663382', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://opsnotes.github.io">OpsNotes随思录</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="arts打卡" href="/tags/arts%e6%89%93%e5%8d%a1">arts打卡</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="/tags/kubernetes">kubernetes</a>
+                
+                  <a href="/tags/prometheus">prometheus</a>
+                
+                  <a href="/tags/python">python</a>
+                
+                  <a href="/tags">Tags</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="OpsNotes随思录" href="https://opsnotes.github.io">
+            <img class="avatar-img" src="https://opsnotes.github.io/img/avatar-icon.png" alt="OpsNotes随思录" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 
+      
+         
+          data-img-src-1="https://tva1.sinaimg.cn/large/006tNbRwly1g9tpqtdm7xj31ee0lygth.jpg" 
+         
+         data-img-desc-1="Beijing China|May 28,2017"
+      ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>mongodb集群之副本集安装配置</h1>
+                  
+                    
+                      <h2 class="post-subheading">mongodb集群之副本集安装配置</h2>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on April 22, 2015
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;7&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1341&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>mongodb集群之副本集安装配置</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">mongodb集群之副本集安装配置</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on April 22, 2015
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;7&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1341&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <h3 id="准备工作">准备工作:</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">     host zy_mongo01   副本集主节点
+     hostname 121.41.101.208  10.168.218.46
+
+     host zy_mongo02   副本集副本节点
+     hostname 121.41.118.184  10.168.217.186
+
+     host zy_mongo03   副本集副本节点
+     hostname  121.40.61.78 10.252.130.121
+</code></pre></div><h3 id="mongodb-目录">mongodb 目录:</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">     mkdir -p /data/mongodb/replset/data  存放mongo数据目录
+     mkdir -p /data/mongodb/replset   存放mongo文件目录
+</code></pre></div><h3 id="安装操作">安装操作:</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">     tar xf mongodb-linux-x86_64-2.6.8.tgz
+     mv mongodb-linux-x86_64-2.6.8 /data/mongodb/mongodb
+</code></pre></div><h3 id="启动">启动:</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">     在三台机器上做如下操作：
+     /data/mongodb/mongodb/bin/mongod --dbpath /data/mongodb/replset/data/ --replSet repset
+</code></pre></div><h3 id="提示日志">提示日志:</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">     2015-04-21T11:17:23.238+0800 [rsStart] replSet can&#39;t get local.system.replset config from self or any seed (EMPTYCONFIG)
+     2015-04-21T11:17:24.238+0800 [rsStart] replSet can&#39;t get local.system.replset config from self or any seed (EMPTYCONFIG)
+     2015-04-21T11:17:25.238+0800 [rsStart] replSet can&#39;t get local.system.replset config from self or any seed (EMPTYCONFIG)
+</code></pre></div><h3 id="配置mongodb在其中一个mongo机器上登录">配置mongodb,在其中一个mongo机器上登录:</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">     登录方式: /data/mongodb/mongodb/bin/mongo
+     做如下操作：
+     &gt; use admin
+
+     switched to db admin
+
+     &gt; config = { _id:&#34;repset&#34;, members:[
+
+     ... {_id:0,host:&#34;10.168.218.46:27017&#34;},
+
+     ... {_id:1,host:&#34;10.168.217.186:27017&#34;},
+
+     ... {_id:2,host:&#34;10.252.130.121:27017&#34;}]
+
+     ... }
+
+     {
+
+     &#34;_id&#34; : &#34;repset&#34;,
+
+     &#34;members&#34; : [
+
+     {
+
+     &#34;_id&#34; : 0,
+
+     &#34;host&#34; : &#34;10.168.218.46:27017&#34;
+
+     },
+
+     {
+
+     &#34;_id&#34; : 1,
+
+     &#34;host&#34; : &#34;10.168.217.186:27017&#34;
+
+     },
+
+     {
+
+     &#34;_id&#34; : 2,
+
+     &#34;host&#34; : &#34;10.252.130.121:27017&#34;
+
+     }
+
+     ]
+
+     }
+
+     &gt;
+
+</code></pre></div><h3 id="化配置文件">化配置文件：</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">     &gt; rs.initiate(config);
+
+     {
+
+     &#34;info&#34; : &#34;Config now saved locally. Should come online in about a minute.&#34;,
+
+     &#34;ok&#34; : 1
+
+     }
+     &gt;
+</code></pre></div><h3 id="查看日志-看到mongodb状态">查看日志 看到mongoDB状态</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">
+     2015-04-21T11:54:35.579+0800 [conn1] replSet info saving a newer config version to local.system.replset: { _id: &#34;repset&#34;, version: 1, members: [ { _id: 0, host: &#34;10.168.218.46:27017&#34; }, { _id: 1, host: &#34;10.168.217.186:27017&#34; }, { _id: 2, host: &#34;10.252.130.121:27017&#34; } ] }
+
+     2015-04-21T11:54:35.580+0800 [conn1] build index on: local.system.replset properties: { v: 1, key: { _id: 1 }, name: &#34;_id_&#34;, ns: &#34;local.system.replset&#34; }
+
+     2015-04-21T11:54:35.580+0800 [conn1] added index to empty collection
+
+     2015-04-21T11:54:35.580+0800 [conn1] replSet saveConfigLocally done
+
+     2015-04-21T11:54:35.580+0800 [conn1] replSet replSetInitiate config now saved locally. Should come online in about a minute.
+
+     2015-04-21T11:54:36.528+0800 [rsStart] replSet I am 10.168.218.46:27017
+
+     2015-04-21T11:54:36.529+0800 [rsHealthPoll] replSet member 10.168.217.186:27017 is up
+
+     2015-04-21T11:54:36.529+0800 [rsHealthPoll] replSet member 10.252.130.121:27017 is up
+
+     2015-04-21T11:54:36.531+0800 [rsStart] build index on: local.me properties: { v: 1, key: { _id: 1 }, name: &#34;_id_&#34;, ns: &#34;local.me&#34; }
+
+     2015-04-21T11:54:36.531+0800 [rsStart] added index to empty collection
+
+     2015-04-21T11:54:36.531+0800 [rsStart] replSet STARTUP2
+
+     2015-04-21T11:54:36.531+0800 [rsSync] replSet SECONDARY
+
+     2015-04-21T11:54:36.532+0800 [rsMgr] replSet not electing self, not all members up and we have been up less than 5 minutes
+
+     2015-04-21T11:54:36.532+0800 [rsMgr] replSet not electing self, not all members up and we have been up less than 5 minutes
+
+     2015-04-21T11:54:36.533+0800 [rsMgr] replSet not electing self, not all members up and we have been up less than 5 minutes
+
+     2015-04-21T11:54:36.921+0800 [initandlisten] connection accepted from 10.252.130.121:58941 #2 (2 connections now open)
+
+     2015-04-21T11:54:36.922+0800 [initandlisten] connection accepted from 10.252.130.121:58942 #3 (3 connections now open)
+
+     2015-04-21T11:54:36.954+0800 [conn2] end connection 10.252.130.121:58941 (2 connections now open)
+
+     2015-04-21T11:54:37.113+0800 [initandlisten] connection accepted from 10.168.217.186:40487 #4 (3 connections now open)
+
+     2015-04-21T11:54:37.113+0800 [conn4] end connection 10.168.217.186:40487 (2 connections now open)
+
+     2015-04-21T11:54:37.113+0800 [initandlisten] connection accepted from 10.168.217.186:40488 #5 (3 connections now open)
+
+     2015-04-21T11:54:38.530+0800 [rsHealthPoll] replset info 10.168.217.186:27017 thinks that we are down
+
+     2015-04-21T11:54:38.530+0800 [rsHealthPoll] replSet member 10.168.217.186:27017 is now in state STARTUP2
+
+     2015-04-21T11:54:38.530+0800 [rsHealthPoll] replset info 10.252.130.121:27017 thinks that we are down
+
+     2015-04-21T11:54:38.530+0800 [rsHealthPoll] replSet member 10.252.130.121:27017 is now in state STARTUP2
+
+     2015-04-21T11:54:38.530+0800 [rsMgr] not electing self, 10.252.130.121:27017 would veto with &#39;I don&#39;t think 10.168.218.46:27017 is electable&#39;
+
+     2015-04-21T11:54:38.531+0800 [rsMgr] not electing self, 10.252.130.121:27017 would veto with &#39;I don&#39;t think 10.168.218.46:27017 is electable&#39;
+
+     2015-04-21T11:54:44.548+0800 [rsMgr] replSet info electSelf 0
+
+     2015-04-21T11:54:45.532+0800 [rsMgr] replSet PRIMARY
+</code></pre></div><h3 id="查看副本集状态-详细的列出了-mongo主从状态信息">查看副本集状态 详细的列出了 mongo主从状态信息</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">
+     [root@zy_mongo01 ~]# /data/mongodb/mongodb/bin/mongo
+
+     MongoDB shell version: 2.6.8
+
+     connecting to: test
+
+     repset:PRIMARY&gt; rs.status();
+
+     {
+
+     &#34;set&#34; : &#34;repset&#34;,
+
+     &#34;date&#34; : ISODate(&#34;2015-04-21T03:59:09Z&#34;),
+
+     &#34;myState&#34; : 1,
+
+     &#34;members&#34; : [
+
+     {
+
+     &#34;_id&#34; : 0,
+
+     &#34;name&#34; : &#34;10.168.218.46:27017&#34;,
+
+     &#34;health&#34; : 1,
+
+     &#34;state&#34; : 1,
+
+     &#34;stateStr&#34; : &#34;PRIMARY&#34;,
+
+     &#34;uptime&#34; : 543,
+
+     &#34;optime&#34; : Timestamp(1429588475, 1),
+
+     &#34;optimeDate&#34; : ISODate(&#34;2015-04-21T03:54:35Z&#34;),
+
+     &#34;electionTime&#34; : Timestamp(1429588484, 1),
+
+     &#34;electionDate&#34; : ISODate(&#34;2015-04-21T03:54:44Z&#34;),
+
+     &#34;self&#34; : true
+
+     },
+
+     {
+
+     &#34;_id&#34; : 1,
+
+     &#34;name&#34; : &#34;10.168.217.186:27017&#34;,
+
+     &#34;health&#34; : 1,
+
+     &#34;state&#34; : 2,
+
+     &#34;stateStr&#34; : &#34;SECONDARY&#34;,
+
+     &#34;uptime&#34; : 273,
+
+     &#34;optime&#34; : Timestamp(1429588475, 1),
+
+     &#34;optimeDate&#34; : ISODate(&#34;2015-04-21T03:54:35Z&#34;),
+
+     &#34;lastHeartbeat&#34; : ISODate(&#34;2015-04-21T03:59:08Z&#34;),
+
+     &#34;lastHeartbeatRecv&#34; : ISODate(&#34;2015-04-21T03:59:09Z&#34;),
+
+     &#34;pingMs&#34; : 0,
+
+     &#34;syncingTo&#34; : &#34;10.168.218.46:27017&#34;
+
+     },
+
+     {
+
+     &#34;_id&#34; : 2,
+
+     &#34;name&#34; : &#34;10.252.130.121:27017&#34;,
+
+     &#34;health&#34; : 1,
+
+     &#34;state&#34; : 2,
+
+     &#34;stateStr&#34; : &#34;SECONDARY&#34;,
+
+     &#34;uptime&#34; : 273,
+
+     &#34;optime&#34; : Timestamp(1429588475, 1),
+
+     &#34;optimeDate&#34; : ISODate(&#34;2015-04-21T03:54:35Z&#34;),
+
+     &#34;lastHeartbeat&#34; : ISODate(&#34;2015-04-21T03:59:08Z&#34;),
+
+     &#34;lastHeartbeatRecv&#34; : ISODate(&#34;2015-04-21T03:59:09Z&#34;),
+
+     &#34;pingMs&#34; : 1,
+
+     &#34;syncingTo&#34; : &#34;10.168.218.46:27017&#34;
+
+     }
+
+     ],
+
+     &#34;ok&#34; : 1
+
+     }
+
+     repset:PRIMARY&gt;
+</code></pre></div><h3 id="测试副本集在主的创建数据库插入然后看从的是否能同步">测试副本集，在主的创建数据库插入,然后看从的是否能同步</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">     repset:PRIMARY&gt; use test;
+
+     switched to db test
+
+     repset:PRIMARY&gt; db.testdb.insert({&#34;test1&#34;:&#34;testval1&#34;})
+
+     WriteResult({ &#34;nInserted&#34; : 1 })
+
+     repset:PRIMARY&gt;
+</code></pre></div><h3 id="在从服务器上查看">在从服务器上查看</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">     [root@zy_mongo02 ~]# /data/mongodb/mongodb/bin/mongo
+
+     MongoDB shell version: 2.6.8
+
+     connecting to: test
+
+     repset:SECONDARY&gt; show dbs;
+
+     admin (empty)
+
+     local 1.078GB
+
+     test 0.078GB
+
+     repset:SECONDARY&gt; use test
+
+     switched to db test
+
+     repset:SECONDARY&gt; show tables;
+
+     2015-04-21T12:04:58.540+0800 error: { &#34;$err&#34; : &#34;not master and slaveOk=false&#34;, &#34;code&#34; : 13435 } at src/mongo/shell/query.js:131
+
+     repset:SECONDARY&gt;
+
+     [root@zy_mongo03 ~]# /data/mongodb/mongodb/bin/mongo
+
+     MongoDB shell version: 2.6.8
+
+     connecting to: test
+
+     Welcome to the MongoDB shell.
+
+     For interactive help, type &#34;help&#34;.
+
+     For more comprehensive documentation, see
+
+     http://docs.mongodb.org/
+
+     Questions? Try the support group
+
+     http://groups.google.com/group/mongodb-user
+
+     repset:SECONDARY&gt; show dbs;
+
+     admin (empty)
+
+     local 1.078GB
+
+     test 0.078GB
+
+     repset:SECONDARY&gt; use test;
+
+     switched to db test
+
+     repset:SECONDARY&gt; show tables;
+
+     2015-04-21T12:05:29.160+0800 error: { &#34;$err&#34; : &#34;not master and slaveOk=false&#34;, &#34;code&#34; : 13435 } at src/mongo/shell/query.js:131
+
+     repset:SECONDARY&gt;
+</code></pre></div><h3 id="mongodb默认是从主节点读写数据的副本节点上不允许读需要设置副本节点可以读">mongodb默认是从主节点读写数据的，副本节点上不允许读，需要设置副本节点可以读。</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">
+     repset:SECONDARY&gt; db.getMongo().setSlaveOk();
+</code></pre></div><h3 id="可以看到数据已经复制到了副本集以及输出">可以看到数据已经复制到了副本集。以及输出：</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">     repset:SECONDARY&gt; db.testdb.find();
+
+     { &#34;_id&#34; : ObjectId(&#34;5535cc2ed18a01e86aec9738&#34;), &#34;test1&#34; : &#34;testval1&#34; }
+
+     repset:SECONDARY&gt;
+</code></pre></div><h3 id="测试副本集故障转移集群">测试副本集故障转移集群</h3>
+<h3 id="在mongo1上杀死进程">#在mongo1上杀死进程</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">     [root@zy_mongo01 ~]# netstat -tlnp
+
+     Active Internet connections (only servers)
+
+     Proto Recv-Q Send-Q Local Address Foreign Address State PID/Program name
+
+     tcp 0 0 0.0.0.0:22 0.0.0.0:* LISTEN 920/sshd
+
+     tcp 0 0 0.0.0.0:27017 0.0.0.0:* LISTEN 1127/mongod
+
+     [root@zy_mongo01 ~]# kill -9 1127
+
+     [root@zy_mongo01 ~]#
+</code></pre></div><h3 id="在从节点查看状态其中杀掉的直接没有数据发送">在从节点查看状态，其中杀掉的直接没有数据发送</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">     [root@zy_mongo02 ~]# /data/mongodb/mongodb/bin/mongo
+     MongoDB shell version: 2.6.8
+
+     connecting to: test
+
+     repset:SECONDARY&gt; rs.status();
+
+     {
+
+     &#34;set&#34; : &#34;repset&#34;,
+
+     &#34;date&#34; : ISODate(&#34;2015-04-21T05:03:54Z&#34;),
+
+     &#34;myState&#34; : 2,
+
+     &#34;syncingTo&#34; : &#34;10.252.130.121:27017&#34;,
+
+     &#34;members&#34; : [
+
+     {
+
+     &#34;_id&#34; : 0,
+
+     &#34;name&#34; : &#34;10.168.218.46:27017&#34;,
+
+     &#34;health&#34; : 0,
+
+     &#34;state&#34; : 8,
+
+     &#34;stateStr&#34; : &#34;(not reachable/healthy)&#34;,
+
+     &#34;uptime&#34; : 0,
+
+     &#34;optime&#34; : Timestamp(1429589038, 1),
+
+     &#34;optimeDate&#34; : ISODate(&#34;2015-04-21T04:03:58Z&#34;),
+
+     &#34;lastHeartbeat&#34; : ISODate(&#34;2015-04-21T05:03:52Z&#34;),
+
+     &#34;lastHeartbeatRecv&#34; : ISODate(&#34;2015-04-21T04:58:29Z&#34;),
+
+     &#34;pingMs&#34; : 0
+
+     },
+
+     {
+
+     &#34;_id&#34; : 1,
+
+     &#34;name&#34; : &#34;10.168.217.186:27017&#34;,
+
+     &#34;health&#34; : 1,
+
+     &#34;state&#34; : 2,
+
+     &#34;stateStr&#34; : &#34;SECONDARY&#34;,
+
+     &#34;uptime&#34; : 4421,
+
+     &#34;optime&#34; : Timestamp(1429589038, 1),
+
+     &#34;optimeDate&#34; : ISODate(&#34;2015-04-21T04:03:58Z&#34;),
+
+     &#34;self&#34; : true
+
+     },
+
+     {
+
+     &#34;_id&#34; : 2,
+
+     &#34;name&#34; : &#34;10.252.130.121:27017&#34;,
+
+     &#34;health&#34; : 1,
+
+     &#34;state&#34; : 1,
+
+     &#34;stateStr&#34; : &#34;PRIMARY&#34;,
+
+     &#34;uptime&#34; : 4154,
+
+     &#34;optime&#34; : Timestamp(1429589038, 1),
+
+     &#34;optimeDate&#34; : ISODate(&#34;2015-04-21T04:03:58Z&#34;),
+
+     &#34;lastHeartbeat&#34; : ISODate(&#34;2015-04-21T05:03:54Z&#34;),
+
+     &#34;lastHeartbeatRecv&#34; : ISODate(&#34;2015-04-21T05:03:54Z&#34;),
+
+     &#34;pingMs&#34; : 0,
+
+     &#34;electionTime&#34; : Timestamp(1429592314, 1),
+
+     &#34;electionDate&#34; : ISODate(&#34;2015-04-21T04:58:34Z&#34;)
+
+     }
+
+     ],
+
+     &#34;ok&#34; : 1
+
+     }
+
+     repset:SECONDARY&gt;
+</code></pre></div><h3 id="然后再插入数据测试-看是否数据能同步过去">然后再插入数据测试 看是否数据能同步过去</h3>
+<h3 id="插入数据">#插入数据</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">     repset:PRIMARY&gt; use test;
+
+     switched to db test
+
+     repset:PRIMARY&gt; db.testdb.insert({&#34;test1&#34;:&#34;testval1&#34;})
+
+     WriteResult({ &#34;nInserted&#34; : 1 })
+
+     repset:PRIMARY&gt; db.testdb.insert({&#34;test2&#34;:&#34;testval2&#34;})
+
+     WriteResult({ &#34;nInserted&#34; : 1 })
+
+     repset:PRIMARY&gt; show tables;
+
+     system.indexes
+
+     testdb
+
+     repset:PRIMARY&gt; db.testdb.find();
+
+     { &#34;_id&#34; : ObjectId(&#34;5535cc2ed18a01e86aec9738&#34;), &#34;test1&#34; : &#34;testval1&#34; }
+
+     { &#34;_id&#34; : ObjectId(&#34;5535dc9b4ae39b27c85c8c99&#34;), &#34;test1&#34; : &#34;testval1&#34; }
+
+     { &#34;_id&#34; : ObjectId(&#34;5535dca24ae39b27c85c8c9a&#34;), &#34;test2&#34; : &#34;testval2&#34; }
+
+     repset:PRIMARY&gt;
+</code></pre></div><h3 id="启动刚我们停止掉的mongo1然后在查看我们这台机器启动之后是不是又变成主服务器了">启动刚我们停止掉的mongo1,然后在查看我们这台机器启动之后是不是又变成主服务器了</h3>
+<h3 id="查看日志-我们刚启动起来之后节点会变成从节点">#查看日志 我们刚启动起来之后，节点会变成从节点</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">     2015-04-21T13:19:01.676+0800 [initandlisten] waiting for connections on port 27017
+
+     2015-04-21T13:19:01.737+0800 [rsStart] replSet I am 10.168.218.46:27017
+
+     2015-04-21T13:19:01.738+0800 [rsHealthPoll] replset info 10.168.217.186:27017 thinks that we are down
+
+     2015-04-21T13:19:01.738+0800 [rsHealthPoll] replSet member 10.168.217.186:27017 is up
+
+     2015-04-21T13:19:01.738+0800 [rsHealthPoll] replSet member 10.168.217.186:27017 is now in state SECONDARY
+
+     2015-04-21T13:19:01.738+0800 [rsHealthPoll] replset info 10.252.130.121:27017 thinks that we are down
+
+     2015-04-21T13:19:01.738+0800 [rsHealthPoll] replSet member 10.252.130.121:27017 is up
+
+     2015-04-21T13:19:01.738+0800 [rsHealthPoll] replSet member 10.252.130.121:27017 is now in state PRIMARY
+
+     2015-04-21T13:19:01.748+0800 [rsStart] replSet STARTUP2
+
+     2015-04-21T13:19:01.749+0800 [rsSync] replSet SECONDARY
+
+     2015-04-21T13:19:03.015+0800 [initandlisten] connection accepted from 10.168.217.186:44350 #1 (1 connection now open)
+
+     2015-04-21T13:19:03.079+0800 [initandlisten] connection accepted from 10.168.217.186:44351 #2 (2 connections now open)
+
+     2015-04-21T13:19:03.158+0800 [conn1] end connection 10.168.217.186:44350 (1 connection now open)
+
+     2015-04-21T13:19:03.173+0800 [initandlisten] connection accepted from 10.252.130.121:34574 #3 (2 connections now open)
+
+     2015-04-21T13:19:03.429+0800 [conn3] end connection 10.252.130.121:34574 (1 connection now open)
+
+     2015-04-21T13:19:03.429+0800 [initandlisten] connection accepted from 10.252.130.121:34575 #4 (2 connections now open)
+
+     2015-04-21T13:19:05.749+0800 [rsBackgroundSync] replSet syncing to: 10.168.217.186:27017
+</code></pre></div><h3 id="查看状态">查看状态：</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">     repset:SECONDARY&gt; re.status();
+
+     2015-04-21T13:20:18.781+0800 ReferenceError: re is not defined
+
+     repset:SECONDARY&gt; rs.status();
+
+     {
+
+     &#34;set&#34; : &#34;repset&#34;,
+
+     &#34;date&#34; : ISODate(&#34;2015-04-21T05:20:22Z&#34;),
+
+     &#34;myState&#34; : 2,
+
+     &#34;syncingTo&#34; : &#34;10.252.130.121:27017&#34;,
+
+     &#34;members&#34; : [
+
+     {
+
+     &#34;_id&#34; : 0,
+
+     &#34;name&#34; : &#34;10.168.218.46:27017&#34;,
+
+     &#34;health&#34; : 1,
+
+     &#34;state&#34; : 2,
+
+     &#34;stateStr&#34; : &#34;SECONDARY&#34;,
+
+     &#34;uptime&#34; : 79,
+
+     &#34;optime&#34; : Timestamp(1429593250, 1),
+
+     &#34;optimeDate&#34; : ISODate(&#34;2015-04-21T05:14:10Z&#34;),
+
+     &#34;lastHeartbeat&#34; : ISODate(&#34;2015-04-21T05:20:21Z&#34;),
+
+     &#34;lastHeartbeatRecv&#34; : ISODate(&#34;2015-04-21T05:20:21Z&#34;),
+
+     &#34;pingMs&#34; : 0,
+
+     &#34;lastHeartbeatMessage&#34; : &#34;syncing to: 10.168.217.186:27017&#34;,
+
+     &#34;syncingTo&#34; : &#34;10.168.217.186:27017&#34;
+
+     },
+
+     {
+
+     &#34;_id&#34; : 1,
+
+     &#34;name&#34; : &#34;10.168.217.186:27017&#34;,
+
+     &#34;health&#34; : 1,
+
+     &#34;state&#34; : 2,
+
+     &#34;stateStr&#34; : &#34;SECONDARY&#34;,
+
+     &#34;uptime&#34; : 5409,
+
+     &#34;optime&#34; : Timestamp(1429593250, 1),
+
+     &#34;optimeDate&#34; : ISODate(&#34;2015-04-21T05:14:10Z&#34;),
+
+     &#34;self&#34; : true
+
+     },
+
+     {
+
+     &#34;_id&#34; : 2,
+
+     &#34;name&#34; : &#34;10.252.130.121:27017&#34;,
+
+     &#34;health&#34; : 1,
+
+     &#34;state&#34; : 1,
+
+     &#34;stateStr&#34; : &#34;PRIMARY&#34;,
+
+     &#34;uptime&#34; : 5142,
+
+     &#34;optime&#34; : Timestamp(1429593250, 1),
+
+     &#34;optimeDate&#34; : ISODate(&#34;2015-04-21T05:14:10Z&#34;),
+
+     &#34;lastHeartbeat&#34; : ISODate(&#34;2015-04-21T05:20:20Z&#34;),
+
+     &#34;lastHeartbeatRecv&#34; : ISODate(&#34;2015-04-21T05:20:22Z&#34;),
+
+     &#34;pingMs&#34; : 0,
+
+     &#34;electionTime&#34; : Timestamp(1429592314, 1),
+
+     &#34;electionDate&#34; : ISODate(&#34;2015-04-21T04:58:34Z&#34;)
+
+     }
+
+     ],
+
+     &#34;ok&#34; : 1
+
+     }
+
+     repset:SECONDARY&gt;
+</code></pre></div><h3 id="至此安装部署完成解决两个问题">至此安装部署完成,解决两个问题</h3>
+<h4 id="主节点挂掉之后能自动切换过去">主节点挂掉之后能自动切换过去</h4>
+<h4 id="主节点压力过大问题解决">主节点压力过大问题解决</h4>
+
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://opsnotes.github.io/tags/mongodb/">mongodb</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fopsnotes.github.io%2fpost%2freplset%2f&amp;text=mongodb%e9%9b%86%e7%be%a4%e4%b9%8b%e5%89%af%e6%9c%ac%e9%9b%86%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%ae&amp;via=opsnotes" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fopsnotes.github.io%2fpost%2freplset%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2freplset%2f&amp;title=mongodb%e9%9b%86%e7%be%a4%e4%b9%8b%e5%89%af%e6%9c%ac%e9%9b%86%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%ae" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fopsnotes.github.io%2fpost%2freplset%2f&amp;title=mongodb%e9%9b%86%e7%be%a4%e4%b9%8b%e5%89%af%e6%9c%ac%e9%9b%86%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%ae" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2freplset%2f&amp;title=mongodb%e9%9b%86%e7%be%a4%e4%b9%8b%e5%89%af%e6%9c%ac%e9%9b%86%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%ae" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fopsnotes.github.io%2fpost%2freplset%2f&amp;description=mongodb%e9%9b%86%e7%be%a4%e4%b9%8b%e5%89%af%e6%9c%ac%e9%9b%86%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%ae" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://opsnotes.github.io/post/rsync&#43;inotify%E6%96%87%E4%BB%B6%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5/" data-toggle="tooltip" data-placement="top" title="Rsync&#43;inotify时间服务器之间文件实时同步">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://opsnotes.github.io/post/saltstack/saltstack_zabbix-angent/" data-toggle="tooltip" data-placement="top" title="使用saltstack部署zabbix agent">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:zky.linux@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/username" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/opsnotes" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/opsnotes" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://username.slack.com/" title="Slack">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-slack fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://reddit.com/u/keengz" title="Reddit">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-reddit-alien fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/XXXXXXX/username" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/kenng.z" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://telegram.me/Ke_zz" title="Telegram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://weibo.com/angerdevil" title="Weibo">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="opsnotes.net">Kenng zhang</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://opsnotes.github.io">OpsNotes随思录</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.62.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://opsnotes.github.io/js/main.js"></script>
+<script src="https://opsnotes.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://opsnotes.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

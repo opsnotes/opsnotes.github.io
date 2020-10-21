@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>python基础学习05 - OpsNotes随思录</title>
+  <meta name="description" content="对文章的简要描述 SEO used for description">
+  <meta name="author" content="Kenng zhang"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "OpsNotes随思录",
+    
+    "url": "https:\/\/opsnotes.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/opsnotes.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io\/post\/python\/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-05\/",
+          "name": "Python基础学习05"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Kenng zhang"
+  },
+  "headline": "python基础学习05",
+  "description" : "对文章的简要描述 SEO used for description",
+  "inLanguage" : "en",
+  "wordCount":  1183 ,
+  "datePublished" : "2016-07-27T20:18:57",
+  "dateModified" : "2016-07-27T20:18:57",
+  "image" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+  "keywords" : [ "python, pyenv" ],
+  "mainEntityOfPage" : "https:\/\/opsnotes.github.io\/post\/python\/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-05\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/opsnotes.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="python基础学习05" />
+<meta property="og:description" content="对文章的简要描述 SEO used for description">
+<meta property="og:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+<meta property="og:url" content="https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-05/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="OpsNotes随思录" />
+
+  <meta name="twitter:title" content="python基础学习05" />
+  <meta name="twitter:description" content="对文章的简要描述 SEO used for description">
+  <meta name="twitter:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@opsnotes" />
+  <meta name="twitter:creator" content="@opsnotes" />
+  <link href='https://opsnotes.github.io/img/avatar-icon.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.62.2" />
+  <link rel="alternate" href="https://opsnotes.github.io/index.xml" type="application/rss+xml" title="OpsNotes随思录"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://opsnotes.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://opsnotes.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://opsnotes.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '46663382', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://opsnotes.github.io">OpsNotes随思录</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="arts打卡" href="/tags/arts%e6%89%93%e5%8d%a1">arts打卡</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="/tags/kubernetes">kubernetes</a>
+                
+                  <a href="/tags/prometheus">prometheus</a>
+                
+                  <a href="/tags/python">python</a>
+                
+                  <a href="/tags">Tags</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="OpsNotes随思录" href="https://opsnotes.github.io">
+            <img class="avatar-img" src="https://opsnotes.github.io/img/avatar-icon.png" alt="OpsNotes随思录" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 
+      
+         
+          data-img-src-1="https://tva1.sinaimg.cn/large/006tNbRwly1g9tpqtdm7xj31ee0lygth.jpg" 
+         
+         
+      ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>python基础学习05</h1>
+                  
+                    
+                      <h2 class="post-subheading">python基础语法学习-字符串</h2>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 27, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;6&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1183&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>python基础学习05</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">python基础语法学习-字符串</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 27, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;6&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1183&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p><strong>1.什么是字符串</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">	什么是字符串？
+		python3里面是unicode序列
+		在python2里面是byte序列
+		字符串也是不可变的
+		支持切片 也支持索引 支持解包操作
+		支持遍历
+	用在哪些特定的环境
+	为什么是内置数据结构
+	In [26]: s = &#39;geek&#39;
+
+In [27]: s
+Out[27]: &#39;geek&#39;
+
+In [28]: s[0]
+Out[28]: &#39;g&#39;
+
+可以反转:
+In [30]: s[::-1]
+Out[30]: &#39;keeg&#39;
+
+In [31]:
+支持解包
+In [36]: a = &#39;geek&#39;
+
+In [37]: g,*s = a
+
+In [38]: g
+Out[38]: &#39;g&#39;
+
+In [39]: s
+Out[39]: [&#39;e&#39;, &#39;e&#39;, &#39;k&#39;]
+
+In [40]:
+</code></pre></div><p><strong>2.字符串的连接</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">**join使用方法：**
+In [45]: list = [&#39;my&#39;,&#39;name&#39;,&#39;is &#39;,&#39;steven&#39;]
+
+In [46]: list
+Out[46]: [&#39;my&#39;, &#39;name&#39;, &#39;is &#39;, &#39;steven&#39;]
+
+In [47]: &#39; &#39;.join(list)
+Out[47]: &#39;my name is  steven&#39;
+
+In [48]: &#39;,&#39;.join(list)
+Out[48]: &#39;my,name,is ,steven&#39;
+
+In [49]:
+
+###字符串的分割
+**split**  从左边开始分割
+**rsplit**  从右边开始分割
+**splitlines**
+**partition**
+**rpartotion**
+
+**split练习使用**
+In [119]: a = &#34;my name is steven&#34;
+
+In [120]: a
+Out[120]: &#39;my name is steven&#39;
+
+In [121]: a.split()
+Out[121]: [&#39;my&#39;, &#39;name&#39;, &#39;is&#39;, &#39;steven&#39;]
+
+In [122]: a.split(&#39;is&#39;)
+Out[122]: [&#39;my name &#39;, &#39; steven&#39;]
+
+In [123]: a.split(&#39; &#39;, 1)
+Out[123]: [&#39;my&#39;, &#39;name is steven&#39;]
+
+In [124]: a.split(&#39; &#39;, 2)
+Out[124]: [&#39;my&#39;, &#39;name&#39;, &#39;is steven&#39;]
+
+In [125]: a.split(&#39; &#39;, 3)
+Out[125]: [&#39;my&#39;, &#39;name&#39;, &#39;is&#39;, &#39;steven&#39;]
+
+In [126]: a.split(&#39; &#39;, 4)
+Out[126]: [&#39;my&#39;, &#39;name&#39;, &#39;is&#39;, &#39;steven&#39;]
+
+In [127]: a.split(&#39; &#39;, -1)
+Out[127]: [&#39;my&#39;, &#39;name&#39;, &#39;is&#39;, &#39;steven&#39;]
+
+案例：
+
+In [131]: line = &#39;usr:http://opsnotes.net&#39;
+
+In [132]: line.split()
+Out[132]: [&#39;usr:http://opsnotes.net&#39;]
+
+In [133]: line.split(&#39;:&#39;, 1)
+Out[133]: [&#39;usr&#39;, &#39;http://opsnotes.net&#39;]
+In [135]: key, value = line.split(&#39;:&#39;, 1)
+
+In [136]: key
+Out[136]: &#39;usr&#39;
+
+In [137]: value
+Out[137]: &#39;http://opsnotes.net&#39;
+
+In [138]:
+
+**splitlines的使用方法:**
+In [138]: text = &#39;&#39;&#39;i an geek
+   .....: i an a boy&#39;&#39;&#39;
+
+In [139]: text
+Out[139]: &#39;i an geek\ni an a boy&#39;
+
+In [140]: text.splitlines()
+Out[140]: [&#39;i an geek&#39;, &#39;i an a boy&#39;]
+
+In [141]:
+
+**partition的使用方法：**
+In [141]: a
+Out[141]: &#39;my name is steven&#39;
+
+In [142]: a.partition(&#39; &#39;)
+Out[142]: (&#39;my&#39;, &#39; &#39;, &#39;name is steven&#39;)
+
+In [143]: a.split(&#39; &#39;, 1)
+Out[143]: [&#39;my&#39;, &#39;name is steven&#39;]
+
+In [144]: line.partition(&#39;:&#39;)
+Out[144]: (&#39;usr&#39;, &#39;:&#39;, &#39;http://opsnotes.net&#39;)
+
+In [145]: key, _, value = line.partition(&#39;:&#39;)
+
+In [146]: key
+Out[146]: &#39;usr&#39;
+
+In [147]: _
+Out[147]: &#39;usr&#39;
+
+In [148]: value
+Out[148]: &#39;http://opsnotes.net&#39;
+
+In [149]:
+</code></pre></div><p><strong>3.字符串修改</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">自然语言修改
+会返回一个新的字符串不会修改原来的需求
+In [23]: a
+Out[23]: &#39;my name is steven&#39;
+
+In [24]: a.capitalize()
+Out[24]: &#39;My name is steven&#39;
+
+In [25]: a.title()
+Out[25]: &#39;My Name Is Steven&#39;
+
+In [26]: a.lower()
+Out[26]: &#39;my name is steven&#39;
+
+In [27]: a.upper()
+Out[27]: &#39;MY NAME IS STEVEN&#39;
+
+大小写转换通常用在我们做比较的时候。
+
+
+####程序世界的修改（center ljust rjust zfill）非重要
+center是从两边开始填充
+In [6]: a.center(80)
+Out[6]: &#39;                               my name is steven                                &#39;
+
+In [7]: a.center(80,&#39;#&#39;)
+Out[7]: &#39;###############################my name is steven################################&#39;
+
+In [8]:
+In [8]: help(a.ljust)
+Help on built-in function ljust:
+
+ljust(...) method of builtins.str instance
+    S.ljust(width[, fillchar]) -&gt; str
+
+    Return S left-justified in a Unicode string of length width. Padding is
+    done using the specified fill character (default is a space).
+(END)
+ljust的使用从右边开始填充
+In [10]: a.ljust(80,&#39;*&#39;)
+Out[10]: &#39;my name is steven***************************************************************&#39;
+
+In [11]:
+添加页码的方法:
+In [12]: a.ljust(80) + &#39;01&#39;
+Out[12]: &#39;my name is steven                                                               01&#39;
+
+rjust是从左边开始填充
+In [13]: a.rjust(80,&#39;*&#39;)
+Out[13]: &#39;***************************************************************my name is steven&#39;
+
+In [14]:
+zfill使用
+In [14]: a.zfill(80)
+Out[14]: &#39;000000000000000000000000000000000000000000000000000000000000000my name is steven&#39;
+
+
+**strip**   全部的空白
+**lstrip**  去除左边的空白
+**rstrip**  去除右边的空白
+
+
+**strip的使用方法**
+In [15]: b = &#39; hah \n \t&#39;
+
+In [41]: b.strip()
+Out[41]: &#39;hah&#39;
+
+In [42]: b.rstrip()
+Out[42]: &#39; hah&#39;
+
+In [43]: b.lstrip()
+Out[43]: &#39;hah \n \t&#39;
+
+In [44]:
+
+
+In [17]:
+In [26]: f = open(&#39;hello.py&#39;)
+In [28]: f.readline
+Out[28]: &lt;function TextIOWrapper.readline&gt;
+
+In [29]: f.readline()
+Out[29]: &#39;#!/usr/bin/env python\n&#39;
+
+In [30]: f.readline().strip()
+Out[30]: &#34;print (&#39;hello world!&#39;)&#34;
+
+In [31]: f.close()
+</code></pre></div><p><strong>4.字符串的判断</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">**startswith**  用的非常多
+# **endswith**    用的非常多
+**is_*  用的比较少
+
+**startswith使用方法
+In [47]: b = &#39;##test##&#39;
+
+In [49]: b.startswith(&#39;#&#39;)
+Out[49]: True
+
+In [50]: b.startswith(&#39;##&#39;)
+Out[50]: True
+
+In [51]: b.startswith(&#39;###&#39;)
+Out[51]: False
+
+In [52]:
+
+In [52]: line1 = &#34;UUID=6634633e-001d-43ba-8fab-202f1df93339 / ext4 defaults,barrier=0 1 1&#34;
+
+In [53]: uuid = &#39;6634633e-001d-43ba-8fab-202f1df93339&#39;
+
+In [54]: line1.startswith(uuid,5)
+Out[54]: True
+
+
+**endswith的使用方法,从后面判断
+
+In [57]: line1
+Out[57]: &#39;UUID=6634633e-001d-43ba-8fab-202f1df93339 / ext4 defaults,barrier=0 1 1&#39;
+
+In [58]: line1.endswith(&#39;0&#39;)
+Out[58]: False
+
+In [59]: line1.endswith(&#39;1&#39;)
+Out[59]: True
+
+In [60]:
+
+**is_*的使用方法,多中判断
+In [61]: line1.isupper()
+Out[61]: False
+
+In [62]: line1.islower()
+Out[62]: False
+
+In [63]: line1.isdigit()
+Out[63]: False
+
+In [64]: &#39;123&#39;.isdigit()
+Out[64]: True
+
+In [65]:
+</code></pre></div><p><strong>5.查找替换</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">**count**
+**find**
+**rfind**
+**index**
+**rindex**
+**replace**
+
+**count的用法,count统计可以统计一个字母也可以统计一个单词
+In [13]: a
+Out[13]: &#39;my name is steven&#39;
+
+In [14]: a.count(&#39;+&#39;)
+Out[14]: 0
+
+In [15]: a.count(&#39;m&#39;)
+Out[15]: 2
+
+In [16]: a.count(&#39;s&#39;)
+Out[16]: 2
+
+In [17]:
+
+In [18]: a.find(&#39;s&#39;)
+Out[18]: 9
+
+**find的用法,最早出现的位置,可以找一个字符也可以找一个数字，查找索引，从开始查找
+In [19]: a
+Out[19]: &#39;my name is steven&#39;
+
+In [20]: a.find(&#39;s&#39;)  
+Out[20]: 9
+
+In [21]: a.find(&#39;m&#39;)
+Out[21]: 0
+
+In [22]:
+
+**index的使用方法
+n [23]: a.index(&#39;t&#39;)
+Out[23]: 12
+
+In [24]: a.rindex(&#39;t&#39;)
+Out[24]: 12
+
+####index和find的区别,当一个不存在的时候
+
+In [27]: a.rindex(&#39;c&#39;)
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+&lt;ipython-input-27-b8abc29ea215&gt; in &lt;module&gt;()
+----&gt; 1 a.rindex(&#39;c&#39;)
+
+ValueError: substring not found
+
+In [28]: a.find(&#39;c&#39;)
+Out[28]: -1
+
+In [29]:
+
+**replace的使用方法
+In [30]: s = &#39;abc123abc123&#39;
+
+In [31]: s.replace(&#39;abc&#39;,&#39;xyz&#39;)
+Out[31]: &#39;xyz123xyz123&#39;
+
+In [32]: s
+Out[32]: &#39;abc123abc123&#39;
+
+In [33]: s.replace(&#39;abc&#39;,&#39;xyz&#39;,1)
+Out[33]: &#39;xyz123abc123&#39;
+
+In [35]: s.replace(&#39;abc&#39;,&#39;&#39;)
+Out[35]: &#39;123123&#39;
+
+In [36]: s.replace(&#39;abc&#39;,&#39;xyz&#39;, -1) 如果是负数不存在的时候 会全部被替换掉
+Out[36]: &#39;xyz123xyz123&#39;
+
+In [37]:
+</code></pre></div><p><strong>6.字符串格式化</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str
+字符串格式化
+
+In [4]: &#39;i an %s&#39; % (&#39;geek&#39;,)
+Out[4]: &#39;i an geek&#39;
+
+In [5]:
+template % tuple template % dict
+
+In [5]: &#39;i an %(name)s&#39; % {&#39;name&#39;:&#39;steven&#39;}
+Out[5]: &#39;i an steven&#39;
+
+In [9]: &#39;i am %s &#39; % &#39;steven&#39;
+Out[9]: &#39;i am steven &#39;
+
+In [10]:
+
+小括号在代码里面有特殊意义,如果不加,会变成其他的
+In [8]: &#39;i an %(name)s,my name is %(name)s&#39; % {&#39;name&#39;:&#39;steven&#39;}
+Out[8]: &#39;i an steven,my name is steven&#39;
+
+In [9]:
+什么时候需要字典？
+	内容反复出现
+	需要格式化更多内容很多
+
+python中%i和%d没有区别 在C中有区别
+In [11]: &#39;%d&#39; % 18
+Out[11]: &#39;18&#39;
+
+In [12]: &#39;%i&#39; % 18
+Out[12]: &#39;18&#39;
+
+In [13]: &#39;%li&#39; % 18  ####l会自动忽略掉
+Out[13]: &#39;18&#39;
+
+X代表16进制
+In [14]: &#39;%x&#39; %  18
+Out[14]: &#39;12&#39;
+
+In [15]: &#39;%X&#39; %  18
+Out[15]: &#39;12&#39;
+
+In [16]: &#39;%X&#39; %  12
+Out[16]: &#39;C&#39;
+
+In [17]: &#39;%x&#39; %  12
+Out[17]: &#39;c&#39;
+
+In [18]:
+
+e代表浮点数
+In [19]: &#39;%e&#39; % 0.000015
+Out[19]: &#39;1.500000e-05&#39;
+
+In [20]: &#39;%E&#39; % 0.000015
+Out[20]: &#39;1.500000E-05&#39;
+
+In [21]:
+
+字符串r和s的区别	
+任意都可以使用%s
+
+%a 把中文修改成字符
+
+%f 默认显示6位
+
+In [3]: &#39;%f is love&#39; % 123
+Out[3]: &#39;123.000000 is love&#39;
+
+In [4]:
+
+In [4]: &#39;%+d&#39; % 123
+Out[4]: &#39;+123&#39;
+
+In [5]: &#39;%-d&#39; % 123
+Out[5]: &#39;123&#39;
+
+In [6]: &#39;%dd&#39; % 123
+Out[6]: &#39;123d&#39;
+
+In [7]:
+
+%s  %d %f  是用的最多的
+
+###format格式方法 python3的特性
+In [7]: &#39;i am {}&#39;.format(&#39;steven&#39;)
+Out[7]: &#39;i am steven&#39;
+
+In [8]: &#39;i am {}, my age is {}&#39;.format(&#39;steven&#39;,25)
+Out[8]: &#39;i am steven, my age is 25&#39;
+
+In [9]: &#39;i am {1}, my age is {0}&#39;.format(&#39;steven&#39;,25)
+Out[9]: &#39;i am 25, my age is steven&#39;
+
+
+In [11]: &#39;i am {name}, my age is {age}&#39;.format(name=&#39;steven&#39;,age=25)
+Out[11]: &#39;i am steven, my age is 25&#39;
+
+In [12]:
+
+In [13]: &#39;i am {0}, my name is {0}&#39;.format(&#39;steven&#39;,25)
+Out[13]: &#39;i am steven, my name is steven&#39;
+
+In [14]:format(里面参数是从0开始)
+
+关键字要在后,两边对应,format后面要从0开始计数
+In [15]: &#39;{} {} {name}&#39;.format(1,2,name=&#39;steven&#39;)
+Out[15]: &#39;1 2 steven&#39;
+
+In [16]: &#39;{} {name} {}&#39;.format(1,2,name=&#39;steven&#39;)
+Out[16]: &#39;1 steven 2&#39;
+
+In [17]: &#39;{name} {} {}&#39;.format(1,2,name=&#39;steven&#39;)
+Out[17]: &#39;steven 1 2&#39;
+
+In [18]:
+
+In [19]: &#39;i {}, name {}, age {}, sex {}&#39;.format(&#39;steven&#39;, 28, &#39;steven&#39;, &#39;M&#39;)
+Out[19]: &#39;i steven, name 28, age steven, sex M&#39;
+
+In [20]:
+
+居中左边右边对齐
+In [21]: &#39;{0:80}&#39;.format(&#39;学习成长&#39;)
+Out[21]: &#39;学习成长                                                                            &#39;
+
+In [22]: &#39;{0:^80}&#39;.format(&#39;学习成长&#39;)
+Out[22]: &#39;                                      学习成长                                      &#39;
+
+In [23]: &#39;{0:&lt;80}&#39;.format(&#39;学习成长&#39;)
+Out[23]: &#39;学习成长                                                                            &#39;
+
+In [24]: &#39;{0:80}&#39;.format(&#39;学习成长&#39;)
+Out[24]: &#39;学习成长                                                                            &#39;
+
+In [25]: &#39;{0:&gt;80}&#39;.format(&#39;学习成长&#39;)
+Out[25]:
+
++号如果是负数 不管加不加都显示负数，其中0是索引
+In [27]: &#39;{0:+}&#39;.format(10)
+Out[27]: &#39;+10&#39;
+
+In [28]: &#39;{0:+}&#39;.format(-10)
+Out[28]: &#39;-10&#39;
+
+In [29]: &#39;{0:-}&#39;.format(-10)
+Out[29]: &#39;-10&#39;
+
+In [30]: &#39;{0:-}&#39;.format(10)
+Out[30]: &#39;10&#39;
+
+In [31]:
+
+//添加宽度之后类似于右对齐
+In [31]: &#39;{0:80}&#39;.format(10)
+Out[31]: &#39;                                                                              10&#39;
+
+//如果是字符串会报异常
+In [36]: &#39;{0:d}&#39;.format(10)
+Out[36]: &#39;10&#39;
+
+In [37]: &#39;{0:d}&#39;.format(steven)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+&lt;ipython-input-37-48cb87f81982&gt; in &lt;module&gt;()
+----&gt; 1 &#39;{0:d}&#39;.format(steven)
+
+NameError: name &#39;steven&#39; is not defined
+
+In [38]:
+</code></pre></div>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://opsnotes.github.io/tags/python/">python</a>&nbsp;
+            
+              <a href="https://opsnotes.github.io/tags/pyenv/">pyenv</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fpython%2fpython%25E5%259F%25BA%25E7%25A1%2580%25E8%25AF%25AD%25E6%25B3%2595%25E5%25AD%25A6%25E4%25B9%25A0-05%2f&amp;text=python%e5%9f%ba%e7%a1%80%e5%ad%a6%e4%b9%a005&amp;via=opsnotes" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fopsnotes.github.io%2fpost%2fpython%2fpython%25E5%259F%25BA%25E7%25A1%2580%25E8%25AF%25AD%25E6%25B3%2595%25E5%25AD%25A6%25E4%25B9%25A0-05%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fpython%2fpython%25E5%259F%25BA%25E7%25A1%2580%25E8%25AF%25AD%25E6%25B3%2595%25E5%25AD%25A6%25E4%25B9%25A0-05%2f&amp;title=python%e5%9f%ba%e7%a1%80%e5%ad%a6%e4%b9%a005" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fpython%2fpython%25E5%259F%25BA%25E7%25A1%2580%25E8%25AF%25AD%25E6%25B3%2595%25E5%25AD%25A6%25E4%25B9%25A0-05%2f&amp;title=python%e5%9f%ba%e7%a1%80%e5%ad%a6%e4%b9%a005" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fpython%2fpython%25E5%259F%25BA%25E7%25A1%2580%25E8%25AF%25AD%25E6%25B3%2595%25E5%25AD%25A6%25E4%25B9%25A0-05%2f&amp;title=python%e5%9f%ba%e7%a1%80%e5%ad%a6%e4%b9%a005" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fpython%2fpython%25E5%259F%25BA%25E7%25A1%2580%25E8%25AF%25AD%25E6%25B3%2595%25E5%25AD%25A6%25E4%25B9%25A0-05%2f&amp;description=python%e5%9f%ba%e7%a1%80%e5%ad%a6%e4%b9%a005" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/python/python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%BB%83%E4%B9%A0/">python基础学习06</a></li>
+                
+                    <li><a href="/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-04/">python基础学习04</a></li>
+                
+                    <li><a href="/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-03/">python基础学习03</a></li>
+                
+                    <li><a href="/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-02%E8%BF%90%E7%AE%97%E7%AC%A6/">python基础学习01</a></li>
+                
+                    <li><a href="/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-01/">python基础学习02</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-03/" data-toggle="tooltip" data-placement="top" title="python基础学习03">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-04/" data-toggle="tooltip" data-placement="top" title="python基础学习04">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:zky.linux@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/username" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/opsnotes" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/opsnotes" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://username.slack.com/" title="Slack">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-slack fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://reddit.com/u/keengz" title="Reddit">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-reddit-alien fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/XXXXXXX/username" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/kenng.z" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://telegram.me/Ke_zz" title="Telegram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://weibo.com/angerdevil" title="Weibo">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="opsnotes.net">Kenng zhang</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://opsnotes.github.io">OpsNotes随思录</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.62.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://opsnotes.github.io/js/main.js"></script>
+<script src="https://opsnotes.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://opsnotes.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

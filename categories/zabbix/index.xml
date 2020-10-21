@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zabbix on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/categories/zabbix/</link>
+    <description>Recent content in zabbix on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Mon, 31 Aug 2015 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/categories/zabbix/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>zabbix使用微信接口报警</title>
+      <link>https://opsnotes.github.io/post/weixin_actions/</link>
+      <pubDate>Mon, 31 Aug 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/weixin_actions/</guid>
+      <description>&lt;h1 id=&#34;安装部署之前需要先安装php关于php的安装部署我在这里就不详细说明了&#34;&gt;安装部署之前需要先安装php,关于PHP的安装部署,我在这里就不详细说明了。&lt;/h1&gt;
+&lt;h3 id=&#34;微信公众号设置&#34;&gt;微信公众号设置:&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1.先注册微信公主号
+2.选择需要给发送的人点击头像就可以得到如下链接。我们获取“tofakeid”的ID
+https://mp.weixin.qq.com/cgi-bin/singlesendpage?t=message/send&amp;amp;action=index&amp;amp;tofakeid=750362702&amp;amp;token=430276069&amp;amp;lang=zh_CN
+3.如图是对Geek这个用户选择发送：
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://opsnotes.github.io/img/weixin1.png&#34; alt=&#34;weixin&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>zabbix优化记一次惨痛的zabbix数据库优化</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_11/</link>
+      <pubDate>Fri, 20 Jun 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_11/</guid>
+      <description>&lt;h3 id=&#34;记一次惨痛的zabbix数据库分表&#34;&gt;记一次惨痛的zabbix数据库分表&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;最近负责公司的zabbix项目，由于前期缺少整体性能架构的规划,导致后期出一系列的问题，玩zabbix的兄弟都知道，zabbix最大的瓶颈本身不在zabbix服务，而在mysql数据库的压力上，因此，优化zabbix其实就是优化zabbix的配置以及zabbix的mysql了;  
+    Zabbix 数据库常见的优化处理方法有两种：  
+        01.	优化数据库,对数据库进行分表处理;  
+        02.	清空数据库中的history, history_uint表;  
+    在接下来的方案我们就mysql数据库分表来进行优化；  
+具体思路：  
+    1.	首先下载脚本  
+        https://github.com/itnihao/zabbixdbpartitioning  
+        感谢hao哥提供脚本以及帮助。  
+    2.	前期准备工作,安全起见最好安装screen,也不怕程序卡死,关于screen的用法请参考http://www.kwx.gd/CentOSApp/CentOS-screen.html  
+        关闭zabbix的邮件报警,也可以关闭zabbix server服务,mysql本身会锁表  
+    3.	在screen模式下运行脚本，  
+        在这里需要注意的是，如果你的数据库特别大,最好先备份,然后在修改脚本,然后分表,在修改脚本的时候需要注意的几个地方我这里先列出来下,如下:  
+        首先修改zabbix 数据库和密码 默认情况下是都是zabbix 如果你的也是这样的话,那么不用修改,
+        然后修改配置文件的路径,根据自己的自定义的路径来修改脚本的路径  
+        如果手动备份了那么关闭脚本中备份.  
+    4.	然后来查看是否创建完成; 
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件zabbix搭建部署之zabbix Services添加主机 </title>
+      <link>https://opsnotes.github.io/post/install_zabbix_04/</link>
+      <pubDate>Thu, 26 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_04/</guid>
+      <description>&lt;h3 id=&#34;企业级监控软件zabbix搭建部署之zabbix-services添加主机&#34;&gt;企业级监控软件zabbix搭建部署之zabbix Services添加主机&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;环境： CentOS6.X X86_64   
+      Version：zabbix 2.0.8    
+1.	首先登录到zabbix文件服务器替换zabbix替换文件字体   
+    [root@Zabbix-Server fonts]# mv DejaVuSans.ttf   DejaVuSans.ttf.w   
+    [root@Zabbix-Server fonts]# pwd   
+    /var/www/zabbix/fonts  
+    [root@Zabbix-Server fonts]# ls   
+    DejaVuSans.ttf.w  simhei.ttf  
+    [root@Zabbix-Server fonts]# mv simhei.ttf DejaVuSans.ttf  
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件zabbix搭建部署之Zabbix自定义端口阈值配置以及应用</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_05/</link>
+      <pubDate>Thu, 26 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_05/</guid>
+      <description>&lt;h3 id=&#34;企业级监控软件zabbix搭建部署之zabbix自定义端口阈值配置以及应用&#34;&gt;企业级监控软件zabbix搭建部署之Zabbix自定义端口阈值配置以及应用&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;环境：CentOS6.3 X86_64   
+软件：Zabbix 2.0.8   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;一配置zabiix自定义模板&#34;&gt;一．	配置zabiix自定义模板&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;    1.	首先登录zabbixweb服务端；
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件zabbix搭建部署之zabbix在WEB页面中的配置</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_02/</link>
+      <pubDate>Tue, 24 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_02/</guid>
+      <description>&lt;h3 id=&#34;企业级监控软件zabbix搭建部署之zabbix在web页面中的配置&#34;&gt;企业级监控软件zabbix搭建部署之zabbix在WEB页面中的配置&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;关于安装请看http://opsnotes.net/2013/12/22/install_zabbix_01/  
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件Zabbix搭建部署之Zabbix-Agents的安装部署</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_03/</link>
+      <pubDate>Mon, 23 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_03/</guid>
+      <description>&lt;h3 id=&#34;我们首先来安装基于linux的zabbix的客户端安装&#34;&gt;我们首先来安装基于Linux的Zabbix的客户端安装&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1.首先修改计算机的主机名字；其实计算机名字也不用修改都可以  
+
+[root@localhost ~]# hostname     
+Zabbix-Agent01  
+[root@localhost ~]# cat /etc/sysconfig/network  
+NETWORKING=yes  
+HOSTNAME=Zabbix-Agent01  
+[root@localhost ~]# 
+
+2.创建用户  
+useradd -s /sbin/nologin zabbix
+
+3.下载解压客户端  
+下载可以去zabbix官方下载www.zabbix.com  
+
+需要注意的是：在2.0后客户端安装的时候，会解压三个文件，sbin conf bin；然后我们把解压的三个目录复制到我们创建的zabbix目录下面
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

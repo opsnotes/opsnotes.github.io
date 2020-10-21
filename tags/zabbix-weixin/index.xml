@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zabbix weixin on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/zabbix-weixin/</link>
+    <description>Recent content in zabbix weixin on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Mon, 31 Aug 2015 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/zabbix-weixin/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>zabbix使用微信接口报警</title>
+      <link>https://opsnotes.github.io/post/weixin_actions/</link>
+      <pubDate>Mon, 31 Aug 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/weixin_actions/</guid>
+      <description>&lt;h1 id=&#34;安装部署之前需要先安装php关于php的安装部署我在这里就不详细说明了&#34;&gt;安装部署之前需要先安装php,关于PHP的安装部署,我在这里就不详细说明了。&lt;/h1&gt;
+&lt;h3 id=&#34;微信公众号设置&#34;&gt;微信公众号设置:&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1.先注册微信公主号
+2.选择需要给发送的人点击头像就可以得到如下链接。我们获取“tofakeid”的ID
+https://mp.weixin.qq.com/cgi-bin/singlesendpage?t=message/send&amp;amp;action=index&amp;amp;tofakeid=750362702&amp;amp;token=430276069&amp;amp;lang=zh_CN
+3.如图是对Geek这个用户选择发送：
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://opsnotes.github.io/img/weixin1.png&#34; alt=&#34;weixin&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

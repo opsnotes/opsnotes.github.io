@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>openvpn on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/categories/openvpn/</link>
+    <description>Recent content in openvpn on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Wed, 15 Mar 2017 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/categories/openvpn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>openvpn使用密码账号安装部署:</title>
+      <link>https://opsnotes.github.io/post/openvpn-install/</link>
+      <pubDate>Wed, 15 Mar 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/openvpn-install/</guid>
+      <description>准备环境 系统: CentOS 6.7 X86_64 OpenVpn: 2.4.4 关闭Selinux [root@localhost 2.0]# sed -i &amp;#39;/^SELINUX=/c\SELINUX=disabled&amp;#39; /etc/selinux/config 安装epelrpm包,不然没有openvpn这个rpm,安装openvpn相关依赖的包 [root@localhost 2.0]# rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm [root@localhost 2.0]# yum -y install openvpn easy-rsa openssl openssl-devel gcc vim 修改Easy-ras主服务信息. [root@localhost 2.0]# cd /usr/share/easy-rsa/2.0/ [root@localhost 2.0]# chmod +x * [root@localhost 2.0]# cp -a vars vars.20180111 [root@localhost 2.0]# vim vars ###找到这个文件修改其中的这几行信息 export KEY_COUNTRY=&amp;#34;CN&amp;#34; export KEY_PROVINCE=&amp;#34;SH&amp;#34; export KEY_CITY=&amp;#34;SH&amp;#34; export KEY_ORG=&amp;#34;DFCF&amp;#34; export KEY_EMAIL=&amp;#34;zky.linux@gmail.com&amp;#34; export KEY_OU=&amp;#34;OPS&amp;#34; [root@localhost 2.0]# 清除keys目录下所有与证书相关的文件， 注意：下面步骤生成的证书和密钥都在/usr/share/easy-rsa/2.0/keys目录里 [root@localhost 2.0]# source vars //提示可以忽略 [root@localhost 2.</description>
+    </item>
+    
+  </channel>
+</rss>

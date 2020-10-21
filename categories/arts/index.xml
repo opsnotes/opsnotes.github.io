@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ARTS on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/categories/arts/</link>
+    <description>Recent content in ARTS on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Sat, 07 Mar 2020 11:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/categories/arts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ARTS第六周</title>
+      <link>https://opsnotes.github.io/post/artsweekly/week06/</link>
+      <pubDate>Sat, 07 Mar 2020 11:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/artsweekly/week06/</guid>
+      <description>读书 本周在读的书. 猜测和偏见 (豆瓣)
+定投十年财务自由 (豆瓣)
+狙击涨停板 (豆瓣)
+Tip 学习人脉扩展,具体参考PDF
+人脉扩展
+Share   📕 The 25 most recommended programming books of all-time. · daolf
+  https://zouying.life/2020/02/11/home-networking/
+  优化 Google Chrome 的使用体验 | 琉璃の夢
+  </description>
+    </item>
+    
+    <item>
+      <title>ARTS第五周</title>
+      <link>https://opsnotes.github.io/post/artsweekly/week05/</link>
+      <pubDate>Sun, 19 Jan 2020 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/artsweekly/week05/</guid>
+      <description>读书 本周在读的书. 硅谷钢铁侠 (豆瓣) 时间管理在学习 变量2 (豆瓣)
+Tip prometheus持续学习 思维的认知提升和改变 Overview of all pages with the tag #prometheus - OpsNotes随思录
+Share 1. https://medium.com/swlh/kubernetes-configmap-confuguration-and-reload-strategy-9f8a286f3a44 </description>
+    </item>
+    
+    <item>
+      <title>ARTS第五周</title>
+      <link>https://opsnotes.github.io/posts/artsweekly/week05/</link>
+      <pubDate>Sun, 19 Jan 2020 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/posts/artsweekly/week05/</guid>
+      <description>读书 本周在读的书. 硅谷钢铁侠 (豆瓣)
+时间管理在学习
+变量2 (豆瓣)
+Tip 1. prometheus持续学习  Overview of all pages with the tag #prometheus - OpsNotes随思录
+2. 思维的认知提升和改变  Share Kubernetes ConfigMap Configuration and Reload Strategy</description>
+    </item>
+    
+    <item>
+      <title>ARTS第四周</title>
+      <link>https://opsnotes.github.io/post/artsweekly/week04/</link>
+      <pubDate>Sun, 12 Jan 2020 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/artsweekly/week04/</guid>
+      <description>读书 本周在读的书. 硅谷钢铁侠 (豆瓣) 时间管理在学习
+读书笔记 可以查看《津巴多时间观念》笔记
+津巴多时间观念
+Tip prometheus技巧在学习
+Category: prometheus
+Share A DevOps Periodic Table of Critical Alert Monitoring System Integrations
+https://itnext.io/kubernetes-monitoring-with-prometheus-in-15-minutes-8e54d1de2e13</description>
+    </item>
+    
+    <item>
+      <title>ARTS第三周</title>
+      <link>https://opsnotes.github.io/post/artsweekly/week03/</link>
+      <pubDate>Mon, 06 Jan 2020 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/artsweekly/week03/</guid>
+      <description>读书 本周在读书. 刻意练习 (豆瓣) 硅谷钢铁侠 (豆瓣) 请停止无效努力 (豆瓣) 已读完
+读书笔记 可以查看《如何使用正确的方法快入进阶》笔记
+停止无效努力读书笔记
+Tip 学会在hexo中插入PDF文档 1. 安装hexo-pdf插件 npm install --save hexo-pdf 2. 在source目录下面和_posts同级的目录创建pdf目录把pdf文件放在里面 /Users/Learning/Learning materials/opsnotes/source mkdir pdf 3. 在文章中引用 &amp;lt;br&amp;gt; {% pdf /pdf/停止无效努力读书笔记.pdf %} &amp;lt;br&amp;gt; Share 1. 看了2篇英文文档  The Twelve-Factor Container - Notbinary - Medium
+Kubernetes ConfigMap Configuration and Reload Strategy</description>
+    </item>
+    
+    <item>
+      <title>ARTS第二周</title>
+      <link>https://opsnotes.github.io/post/artsweekly/week02/</link>
+      <pubDate>Fri, 27 Dec 2019 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/artsweekly/week02/</guid>
+      <description>读书 本周在读书. 刻意练习 (豆瓣)
+请停止无效努力 (豆瓣)
+读书笔记 可以查看《如何使用正确的方法快入进阶》笔记
+停止无效努力读书笔记
+Tip MAC下面微信无法截图问题 解决catalina系统中微信或其他APP截图无法正常使用 1. 选择Security&amp;amp;privacy 2. 在隐私你们旋转,screen recording,选择wechat.重新登录就好. Share 1. 看了2篇英文文档  Distributed Systems: When you should build them, and how to scale. A step-by-step guide.
+https://medium.com/notbinary/the-twelve-factor-container-8d1edc2a49d4</description>
+    </item>
+    
+    <item>
+      <title>ARTS第一周</title>
+      <link>https://opsnotes.github.io/post/artsweekly/week01/</link>
+      <pubDate>Thu, 19 Dec 2019 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/artsweekly/week01/</guid>
+      <description>Algorithm Algorithm 链接： https://leetcode-cn.com/problems/add-two-numbers
+Tip [SuperUser] How to expand * on Bash command line
+我是在Linux命令行上误操作时，发现通配符被自动扩展出来，于是通过搜索，找到了该“隐藏”的功能键：
+输入命令ls *后，按键：+ x + *，可以看到该目录下的文件列表，被扩展出来，可以继续进行编辑。
+而在过去，我通常都需要手工对ls命令的结果进行选择和拷贝。
+Share 分享一篇CSDN上的技术文章：</description>
+    </item>
+    
+  </channel>
+</rss>

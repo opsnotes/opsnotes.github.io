@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>openvpn使用密码账号安装部署: - OpsNotes随思录</title>
+  <meta name="description" content="对文章的简要描述 SEO used for description">
+  <meta name="author" content="Kenng zhang"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "OpsNotes随思录",
+    
+    "url": "https:\/\/opsnotes.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/opsnotes.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io\/post\/openvpn-install\/",
+          "name": "Openvpn使用密码账号安装部署 "
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Kenng zhang"
+  },
+  "headline": "openvpn使用密码账号安装部署:",
+  "description" : "对文章的简要描述 SEO used for description",
+  "inLanguage" : "en",
+  "wordCount":  848 ,
+  "datePublished" : "2017-03-15T20:18:57",
+  "dateModified" : "2017-03-15T20:18:57",
+  "image" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+  "keywords" : [ "openvpn" ],
+  "mainEntityOfPage" : "https:\/\/opsnotes.github.io\/post\/openvpn-install\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/opsnotes.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="openvpn使用密码账号安装部署:" />
+<meta property="og:description" content="对文章的简要描述 SEO used for description">
+<meta property="og:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+<meta property="og:url" content="https://opsnotes.github.io/post/openvpn-install/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="OpsNotes随思录" />
+
+  <meta name="twitter:title" content="openvpn使用密码账号安装部署:" />
+  <meta name="twitter:description" content="对文章的简要描述 SEO used for description">
+  <meta name="twitter:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@opsnotes" />
+  <meta name="twitter:creator" content="@opsnotes" />
+  <link href='https://opsnotes.github.io/img/avatar-icon.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.62.2" />
+  <link rel="alternate" href="https://opsnotes.github.io/index.xml" type="application/rss+xml" title="OpsNotes随思录"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://opsnotes.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://opsnotes.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://opsnotes.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '46663382', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://opsnotes.github.io">OpsNotes随思录</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="arts打卡" href="/tags/arts%e6%89%93%e5%8d%a1">arts打卡</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="/tags/kubernetes">kubernetes</a>
+                
+                  <a href="/tags/prometheus">prometheus</a>
+                
+                  <a href="/tags/python">python</a>
+                
+                  <a href="/tags">Tags</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="OpsNotes随思录" href="https://opsnotes.github.io">
+            <img class="avatar-img" src="https://opsnotes.github.io/img/avatar-icon.png" alt="OpsNotes随思录" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 
+      
+         
+          data-img-src-1="https://tva1.sinaimg.cn/large/006tNbRwly1g9tpqtdm7xj31ee0lygth.jpg" 
+         
+         data-img-desc-1="Beijing China|May 28,2017"
+      ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>openvpn使用密码账号安装部署:</h1>
+                  
+                    
+                      <h2 class="post-subheading">openvpn使用密码账号安装部署</h2>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on March 15, 2017
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;848&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>openvpn使用密码账号安装部署:</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">openvpn使用密码账号安装部署</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on March 15, 2017
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;848&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <h3 id="准备环境">准备环境</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">系统: CentOS 6.7 X86_64
+OpenVpn: 2.4.4
+</code></pre></div><h3 id="关闭selinux">关闭Selinux</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost 2.0]# sed -i &#39;/^SELINUX=/c\SELINUX=disabled&#39; /etc/selinux/config
+</code></pre></div><h3 id="安装epelrpm包不然没有openvpn这个rpm安装openvpn相关依赖的包">安装epelrpm包,不然没有openvpn这个rpm,安装openvpn相关依赖的包</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost 2.0]# rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm
+
+[root@localhost 2.0]# yum -y install openvpn easy-rsa openssl openssl-devel gcc vim
+</code></pre></div><h3 id="修改easy-ras主服务信息">修改Easy-ras主服务信息.</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost 2.0]# cd  /usr/share/easy-rsa/2.0/
+[root@localhost 2.0]# chmod +x *
+[root@localhost 2.0]# cp -a vars vars.20180111
+[root@localhost 2.0]# vim vars   ###找到这个文件修改其中的这几行信息
+export KEY_COUNTRY=&#34;CN&#34;
+export KEY_PROVINCE=&#34;SH&#34;
+export KEY_CITY=&#34;SH&#34;
+export KEY_ORG=&#34;DFCF&#34;
+export KEY_EMAIL=&#34;zky.linux@gmail.com&#34;
+export KEY_OU=&#34;OPS&#34;
+[root@localhost 2.0]#
+</code></pre></div><h3 id="清除keys目录下所有与证书相关的文件">清除keys目录下所有与证书相关的文件，</h3>
+<h4 id="注意下面步骤生成的证书和密钥都在usrshareeasy-rsa20keys目录里">注意：下面步骤生成的证书和密钥都在/usr/share/easy-rsa/2.0/keys目录里</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost 2.0]# source vars //提示可以忽略
+[root@localhost 2.0]# ./clean-all
+[root@localhost 2.0]# ll keys/
+</code></pre></div><h3 id="生成根证书cacrt和根密钥cakey一路回车即可">生成根证书ca.crt和根密钥ca.key(一路回车即可)</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost 2.0]# ./build-ca
+[root@localhost 2.0]# ll /usr/share/easy-rsa/2.0/keys
+总用量 12
+-rw-r--r-- 1 root root 1647 1月  12 00:43 ca.crt
+-rw------- 1 root root 1704 1月  12 00:43 ca.key
+-rw-r--r-- 1 root root    0 1月  12 00:43 index.txt
+-rw-r--r-- 1 root root    3 1月  12 00:43 serial
+[root@localhost 2.0]#
+</code></pre></div><h3 id="生成服务端证书">生成服务端证书</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost 2.0]# ./build-key-server server
+Generating a 2048 bit RSA private key
+.+++
+....................+++
+writing new private key to &#39;server.key&#39;
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter &#39;.&#39;, the field will be left blank.
+-----  ### 默认全部回车这里
+Country Name (2 letter code) [CN]:
+State or Province Name (full name) [SH]:
+Locality Name (eg, city) [SH]:
+Organization Name (eg, company) [DFCF]:
+Organizational Unit Name (eg, section) [OPS]:
+Common Name (eg, your name or your server&#39;s hostname) [server]:
+Name [EasyRSA]:
+Email Address [zky.linux@gmail.com]:
+
+Please enter the following &#39;extra&#39; attributes
+to be sent with your certificate request
+A challenge password []:password   ###需要输入密码
+An optional company name []:
+Using configuration from /usr/share/easy-rsa/2.0/openssl-1.0.0.cnf
+Check that the request matches the signature
+Signature ok
+The Subject&#39;s Distinguished Name is as follows
+countryName           :PRINTABLE:&#39;CN&#39;
+stateOrProvinceName   :PRINTABLE:&#39;SH&#39;
+localityName          :PRINTABLE:&#39;SH&#39;
+organizationName      :PRINTABLE:&#39;DFCF&#39;
+organizationalUnitName:PRINTABLE:&#39;OPS&#39;
+commonName            :PRINTABLE:&#39;server&#39;
+name                  :PRINTABLE:&#39;EasyRSA&#39;
+emailAddress          :IA5STRING:&#39;zky.linux@gmail.com&#39;
+Certificate is to be certified until Jan  9 16:49:51 2028 GMT (3650 days)
+Sign the certificate? [y/n]:y  ### 输入Y确认
+
+
+1 out of 1 certificate requests certified, commit? [y/n]y   ### 输入Y确认
+Write out database with 1 new entries
+Data Base Updated
+[root@localhost 2.0]#
+</code></pre></div><h3 id="为客户端生成证书-后面要换成账号名密码认证这一步可以省略">为客户端生成证书 (后面要换成账号名+密码认证这一步可以省略。)</h3>
+<h4 id="创建dh密钥">创建dh密钥</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost 2.0]# ./build-dh
+Generating DH parameters, 2048 bit long safe prime, generator 2
+This is going to take a long time
+...............................+...............................................................................................................................................+.+..............................+...................................................................................................................+.................+.............................................................+.+.......................................+.............................................................+...................+..............................................................................................................................................................................................................+.................+.....................................+.....................................+............................................+.....................+..+.............................................................................+....................................................................................................................+..................................................................................................................................................................................................................................................................................+.......................+......+......................................................................................................................+.....................................................+................................................................................................................................................+......................................+..................................................................+........................................+........++*++*
+[root@localhost 2.0]#
+</code></pre></div><h3 id="查看文件是否生成完成">查看文件是否生成完成</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost 2.0]# ll keys/
+总用量 52
+-rw-r--r-- 1 root root 5350 1月  12 00:50 01.pem
+-rw-r--r-- 1 root root 1647 1月  12 00:43 ca.crt
+-rw------- 1 root root 1704 1月  12 00:43 ca.key
+-rw-r--r-- 1 root root  424 1月  12 00:54 dh2048.pem
+-rw-r--r-- 1 root root  115 1月  12 00:50 index.txt
+-rw-r--r-- 1 root root   21 1月  12 00:50 index.txt.attr
+-rw-r--r-- 1 root root    0 1月  12 00:43 index.txt.old
+-rw-r--r-- 1 root root    3 1月  12 00:50 serial
+-rw-r--r-- 1 root root    3 1月  12 00:43 serial.old
+-rw-r--r-- 1 root root 5350 1月  12 00:50 server.crt
+-rw-r--r-- 1 root root 1094 1月  12 00:49 server.csr
+-rw------- 1 root root 1704 1月  12 00:49 server.key
+[root@localhost 2.0]#
+</code></pre></div><h3 id="将刚才创建完成的key文件复制到openvpn目录下面">将刚才创建完成的key文件复制到openvpn目录下面</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost 2.0]# cd keys/
+[root@localhost keys]# cp -a ca.crt dh2048.pem server.crt server.key /etc/openvpn/
+[root@localhost keys]#
+</code></pre></div><h3 id="修改serverconf配置文件可以复制简单的模板文件然后修改如下配置文件是测试成功">修改server.conf配置文件,可以复制简单的模板文件然后修改.如下配置文件是测试成功</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost keys]# cp -a /usr/share/doc/openvpn-2.4.4/sample/sample-config-files/server.conf /etc/openvpn/
+[root@localhost openvpn]# cat server.conf
+port 1188
+proto udp
+dev tun
+ca ca.crt
+cert server.crt
+key server.key  # This file should be kept secret
+dh dh2048.pem
+server 10.8.0.0 255.255.255.0
+push &#34;redirect-gateway def1 bypass-dhcp&#34;
+push &#34;dhcp-option DNS 202.96.209.133&#34;
+push &#34;dhcp-option DNS 8.8.8.8&#34;
+client-to-client
+keepalive 10 120
+comp-lzo
+persist-key
+persist-tun
+status openvpn-status.log
+verb 5
+log /var/log/openvpn.log
+log-append /var/log/openvpn.log
+client-cert-not-required
+auth-user-pass-verify /etc/openvpn/checkpsw.sh via-env
+script-security 3
+username-as-common-name
+[root@localhost openvpn]#
+</code></pre></div><h3 id="修改用户名密码配置文件并且授权">修改用户名密码配置文件,并且授权</h3>
+<h3 id="下载脚本">下载脚本</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost openvpn]# wget http://code.taobao.org/svn/OpenwrtVpn/checkpsw.sh
+</code></pre></div><h3 id="修改配置文件中passfile这一行文件并授权如下">修改配置文件中PASSFILE这一行文件,并授权.如下:</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost openvpn]# vim  /etc/openvpn/checkpsw.sh
+PASSFILE=&#34;/etc/openvpn/userfile.sh&#34; ### 修改其中的一行文件
+[root@localhost openvpn]#
+[root@localhost openvpn]# chmod +x /etc/openvpn/checkpsw.sh
+[root@localhost openvpn]#
+</code></pre></div><h3 id="创建用户文件格式是用户名-空格-密码">创建用户文件,格式是&quot;用户名&rdquo; &ldquo;空格&rdquo; &ldquo;密码&rdquo;</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost openvpn]# cat userfile.sh
+test test123
+[root@localhost openvpn]# chown nobody:nobody userfile.sh
+[root@localhost openvpn]#
+</code></pre></div><h3 id="配置服务器转发">配置服务器转发</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@localhost openvpn]# echo &#34;1&#34; &gt; /proc/sys/net/ipv4/ip_forward
+
+</code></pre></div><h3 id="重启openvpn服务">重启openvpn服务</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">/etc/init.d/openvpn start
+chkconfig openvpn on
+</code></pre></div><h3 id="设置防火墙转发在原来的基础上增加">设置防火墙转发,在原来的基础上增加</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">iptables -F , iptables -X iptables -Z
+[root@localhost openvpn]# cat /etc/sysconfig/iptables
+# Generated by iptables-save v1.4.7 on Thu Mar 22 15:52:09 2018
+*nat
+:PREROUTING ACCEPT [11:899]
+:POSTROUTING ACCEPT [0:0]
+:OUTPUT ACCEPT [2:142]
+-A POSTROUTING -s 10.8.0.0/24 -j MASQUERADE
+-A POSTROUTING -o em1 -j SNAT --to-source SERVER-IP(上网的IP地址) 
+COMMIT
+# Completed on Thu Mar 22 15:52:09 2018
+# Generated by iptables-save v1.4.7 on Thu Mar 22 15:52:09 2018
+*filter
+:INPUT ACCEPT [94:7799]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [48:5876]
+-A FORWARD -i em1 -o tun0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A FORWARD -i tun0 -o em1 -j ACCEPT
+-A FORWARD -s 10.8.0.0/24 -j ACCEPT
+-A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+COMMIT
+# Completed on Thu Mar 22 15:52:09 2018
+[root@localhost openvpn]#
+
+
+[root@localhost openvpn]# /etc/rc.d/init.d/iptables save
+iptables：将防火墙规则保存到 /etc/sysconfig/iptables：     [确定]
+[root@localhost openvpn]# /etc/rc.d/init.d/iptables restart
+iptables：将链设置为政策 ACCEPT：filter                    [确定]
+iptables：清除防火墙规则：                                 [确定]
+iptables：正在卸载模块：                                   [确定]
+iptables：应用防火墙规则：                                 [确定]
+[root@localhost openvpn]#
+</code></pre></div><h3 id="客户端文件配置">客户端文件配置</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">1. copy服务器上的ca.crt配置文件,给客户端
+[root@localhost openvpn]# pwd
+/etc/openvpn
+[root@localhost openvpn]# ll ca.crt
+-rw-r--r-- 1 root root 1647 1月  12 00:43 ca.crt
+[root@localhost openvpn]#
+
+2. 安装OpenVpn客户端之后,需要把sample-config中的client.ovpn模板复制到config中目录下面并且修改
+
+3. 修改客户端openvpn客户端中的config配置文件如下:
+[root@localhost openvpn]# cat ~/Desktop/windows客户端安装包/config/client.ovpn
+client
+dev tun
+proto udp
+remote openvpnserver 1188
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+ca ca.crt
+comp-lzo
+verb 5
+route-delay 2
+auth-user-pass
+auth-nocache
+reneg-sec 360000
+user nobody
+group nobody
+[root@localhost openvpn]#
+</code></pre></div><h3 id="登陆状态如下图所示">登陆状态如下图所示:</h3>
+<p><img src="/img/openvpn1.png" alt="openvpn">
+<img src="/img/openvpn2.png" alt="openvpn">
+<img src="/img/openvpn3.png" alt="openvpn"></p>
+
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://opsnotes.github.io/tags/openvpn/">openvpn</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fopenvpn-install%2f&amp;text=openvpn%e4%bd%bf%e7%94%a8%e5%af%86%e7%a0%81%e8%b4%a6%e5%8f%b7%e5%ae%89%e8%a3%85%e9%83%a8%e7%bd%b2%3a&amp;via=opsnotes" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fopsnotes.github.io%2fpost%2fopenvpn-install%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fopenvpn-install%2f&amp;title=openvpn%e4%bd%bf%e7%94%a8%e5%af%86%e7%a0%81%e8%b4%a6%e5%8f%b7%e5%ae%89%e8%a3%85%e9%83%a8%e7%bd%b2%3a" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fopenvpn-install%2f&amp;title=openvpn%e4%bd%bf%e7%94%a8%e5%af%86%e7%a0%81%e8%b4%a6%e5%8f%b7%e5%ae%89%e8%a3%85%e9%83%a8%e7%bd%b2%3a" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fopenvpn-install%2f&amp;title=openvpn%e4%bd%bf%e7%94%a8%e5%af%86%e7%a0%81%e8%b4%a6%e5%8f%b7%e5%ae%89%e8%a3%85%e9%83%a8%e7%bd%b2%3a" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fopenvpn-install%2f&amp;description=openvpn%e4%bd%bf%e7%94%a8%e5%af%86%e7%a0%81%e8%b4%a6%e5%8f%b7%e5%ae%89%e8%a3%85%e9%83%a8%e7%bd%b2%3a" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://opsnotes.github.io/post/2016%E6%80%BB%E7%BB%93/" data-toggle="tooltip" data-placement="top" title="2016写给自己的总结">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://opsnotes.github.io/post/zabbix/%E4%BD%BF%E7%94%A8salt%E6%89%B9%E9%87%8F%E9%83%A8%E7%BD%B2zabbix%E7%AB%AF%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0/" data-toggle="tooltip" data-placement="top" title="使用salt批量部署zabbix自动发现监控(二)">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:zky.linux@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/username" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/opsnotes" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/opsnotes" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://username.slack.com/" title="Slack">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-slack fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://reddit.com/u/keengz" title="Reddit">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-reddit-alien fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/XXXXXXX/username" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/kenng.z" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://telegram.me/Ke_zz" title="Telegram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://weibo.com/angerdevil" title="Weibo">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="opsnotes.net">Kenng zhang</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://opsnotes.github.io">OpsNotes随思录</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.62.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://opsnotes.github.io/js/main.js"></script>
+<script src="https://opsnotes.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://opsnotes.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

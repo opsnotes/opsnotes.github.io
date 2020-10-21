@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tcp on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/tcp/</link>
+    <description>Recent content in tcp on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Tue, 01 Dec 2015 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>深入理解tcp time wait</title>
+      <link>https://opsnotes.github.io/post/time_wait/</link>
+      <pubDate>Tue, 01 Dec 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/time_wait/</guid>
+      <description>#深入理解tcp time wait TIME_WAIT 是在TCP协议中很模糊的概念，它可能使socke能陷入的一种时间相对比较长的状态，过多的TIME_WAIT会影响新socket的建立。 TIME_WAIT为什么会存在？它的作用又是什么？ 下面我们就来理解下TIME_WAIT  这张图详细的列出了TCP建立连接和断开连接的各个TCP状态之间的转换。红色的代表server，蓝色的代表client。下面列出各自的TCP状态转换条件  #TCP建立连接 Client: 向server发送 SYN 包，表示请求建立连接，进入 SYN_SENT 状态； Server: 接收来自client的 SYN 包，发送 SYN/ACK 包，代表client-&amp;gt;server单向tcp连接已经建立， 进入 SYN_RCVD 状态； Client: 接收到来自server的 SYN/ACK 包，发送给server ACK 包，进入 Established 状态； Server: 收到client的 ACK 包，代表 server-&amp;gt;client 的单向tcp连接也建立，此时进入 Established 状态； #TCP断开连接 先引入两个概念，首先调用close()是&amp;quot;主动关闭&amp;quot;(active close)，另一个是&amp;quot;被动关闭&amp;quot;(passive close)。一般我们连上ftp或者http，断开连接的都是客户端。看上面的图，&amp;quot;主动关闭&amp;quot;端状态要经历3个状态，而TIME_WAIT是属于“主动关闭”端最后的一个tcp状态。 client: 主动调用close()，发送 FIN 包，此时client就&amp;quot;主动关闭&amp;quot;端，进入 FIN_WAIT_1 状态； Server: server自然成为&amp;quot;被动关闭&amp;quot;端，收到来自client的 FIN 包，发送 ACK 包，代表client-&amp;gt;server单向tcp连接已经关闭，进入 CLOSE_WAIT 状态； Client: 接收到来自server的 ACK 包，啥都不做，client-&amp;gt;server单向的tcp连接已经断开，不能再发送应用层数据，进入 FIN_WAIT_2 状态； Server: server端给client端发送 FIN 包，代表准备关闭server-&amp;gt;client的tcp连接，server进入LAST_ACK 状态； Client: 收到来自server的 FIN 包，发送 ACK 包，此时进入 TIME_WAIT 状态； Server: 收到Client的 ACK 包，就进入closed状态，Server端此次socket tcp连接完全端口； Client: 持续TIME_WAIT状态&amp;quot;一段时间&amp;quot;； #理解TIME_WAIT 理解了上面的原理之后，接着就是正式介绍TIME_WAIT。TIME_WAIT的时间大多数情况下都是2倍的MSL（Maximum Segment Lifetime），MSL是一个数据包在网络上能生存的最长生命周期，一旦超过MSL的包就会被丢弃。从上面可以看到，TIME_WAIT是“主动关闭”端的最后一个状态，引入TIME_WAIT的原因有: 1.</description>
+    </item>
+    
+  </channel>
+</rss>

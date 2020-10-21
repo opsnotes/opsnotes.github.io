@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>OpsNotes随思录 - OpsNotes随思录</title>
+  <meta name="author" content="Kenng zhang"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "OpsNotes随思录",
+    
+    "url": "https:\/\/opsnotes.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/opsnotes.github.io"
+  
+  
+  
+  
+}
+</script>
+
+<meta property="og:title" content="OpsNotes随思录" />
+<meta property="og:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+<meta property="og:url" content="https://opsnotes.github.io/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="OpsNotes随思录" />
+
+  <meta name="twitter:title" content="OpsNotes随思录" />
+  <meta name="twitter:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@opsnotes" />
+  <meta name="twitter:creator" content="@opsnotes" />
+  <link href='https://opsnotes.github.io/img/avatar-icon.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.62.2" />
+  <link rel="alternate" href="https://opsnotes.github.io/index.xml" type="application/rss+xml" title="OpsNotes随思录"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://opsnotes.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://opsnotes.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://opsnotes.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '46663382', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://opsnotes.github.io">OpsNotes随思录</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="arts打卡" href="/tags/arts%e6%89%93%e5%8d%a1">arts打卡</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="/tags/kubernetes">kubernetes</a>
+                
+                  <a href="/tags/prometheus">prometheus</a>
+                
+                  <a href="/tags/python">python</a>
+                
+                  <a href="/tags">Tags</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="OpsNotes随思录" href="https://opsnotes.github.io">
+            <img class="avatar-img" src="https://opsnotes.github.io/img/avatar-icon.png" alt="OpsNotes随思录" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="page-heading">
+              
+                <h1>OpsNotes随思录</h1>
+              
+              
+                <hr class="small">
+              
+              
+                
+                  <span class="page-subheading">我是Kenng,终身学习者, 关注 Kubernetes、Istio、DevOps、Prometheus、Python、Golang、云原生、微服务等技术</span>
+                
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+  <div role="main" class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+
+        <div class="posts-list">
+          
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/2016%E6%80%BB%E7%BB%93/">
+        <h2 class="post-title">2016写给自己的总结</h2>
+        
+        <h3 class="post-subtitle">
+            2016写给自己的总结
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 6, 2017
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;18&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <p><img src="/img/2016Bye.png" alt="读书"></p>
+<p>2016结束了给自己来写一个简单的小总结.</p>
+<p>学习方面：</p>
+<pre><code>今年大概在opsnotes.net上大概写了差不多18篇文章.
+年初的时候学习了一些docker方面的资料书籍
+后半年基本学习python了.从7月份到12月份,算是大概的入门了.感觉还是蛮难的还需要多练习
+年前计算一个月读三本书的,结果到年底算了下读了23本书.其实很多书都是非技术的一些书籍.
+http://opsnotes.net/2017/01/05/读书
+</code></pre>
+<p>工作方面:</p>
+<pre><code>毕业到现在一直做运维,其他也不怎么会.从15年基本技术兼管理岗位。现在基本是沟通的多了,技术做的少了.当然沟通是一个很有趣的的事情.情商智商全局考虑都需要考虑很多.当然个人感觉做leader不管是技术还是管理一样重要.
+今年业务量前半年其实还可以,后半年基本就保持不动.所以相对今年还算平稳的一年。
+</code></pre>
+<p>生活方面：</p>
+<pre><code>今年和相恋多年的媳妇领证了.一路酸甜苦辣,算是修成正果了.感恩有你！
+房子买了算是有了一个自己的窝。努力再上海在搞一个
+带父亲来上海玩了一段时间
+大舅子以及弟弟家里小孩子出生了.顿然感觉自己平白无故的高了一辈,当时肯定是很开心的
+本来今年打算带媳妇出去旅游玩的事情,也能遗憾的没有实现,感觉蛮对不起媳妇的。
+
+
+2016年人变懒了出现惰性了,发胖了.希望2017年勤快一点.
+
+2016年基本就这样子吧.期待2017年.
+</code></pre>
+
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/%E5%B9%B4%E5%BA%95%E6%80%BB%E7%BB%93/">年底总结</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/%E8%AF%BB%E4%B9%A6/">
+        <h2 class="post-title">2016年读书计划</h2>
+        
+        <h3 class="post-subtitle">
+            2016年读书计划
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 5, 2017
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;44&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <p><img src="/img/readbook.jpg" alt="读书"></p>
+<h4 id="正在读的书">正在读的书</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">	6.PaaS实现与运维管理：基于Mesos +Docker+ELK的实战指南
+	7.Python 学习手册第四版
+	8.互联网生态:重构商业规则
+	9.黑客
+	12.我的互联网方法论
+	14.编写高质量代码
+</code></pre></div><h4 id="已读的书">已读的书</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">	1.拆掉思维里的墙
+	2.高性能linux服务器构建实战
+	3.MacTalk 人生元编程
+		http://item.jd.com/11398297.html
+	4.SaltStack技术入门与实战
+		http://item.jd.com/11804150.html(好友沈灿的书)
+	5.自动化运维软件设计实战
+		http://item.jd.com/11734638.html
+	6.皮囊
+	7.奔跑吧Ansible
+		http://item.jd.com/11839215.html
+	8.活着
+	9.ELK Stack权威指南
+		http://item.jd.com/10038199385.html(好友三斗的书)
+	10.海量运维运营规划
+		http://item.jd.com/11366105.html(重读)
+	11.vim使用技巧
+	12.黑客与画家
+	13.重新定义公司:谷歌是如何运营的
+	14.技术管理之巅
+	15.精进 采铜
+	16.Ansible自动化运维：技术与最佳实践
+		http://item.jd.com/11917729.html(好友沈灿的书)
+	17.跟任何人都聊得来:最受世界500强企业欢迎的沟通课
+	18.为什么精英都是清单控
+	19.梦在青春在
+	20.周鸿祎自述：我的互联网方法论
+	21.毅力: 如何培养自律的习惯
+	22.凤凰项目:一个IT运维的传奇故事
+	23.DevOps实践：驭DevOps之力强化技术栈并优化IT运行
+</code></pre></div>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/%E8%AF%BB%E4%B9%A6/">读书</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/mac%E6%8A%80%E5%B7%A7-%E4%B8%BA%E7%BB%88%E7%AB%AF%E8%AE%BE%E7%BD%AEshadowsocks%E4%BB%A3%E7%90%86/">
+        <h2 class="post-title">Mac技巧:为终端设置Shadowsocks代理</h2>
+        
+        <h3 class="post-subtitle">
+            Mac技巧:为终端设置Shadowsocks代理
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on December 8, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;124&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        准备工作 1.首先要有ShadowSocks 2.要有翻墙账号 3.安装配置自行Google install brew install polipo config # 设置每次登陆启动polipo ln -sfv /usr/local/opt/polipo/*.plist ~/Library/LaunchAgents # 修改配置文件&#34;homebrew.mxcl.polipo.plist&#34; ~/Documents ⮀ cat /usr/local/opt/polipo/homebrew.mxcl.polipo.plist &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;!DOCTYPE plist PUBLIC &#34;-//Apple//DTD PLIST 1.0//EN&#34; &#34;http://www.apple.com/DTDs/PropertyList-1.0.dtd&#34;&gt; &lt;plist version=&#34;1.0&#34;&gt; &lt;dict&gt; &lt;key&gt;Label&lt;/key&gt; &lt;string&gt;homebrew.mxcl.polipo&lt;/string&gt; &lt;key&gt;RunAtLoad&lt;/key&gt; &lt;true/&gt; &lt;key&gt;KeepAlive&lt;/key&gt; &lt;true/&gt; &lt;key&gt;ProgramArguments&lt;/key&gt; &lt;array&gt; &lt;string&gt;/usr/local/opt/polipo/bin/polipo&lt;/string&gt; &lt;string&gt;socksParentProxy=127.0.0.1:1080&lt;/string&gt; #### 需要添加的文件 &lt;/array&gt; &lt;!-- Set `ulimit -n 65536`. The default macOS limit is 256, that&#39;s not enough for Polipo (displays &#39;too many files open&#39; errors). It seems like you have no reason to lower this limit (and unlikely will want to raise it).
+        <a href="https://opsnotes.github.io/post/mac%E6%8A%80%E5%B7%A7-%E4%B8%BA%E7%BB%88%E7%AB%AF%E8%AE%BE%E7%BD%AEshadowsocks%E4%BB%A3%E7%90%86/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/mac/">Mac</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/%E8%81%8C%E5%9C%BA%E8%8F%9C%E9%B8%9F%E7%9A%84%E5%86%85%E5%BF%83%E7%8B%AC%E7%99%BD/">
+        <h2 class="post-title">转载:职场菜鸟的内心独白</h2>
+        
+        <h3 class="post-subtitle">
+            转载:职场菜鸟的内心独白
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on October 14, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;15&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h4 id="职场菜鸟的内心独白">职场菜鸟的内心独白</h4>
+<p><img src="/img/zhichang1.png" alt="zhichang"></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">	虽然这已经是小编工作的第二年，但单纯的小编依然是职场菜鸟、社会小白，这一年多，经历了入职-离职-再入职，事业单位-私企的转变适应过程，最近心情起伏不定，甚至感觉体内的“抑郁细胞”再次苏醒，不吐不快。
+	
+	    有没有一种人，就是适应不了这个社会？有没有一个社会，能接受适应不了它的人？
+	
+	其实小编并不是从小就那么爱思考，小编也曾经无忧无虑、大大咧咧的过日子，吃饱了就学、学累了就睡，爸爸妈妈爷爷奶奶从来没要求小编有什么大的成就，中学毕业打个工养活自己就行了，没想到小编竟然这么“争气”，一路大学读下来还一不小心第一名的成绩考上研究生，继续深钻“心理学”，从此再没有了没心没肺的小编。
+	
+	当然不是说心理学能把人改头换面（虽然对小编确实是这样），经历倒真的让小编变了。但小编也从来没想过自己会变成这样抑郁的一个，今天刚看到一本书上，把小编这种情况叫做“内射性抑郁”和“情感依附性抑郁”（OS：×，什么鬼？！）。
+	
+	内射性抑郁：将愤怒转向自我以回避想杀死他人的罪疚感。不明白？通俗来讲就是：被Boss骂了，潜意识想杀了他，但是你强大的高尚的道德感和超我不允许你这么想，进而你将这种愤怒转向了自己，觉得都是自己的错，老板骂得对（好贱，可是好准😢），然后你就抑郁了。
+	
+	情感依附性抑郁：由丧失导致的抑郁。对，是丧失，不是丧尸。你最依恋的人去世了，但你没有机会正常的完成哀悼（比如去世时不在身边，未能参加他/她的追悼会等），那么你就可能会大量收集并极其依恋与死者相关的事情（纪念品、物品、记忆等），把自己的家变成了一座永久的“陵墓”，你就做了一辈子的“守陵人”。可怕吗？可怕，所以就抑郁了。
+	
+	今天小编不说情感依附性抑郁，既然说职场，那就聊内射性抑郁。小编内射了，哦，不，抑郁了。
+	
+	第一份工作在学校。“哇，学校福利多好啊，最吸引人的就是寒暑假，多好啊，谁这么傻×，要辞掉这个工作”。是的，小编就是这个傻×，熬了一年，不干了，为啥，抑郁了。小编受不了官官相护，受不了“当官不为民做主”，受不了教师地位低下的落差，从没想过一份工作给小编带来多大的金钱利益（到目前仍是这样想法），但小编无法适应，无法“随波逐流”。有人跟我说“你活的太阳春白雪了”，太对了！小编就是阳春白雪啊，小编看到那么恶的人性，不应该继续坚持“情怀”这个东西吗？！
+</code></pre></div><p><img src="/img/zhichang2.png" alt="zhichang"></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">	小编第二份工作，也是现在在做的事情，不能说是小编最喜欢的，但专业相关，小编擅长，还算做的舒服。私企当然不像事业单位，每天打酱油似的舒服过日子，所有精力都花在了“打官腔”、人情往来。私企要求做好事情，做好你的本职工作外，老板一声令下，马上达到200%的完成度。KAO！各种抱怨就不再传播了，已经看到太多，但是小编却发现了这“内射性抑郁”找上门来，老板，哪天小编跳楼了，不会找你的。
+	
+	偏偏别人不把你当菜鸟，哦，是思想上没把你当菜鸟，希望你做出的成绩是混迹沙场几十年的结果，如果人人都献出一点爱/(ㄒoㄒ)/~~
+	
+	虽说这是每个新人都经历的事情，但是万一这个新人过不去怎么办，万一这个新人是抑郁型特质的人怎么办，万一这个新人就是适应不了社会怎么办。“自作自受”，几乎大多人都会对他这么说，但是他真的很努力啊，对这个社会，他充满情怀啊，充满热爱啊，但这个社会，到处是不小心的敌意啊。
+	
+	什么时候，这个社会尊重每一个人，尊重每一个人的特殊，尊重每一个人的发展，尊重他就是他，不是任何人？
+	
+	有没有一个社会，能接受适应不了它的人？
+	
+	有没有一个人，告诉你：如果很辛苦，就不用去适应社会。
+</code></pre></div><p><img src="/img/zhichang3.png" alt="zhichang"></p>
+
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/%E8%81%8C%E5%9C%BA/">职场</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/python/python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%BB%83%E4%B9%A0/">
+        <h2 class="post-title">python基础学习06</h2>
+        
+        <h3 class="post-subtitle">
+            python基础语法学习-理解python装饰器
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on September 10, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;356&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <p><strong>概念</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">装饰器（Decorator）的基本定义：“装饰器的功能是将被装饰的函数当作参数传递给与装饰器对应的函数（名称相同的函数），并返回包装后的被装饰的函数”。
+
+装饰器的定义是：装饰器实质上是一个函数。它把一个函数作为输入并且返回另外一个函数。其实其是闭包概念的深化
+</code></pre></div><p><strong>优点</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">抽离出大量函数中与函数功能本身无关的雷同代码并继续重用
+
+可以将函数“修饰”为完全不同的行为，可以有效的将业务逻辑正交分解，如用于将权限和身份验证从业务中独立出来
+
+概括的讲，装饰器的作用就是为已经存在的对象添加额外的功能
+</code></pre></div><p><strong>装饰器入门</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">In [43]: def foo():
+    ...:     print(&#39;in foo()&#39;)
+    ...: foo()
+    ...:
+in foo()
+
+In [44]:
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">In [44]: import time
+
+In [45]: def foo():
+    ...:     start = time.clock()
+    ...:     print(&#39;in foo()&#39;)
+    ...:     end = time.clock()
+    ...:     print(&#39;used:&#39;, end - start)
+    ...: foo()
+    ...:
+in foo()
+used: 2.1999999997746045e-05
+
+In [46]:
+</code></pre></div>
+        <a href="https://opsnotes.github.io/post/python/python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%BB%83%E4%B9%A0/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/python/">python</a>&nbsp;
+        
+        <a href="https://opsnotes.github.io/tags/pyenv/">pyenv</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-04/">
+        <h2 class="post-title">python基础学习04</h2>
+        
+        <h3 class="post-subtitle">
+            python基础语法学习-元组与切片
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 27, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;291&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <p><strong>元组</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">元组是一个不可变结构 是不允许修改的,只查询
+In [164]: t = tuple()
+
+In [165]: t
+Out[165]: ()
+
+In [166]: t = (1,2,3)
+
+In [167]:
+
+In [171]: t.count(1)
+Out[171]: 1
+
+In [175]: t = (1)
+
+In [176]: t
+Out[176]: 1
+
+In [177]: t = (1,)
+
+In [178]: t
+Out[178]: (1,)
+
+In [179]:
+
+</code></pre></div><p><strong>列表和元组的区别</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">list是[]号
+元组是()号
+list可以修改
+元组不可以修改
+</code></pre></div>
+        <a href="https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-04/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/python/">python</a>&nbsp;
+        
+        <a href="https://opsnotes.github.io/tags/pyenv/">pyenv</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-05/">
+        <h2 class="post-title">python基础学习05</h2>
+        
+        <h3 class="post-subtitle">
+            python基础语法学习-字符串
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 27, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;6&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1183&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <p><strong>1.什么是字符串</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">	什么是字符串？
+		python3里面是unicode序列
+		在python2里面是byte序列
+		字符串也是不可变的
+		支持切片 也支持索引 支持解包操作
+		支持遍历
+	用在哪些特定的环境
+	为什么是内置数据结构
+	In [26]: s = &#39;geek&#39;
+
+In [27]: s
+Out[27]: &#39;geek&#39;
+
+In [28]: s[0]
+Out[28]: &#39;g&#39;
+
+可以反转:
+In [30]: s[::-1]
+Out[30]: &#39;keeg&#39;
+
+In [31]:
+支持解包
+In [36]: a = &#39;geek&#39;
+
+In [37]: g,*s = a
+
+In [38]: g
+Out[38]: &#39;g&#39;
+
+In [39]: s
+Out[39]: [&#39;e&#39;, &#39;e&#39;, &#39;k&#39;]
+
+In [40]:
+</code></pre></div><p><strong>2.字符串的连接</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">**join使用方法：**
+In [45]: list = [&#39;my&#39;,&#39;name&#39;,&#39;is &#39;,&#39;steven&#39;]
+
+In [46]: list
+Out[46]: [&#39;my&#39;, &#39;name&#39;, &#39;is &#39;, &#39;steven&#39;]
+
+In [47]: &#39; &#39;.join(list)
+Out[47]: &#39;my name is  steven&#39;
+
+In [48]: &#39;,&#39;.join(list)
+Out[48]: &#39;my,name,is ,steven&#39;
+
+In [49]:
+
+###字符串的分割
+**split**  从左边开始分割
+**rsplit**  从右边开始分割
+**splitlines**
+**partition**
+**rpartotion**
+
+**split练习使用**
+In [119]: a = &#34;my name is steven&#34;
+
+In [120]: a
+Out[120]: &#39;my name is steven&#39;
+
+In [121]: a.split()
+Out[121]: [&#39;my&#39;, &#39;name&#39;, &#39;is&#39;, &#39;steven&#39;]
+
+In [122]: a.split(&#39;is&#39;)
+Out[122]: [&#39;my name &#39;, &#39; steven&#39;]
+
+In [123]: a.split(&#39; &#39;, 1)
+Out[123]: [&#39;my&#39;, &#39;name is steven&#39;]
+
+In [124]: a.split(&#39; &#39;, 2)
+Out[124]: [&#39;my&#39;, &#39;name&#39;, &#39;is steven&#39;]
+
+In [125]: a.split(&#39; &#39;, 3)
+Out[125]: [&#39;my&#39;, &#39;name&#39;, &#39;is&#39;, &#39;steven&#39;]
+
+In [126]: a.split(&#39; &#39;, 4)
+Out[126]: [&#39;my&#39;, &#39;name&#39;, &#39;is&#39;, &#39;steven&#39;]
+
+In [127]: a.split(&#39; &#39;, -1)
+Out[127]: [&#39;my&#39;, &#39;name&#39;, &#39;is&#39;, &#39;steven&#39;]
+
+案例：
+
+In [131]: line = &#39;usr:http://opsnotes.net&#39;
+
+In [132]: line.split()
+Out[132]: [&#39;usr:http://opsnotes.net&#39;]
+
+In [133]: line.split(&#39;:&#39;, 1)
+Out[133]: [&#39;usr&#39;, &#39;http://opsnotes.net&#39;]
+In [135]: key, value = line.split(&#39;:&#39;, 1)
+
+In [136]: key
+Out[136]: &#39;usr&#39;
+
+In [137]: value
+Out[137]: &#39;http://opsnotes.net&#39;
+
+In [138]:
+
+**splitlines的使用方法:**
+In [138]: text = &#39;&#39;&#39;i an geek
+   .....: i an a boy&#39;&#39;&#39;
+
+In [139]: text
+Out[139]: &#39;i an geek\ni an a boy&#39;
+
+In [140]: text.splitlines()
+Out[140]: [&#39;i an geek&#39;, &#39;i an a boy&#39;]
+
+In [141]:
+
+**partition的使用方法：**
+In [141]: a
+Out[141]: &#39;my name is steven&#39;
+
+In [142]: a.partition(&#39; &#39;)
+Out[142]: (&#39;my&#39;, &#39; &#39;, &#39;name is steven&#39;)
+
+In [143]: a.split(&#39; &#39;, 1)
+Out[143]: [&#39;my&#39;, &#39;name is steven&#39;]
+
+In [144]: line.partition(&#39;:&#39;)
+Out[144]: (&#39;usr&#39;, &#39;:&#39;, &#39;http://opsnotes.net&#39;)
+
+In [145]: key, _, value = line.partition(&#39;:&#39;)
+
+In [146]: key
+Out[146]: &#39;usr&#39;
+
+In [147]: _
+Out[147]: &#39;usr&#39;
+
+In [148]: value
+Out[148]: &#39;http://opsnotes.net&#39;
+
+In [149]:
+</code></pre></div>
+        <a href="https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-05/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/python/">python</a>&nbsp;
+        
+        <a href="https://opsnotes.github.io/tags/pyenv/">pyenv</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-03/">
+        <h2 class="post-title">python基础学习03</h2>
+        
+        <h3 class="post-subtitle">
+            python基础语法学习-list使用 
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 26, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;769&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <p><strong>1.list增加的使用方法</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">1.append使用方法
+	原地修改list,给list增加一个元素,append的方法的返回值是None
+list.append(12)
+
+In [4]: list.append(12)
+
+In [5]: list
+Out[5]: [1, 2, 3, 4, 5, 12]
+In [8]: help(list.append)
+
+2.insert的使用方法,根据索引位置添加.
+	insert操作的索引超出范围,如果是正索引,等效于append,如果是负索引.等效于insert(0， object)
+In [10]: list
+Out[10]: [1, 2, 3, 4, 5, 12]
+
+In [11]: list.insert(0,7)
+
+In [12]: list
+Out[12]: [7, 1, 2, 3, 4, 5, 12]
+
+In [13]: list.insert(3,0)
+
+In [14]: list
+Out[14]: [7, 1, 2, 0, 3, 4, 5, 12]
+
+In [15]:
+超出列表不存在的话
+In [16]: list.insert(12,3)
+
+In [17]: list
+Out[17]: [7, 1, 2, 0, 3, 4, 5, 12, 3]
+
+In [18]: list.insert(13,13)
+
+In [19]:
+
+3.extend的使用方法
+	把一个list扩展到我们的list后边
+In [20]: list.extend([1,2,3])
+
+In [21]: list
+Out[21]: [7, 1, 2, 0, 3, 4, 5, 12, 3, 13, 1, 2, 3]
+
+In [22]:
+In [23]: help(list.extend)####学会使用
+Help on built-in function extend:
+
+extend(...) method of builtins.list instance
+    L.extend(iterable) -&gt; None -- extend list by appending elements from the iterable
+(END)
+</code></pre></div>
+        <a href="https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-03/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/python/">python</a>&nbsp;
+        
+        <a href="https://opsnotes.github.io/tags/pyenv/">pyenv</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-02%E8%BF%90%E7%AE%97%E7%AC%A6/">
+        <h2 class="post-title">python基础学习01</h2>
+        
+        <h3 class="post-subtitle">
+            python基础语法学习运算符
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 11, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;826&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">python算数运算符
+ ~/code ⮀ cat yunsuanfu1.py
+#!/usr/bin/env python
+# -*- encoding: UTF-8 -*-
+
+&#39;&#39;&#39;
+    python算数运算符
+&#39;&#39;&#39;
+
+a = 21
+b = 10
+c = 0
+
+c = a + b
+print &#34;1 - c的值为: &#34;, c
+
+c = a - b
+print &#34;2 - c的值为: &#34;, c
+
+c = a * b
+print &#34;3 - c的值为: &#34;, c
+
+c = a / b
+print &#34;4 - c的值为: &#34;, c
+
+c = a % b
+print &#34;5 - c的值为: &#34;, c
+
+
+&#39;&#39;&#39;
+修改变量: a,b,c
+&#39;&#39;&#39;
+
+a = 2
+b = 3
+c = a ** b
+print &#34;6 - c的值为: &#34;, c
+
+a = 10
+b = 5
+c = a // b
+print &#34;7 - c的值为: &#34;, c
+ ~/code ⮀
+</code></pre></div>
+        <a href="https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-02%E8%BF%90%E7%AE%97%E7%AC%A6/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/python/">python</a>&nbsp;
+        
+        <a href="https://opsnotes.github.io/tags/pyenv/">pyenv</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-01/">
+        <h2 class="post-title">python基础学习02</h2>
+        
+        <h3 class="post-subtitle">
+            python基础语法学习
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 6, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;229&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">**Python range用法**
+range（[start ,] stop [, step]）
+
+
+上面方括号内的参数表示是可选的，但所有参数必须是整数。如果参数step被省略的话，它的默认值是1；如果参数start被省略的话，它的默认值将是0。但是无论如何，参数stop是不允许省略的，所以range（）函数只有一个参数时，它表示range（stop）；当range（）函数带有两个参数时，它表示range（start，stop）。
+
+我们知道range（）返回的是一个列表，列表中的整数值为[start, start + step, start + 2 * step, start + 3 * step,...]。如果参数step为正值，那么列表中最后一个元素为小于参数stop的那个最大的整数 start + i * step ；如果参数step为负值，那么列表中最后一个元素为大于参数stop的那个最小的整数 start + i * step 。但是任何时候参数step的值都不能为零。只要将上面的列举的range（）示例跟这里的一般性介绍相结合，我们就能更好的理解该内建函数的用法。
+
+需要注意，当参数step为正值时，参数start必须小于参数step；当参数step为负值时，参数start必须大于参数step，否则range（）函数将返回一个空表
+
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">习题练习1：写一个猜数字游戏,预先设定一个数字,游戏玩家输入一个数字,如果与预设的数字相等,玩家获胜,如果不等,提示玩家太大还是太小,玩家有三次猜数字的机会。
+!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+result =  4
+count = 3
+
+while not count == 0:
+    guess = int(raw_input(&#39;Please enter Guess Number: &#39;))
+    if  guess == result:
+        print u&#39;猜对了,游戏结束&#39;
+        break
+
+    elif guess &gt; result:
+        print u&#39;数字偏大,再猜一次&#39;
+        count -= 1
+
+    else:
+        print u&#39;数字偏小,再猜一次&#39;
+        #continue
+        count -= 1
+
+else:
+    print u&#39;只能猜三次游戏结束!!&#39;
+</code></pre></div>
+        <a href="https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-01/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/python/">python</a>&nbsp;
+        
+        <a href="https://opsnotes.github.io/tags/pyenv/">pyenv</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/python/pyenv/">
+        <h2 class="post-title">Python多版本管理软件pyenv</h2>
+        
+        <h3 class="post-subtitle">
+            Python多版本管理软件pyenv
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 4, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;234&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <p><strong>Pyenv是什么</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">git地址：https://github.com/yyuu/pyenv
+1.pyenv是python版本多功能切换工具,对系统无任何依赖关系和损坏.
+2.能支持多个python版本
+3.可以在多个python不同版本之间切换
+</code></pre></div><p><strong>安装部署</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">环境：
+Centos7.0  阿里云
+安装:
+1.curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+2.修改配置/etc/profile文件,添加如下文件
+export PATH=&#34;/root/.pyenv/bin:$PATH&#34;
+eval &#34;$(pyenv init -)&#34;
+eval &#34;$(pyenv virtualenv-init -)&#34;
+3. source /etc/profile
+更新pyenv版本：
+pyenv update
+删除pyenv:
+只需要删掉目录就可以(注意是隐藏文件)
+rm -fr ~/.pyenv
+</code></pre></div><p><strong>使用pyenv在CentOS7.1上安装python3.5.2</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">1.先解决依赖关系
+yum -y install gcc patch make gdbm-devel openssl-devel sqlite-devel zlib-devel bzip2-devel readline-devel
+2.下载python3.5.2压缩包
+wget http://7d9qvq.com1.z0.glb.clouddn.com/Python-3.5.2.tgz
+3.把下载的文件重命名移动到如下目录
+[root@zm-test-ops-01 ~]# mkdir /root/.pyenv/cache
+[root@zm-test-ops-01 ~]# mv Python-3.5.2.tar.gz /root/.pyenv/cache/
+</code></pre></div>
+        <a href="https://opsnotes.github.io/post/python/pyenv/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/python/">python</a>&nbsp;
+        
+        <a href="https://opsnotes.github.io/tags/pyenv/">pyenv</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/ansible/ansible_zabbix/">
+        <h2 class="post-title">ansible源码安装zabbix agent</h2>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on May 19, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;8&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1642&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h5 id="名词解释">名词解释</h5>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">	[root@iZ23nvakegvZ zabbix_agent]# ls  
+	files  需要安装包  
+	handlers  重启相关信息  
+	meta  galaxy_info相关信息  
+	tasks  安装部署的任务  
+	templates  相关的模板配置文件 
+	vars   变量配置文件  
+	[root@iZ23nvakegvZ zabbix_agent]#
+</code></pre></div><h5 id="目录结构">目录结构</h5>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">	[root@iZ23nvakegvZ zabbix_agent]# tree
+	
+	.
+	
+	├── hosts
+	├── roles
+	│   └── zabbix_agent
+	│       ├── files
+	│       │   └── zabbix-2.4.5.tar.gz
+	│       ├── handlers
+	│       ├── meta
+	│       │   └── main.yml
+	│       ├── tasks
+	│       │   ├── copy.yml
+	│       │   ├── delete.yml
+	│       │   ├── install.yml
+	│       │   └── main.yml
+	│       ├── templates
+	│       │   ├── zabbix_agentd
+	│       │   └── zabbix_agentd.conf
+	│       └── vars
+	│           └── main.yml
+	└── site.yml
+	
+	8 directories, 11 files
+	
+	[root@iZ23nvakegvZ zabbix_agent]#
+</code></pre></div>
+        <a href="https://opsnotes.github.io/post/ansible/ansible_zabbix/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/ansible/">ansible</a>&nbsp;
+        
+        <a href="https://opsnotes.github.io/tags/nginx/">nginx</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+        </div>
+
+        
+          <ul class="pager main-pager">
+            
+              <li class="previous">
+                <a href="https://opsnotes.github.io/page/2/">&larr; Newer Posts</a>
+              </li>
+            
+            
+              <li class="next">
+                <a href="https://opsnotes.github.io/page/4/">Older Posts &rarr;</a>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+
+      
+    <div class="page-meta">
+  
+  
+  
+</div>
+
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:zky.linux@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/username" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/opsnotes" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/opsnotes" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://username.slack.com/" title="Slack">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-slack fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://reddit.com/u/keengz" title="Reddit">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-reddit-alien fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/XXXXXXX/username" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/kenng.z" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://telegram.me/Ke_zz" title="Telegram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://weibo.com/angerdevil" title="Weibo">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="opsnotes.net">Kenng zhang</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://opsnotes.github.io">OpsNotes随思录</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.62.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://opsnotes.github.io/js/main.js"></script>
+<script src="https://opsnotes.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://opsnotes.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

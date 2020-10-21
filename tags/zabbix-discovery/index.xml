@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>“zabbix discovery” on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/zabbix-discovery/</link>
+    <description>Recent content in “zabbix discovery” on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Thu, 27 Apr 2017 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/zabbix-discovery/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用salt批量部署zabbix自动发现监控(二)</title>
+      <link>https://opsnotes.github.io/post/zabbix/%E4%BD%BF%E7%94%A8salt%E6%89%B9%E9%87%8F%E9%83%A8%E7%BD%B2zabbix%E7%AB%AF%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0/</link>
+      <pubDate>Thu, 27 Apr 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/zabbix/%E4%BD%BF%E7%94%A8salt%E6%89%B9%E9%87%8F%E9%83%A8%E7%BD%B2zabbix%E7%AB%AF%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0/</guid>
+      <description>查看目录结构 [root@iZbp14ipzpabr30yllskn4Z salt]# tree discovery_port/ discovery_port/ ├── files │ ├── discovery_port.sh │ ├── sudoers.sh │ └── userparameter_discovery_port.conf └── init.sls 1 directory, 4 files [root@iZbp14ipzpabr30yllskn4Z salt]# 查看主配置文件init.sls [root@iZbp14ipzpabr30yllskn4Z salt]# more discovery_port/init.sls ### zabbix mysql config discovery_port: file.managed: - name: /etc/zabbix/zabbix_agentd.d/userparameter_discovery_port.conf - user: root - mode: 755 - source: salt://discovery_port/files/userparameter_discovery_port.conf discovery_port_sh: file.managed: - name: /opt/discovery_port.sh - user: root - mode: 755 - source: salt://discovery_port/files/discovery_port.sh sudoers_manager: file.managed: - name: /opt/sudoers.sh - user: root - mode: 755 - source: salt://discovery_port/files/sudoers.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>“mail” on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/mail/</link>
+    <description>Recent content in “mail” on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Tue, 14 Jul 2015 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/mail/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用flask发送邮件</title>
+      <link>https://opsnotes.github.io/post/python/flask-mail/</link>
+      <pubDate>Tue, 14 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/flask-mail/</guid>
+      <description>&lt;h4 id=&#34;安装flask-mail&#34;&gt;安装flask-mail&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;sudo pip install flask-mail
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;设置环境变量&#34;&gt;设置环境变量&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;export MAIL_USERNAME=&#39;XXXXX@qq.com&#39;    #发送邮件的邮箱
+export MAIL_PASSWORD=&#39;password&#39;      #发送邮件的邮箱密码
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;使用flask-mail发送邮件&#34;&gt;使用flask-mail发送邮件&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;    (venv)zhangkeyuan@opsnotes:~/Test/flask » cat flask-mail.py
+    #!/bin/env python
+    #-*- coding:utf-8 -*-
+    from flask import Flask, render_template
+    from flask.ext.mail import Mail,Message
+    import os
+
+
+    app = Flask(__name__)
+    ####SMTP server config
+    app.config[&amp;#39;MAIL_SERVER&amp;#39;] = &amp;#39;smtp.qq.com&amp;#39; #电子邮件服务器的地址
+    app.config[&amp;#39;MAIL_PORT&amp;#39;] = &amp;#39;25&amp;#39;   #邮箱服务器的端口
+    app.config[&amp;#39;MAIL_USE_TLS&amp;#39;] = True  #启用安全传输
+    app.config[&amp;#39;MAIL_USERNAME&amp;#39;] = os.environ.get(&amp;#39;MAIL_USERNAME&amp;#39;)  #邮件账户用户名,已定义环境变量
+    app.config[&amp;#39;MAIL_PASSWORD&amp;#39;] = os.environ.get(&amp;#39;MAIL_PASSWORD&amp;#39;)  #邮件账密码,已定义环境变量
+
+
+    mail = Mail(app)
+
+    @app.route(&amp;#39;/&amp;#39;)
+    def index():
+        msg = Message(&amp;#39;主题&amp;#39;,sender=os.environ.get(&amp;#39;MAIL_USERNAME&amp;#39;),recipients=[&amp;#39;431054426@qq.com&amp;#39;])
+        msg.body = &amp;#39;文本 body&amp;#39;
+        msg.html = &amp;#39;&amp;lt;b&amp;gt;测试flask发送邮件&amp;lt;/b&amp;gt;&amp;#39;
+        mail.send(msg)
+
+        return &amp;#39;&amp;lt;h1&amp;gt;邮件发送成功&amp;lt;/h1&amp;gt;&amp;#39;
+
+
+    if __name__ == &amp;#39;__main__&amp;#39;:
+        app.run(debug=True)
+    (venv)zhangkeyuan@opsnotes:~/Test/flask »
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

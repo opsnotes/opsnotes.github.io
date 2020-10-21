@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hexo on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/categories/hexo/</link>
+    <description>Recent content in hexo on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Thu, 19 Dec 2019 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/categories/hexo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hexo新建菜单(menu)存放归档文章</title>
+      <link>https://opsnotes.github.io/post/others/hexo-%E6%96%B0%E5%BB%BA%E8%8F%9C%E5%8D%95menu-%E5%AD%98%E6%94%BE%E5%BD%92%E6%A1%A3%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Thu, 19 Dec 2019 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/others/hexo-%E6%96%B0%E5%BB%BA%E8%8F%9C%E5%8D%95menu-%E5%AD%98%E6%94%BE%E5%BD%92%E6%A1%A3%E6%96%87%E7%AB%A0/</guid>
+      <description>最近开始跟着耗子叔学“ARTS打卡”，想在首页上建一个名为“ARTS打卡”的的菜单，然后相关的“ARTS打卡”文章都放在该分类下。 生成post(文章)时默认生成categories配置项在项目目录下找到/scaffolds/post.md,添加文章的categories的配置,如下: ➜ opsnotes git:(master) ✗ cat scaffolds/post.md --- title: {{ title }} date: {{ date }} tags: --- ➜ opsnotes git:(master) ✗ 写文章时，配置 categories下面我开始写一篇关于 Python 的文章,文章里面配置categories. ➜ opsnotes git:(master) ✗ cat source/_posts/ARTS-Weekly/ARTS第一周\(2019年12月16日\~22日\).md --- title: ARTS第一周（2019年12月16日~22日） tags: ARTS打卡 categories: ARTS打卡 date: 2019-12-19 13:42:23 --- ➜ opsnotes git:(master) ✗ 使用“hexog g”更新之后,会生成文件.这时你会发现/public/categories/文件夹下，已经生成了“ARTS打卡”的文件夹. 首页显示ARTS打卡菜单. 这里就是要在博客首页上显示 python 菜单的时候了，首先打开你主题的配置文件/themes/cactus/_config.yml(我这里是用的cactus).找到menu,这里添加一行. nav: home: / articles: /archives/ ARTS: /categories/ARTS打卡/ ###新添加的 projects: https://github.com/opsnotes about: /about/ search: /search/ 菜单名称配置 上面的步骤做完以后，如果你着急刷新页面看了效果，就会看到新菜单的名称是menu.python，显然不是我们想要的，那就继续往下看首先查看项目目录下的/_config.yml的language配置，我的是这样的 ➜ opsnotes git:(master) ✗ cat themes/cactus/languages/zh-CN.</description>
+    </item>
+    
+  </channel>
+</rss>

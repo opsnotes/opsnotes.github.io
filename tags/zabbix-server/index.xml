@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zabbix server on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/zabbix-server/</link>
+    <description>Recent content in zabbix server on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Fri, 24 Oct 2014 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/zabbix-server/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>实战：Zabbix 聚合功能配置与应用</title>
+      <link>https://opsnotes.github.io/post/zabbix_juhe/</link>
+      <pubDate>Fri, 24 Oct 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/zabbix_juhe/</guid>
+      <description>&lt;h3 id=&#34;环境&#34;&gt;环境：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Server： CentOS6.3_X86   zabbix 2.0.8
+Clinet：  windows/Linux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;需求&#34;&gt;需求：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;由于业务需求的扩展,需要监控所有服务器的在线人数,然后把所有的在线人数都统计到一起.然后我们根据这一需求进行实施,前期准备工作我们都已经做完,zabbix的本地服务器的在线人数我们都已统计出来,我们现在要做的就是把本地统计好的数据汇聚到一起,然后图标展示出来。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;思路&#34;&gt;思路：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1．	首先创建一个组,把所有的host都添加到这个组里面
+2．	然后创建Template,来监控agent服务器的在线人数
+3．	然后我们在使用zabbix聚合把所有在agent的人数统计到一起
+4．	然后绘图查看是否成功
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>zabbix优化记一次惨痛的zabbix数据库优化</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_11/</link>
+      <pubDate>Fri, 20 Jun 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_11/</guid>
+      <description>&lt;h3 id=&#34;记一次惨痛的zabbix数据库分表&#34;&gt;记一次惨痛的zabbix数据库分表&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;最近负责公司的zabbix项目，由于前期缺少整体性能架构的规划,导致后期出一系列的问题，玩zabbix的兄弟都知道，zabbix最大的瓶颈本身不在zabbix服务，而在mysql数据库的压力上，因此，优化zabbix其实就是优化zabbix的配置以及zabbix的mysql了;  
+    Zabbix 数据库常见的优化处理方法有两种：  
+        01.	优化数据库,对数据库进行分表处理;  
+        02.	清空数据库中的history, history_uint表;  
+    在接下来的方案我们就mysql数据库分表来进行优化；  
+具体思路：  
+    1.	首先下载脚本  
+        https://github.com/itnihao/zabbixdbpartitioning  
+        感谢hao哥提供脚本以及帮助。  
+    2.	前期准备工作,安全起见最好安装screen,也不怕程序卡死,关于screen的用法请参考http://www.kwx.gd/CentOSApp/CentOS-screen.html  
+        关闭zabbix的邮件报警,也可以关闭zabbix server服务,mysql本身会锁表  
+    3.	在screen模式下运行脚本，  
+        在这里需要注意的是，如果你的数据库特别大,最好先备份,然后在修改脚本,然后分表,在修改脚本的时候需要注意的几个地方我这里先列出来下,如下:  
+        首先修改zabbix 数据库和密码 默认情况下是都是zabbix 如果你的也是这样的话,那么不用修改,
+        然后修改配置文件的路径,根据自己的自定义的路径来修改脚本的路径  
+        如果手动备份了那么关闭脚本中备份.  
+    4.	然后来查看是否创建完成; 
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件zabbix使用key来监控IOPS</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_10/</link>
+      <pubDate>Mon, 16 Jun 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_10/</guid>
+      <description>&lt;h3 id=&#34;01在服务端创建zabbix组&#34;&gt;01.在服务端创建zabbix组&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件使用zabbix监控nginx status</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_09/</link>
+      <pubDate>Thu, 15 May 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_09/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;因业务需要需要用zabbix来监控nginx的status,具体是如下的做法：  
+1.	首先在nginx的配置文件中添加如下内容,需要注意的是nginx的文件格式，在allow中我们需要注意的是需要添加zabbix server的IP地址,不然无法采集到数据. 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://opsnotes.github.io/img/nginx01.png&#34; alt=&#34;zabbix&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件Zabbix搭建部署之使用脚本来发送zabbix邮件报警</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_07/</link>
+      <pubDate>Tue, 21 Jan 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_07/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;上篇文章中我们已经部署完成zabbix邮件报警的前期工作了,那么接下来我们来应用zabbix邮件报警，如果对邮件报警不了解可以看我的博文：  
+http://opsnotes.net/2013/12/31/install_zabbix_06/  
+
+01.	首先在创建之前修改zabbix配置文件，根据安装的位置来查找相应的路径：  
+[root@dota-db-14 alertscripts]# pwd  
+/usr/local/share/zabbix/alertscripts  
+[root@dota-db-14 alertscripts]#  
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件Zabbix搭建部署之使用mutt&#43;msmtp配置Zabbix邮件报警</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_06/</link>
+      <pubDate>Tue, 31 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_06/</guid>
+      <description>&lt;h3 id=&#34;企业级监控软件zabbix搭建部署之使用muttmsmtp配置zabbix邮件报警&#34;&gt;企业级监控软件Zabbix搭建部署之使用mutt+msmtp配置Zabbix邮件报警&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;[root@Zabbix-Server ~]# wget http://nchc.dl.sourceforge.net/sourceforge/msmtp/msmtp-1.4.17.tar.bz2   
+[root@Zabbix-Server ~]# tar xf msmtp-1.4.17.tar.bz2   
+[root@Zabbix-Server ~]# cd msmtp-1.4.17  
+[root@Zabbix-Server msmtp-1.4.17]# mkdir /usr/local/msmtp  
+[root@Zabbix-Server msmtp-1.4.17]# yum -y install gnutls-devel gnutls  
+[root@Zabbix-Server msmtp-1.4.17]# ./configure --prefix=/usr/local/msmtp
+[root@Zabbix-Server msmtp-1.4.17]# make    
+[root@Zabbix-Server msmtp-1.4.17]# make install  
+
+[root@Zabbix-Server msmtp-1.4.17]# cd /usr/local/msmtp/  
+[root@Zabbix-Server msmtp]# ls  
+bin  share  
+[root@Zabbix-Server msmtp]# mkdir etc		创建目录  
+[root@Zabbix-Server msmtp]# cd etc/  
+[root@Zabbix-Server etc]# ls  
+[root@Zabbix-Server etc]# vim msmtprc  创建配置文件  
+配置文件如下：   
+account default  
+host smtp.ym.163.com			#发送邮件服务器  
+port 25										#发送端口   
+from noreply@youlongteng.com		#发送的邮箱  
+auth login    
+tls off										#这里如果使用on的话会报 &amp;quot;msmtp: cannot use a secure authenti  cation method&amp;quot;错误  
+user noreply@youlongteng.com				#邮箱用户  
+password 123.com.					#邮箱的密码，明文保存的需要注意，可以设置权限  
+logfile /var/log/mmlog		#日志的路径  
+[root@Zabbix-Server etc]# ll /usr/local/msmtp/etc/msmtprc   
+-rwxr-xr-x 1 zabbix root 195 Oct 11 23:52 /usr/local/msmtp/etc/msmtprc  
+[root@Zabbix-Server etc]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件zabbix搭建部署之Zabbix自定义端口阈值配置以及应用</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_05/</link>
+      <pubDate>Thu, 26 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_05/</guid>
+      <description>&lt;h3 id=&#34;企业级监控软件zabbix搭建部署之zabbix自定义端口阈值配置以及应用&#34;&gt;企业级监控软件zabbix搭建部署之Zabbix自定义端口阈值配置以及应用&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;环境：CentOS6.3 X86_64   
+软件：Zabbix 2.0.8   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;一配置zabiix自定义模板&#34;&gt;一．	配置zabiix自定义模板&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;    1.	首先登录zabbixweb服务端；
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件zabbix搭建部署之zabbix在WEB页面中的配置</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_02/</link>
+      <pubDate>Tue, 24 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_02/</guid>
+      <description>&lt;h3 id=&#34;企业级监控软件zabbix搭建部署之zabbix在web页面中的配置&#34;&gt;企业级监控软件zabbix搭建部署之zabbix在WEB页面中的配置&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;关于安装请看http://opsnotes.net/2013/12/22/install_zabbix_01/  
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件Zabbix搭建部署之Zabbix-Agents的安装部署</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_03/</link>
+      <pubDate>Mon, 23 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_03/</guid>
+      <description>&lt;h3 id=&#34;我们首先来安装基于linux的zabbix的客户端安装&#34;&gt;我们首先来安装基于Linux的Zabbix的客户端安装&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1.首先修改计算机的主机名字；其实计算机名字也不用修改都可以  
+
+[root@localhost ~]# hostname     
+Zabbix-Agent01  
+[root@localhost ~]# cat /etc/sysconfig/network  
+NETWORKING=yes  
+HOSTNAME=Zabbix-Agent01  
+[root@localhost ~]# 
+
+2.创建用户  
+useradd -s /sbin/nologin zabbix
+
+3.下载解压客户端  
+下载可以去zabbix官方下载www.zabbix.com  
+
+需要注意的是：在2.0后客户端安装的时候，会解压三个文件，sbin conf bin；然后我们把解压的三个目录复制到我们创建的zabbix目录下面
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件zabbix搭建部署之zabbix server的安装 </title>
+      <link>https://opsnotes.github.io/post/install_zabbix_01/</link>
+      <pubDate>Sun, 22 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_01/</guid>
+      <description>&lt;h3 id=&#34;企业级监控软件zabbix搭建部署之zabbix-server的安装&#34;&gt;企业级监控软件zabbix搭建部署之zabbix server的安装&lt;/h3&gt;
+&lt;h3 id=&#34;zabbix线上已经应用半年多了关于zabbix在生产环境中的使用心得以及一些经验写下来希望让大家少走弯路共同学习&#34;&gt;zabbix线上已经应用半年多了,关于zabbix在生产环境中的使用心得，以及一些经验写下来，希望让大家少走弯路，共同学习！&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	环境：  
+		Server:CentOS6.3_X86.64  
+		Zabbix:zabbix-2.0.8.tar  
+		Zabbix_agents:zabbix_agents_2.0.8.linux2_6.amd64.tar  
+
+	服务器命名规则：  
+		Zabbix-Server:192.168.100.239  
+		Zabbix-Agent01:192.168.100.240
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,2215 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/</link>
+    <description>Recent content on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Wed, 21 Oct 2020 15:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>prometheus学习系列(七)</title>
+      <link>https://opsnotes.github.io/post/prometheus/%E8%85%BE%E8%AE%AF%E4%BA%91prometheus%E6%8C%81%E4%B9%85%E5%8C%96%E4%BF%AE%E6%94%B9%E5%8F%82%E6%95%B0/</link>
+      <pubDate>Wed, 21 Oct 2020 15:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/prometheus/%E8%85%BE%E8%AE%AF%E4%BA%91prometheus%E6%8C%81%E4%B9%85%E5%8C%96%E4%BF%AE%E6%94%B9%E5%8F%82%E6%95%B0/</guid>
+      <description>修改config文件,在里面添加一行. spec: retention: 365d 完整的实例,更新完成之后,记得apply一下. [root@VM-64-25-centos manifests]# cat prometheus-prometheus.yaml apiVersion: monitoring.coreos.com/v1 kind: Prometheus metadata: labels: prometheus: k8s name: k8s namespace: monitoring spec: alerting: alertmanagers: - name: alertmanager-main namespace: monitoring port: web image: quay.io/prometheus/prometheus:v2.17.2 nodeSelector: kubernetes.io/os: linux podMonitorNamespaceSelector: {} podMonitorSelector: {} replicas: 2 resources: requests: memory: 500Mi ruleSelector: matchLabels: prometheus: k8s role: alert-rules securityContext: fsGroup: 2000 runAsNonRoot: true runAsUser: 1000 additionalScrapeConfigs: name: additional-configs key: prometheus-additional.yaml retention: 7d #添加一行,持久化7天 storage: volumeClaimTemplate: spec: storageClassName: prometheus-cfs resources: requests: storage: 100Gi serviceAccountName: prometheus-k8s serviceMonitorNamespaceSelector: {} serviceMonitorSelector: {} version: v2.</description>
+    </item>
+    
+    <item>
+      <title>ARTS第六周</title>
+      <link>https://opsnotes.github.io/post/artsweekly/week06/</link>
+      <pubDate>Sat, 07 Mar 2020 11:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/artsweekly/week06/</guid>
+      <description>读书 本周在读的书. 猜测和偏见 (豆瓣)
+定投十年财务自由 (豆瓣)
+狙击涨停板 (豆瓣)
+Tip 学习人脉扩展,具体参考PDF
+人脉扩展
+Share   📕 The 25 most recommended programming books of all-time. · daolf
+  https://zouying.life/2020/02/11/home-networking/
+  优化 Google Chrome 的使用体验 | 琉璃の夢
+  </description>
+    </item>
+    
+    <item>
+      <title>ARTS第五周</title>
+      <link>https://opsnotes.github.io/post/artsweekly/week05/</link>
+      <pubDate>Sun, 19 Jan 2020 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/artsweekly/week05/</guid>
+      <description>读书 本周在读的书. 硅谷钢铁侠 (豆瓣) 时间管理在学习 变量2 (豆瓣)
+Tip prometheus持续学习 思维的认知提升和改变 Overview of all pages with the tag #prometheus - OpsNotes随思录
+Share 1. https://medium.com/swlh/kubernetes-configmap-confuguration-and-reload-strategy-9f8a286f3a44 </description>
+    </item>
+    
+    <item>
+      <title>ARTS第五周</title>
+      <link>https://opsnotes.github.io/posts/artsweekly/week05/</link>
+      <pubDate>Sun, 19 Jan 2020 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/posts/artsweekly/week05/</guid>
+      <description>读书 本周在读的书. 硅谷钢铁侠 (豆瓣)
+时间管理在学习
+变量2 (豆瓣)
+Tip 1. prometheus持续学习  Overview of all pages with the tag #prometheus - OpsNotes随思录
+2. 思维的认知提升和改变  Share Kubernetes ConfigMap Configuration and Reload Strategy</description>
+    </item>
+    
+    <item>
+      <title>ARTS第四周</title>
+      <link>https://opsnotes.github.io/post/artsweekly/week04/</link>
+      <pubDate>Sun, 12 Jan 2020 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/artsweekly/week04/</guid>
+      <description>读书 本周在读的书. 硅谷钢铁侠 (豆瓣) 时间管理在学习
+读书笔记 可以查看《津巴多时间观念》笔记
+津巴多时间观念
+Tip prometheus技巧在学习
+Category: prometheus
+Share A DevOps Periodic Table of Critical Alert Monitoring System Integrations
+https://itnext.io/kubernetes-monitoring-with-prometheus-in-15-minutes-8e54d1de2e13</description>
+    </item>
+    
+    <item>
+      <title>ARTS第三周</title>
+      <link>https://opsnotes.github.io/post/artsweekly/week03/</link>
+      <pubDate>Mon, 06 Jan 2020 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/artsweekly/week03/</guid>
+      <description>读书 本周在读书. 刻意练习 (豆瓣) 硅谷钢铁侠 (豆瓣) 请停止无效努力 (豆瓣) 已读完
+读书笔记 可以查看《如何使用正确的方法快入进阶》笔记
+停止无效努力读书笔记
+Tip 学会在hexo中插入PDF文档 1. 安装hexo-pdf插件 npm install --save hexo-pdf 2. 在source目录下面和_posts同级的目录创建pdf目录把pdf文件放在里面 /Users/Learning/Learning materials/opsnotes/source mkdir pdf 3. 在文章中引用 &amp;lt;br&amp;gt; {% pdf /pdf/停止无效努力读书笔记.pdf %} &amp;lt;br&amp;gt; Share 1. 看了2篇英文文档  The Twelve-Factor Container - Notbinary - Medium
+Kubernetes ConfigMap Configuration and Reload Strategy</description>
+    </item>
+    
+    <item>
+      <title>2019年总结,2020年打算</title>
+      <link>https://opsnotes.github.io/post/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/2019%E5%B9%B4%E6%80%BB%E7%BB%932020%E5%B9%B4%E6%89%93%E7%AE%97/</link>
+      <pubDate>Wed, 01 Jan 2020 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/2019%E5%B9%B4%E6%80%BB%E7%BB%932020%E5%B9%B4%E6%89%93%E7%AE%97/</guid>
+      <description>2019总结 前言 2019年的总结拖了好久,终于还是忍不住写下来了.2019年总体而言对自己的各方面是不满意的. 写作 基本没有写blog和公众号,虽然做了很多笔记,负分 工作 今年算马马虎虎,能做的基本做了,自己对自己的状态还是不满意 管理方面也没有得到多大提升 能力方面也是吃老本的样子,在突破阶段 读书 每个月大概读书有2本的样子. 技术书籍明显减少,多了一些科技人文方面的书籍,年初的时候给自己的目标定义是30本书,大概算只完成了70%的样子. 开发能力也没有多大的提升,动手能力还是比较差 生活 满意的事情:
+太太怀孕了 健身能持久的坚持下来,算对自己最大的鼓励,不过第四季度松懈下来了. 喝酒变少了. 看待事情、生活更加理性了. 不满意的事情:
+驾照没有考 旅游没有去 处理生活的琐碎还是不太得心应手 打游戏比较厉害浪费很多时间 2020展望 2020年要准备做的事情 个人方面:
+健身持续不断的坚持下去.每周最少2次 2020年争取每个月读3本书 坚持学好L1和L2的课程.做好笔记 ARTS打卡能坚持下去 每个月能写2篇技术文章 把编程继续坚持学下去 坚持不打游戏 生活方面
+多挣点奶粉钱 考驾照 出去旅游一次 能多陪家人 出去走一走 工作方面
+能增加自己管理方面的突破 多参加几场技术大会 和业界的技术朋友多交流 </description>
+    </item>
+    
+    <item>
+      <title>ARTS第二周</title>
+      <link>https://opsnotes.github.io/post/artsweekly/week02/</link>
+      <pubDate>Fri, 27 Dec 2019 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/artsweekly/week02/</guid>
+      <description>读书 本周在读书. 刻意练习 (豆瓣)
+请停止无效努力 (豆瓣)
+读书笔记 可以查看《如何使用正确的方法快入进阶》笔记
+停止无效努力读书笔记
+Tip MAC下面微信无法截图问题 解决catalina系统中微信或其他APP截图无法正常使用 1. 选择Security&amp;amp;privacy 2. 在隐私你们旋转,screen recording,选择wechat.重新登录就好. Share 1. 看了2篇英文文档  Distributed Systems: When you should build them, and how to scale. A step-by-step guide.
+https://medium.com/notbinary/the-twelve-factor-container-8d1edc2a49d4</description>
+    </item>
+    
+    <item>
+      <title>ARTS第一周</title>
+      <link>https://opsnotes.github.io/post/artsweekly/week01/</link>
+      <pubDate>Thu, 19 Dec 2019 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/artsweekly/week01/</guid>
+      <description>Algorithm Algorithm 链接： https://leetcode-cn.com/problems/add-two-numbers
+Tip [SuperUser] How to expand * on Bash command line
+我是在Linux命令行上误操作时，发现通配符被自动扩展出来，于是通过搜索，找到了该“隐藏”的功能键：
+输入命令ls *后，按键：+ x + *，可以看到该目录下的文件列表，被扩展出来，可以继续进行编辑。
+而在过去，我通常都需要手工对ls命令的结果进行选择和拷贝。
+Share 分享一篇CSDN上的技术文章：</description>
+    </item>
+    
+    <item>
+      <title>Hexo新建菜单(menu)存放归档文章</title>
+      <link>https://opsnotes.github.io/post/others/hexo-%E6%96%B0%E5%BB%BA%E8%8F%9C%E5%8D%95menu-%E5%AD%98%E6%94%BE%E5%BD%92%E6%A1%A3%E6%96%87%E7%AB%A0/</link>
+      <pubDate>Thu, 19 Dec 2019 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/others/hexo-%E6%96%B0%E5%BB%BA%E8%8F%9C%E5%8D%95menu-%E5%AD%98%E6%94%BE%E5%BD%92%E6%A1%A3%E6%96%87%E7%AB%A0/</guid>
+      <description>最近开始跟着耗子叔学“ARTS打卡”，想在首页上建一个名为“ARTS打卡”的的菜单，然后相关的“ARTS打卡”文章都放在该分类下。 生成post(文章)时默认生成categories配置项在项目目录下找到/scaffolds/post.md,添加文章的categories的配置,如下: ➜ opsnotes git:(master) ✗ cat scaffolds/post.md --- title: {{ title }} date: {{ date }} tags: --- ➜ opsnotes git:(master) ✗ 写文章时，配置 categories下面我开始写一篇关于 Python 的文章,文章里面配置categories. ➜ opsnotes git:(master) ✗ cat source/_posts/ARTS-Weekly/ARTS第一周\(2019年12月16日\~22日\).md --- title: ARTS第一周（2019年12月16日~22日） tags: ARTS打卡 categories: ARTS打卡 date: 2019-12-19 13:42:23 --- ➜ opsnotes git:(master) ✗ 使用“hexog g”更新之后,会生成文件.这时你会发现/public/categories/文件夹下，已经生成了“ARTS打卡”的文件夹. 首页显示ARTS打卡菜单. 这里就是要在博客首页上显示 python 菜单的时候了，首先打开你主题的配置文件/themes/cactus/_config.yml(我这里是用的cactus).找到menu,这里添加一行. nav: home: / articles: /archives/ ARTS: /categories/ARTS打卡/ ###新添加的 projects: https://github.com/opsnotes about: /about/ search: /search/ 菜单名称配置 上面的步骤做完以后，如果你着急刷新页面看了效果，就会看到新菜单的名称是menu.python，显然不是我们想要的，那就继续往下看首先查看项目目录下的/_config.yml的language配置，我的是这样的 ➜ opsnotes git:(master) ✗ cat themes/cactus/languages/zh-CN.</description>
+    </item>
+    
+    <item>
+      <title>kubernetes dashboard install</title>
+      <link>https://opsnotes.github.io/post/kubernetes/kubernetes-dashboard-install/</link>
+      <pubDate>Fri, 29 Nov 2019 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/kubernetes/kubernetes-dashboard-install/</guid>
+      <description>install dashboard 1. 参考资料[GitHub - kubernetes/dashboard: General-purpose web UI for Kubernetes clusters](https://github.com/kubernetes/dashboard) 2. install dashboard  kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml 3. 启动proxy  kubectl proxy 如果启动报错，查看pod是否运行 4. 访问url  http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/. 5. 生成token,参考资料https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md  kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk ‘{print $1}’) 6. 在dashboar界面输入token即可  </description>
+    </item>
+    
+    <item>
+      <title>helm install istio</title>
+      <link>https://opsnotes.github.io/post/kubernetes/helm-install-istio/</link>
+      <pubDate>Thu, 28 Nov 2019 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/kubernetes/helm-install-istio/</guid>
+      <description>先决条件 1. 已知安装mac下面的docker-desktop 2. kubernetes环境已部署完成 3. Helm已经安装完成 4. 保证网络正常GFW 5. 参考资料（[Istio / Traffic Management](https://istio.io/docs/concepts/traffic-management/)）  使用helm install 1. Create a namespace for the istio-system components:  ➜ kubectl version Client Version: version.Info{Major:&amp;#34;1&amp;#34;, Minor:&amp;#34;15&amp;#34;, GitVersion:&amp;#34;v1.15.0&amp;#34;, GitCommit:&amp;#34;e8462b5b5dc2584fdcd18e6bcfe9f1e4d970a529&amp;#34;, GitTreeState:&amp;#34;clean&amp;#34;, BuildDate:&amp;#34;2019-06-19T16:40:16Z&amp;#34;, GoVersion:&amp;#34;go1.12.5&amp;#34;, Compiler:&amp;#34;gc&amp;#34;, Platform:&amp;#34;darwin/amd64&amp;#34;} Server Version: version.Info{Major:&amp;#34;1&amp;#34;, Minor:&amp;#34;14&amp;#34;, GitVersion:&amp;#34;v1.14.8&amp;#34;, GitCommit:&amp;#34;211047e9a1922595eaa3a1127ed365e9299a6c23&amp;#34;, GitTreeState:&amp;#34;clean&amp;#34;, BuildDate:&amp;#34;2019-10-15T12:02:12Z&amp;#34;, GoVersion:&amp;#34;go1.12.10&amp;#34;, Compiler:&amp;#34;gc&amp;#34;, Platform:&amp;#34;linux/amd64&amp;#34;} ➜ ➜ kubectl create namespace istio-system namespace/istio-system created ➜ 2. Install all the Istio [Custom Resource Definitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions) (CRDs) using kubectl apply:  ➜ code git clone https://github.</description>
+    </item>
+    
+    <item>
+      <title>kubernetes故障之Orphaned pod</title>
+      <link>https://opsnotes.github.io/post/kubernetes/kubernetes_orphaned/</link>
+      <pubDate>Mon, 04 Nov 2019 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/kubernetes/kubernetes_orphaned/</guid>
+      <description>查看日志 [root@iZbp1c4tqwd9kaykklejmxZ ~]# journalctl -u kubelet -f -- Logs begin at Fri 2019-10-04 11:50:57 CST. -- Nov 01 13:28:21 iZbp1c4tqwd9kaykklejmxZ kubelet[9731]: E1101 13:28:21.575137 9731 kubelet_volumes.go:154] Orphaned pod &amp;#34;bb5c8fa3-b4b1-11e9-96a8-0a1877e1c33d&amp;#34; found, but volume paths are still present on disk : There were a total of 1 errors similar to this. Turn up verbosity to see them. Nov 01 13:28:22 iZbp1c4tqwd9kaykklejmxZ kubelet[9731]: W1101 13:28:22.826291 9731 reflector.go:270] object-&amp;#34;monitoring&amp;#34;/&amp;#34;grafana-dashboard-statefulset&amp;#34;: watch of *v1.ConfigMap ended with: too old resource version: 2345008003 (2345014010) Nov 01 13:28:23 iZbp1c4tqwd9kaykklejmxZ kubelet[9731]: E1101 13:28:23.</description>
+    </item>
+    
+    <item>
+      <title>kubernetes故障之pod迁移</title>
+      <link>https://opsnotes.github.io/post/kubernetes/kubernetes_safely-drain-node/</link>
+      <pubDate>Fri, 05 Jul 2019 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/kubernetes/kubernetes_safely-drain-node/</guid>
+      <description>相关操作命令 # 查看节点 kubectl get nodes # 设置节点为不可调度 kubectl cordon &amp;lt;NodeName&amp;gt; # 设置节点为可调度 kubectl uncordon &amp;lt;NodeName&amp;gt; # pod漂移到可调度的node节点上 kubectl drain &amp;lt;不可调度的node,上面有pod&amp;gt; --force --ignore-daemonsets 实际操作,把”cn-hangzhou.i-bp1bt6np98dbi2xmno0o,cn-hangzhou.i-bp1bt6np98dbi2xmno0p”设置为不可调度 # 查看node节点 kube-shell&amp;gt; kubectl get nodes NAME STATUS ROLES AGE VERSION cn-hangzhou.i-bp1bt6np98dbi2xmno0o Ready &amp;lt;none&amp;gt; 24d v1.12.6-aliyun.1 cn-hangzhou.i-bp1bt6np98dbi2xmno0p Ready &amp;lt;none&amp;gt; 24d v1.12.6-aliyun.1 cn-hangzhou.i-bp1cu5nvk55l2usiufx5 Ready &amp;lt;none&amp;gt; 35m v1.12.6-aliyun.1 kube-shell&amp;gt; # 设置node节点为不可调度 kube-shell&amp;gt; kubectl cordon cn-hangzhou.i-bp1bt6np98dbi2xmno0o node/cn-hangzhou.i-bp1bt6np98dbi2xmno0o cordoned kube-shell&amp;gt; kubectl cordon cn-hangzhou.i-bp1bt6np98dbi2xmno0p node/cn-hangzhou.i-bp1bt6np98dbi2xmno0p cordoned kube-shell&amp;gt; kubectl drain命令漂移不可调度node上的pod节点 # 查看修改调度后的node节点信息,其中2个node不可调度 kube-shell&amp;gt; kubectl get nodes NAME STATUS ROLES AGE VERSION cn-hangzhou.</description>
+    </item>
+    
+    <item>
+      <title>总结2018,展望2019 </title>
+      <link>https://opsnotes.github.io/post/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/2018%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Fri, 04 Jan 2019 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/2018%E6%80%BB%E7%BB%93/</guid>
+      <description>前言 在时间长河里,珍惜每一天,感谢遇到的每一个人,不管对的、错的,开心的、不开心,都随着2019年新年的钟声随风而逝. 2019年在忐忑不安中反思不知不觉中到来.又到了反思2018年的时候. 2018年.生活不易.且行且珍惜. 展望2019年,努力拼搏奋斗到底  写作: 2018年文章基本写的很少了,其实很多资料文档写了不少.但是相对来说博客更新的频率降低了很多.这个也不是找借口.其实就是自己变懒了.争取2019年做下自己技术突破.  工作: 工作方面,其实今年也是马马虎虎的一年.在做业务的保障和技术的沉淀以及团队管理.使用的技术基本还是目前一些主流的技术. 还好团队领导和兄弟们以及兄弟部门比较给力.在马马虎虎的情况下平稳度过了2018年,在这里要感谢兄弟们的支持以及领导的栽培和兄弟部门的照顾.让浑身是毛病的我度过了这一年. 在保障业务稳定的情况下.没有做出更多的业绩以及自我也未有做到更大的突破和成长. 没有按照自己既定的规划去做。相对来说比较失败.  读书: 已读完的书: 今年大概看完了二十多本书,还有十几本在读.以及几个专栏 富爸爸穷爸爸 团队核能: 行动版 跑步圣经 月亮与六便士 人间失格 python web开发实战 一万小时定律 思考致富 颠覆者:周鸿祎自传 彼得.林奇的成功投资 赋能:打造应对不确定性的敏捷团队 无所畏 冯唐 Kubernetes 权威指南 DevOps: 软件架构师行动指南 韭菜的自我修养 跃迁 你的生命有什么可能 诸时健传 腾讯传 增长黑客 极客时间订阅: 赵成的运维体系管理课 朱赟的技术管理课 深入剖析Kubernetes  生活: 2018年家人身体都比较健康,家庭和睦. 和太太感情虽然有磕磕碰碰偶尔争吵,好歹在不断磨合中,为爱情增加了一些催化剂. 今年最大的改变是坚持了健身.健身之后身体也好了.自信心也增加了. 今年准备要出去旅游的事情,由于各种原因又泡汤了争取在2019年出去一趟. 好兄弟胖子也在年末的时候结婚了.期待2019年另外2好兄弟加油. 学习炒股.今年亏了不少钱.算是交学费了. 弟弟也越来越懂事.越来越有一个当父亲和丈夫的责任.替弟弟高兴. 媳妇今年的事业算是步入了正轨.注册了自己的工作室.走上了专职的心理咨询师岗位.替媳妇加油喝彩. 今年自己最大的改变出了坚持健身以外.不怎么喝酒了.以前喜欢的LPL以及英雄联盟、刺激战场等游戏也不玩了.算是为自己的游戏青春划上了句号. 慢慢的迷恋上了喝茶.也越来越喜欢安静.喜欢一个人安静的躲在一个角落.看看书听听音乐. 今年本来准备备孕的事情和买房的事情因为各种原因都未有实现.算是既遗憾又克制.  2019年准备做这些事情: 健身持续不断的坚持下去. 争取完成去年未完成的事情.多看书. 多挣点钱,毕竟物质才能决定上层建筑. 准备出去玩一趟. 在各种条件成熟的情况下,备孕提上日程. 考个驾照,不能再拖了.  </description>
+    </item>
+    
+    <item>
+      <title>Docker for Mac install Kubernetes</title>
+      <link>https://opsnotes.github.io/post/docker_for_mac_install_kubernetes/</link>
+      <pubDate>Sat, 01 Dec 2018 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker_for_mac_install_kubernetes/</guid>
+      <description>install Docker for Mac 使用brew 方式安装,注意是在docker版本18.06之后才开始支持  brew cask install docker  从官方下载docker.dmg文件  https://store.docker.com/editions/community/docker-ce-desktop-mac  安装完成之后如图展示,使用docker账号密码登陆就可以启动 安装完成之后界面 设置 Docker 中国官方镜像加速 registry mirror https://registry.docker-cn.com 因为墙的原因我们预先从阿里云服务器上下载Kubernetes所需要的镜像.不然我们在启用Kubernetes应用之后,会一直显示,Kubernetes 正在启动. ➜ images cat images k8s.gcr.io/kube-proxy-amd64:v1.10.3=registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy-amd64:v1.10.3 k8s.gcr.io/kube-controller-manager-amd64:v1.10.3=registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager-amd64:v1.10.3 k8s.gcr.io/kube-scheduler-amd64:v1.10.3=registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler-amd64:v1.10.3 k8s.gcr.io/kube-apiserver-amd64:v1.10.3=registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver-amd64:v1.10.3 k8s.gcr.io/k8s-dns-dnsmasq-nanny-amd64:1.14.8=registry.cn-hangzhou.aliyuncs.com/google_containers/k8s-dns-dnsmasq-nanny-amd64:1.14.8 k8s.gcr.io/k8s-dns-sidecar-amd64:1.14.8=registry.cn-hangzhou.aliyuncs.com/google_containers/k8s-dns-sidecar-amd64:1.14.8 k8s.gcr.io/k8s-dns-kube-dns-amd64:1.14.8=registry.cn-hangzhou.aliyuncs.com/google_containers/k8s-dns-kube-dns-amd64:1.14.8 k8s.gcr.io/pause-amd64:3.1=registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 k8s.gcr.io/kubernetes-dashboard-amd64:v1.10.0=registry.cn-hangzhou.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.10.0 k8s.gcr.io/etcd-amd64:3.1.12=registry.cn-hangzhou.aliyuncs.com/google_containers/etcd-amd64:3.1.12 #gcr.io/kubernetes-helm/tiller:v2.10.0=registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.10.0 ➜ images cat load_images.sh #/bin/bash file=&amp;#34;images&amp;#34; if [ -f &amp;#34;$file&amp;#34; ] then echo &amp;#34;$file found.&amp;#34; while IFS=&amp;#39;=&amp;#39; read -r key value do #echo &amp;#34;${key}=${value}&amp;#34; docker pull ${value} docker tag ${value} ${key} docker rmi ${value} done &amp;lt; &amp;#34;$file&amp;#34; else echo &amp;#34;$file not found.</description>
+    </item>
+    
+    <item>
+      <title>总结2017,展望2018 </title>
+      <link>https://opsnotes.github.io/post/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/2017%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Mon, 01 Jan 2018 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/2017%E6%80%BB%E7%BB%93/</guid>
+      <description>时光飞逝,2017年转瞬即逝,老习惯,一年年底给自己做一个总结。 写作: 2017年自己在博客上大概写了5篇文章左右,还有一些关于容器Kubernetes方面的文章大概18篇左右,主要是工作太忙没精力时间去整理. 读书方面今年算比较失败的一年,技术方面的书就读了几本,主要是容器和python方面的一些书籍,也印证了,DevOps火爆的一年 《PaaS实现与运维管理》《从行动开始：自我管理的科学》《docker容器与容器云》《Python Web开发实战》《腾讯传》《持续交付发布可靠软件的系统方法》《高效人士的七个习惯》《番茄工作法》《深度工作》《Kubernetes权威指南》这本正在读.《Python编程快速上手》正在读。 今年参加了Gops大会以及InfoQ上海大会,以及几场线下的容器大会 工作: 做团队技术管理其实是一个蛮有意思的职业.既考验情商也考验智商。金融行业是一个稳定性和可用性要求非常高的的行业,压力确实很大.当然挑战非常高,还好负责的这块大问题到没有,小问题到不少,还需要持续的改定和优化,团队管理和技术还需要努力提升,团队的核心成员还要培养.团队文化需要持续塑造.当然更要感谢各位领导,兄弟的支持,才能顺利的度过2017年. 创新方面今年做的比较少,新环境一切都是围绕这稳定性,可用性的方向去做运维以及带团队.希望2018年能带团队做一些挑战性的创新性工作。 生活: 旅游方面,五月份带媳妇去了巴厘岛度蜜月 青岛的房子在大舅哥和岳父的帮忙下在婚期之前顺利的装修完成.感谢大舅哥辛苦的努力. 10月份在青岛举办了婚礼,感谢家人妻子朋友,大学同学更是不远万里去参加婚礼,非常开心.年底还需要在老家举办一场婚礼. 媳妇的状态也还好,工作生活都基本达到了期待的状态. 夫妻感情也算平稳偶尔吵吵闹闹也算为爱情增加了一些催化剂. 健身的事情又拖了一年,明显感觉今年身体不如以前状态好了,也许是缺少锻炼的问题.也许是人到中年,变成油腻的中年 五月份表弟来上海.带表弟学习计算机,目前已找到工作,算为家里老人帮忙. 八月份小姑家表妹表弟来考上大学来上海学习,帮表弟表妹顺利入学,让姑姑少操心. 爷爷父母身体今年都还可以,家庭和睦没有啥大事情. 弟弟家也算和睦,侄女也在茁壮的成长. 大舅子前几天又生了一小男孩.憨的可爱.我这边也要加油努力一下 乱七八糟今年就这样吧 2018年准备做这些事情: 要重视自己和家人的身体健康,争取能坚持健身,多陪陪家里人 准备每个月读三本书,算挑战一下自己 工作上需要再努力一把,毕竟油腻的中间人还要养家糊口 努力进行造人计划 考个驾照 技术想在学习一点 准备出去再玩一趟 买房是个大工程,看机会 </description>
+    </item>
+    
+    <item>
+      <title>G云云主机性能测试</title>
+      <link>https://opsnotes.github.io/post/g%E4%BA%91%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Fri, 01 Dec 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/g%E4%BA%91%E6%B5%8B%E8%AF%95/</guid>
+      <description>&lt;p&gt;公司最近要上个新业务，正在选择云平台，国内的几家都测试过，把G云的测试结果发出来，大家参考下。总体还不错，号称私有云，资源独享。G云官网：http://gicloud.com.cn&lt;/p&gt;
+&lt;h3 id=&#34;一网络测试&#34;&gt;一、网络测试&lt;/h3&gt;
+&lt;p&gt;PING测试在一定程度上可以代表服务器的宽带速度。使用站长工具提供的Ping服务 ( &lt;a href=&#34;http://ping.chinaz.com&#34;&gt;http://ping.chinaz.com&lt;/a&gt; )，来测试各个地区的速度，以便做一个直观的了解。
+&lt;img src=&#34;https://opsnotes.github.io/img/G11.png&#34; alt=&#34;Gyun&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CentOS7安装zabbix grafana插件</title>
+      <link>https://opsnotes.github.io/post/grafana-zabbix/</link>
+      <pubDate>Sun, 01 Oct 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/grafana-zabbix/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://opsnotes.github.io/img/grafana03.jpeg&#34; alt=&#34;grafana&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;直接yum安装&#34;&gt;直接yum安装&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;[root@zabbixsrv ~]# yum install https://grafanarel.s3.amazonaws.com/builds/grafana-3.1.0-1468321182.x86_64.rpm
+
+[root@zabbixsrv ~]# yum install initscripts fontconfig
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;本地配置yum安装&#34;&gt;本地配置yum安装&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;1.修改yum源配置文件
+
+[root@zabbixsrv ~]# cat /etc/yum.repos.d/grafana.repo
+[grafana]
+name=grafana
+baseurl=https://packagecloud.io/grafana/stable/el/6/$basearch
+repo_gpgcheck=1
+enabled=1
+gpgcheck=1
+gpgkey=https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+
+2.yum安装
+yum install –y grafana
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>2017年读书计划</title>
+      <link>https://opsnotes.github.io/post/reading-program/</link>
+      <pubDate>Tue, 08 Aug 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/reading-program/</guid>
+      <description>准备读的书: 1.Pthon黑帽子黑客与渗透测试编程之道 2.黑客 3.Kubernetes权威指南 4.云原生应用架构实践 已读的书: 1.PaaS实现与运维管理：基于Mesos +Docker+ELK的实战指南 2.从行动开始：自我管理的科学 3.精通saltstack 4.docker容器与容器云 5.Python Web开发实战 6.腾讯传 7.持续交付发布可靠软件的系统方法 8.Pthon黑帽子黑客与渗透测试编程之道 9.黑客 10.Python 学习手册第四版 11.深度工作 12.番茄工作法 13.高效人士的七个习惯 </description>
+    </item>
+    
+    <item>
+      <title>zabbix自动发现端口监控(一)</title>
+      <link>https://opsnotes.github.io/post/zabbix_discovery_port/</link>
+      <pubDate>Wed, 03 May 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/zabbix_discovery_port/</guid>
+      <description>查看获取端口的脚本 [root@iZbp113qvinee7jxepbagqZ ~]# cat /opt/discovery_port.sh #!/bin/bash portarray=(`sudo netstat -tnlp|egrep -i &amp;#34;$1&amp;#34;|awk {&amp;#39;print $4&amp;#39;}|awk -F&amp;#39;:&amp;#39; &amp;#39;{if ($NF~/^[0-9]*$/) print $NF}&amp;#39;|sort|uniq`) length=${#portarray[@]} printf &amp;#34;{\n&amp;#34; printf &amp;#39;\t&amp;#39;&amp;#34;\&amp;#34;data\&amp;#34;:[&amp;#34; for ((i=0;i&amp;lt;$length;i++)) do printf &amp;#39;\n\t\t{&amp;#39; printf &amp;#34;\&amp;#34;{#TCP_PORT}\&amp;#34;:\&amp;#34;${portarray[$i]}\&amp;#34;}&amp;#34; if [ $i -lt $[$length-1] ];then printf &amp;#39;,&amp;#39; fi done printf &amp;#34;\n\t]\n&amp;#34; printf &amp;#34;}\n&amp;#34; [root@iZbp113qvinee7jxepbagqZ ~]# 授权,要让zabbix用户有执行权限 [root@iZbp113qvinee7jxepbagqZ ~]# chmod +x /opt/discovery_port.sh [root@iZbp113qvinee7jxepbagqZ ~]# 查看zabbix自定义key文件 [root@iZbp113qvinee7jxepbagqZ ~]# cat /etc/zabbix/zabbix_agentd.d/userparameter_discovery_port.conf UserParameter=tcpportlisten,/opt/discovery_port.sh &amp;#34;$1&amp;#34; [root@iZbp113qvinee7jxepbagqZ ~]# 重启zabbix agent [root@iZbp146uf9ftw85i3zaol9Z ~]# service zabbix-agent restart Shutting down Zabbix agent: [ OK ] Starting Zabbix agent: [ OK ] [root@iZbp146uf9ftw85i3zaol9Z ~]# 服务端测试 [root@iZbp14ipzpabr30yllskn4Z tmp]# zabbix_get -s 10.</description>
+    </item>
+    
+    <item>
+      <title>使用saltstack部署zabbix监控mysql主从</title>
+      <link>https://opsnotes.github.io/post/zabbix/%E4%BD%BF%E7%94%A8saltstack%E9%83%A8%E7%BD%B2zabbix%E7%9B%91%E6%8E%A7mysql%E4%B8%BB%E4%BB%8E/</link>
+      <pubDate>Thu, 27 Apr 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/zabbix/%E4%BD%BF%E7%94%A8saltstack%E9%83%A8%E7%BD%B2zabbix%E7%9B%91%E6%8E%A7mysql%E4%B8%BB%E4%BB%8E/</guid>
+      <description>思路 首先在/srv/salt/下面创建zabbix_mysql目录,然后创建init.sls. 需要注意的前提必须是zabbix agent已经安装部署. 复制我们自己监控创建的监控项目到客户端 重启zabbix agent 查看表结构 ~/Desktop/salt &amp;gt; tree zabbix_mysql zabbix_mysql ├── files │ ├── mysql_grant.sh │ ├── mysql_low_discovery.sh │ ├── sudoers.sh │ └── userparameter_discovery_mysql.conf └── init.sls 1 directory, 5 files zabbix discovery ~/Desktop/salt &amp;gt; cat zabbix_mysql/files/userparameter_discovery_mysql.conf UserParameter=zabbix_low_discovery[*],/bin/bash /opt/mysql_low_discovery.sh $1 UserParameter=mysql_stats[*],mysql -h localhost -P $1 -uzabbix -pzabbix -e &amp;#34;show global status&amp;#34;|grep &amp;#34;\&amp;lt;$2\&amp;gt;&amp;#34;|cut -f2 UserParameter=mysql_stats_slave[*],mysql -h localhost -P $1 -uzabbix -pzabbix -e &amp;#34;show slave status\G&amp;#34;|grep &amp;#34;\&amp;lt;$2\&amp;gt;&amp;#34;|awk &amp;#39;{if($NF==&amp;#34;Yes&amp;#34;) {print 1} else {print 0}}&amp;#39; ~/Desktop/salt &amp;gt; mysql授权 ~/Desktop/salt &amp;gt; cat zabbix_mysql/files/mysql_grant.</description>
+    </item>
+    
+    <item>
+      <title>使用salt批量部署zabbix自动发现监控(二)</title>
+      <link>https://opsnotes.github.io/post/zabbix/%E4%BD%BF%E7%94%A8salt%E6%89%B9%E9%87%8F%E9%83%A8%E7%BD%B2zabbix%E7%AB%AF%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0/</link>
+      <pubDate>Thu, 27 Apr 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/zabbix/%E4%BD%BF%E7%94%A8salt%E6%89%B9%E9%87%8F%E9%83%A8%E7%BD%B2zabbix%E7%AB%AF%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0/</guid>
+      <description>查看目录结构 [root@iZbp14ipzpabr30yllskn4Z salt]# tree discovery_port/ discovery_port/ ├── files │ ├── discovery_port.sh │ ├── sudoers.sh │ └── userparameter_discovery_port.conf └── init.sls 1 directory, 4 files [root@iZbp14ipzpabr30yllskn4Z salt]# 查看主配置文件init.sls [root@iZbp14ipzpabr30yllskn4Z salt]# more discovery_port/init.sls ### zabbix mysql config discovery_port: file.managed: - name: /etc/zabbix/zabbix_agentd.d/userparameter_discovery_port.conf - user: root - mode: 755 - source: salt://discovery_port/files/userparameter_discovery_port.conf discovery_port_sh: file.managed: - name: /opt/discovery_port.sh - user: root - mode: 755 - source: salt://discovery_port/files/discovery_port.sh sudoers_manager: file.managed: - name: /opt/sudoers.sh - user: root - mode: 755 - source: salt://discovery_port/files/sudoers.</description>
+    </item>
+    
+    <item>
+      <title>openvpn使用密码账号安装部署:</title>
+      <link>https://opsnotes.github.io/post/openvpn-install/</link>
+      <pubDate>Wed, 15 Mar 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/openvpn-install/</guid>
+      <description>准备环境 系统: CentOS 6.7 X86_64 OpenVpn: 2.4.4 关闭Selinux [root@localhost 2.0]# sed -i &amp;#39;/^SELINUX=/c\SELINUX=disabled&amp;#39; /etc/selinux/config 安装epelrpm包,不然没有openvpn这个rpm,安装openvpn相关依赖的包 [root@localhost 2.0]# rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm [root@localhost 2.0]# yum -y install openvpn easy-rsa openssl openssl-devel gcc vim 修改Easy-ras主服务信息. [root@localhost 2.0]# cd /usr/share/easy-rsa/2.0/ [root@localhost 2.0]# chmod +x * [root@localhost 2.0]# cp -a vars vars.20180111 [root@localhost 2.0]# vim vars ###找到这个文件修改其中的这几行信息 export KEY_COUNTRY=&amp;#34;CN&amp;#34; export KEY_PROVINCE=&amp;#34;SH&amp;#34; export KEY_CITY=&amp;#34;SH&amp;#34; export KEY_ORG=&amp;#34;DFCF&amp;#34; export KEY_EMAIL=&amp;#34;zky.linux@gmail.com&amp;#34; export KEY_OU=&amp;#34;OPS&amp;#34; [root@localhost 2.0]# 清除keys目录下所有与证书相关的文件， 注意：下面步骤生成的证书和密钥都在/usr/share/easy-rsa/2.0/keys目录里 [root@localhost 2.0]# source vars //提示可以忽略 [root@localhost 2.</description>
+    </item>
+    
+    <item>
+      <title>2016写给自己的总结</title>
+      <link>https://opsnotes.github.io/post/2016%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Fri, 06 Jan 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/2016%E6%80%BB%E7%BB%93/</guid>
+      <description>2016结束了给自己来写一个简单的小总结.
+学习方面：
+今年大概在opsnotes.net上大概写了差不多18篇文章. 年初的时候学习了一些docker方面的资料书籍 后半年基本学习python了.从7月份到12月份,算是大概的入门了.感觉还是蛮难的还需要多练习 年前计算一个月读三本书的,结果到年底算了下读了23本书.其实很多书都是非技术的一些书籍. http://opsnotes.net/2017/01/05/读书  工作方面:
+毕业到现在一直做运维,其他也不怎么会.从15年基本技术兼管理岗位。现在基本是沟通的多了,技术做的少了.当然沟通是一个很有趣的的事情.情商智商全局考虑都需要考虑很多.当然个人感觉做leader不管是技术还是管理一样重要. 今年业务量前半年其实还可以,后半年基本就保持不动.所以相对今年还算平稳的一年。  生活方面：
+今年和相恋多年的媳妇领证了.一路酸甜苦辣,算是修成正果了.感恩有你！ 房子买了算是有了一个自己的窝。努力再上海在搞一个 带父亲来上海玩了一段时间 大舅子以及弟弟家里小孩子出生了.顿然感觉自己平白无故的高了一辈,当时肯定是很开心的 本来今年打算带媳妇出去旅游玩的事情,也能遗憾的没有实现,感觉蛮对不起媳妇的。 2016年人变懒了出现惰性了,发胖了.希望2017年勤快一点. 2016年基本就这样子吧.期待2017年.  </description>
+    </item>
+    
+    <item>
+      <title>2016年读书计划</title>
+      <link>https://opsnotes.github.io/post/%E8%AF%BB%E4%B9%A6/</link>
+      <pubDate>Thu, 05 Jan 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/%E8%AF%BB%E4%B9%A6/</guid>
+      <description>正在读的书 6.PaaS实现与运维管理：基于Mesos +Docker+ELK的实战指南 7.Python 学习手册第四版 8.互联网生态:重构商业规则 9.黑客 12.我的互联网方法论 14.编写高质量代码 已读的书 1.拆掉思维里的墙 2.高性能linux服务器构建实战 3.MacTalk 人生元编程 http://item.jd.com/11398297.html 4.SaltStack技术入门与实战 http://item.jd.com/11804150.html(好友沈灿的书) 5.自动化运维软件设计实战 http://item.jd.com/11734638.html 6.皮囊 7.奔跑吧Ansible http://item.jd.com/11839215.html 8.活着 9.ELK Stack权威指南 http://item.jd.com/10038199385.html(好友三斗的书) 10.海量运维运营规划 http://item.jd.com/11366105.html(重读) 11.vim使用技巧 12.黑客与画家 13.重新定义公司:谷歌是如何运营的 14.技术管理之巅 15.精进 采铜 16.Ansible自动化运维：技术与最佳实践 http://item.jd.com/11917729.html(好友沈灿的书) 17.跟任何人都聊得来:最受世界500强企业欢迎的沟通课 18.为什么精英都是清单控 19.梦在青春在 20.周鸿祎自述：我的互联网方法论 21.毅力: 如何培养自律的习惯 22.凤凰项目:一个IT运维的传奇故事 23.DevOps实践：驭DevOps之力强化技术栈并优化IT运行 </description>
+    </item>
+    
+    <item>
+      <title>Mac技巧:为终端设置Shadowsocks代理</title>
+      <link>https://opsnotes.github.io/post/mac%E6%8A%80%E5%B7%A7-%E4%B8%BA%E7%BB%88%E7%AB%AF%E8%AE%BE%E7%BD%AEshadowsocks%E4%BB%A3%E7%90%86/</link>
+      <pubDate>Thu, 08 Dec 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/mac%E6%8A%80%E5%B7%A7-%E4%B8%BA%E7%BB%88%E7%AB%AF%E8%AE%BE%E7%BD%AEshadowsocks%E4%BB%A3%E7%90%86/</guid>
+      <description>准备工作 1.首先要有ShadowSocks 2.要有翻墙账号 3.安装配置自行Google install brew install polipo config # 设置每次登陆启动polipo ln -sfv /usr/local/opt/polipo/*.plist ~/Library/LaunchAgents # 修改配置文件&amp;#34;homebrew.mxcl.polipo.plist&amp;#34; ~/Documents ⮀ cat /usr/local/opt/polipo/homebrew.mxcl.polipo.plist &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;!DOCTYPE plist PUBLIC &amp;#34;-//Apple//DTD PLIST 1.0//EN&amp;#34; &amp;#34;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;#34;&amp;gt; &amp;lt;plist version=&amp;#34;1.0&amp;#34;&amp;gt; &amp;lt;dict&amp;gt; &amp;lt;key&amp;gt;Label&amp;lt;/key&amp;gt; &amp;lt;string&amp;gt;homebrew.mxcl.polipo&amp;lt;/string&amp;gt; &amp;lt;key&amp;gt;RunAtLoad&amp;lt;/key&amp;gt; &amp;lt;true/&amp;gt; &amp;lt;key&amp;gt;KeepAlive&amp;lt;/key&amp;gt; &amp;lt;true/&amp;gt; &amp;lt;key&amp;gt;ProgramArguments&amp;lt;/key&amp;gt; &amp;lt;array&amp;gt; &amp;lt;string&amp;gt;/usr/local/opt/polipo/bin/polipo&amp;lt;/string&amp;gt; &amp;lt;string&amp;gt;socksParentProxy=127.0.0.1:1080&amp;lt;/string&amp;gt; #### 需要添加的文件 &amp;lt;/array&amp;gt; &amp;lt;!-- Set `ulimit -n 65536`. The default macOS limit is 256, that&amp;#39;s not enough for Polipo (displays &amp;#39;too many files open&amp;#39; errors). It seems like you have no reason to lower this limit (and unlikely will want to raise it).</description>
+    </item>
+    
+    <item>
+      <title>转载:职场菜鸟的内心独白</title>
+      <link>https://opsnotes.github.io/post/%E8%81%8C%E5%9C%BA%E8%8F%9C%E9%B8%9F%E7%9A%84%E5%86%85%E5%BF%83%E7%8B%AC%E7%99%BD/</link>
+      <pubDate>Fri, 14 Oct 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/%E8%81%8C%E5%9C%BA%E8%8F%9C%E9%B8%9F%E7%9A%84%E5%86%85%E5%BF%83%E7%8B%AC%E7%99%BD/</guid>
+      <description>职场菜鸟的内心独白 虽然这已经是小编工作的第二年，但单纯的小编依然是职场菜鸟、社会小白，这一年多，经历了入职-离职-再入职，事业单位-私企的转变适应过程，最近心情起伏不定，甚至感觉体内的“抑郁细胞”再次苏醒，不吐不快。 有没有一种人，就是适应不了这个社会？有没有一个社会，能接受适应不了它的人？ 其实小编并不是从小就那么爱思考，小编也曾经无忧无虑、大大咧咧的过日子，吃饱了就学、学累了就睡，爸爸妈妈爷爷奶奶从来没要求小编有什么大的成就，中学毕业打个工养活自己就行了，没想到小编竟然这么“争气”，一路大学读下来还一不小心第一名的成绩考上研究生，继续深钻“心理学”，从此再没有了没心没肺的小编。 当然不是说心理学能把人改头换面（虽然对小编确实是这样），经历倒真的让小编变了。但小编也从来没想过自己会变成这样抑郁的一个，今天刚看到一本书上，把小编这种情况叫做“内射性抑郁”和“情感依附性抑郁”（OS：×，什么鬼？！）。 内射性抑郁：将愤怒转向自我以回避想杀死他人的罪疚感。不明白？通俗来讲就是：被Boss骂了，潜意识想杀了他，但是你强大的高尚的道德感和超我不允许你这么想，进而你将这种愤怒转向了自己，觉得都是自己的错，老板骂得对（好贱，可是好准😢），然后你就抑郁了。 情感依附性抑郁：由丧失导致的抑郁。对，是丧失，不是丧尸。你最依恋的人去世了，但你没有机会正常的完成哀悼（比如去世时不在身边，未能参加他/她的追悼会等），那么你就可能会大量收集并极其依恋与死者相关的事情（纪念品、物品、记忆等），把自己的家变成了一座永久的“陵墓”，你就做了一辈子的“守陵人”。可怕吗？可怕，所以就抑郁了。 今天小编不说情感依附性抑郁，既然说职场，那就聊内射性抑郁。小编内射了，哦，不，抑郁了。 第一份工作在学校。“哇，学校福利多好啊，最吸引人的就是寒暑假，多好啊，谁这么傻×，要辞掉这个工作”。是的，小编就是这个傻×，熬了一年，不干了，为啥，抑郁了。小编受不了官官相护，受不了“当官不为民做主”，受不了教师地位低下的落差，从没想过一份工作给小编带来多大的金钱利益（到目前仍是这样想法），但小编无法适应，无法“随波逐流”。有人跟我说“你活的太阳春白雪了”，太对了！小编就是阳春白雪啊，小编看到那么恶的人性，不应该继续坚持“情怀”这个东西吗？！ 小编第二份工作，也是现在在做的事情，不能说是小编最喜欢的，但专业相关，小编擅长，还算做的舒服。私企当然不像事业单位，每天打酱油似的舒服过日子，所有精力都花在了“打官腔”、人情往来。私企要求做好事情，做好你的本职工作外，老板一声令下，马上达到200%的完成度。KAO！各种抱怨就不再传播了，已经看到太多，但是小编却发现了这“内射性抑郁”找上门来，老板，哪天小编跳楼了，不会找你的。 偏偏别人不把你当菜鸟，哦，是思想上没把你当菜鸟，希望你做出的成绩是混迹沙场几十年的结果，如果人人都献出一点爱/(ㄒoㄒ)/~~ 虽说这是每个新人都经历的事情，但是万一这个新人过不去怎么办，万一这个新人是抑郁型特质的人怎么办，万一这个新人就是适应不了社会怎么办。“自作自受”，几乎大多人都会对他这么说，但是他真的很努力啊，对这个社会，他充满情怀啊，充满热爱啊，但这个社会，到处是不小心的敌意啊。 什么时候，这个社会尊重每一个人，尊重每一个人的特殊，尊重每一个人的发展，尊重他就是他，不是任何人？ 有没有一个社会，能接受适应不了它的人？ 有没有一个人，告诉你：如果很辛苦，就不用去适应社会。 </description>
+    </item>
+    
+    <item>
+      <title>python基础学习06</title>
+      <link>https://opsnotes.github.io/post/python/python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%BB%83%E4%B9%A0/</link>
+      <pubDate>Sat, 10 Sep 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/python%E8%A3%85%E9%A5%B0%E5%99%A8%E7%BB%83%E4%B9%A0/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;概念&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;装饰器（Decorator）的基本定义：“装饰器的功能是将被装饰的函数当作参数传递给与装饰器对应的函数（名称相同的函数），并返回包装后的被装饰的函数”。
+
+装饰器的定义是：装饰器实质上是一个函数。它把一个函数作为输入并且返回另外一个函数。其实其是闭包概念的深化
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;抽离出大量函数中与函数功能本身无关的雷同代码并继续重用
+
+可以将函数“修饰”为完全不同的行为，可以有效的将业务逻辑正交分解，如用于将权限和身份验证从业务中独立出来
+
+概括的讲，装饰器的作用就是为已经存在的对象添加额外的功能
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;装饰器入门&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;In [43]: def foo():
+    ...:     print(&amp;#39;in foo()&amp;#39;)
+    ...: foo()
+    ...:
+in foo()
+
+In [44]:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;In [44]: import time
+
+In [45]: def foo():
+    ...:     start = time.clock()
+    ...:     print(&amp;#39;in foo()&amp;#39;)
+    ...:     end = time.clock()
+    ...:     print(&amp;#39;used:&amp;#39;, end - start)
+    ...: foo()
+    ...:
+in foo()
+used: 2.1999999997746045e-05
+
+In [46]:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>python基础学习04</title>
+      <link>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-04/</link>
+      <pubDate>Wed, 27 Jul 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-04/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;元组&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;元组是一个不可变结构 是不允许修改的,只查询
+In [164]: t = tuple()
+
+In [165]: t
+Out[165]: ()
+
+In [166]: t = (1,2,3)
+
+In [167]:
+
+In [171]: t.count(1)
+Out[171]: 1
+
+In [175]: t = (1)
+
+In [176]: t
+Out[176]: 1
+
+In [177]: t = (1,)
+
+In [178]: t
+Out[178]: (1,)
+
+In [179]:
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;列表和元组的区别&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;list是[]号
+元组是()号
+list可以修改
+元组不可以修改
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>python基础学习05</title>
+      <link>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-05/</link>
+      <pubDate>Wed, 27 Jul 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-05/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;1.什么是字符串&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	什么是字符串？
+		python3里面是unicode序列
+		在python2里面是byte序列
+		字符串也是不可变的
+		支持切片 也支持索引 支持解包操作
+		支持遍历
+	用在哪些特定的环境
+	为什么是内置数据结构
+	In [26]: s = &amp;#39;geek&amp;#39;
+
+In [27]: s
+Out[27]: &amp;#39;geek&amp;#39;
+
+In [28]: s[0]
+Out[28]: &amp;#39;g&amp;#39;
+
+可以反转:
+In [30]: s[::-1]
+Out[30]: &amp;#39;keeg&amp;#39;
+
+In [31]:
+支持解包
+In [36]: a = &amp;#39;geek&amp;#39;
+
+In [37]: g,*s = a
+
+In [38]: g
+Out[38]: &amp;#39;g&amp;#39;
+
+In [39]: s
+Out[39]: [&amp;#39;e&amp;#39;, &amp;#39;e&amp;#39;, &amp;#39;k&amp;#39;]
+
+In [40]:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;2.字符串的连接&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;**join使用方法：**
+In [45]: list = [&amp;#39;my&amp;#39;,&amp;#39;name&amp;#39;,&amp;#39;is &amp;#39;,&amp;#39;steven&amp;#39;]
+
+In [46]: list
+Out[46]: [&amp;#39;my&amp;#39;, &amp;#39;name&amp;#39;, &amp;#39;is &amp;#39;, &amp;#39;steven&amp;#39;]
+
+In [47]: &amp;#39; &amp;#39;.join(list)
+Out[47]: &amp;#39;my name is  steven&amp;#39;
+
+In [48]: &amp;#39;,&amp;#39;.join(list)
+Out[48]: &amp;#39;my,name,is ,steven&amp;#39;
+
+In [49]:
+
+###字符串的分割
+**split**  从左边开始分割
+**rsplit**  从右边开始分割
+**splitlines**
+**partition**
+**rpartotion**
+
+**split练习使用**
+In [119]: a = &amp;#34;my name is steven&amp;#34;
+
+In [120]: a
+Out[120]: &amp;#39;my name is steven&amp;#39;
+
+In [121]: a.split()
+Out[121]: [&amp;#39;my&amp;#39;, &amp;#39;name&amp;#39;, &amp;#39;is&amp;#39;, &amp;#39;steven&amp;#39;]
+
+In [122]: a.split(&amp;#39;is&amp;#39;)
+Out[122]: [&amp;#39;my name &amp;#39;, &amp;#39; steven&amp;#39;]
+
+In [123]: a.split(&amp;#39; &amp;#39;, 1)
+Out[123]: [&amp;#39;my&amp;#39;, &amp;#39;name is steven&amp;#39;]
+
+In [124]: a.split(&amp;#39; &amp;#39;, 2)
+Out[124]: [&amp;#39;my&amp;#39;, &amp;#39;name&amp;#39;, &amp;#39;is steven&amp;#39;]
+
+In [125]: a.split(&amp;#39; &amp;#39;, 3)
+Out[125]: [&amp;#39;my&amp;#39;, &amp;#39;name&amp;#39;, &amp;#39;is&amp;#39;, &amp;#39;steven&amp;#39;]
+
+In [126]: a.split(&amp;#39; &amp;#39;, 4)
+Out[126]: [&amp;#39;my&amp;#39;, &amp;#39;name&amp;#39;, &amp;#39;is&amp;#39;, &amp;#39;steven&amp;#39;]
+
+In [127]: a.split(&amp;#39; &amp;#39;, -1)
+Out[127]: [&amp;#39;my&amp;#39;, &amp;#39;name&amp;#39;, &amp;#39;is&amp;#39;, &amp;#39;steven&amp;#39;]
+
+案例：
+
+In [131]: line = &amp;#39;usr:http://opsnotes.net&amp;#39;
+
+In [132]: line.split()
+Out[132]: [&amp;#39;usr:http://opsnotes.net&amp;#39;]
+
+In [133]: line.split(&amp;#39;:&amp;#39;, 1)
+Out[133]: [&amp;#39;usr&amp;#39;, &amp;#39;http://opsnotes.net&amp;#39;]
+In [135]: key, value = line.split(&amp;#39;:&amp;#39;, 1)
+
+In [136]: key
+Out[136]: &amp;#39;usr&amp;#39;
+
+In [137]: value
+Out[137]: &amp;#39;http://opsnotes.net&amp;#39;
+
+In [138]:
+
+**splitlines的使用方法:**
+In [138]: text = &amp;#39;&amp;#39;&amp;#39;i an geek
+   .....: i an a boy&amp;#39;&amp;#39;&amp;#39;
+
+In [139]: text
+Out[139]: &amp;#39;i an geek\ni an a boy&amp;#39;
+
+In [140]: text.splitlines()
+Out[140]: [&amp;#39;i an geek&amp;#39;, &amp;#39;i an a boy&amp;#39;]
+
+In [141]:
+
+**partition的使用方法：**
+In [141]: a
+Out[141]: &amp;#39;my name is steven&amp;#39;
+
+In [142]: a.partition(&amp;#39; &amp;#39;)
+Out[142]: (&amp;#39;my&amp;#39;, &amp;#39; &amp;#39;, &amp;#39;name is steven&amp;#39;)
+
+In [143]: a.split(&amp;#39; &amp;#39;, 1)
+Out[143]: [&amp;#39;my&amp;#39;, &amp;#39;name is steven&amp;#39;]
+
+In [144]: line.partition(&amp;#39;:&amp;#39;)
+Out[144]: (&amp;#39;usr&amp;#39;, &amp;#39;:&amp;#39;, &amp;#39;http://opsnotes.net&amp;#39;)
+
+In [145]: key, _, value = line.partition(&amp;#39;:&amp;#39;)
+
+In [146]: key
+Out[146]: &amp;#39;usr&amp;#39;
+
+In [147]: _
+Out[147]: &amp;#39;usr&amp;#39;
+
+In [148]: value
+Out[148]: &amp;#39;http://opsnotes.net&amp;#39;
+
+In [149]:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>python基础学习03</title>
+      <link>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-03/</link>
+      <pubDate>Tue, 26 Jul 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-03/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;1.list增加的使用方法&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;1.append使用方法
+	原地修改list,给list增加一个元素,append的方法的返回值是None
+list.append(12)
+
+In [4]: list.append(12)
+
+In [5]: list
+Out[5]: [1, 2, 3, 4, 5, 12]
+In [8]: help(list.append)
+
+2.insert的使用方法,根据索引位置添加.
+	insert操作的索引超出范围,如果是正索引,等效于append,如果是负索引.等效于insert(0， object)
+In [10]: list
+Out[10]: [1, 2, 3, 4, 5, 12]
+
+In [11]: list.insert(0,7)
+
+In [12]: list
+Out[12]: [7, 1, 2, 3, 4, 5, 12]
+
+In [13]: list.insert(3,0)
+
+In [14]: list
+Out[14]: [7, 1, 2, 0, 3, 4, 5, 12]
+
+In [15]:
+超出列表不存在的话
+In [16]: list.insert(12,3)
+
+In [17]: list
+Out[17]: [7, 1, 2, 0, 3, 4, 5, 12, 3]
+
+In [18]: list.insert(13,13)
+
+In [19]:
+
+3.extend的使用方法
+	把一个list扩展到我们的list后边
+In [20]: list.extend([1,2,3])
+
+In [21]: list
+Out[21]: [7, 1, 2, 0, 3, 4, 5, 12, 3, 13, 1, 2, 3]
+
+In [22]:
+In [23]: help(list.extend)####学会使用
+Help on built-in function extend:
+
+extend(...) method of builtins.list instance
+    L.extend(iterable) -&amp;gt; None -- extend list by appending elements from the iterable
+(END)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>python基础学习01</title>
+      <link>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-02%E8%BF%90%E7%AE%97%E7%AC%A6/</link>
+      <pubDate>Mon, 11 Jul 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-02%E8%BF%90%E7%AE%97%E7%AC%A6/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;python算数运算符
+ ~/code ⮀ cat yunsuanfu1.py
+#!/usr/bin/env python
+# -*- encoding: UTF-8 -*-
+
+&amp;#39;&amp;#39;&amp;#39;
+    python算数运算符
+&amp;#39;&amp;#39;&amp;#39;
+
+a = 21
+b = 10
+c = 0
+
+c = a + b
+print &amp;#34;1 - c的值为: &amp;#34;, c
+
+c = a - b
+print &amp;#34;2 - c的值为: &amp;#34;, c
+
+c = a * b
+print &amp;#34;3 - c的值为: &amp;#34;, c
+
+c = a / b
+print &amp;#34;4 - c的值为: &amp;#34;, c
+
+c = a % b
+print &amp;#34;5 - c的值为: &amp;#34;, c
+
+
+&amp;#39;&amp;#39;&amp;#39;
+修改变量: a,b,c
+&amp;#39;&amp;#39;&amp;#39;
+
+a = 2
+b = 3
+c = a ** b
+print &amp;#34;6 - c的值为: &amp;#34;, c
+
+a = 10
+b = 5
+c = a // b
+print &amp;#34;7 - c的值为: &amp;#34;, c
+ ~/code ⮀
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>python基础学习02</title>
+      <link>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-01/</link>
+      <pubDate>Wed, 06 Jul 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0-01/</guid>
+      <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;**Python range用法**
+range（[start ,] stop [, step]）
+
+
+上面方括号内的参数表示是可选的，但所有参数必须是整数。如果参数step被省略的话，它的默认值是1；如果参数start被省略的话，它的默认值将是0。但是无论如何，参数stop是不允许省略的，所以range（）函数只有一个参数时，它表示range（stop）；当range（）函数带有两个参数时，它表示range（start，stop）。
+
+我们知道range（）返回的是一个列表，列表中的整数值为[start, start + step, start + 2 * step, start + 3 * step,...]。如果参数step为正值，那么列表中最后一个元素为小于参数stop的那个最大的整数 start + i * step ；如果参数step为负值，那么列表中最后一个元素为大于参数stop的那个最小的整数 start + i * step 。但是任何时候参数step的值都不能为零。只要将上面的列举的range（）示例跟这里的一般性介绍相结合，我们就能更好的理解该内建函数的用法。
+
+需要注意，当参数step为正值时，参数start必须小于参数step；当参数step为负值时，参数start必须大于参数step，否则range（）函数将返回一个空表
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;习题练习1：写一个猜数字游戏,预先设定一个数字,游戏玩家输入一个数字,如果与预设的数字相等,玩家获胜,如果不等,提示玩家太大还是太小,玩家有三次猜数字的机会。
+!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+result =  4
+count = 3
+
+while not count == 0:
+    guess = int(raw_input(&amp;#39;Please enter Guess Number: &amp;#39;))
+    if  guess == result:
+        print u&amp;#39;猜对了,游戏结束&amp;#39;
+        break
+
+    elif guess &amp;gt; result:
+        print u&amp;#39;数字偏大,再猜一次&amp;#39;
+        count -= 1
+
+    else:
+        print u&amp;#39;数字偏小,再猜一次&amp;#39;
+        #continue
+        count -= 1
+
+else:
+    print u&amp;#39;只能猜三次游戏结束!!&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python多版本管理软件pyenv</title>
+      <link>https://opsnotes.github.io/post/python/pyenv/</link>
+      <pubDate>Mon, 04 Jul 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/pyenv/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Pyenv是什么&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;git地址：https://github.com/yyuu/pyenv
+1.pyenv是python版本多功能切换工具,对系统无任何依赖关系和损坏.
+2.能支持多个python版本
+3.可以在多个python不同版本之间切换
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;安装部署&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;环境：
+Centos7.0  阿里云
+安装:
+1.curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+2.修改配置/etc/profile文件,添加如下文件
+export PATH=&amp;#34;/root/.pyenv/bin:$PATH&amp;#34;
+eval &amp;#34;$(pyenv init -)&amp;#34;
+eval &amp;#34;$(pyenv virtualenv-init -)&amp;#34;
+3. source /etc/profile
+更新pyenv版本：
+pyenv update
+删除pyenv:
+只需要删掉目录就可以(注意是隐藏文件)
+rm -fr ~/.pyenv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;使用pyenv在CentOS7.1上安装python3.5.2&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;1.先解决依赖关系
+yum -y install gcc patch make gdbm-devel openssl-devel sqlite-devel zlib-devel bzip2-devel readline-devel
+2.下载python3.5.2压缩包
+wget http://7d9qvq.com1.z0.glb.clouddn.com/Python-3.5.2.tgz
+3.把下载的文件重命名移动到如下目录
+[root@zm-test-ops-01 ~]# mkdir /root/.pyenv/cache
+[root@zm-test-ops-01 ~]# mv Python-3.5.2.tar.gz /root/.pyenv/cache/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>ansible源码安装zabbix agent</title>
+      <link>https://opsnotes.github.io/post/ansible/ansible_zabbix/</link>
+      <pubDate>Thu, 19 May 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/ansible/ansible_zabbix/</guid>
+      <description>&lt;h5 id=&#34;名词解释&#34;&gt;名词解释&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	[root@iZ23nvakegvZ zabbix_agent]# ls  
+	files  需要安装包  
+	handlers  重启相关信息  
+	meta  galaxy_info相关信息  
+	tasks  安装部署的任务  
+	templates  相关的模板配置文件 
+	vars   变量配置文件  
+	[root@iZ23nvakegvZ zabbix_agent]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;目录结构&#34;&gt;目录结构&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	[root@iZ23nvakegvZ zabbix_agent]# tree
+	
+	.
+	
+	├── hosts
+	├── roles
+	│   └── zabbix_agent
+	│       ├── files
+	│       │   └── zabbix-2.4.5.tar.gz
+	│       ├── handlers
+	│       ├── meta
+	│       │   └── main.yml
+	│       ├── tasks
+	│       │   ├── copy.yml
+	│       │   ├── delete.yml
+	│       │   ├── install.yml
+	│       │   └── main.yml
+	│       ├── templates
+	│       │   ├── zabbix_agentd
+	│       │   └── zabbix_agentd.conf
+	│       └── vars
+	│           └── main.yml
+	└── site.yml
+	
+	8 directories, 11 files
+	
+	[root@iZ23nvakegvZ zabbix_agent]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>java中for循环的优化</title>
+      <link>https://opsnotes.github.io/post/java%E4%B8%ADfor%E5%BE%AA%E7%8E%AF%E7%9A%84%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Fri, 06 May 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/java%E4%B8%ADfor%E5%BE%AA%E7%8E%AF%E7%9A%84%E4%BC%98%E5%8C%96/</guid>
+      <description>作为java中三大循环之一的for循环，大家应该用的特别多，今天那就以我在项目中遇到的for循环优化来聊一聊for循环的优化. 首先是for循环的写法上面 最原始的写法 public void optimalizeFor() { List list = new ArrayList&amp;lt;&amp;gt;(); for (int i = 0; i &amp;lt; list.size(); i++) { } }  调优写法 public void optimalizeFor() { List list = new ArrayList&amp;lt;&amp;gt;(); for (int i = 0, len = list.size(); i &amp;lt; len; i++) { } }  结果 优化前用时：47871 优化后用时：566  #为什么 在循环中，循环条件会被反复计算，如果不使用复杂表达式，而是使循环条件不变的话，程序将会运行的更快，所以在循环中应该避免使用复杂的表达式  java之循环嵌套 外小内大型  for (int i = 0; i &amp;lt; 10; i++) { for (int j = 0; j &amp;lt; 100000; j++) { } }  外大内小型  for (int i = 0; i &amp;lt; 100000; i++) { for (int j = 0; j &amp;lt; 10; j++) { } }  结果  优化前用时：7541608 优化后用时：4316  为什么  从结果可以看出来所用时间的差异非常大，这个就像拿大文件和小文件一样的道理  循环嵌套提取不需要循环的逻辑 无用逻辑再循环中  int a = 10, b = 11; for (int i = 0; i &amp;lt; 10; i++) { i = i * a * b; }  无用逻辑再循环外  int c = a * b; for (int i = 0; i &amp;lt; 10; i++) { i = i * c; }  结果  优化前用时：48664 优化后用时：651  为什么  还是像之前说到的，避免在循环中重复的计算发生  异常处理 异常在循环中  for (int i = 0; i &amp;lt; 10; i++) { try { } catch (Exception e) { } }  异常在循环外  try { for (int i = 0; i &amp;lt; 10; i++) { } } catch (Exception e) { }  结果  优化前用时：33916 优化后用时：489  为什么  每次抓捕异常时非常耗时的，应该放在循环外一次性抓取，而不是应该放在循环内去每循环一次都抓取一次异常  </description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(八)</title>
+      <link>https://opsnotes.github.io/post/docker/docker-nginx/</link>
+      <pubDate>Fri, 06 May 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker-nginx/</guid>
+      <description>&lt;h5 id=&#34;查看目录文件&#34;&gt;查看目录文件&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;[root@test-devops nginx_ubuntu]# pwd
+
+/home/docker/nginx_ubuntu
+
+[root@test-devops nginx_ubuntu]# tree
+
+.
+
+├── Dockerfile
+
+└── run.sh
+
+
+
+0 directories, 2 files
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;查看dockerfile文件&#34;&gt;查看Dockerfile文件&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;[root@test-devops nginx_ubuntu]# cat Dockerfile
+
+# 继承的镜像
+
+FROM sshd/ubuntu
+
+
+
+# 作者信息
+
+MAINTAINER from steven (www.opsnotes.net)
+
+
+
+# install
+
+RUN apt-get install -y nginx
+
+RUN sed -i &#39;s/listen \[\:\:\]:80 default_server ipv6only=on;/#listen \[\:\:\]:80 default_server ipv6only=on;/g&#39; /etc/nginx/sites-enabled/default
+
+RUN echo &amp;quot;\ndaemon off;&amp;quot; &amp;gt;&amp;gt; /etc/nginx/nginx.conf
+
+
+
+# add scripts
+
+ADD run.sh /run.sh
+
+RUN chmod +x /*.sh
+
+
+
+WORKDIR /etc/nginx
+
+
+
+# Expose ports.
+
+EXPOSE 80
+
+
+
+# Define default command.
+
+CMD [&amp;quot;/run.sh&amp;quot;]
+
+[root@test-devops nginx_ubuntu]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>ansible-playbook语法检查</title>
+      <link>https://opsnotes.github.io/post/ansible/ansible-playbook%E8%AF%AD%E6%B3%95%E6%A3%80%E6%9F%A5/</link>
+      <pubDate>Wed, 04 May 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/ansible/ansible-playbook%E8%AF%AD%E6%B3%95%E6%A3%80%E6%9F%A5/</guid>
+      <description>&lt;h3 id=&#34;列出主机&#34;&gt;列出主机&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	[root@ops-test-01 nginx_v2]# ansible-playbook -i hosts --list-hosts web-tls.yml
+	
+	playbook: web-tls.yml
+	
+	  play #1 (Configure webserver with nginx and tls): host count=1
+	
+	    web_test01
+	
+	[root@ops-test-01 nginx_v2]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;语法检查&#34;&gt;语法检查&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	[root@ops-test-01 nginx_v2]# ansible-playbook --syntax-check  web-tls.yml
+	
+	playbook: web-tls.yml
+	
+	[root@ops-test-01 nginx_v2]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>ansible playbook</title>
+      <link>https://opsnotes.github.io/post/ansible/ansible_nginx_https/</link>
+      <pubDate>Tue, 03 May 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/ansible/ansible_nginx_https/</guid>
+      <description>&lt;h3 id=&#34;查看目录结构&#34;&gt;查看目录结构&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;    [root@iZ23nvakegvZ nginx_v2]# tree
+
+    .
+
+    ├── files
+
+    │   ├── nginx.crt
+
+    │   ├── nginx.key
+
+    ├── hosts
+
+    ├── templates
+
+    │   ├── index.html.j2
+
+    │   └── test.conf.j2
+
+    └── web-tls.yml
+
+
+
+    2 directories, 8 files
+
+    [root@iZ23nvakegvZ nginx_v2]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>MySQL忘记密码恢复方法:</title>
+      <link>https://opsnotes.github.io/post/mysqlpassword/</link>
+      <pubDate>Thu, 24 Mar 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/mysqlpassword/</guid>
+      <description>MySQL密码的恢复方法之一 1．首先确认服务器出于安全的状态，也就是没有人能够任意地连接MySQL数据库。 因为在重新设置MySQL的root密码的期间，MySQL数据库完全出于没有密码保护的 状态下，其他的用户也可以任意地登录和修改MySQL的信息。可以采用将MySQL对外的端口封闭，并且停止Apache以及所有的用户进程的方法实现服务器的准安全状态。最安全的状态是到服务器的Console上面操作，并且拔掉网线。 2．修改MySQL的登录设置： # vi /etc/my.cnf 在[mysqld]的段中加上一句：skip-grant-tables 保存并且退出vi。 3．重新启动mysqld # /etc/init.d/mysqld restart ( service mysqld restart ) 4．登录并修改MySQL的root密码 mysql&amp;gt; USE mysql ; mysql&amp;gt; UPDATE user SET Password = password ( &amp;#39;new-password&amp;#39; ) WHERE User = &amp;#39;root&amp;#39; ; mysql&amp;gt; flush privileges ; mysql&amp;gt; quit 5．将MySQL的登录设置修改回来 # vi /etc/my.cnf 将刚才在[mysqld]的段中加上的skip-grant-tables删除 保存并且退出vi。 6．重新启动mysqld # /etc/init.d/mysqld restart ( service mysqld restart ) 7．恢复服务器的正常工作状态 将步骤一中的操作逆向操作。恢复服务器的工作状态。 MySQL密码的恢复方法之二 如果忘记了MySQL的root密码，可以用以下方法重新设置： 1. KILL掉系统里的MySQL进程； killall -TERM mysqld 2. 用以下命令启动MySQL，以不检查权限的方式启动； safe_mysqld --skip-grant-tables &amp;amp; 3.</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(三)</title>
+      <link>https://opsnotes.github.io/post/docker/docker_apache_php/</link>
+      <pubDate>Tue, 15 Mar 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker_apache_php/</guid>
+      <description>&lt;h4 id=&#34;查看当前路径以及目录&#34;&gt;查看当前路径以及目录&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	[root@test-devops apache_ubuntu]# pwd
+
+	/home/docker/apache_ubuntu
+
+	[root@test-devops apache_ubuntu]# tree
+
+	.
+
+	├── Dockerfile
+
+	├── run.sh
+
+	└── sample
+
+	    ├── index.html
+
+	    └── index.php
+
+
+
+	1 directory, 4 files
+
+	[root@test-devops apache_ubuntu]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;查看dockerfiler&#34;&gt;查看dockerfiler&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用nginx模块简单防止ddos攻击</title>
+      <link>https://opsnotes.github.io/post/nginx/nginx_ddos/</link>
+      <pubDate>Wed, 09 Mar 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/nginx/nginx_ddos/</guid>
+      <description>第一种方法： 官方模块：http://nginx.org/en/docs/http/ngx_http_limit_conn_module.html  1.在Nginx配置文件nginx.conf的http选项中添加如下内容
+ 在nginx.conf的配置中添加了Nginx白名单 ### Nginx Limint config geo $limited{ default 1; 127.0.0.1 0; 192.168.100.18 0; } map $limited $limit{ 1 $binary_remote_addr; 0 &amp;quot;&amp;quot;; } limit_req_zone $limit zone=one:10m rate=5r/s;  2.在虚拟目录中直接应用
+[root@frontend-01 ~]# cat /etc/nginx/conf.d/test.conf server{ listen 80; server_name yourdomain.com; root /yourdist/; access_log /yourdomain.com.access.log json; error_log /yourdomain.com.error.log warn; location /test/api/v3/ { ## 只针对api接口调用做Nginx IP地址限速 limit_req zone=one burst=10 nodelay; proxy_pass http://test; proxy_set_header X-Forwarded-For $remote_addr; proxy_set_header X-Forwarded-Host $server_name; proxy_set_header Host $host; add_header Access-Control-Allow-Origin *; add_header Access-Control-Allow-Headers &amp;quot;accept, content-type&amp;quot;; } location /test/auth/v3/ { proxy_pass http://test; proxy_set_header X-Forwarded-For $remote_addr; proxy_set_header X-Forwarded-Host $server_name; proxy_set_header Host $host; add_header Access-Control-Allow-Origin *; add_header Access-Control-Allow-Headers &amp;quot;accept, content-type&amp;quot;; } } [root@frontend-01 ~]#  3.</description>
+    </item>
+    
+    <item>
+      <title>CentOS6部署安装kafka和zookeeper集群</title>
+      <link>https://opsnotes.github.io/post/kafak_zk/</link>
+      <pubDate>Fri, 15 Jan 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/kafak_zk/</guid>
+      <description>&lt;h3 id=&#34;安装之前准备工作&#34;&gt;安装之前准备工作&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;    1.修改hostname,修改hosts文件  
+    2.ssh三台机器之前打通,我这边使用的key方式登陆
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;zookeeper安装方法&#34;&gt;zookeeper安装方法&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;</description>
+    </item>
+    
+    <item>
+      <title>深入理解tcp time wait</title>
+      <link>https://opsnotes.github.io/post/time_wait/</link>
+      <pubDate>Tue, 01 Dec 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/time_wait/</guid>
+      <description>#深入理解tcp time wait TIME_WAIT 是在TCP协议中很模糊的概念，它可能使socke能陷入的一种时间相对比较长的状态，过多的TIME_WAIT会影响新socket的建立。 TIME_WAIT为什么会存在？它的作用又是什么？ 下面我们就来理解下TIME_WAIT  这张图详细的列出了TCP建立连接和断开连接的各个TCP状态之间的转换。红色的代表server，蓝色的代表client。下面列出各自的TCP状态转换条件  #TCP建立连接 Client: 向server发送 SYN 包，表示请求建立连接，进入 SYN_SENT 状态； Server: 接收来自client的 SYN 包，发送 SYN/ACK 包，代表client-&amp;gt;server单向tcp连接已经建立， 进入 SYN_RCVD 状态； Client: 接收到来自server的 SYN/ACK 包，发送给server ACK 包，进入 Established 状态； Server: 收到client的 ACK 包，代表 server-&amp;gt;client 的单向tcp连接也建立，此时进入 Established 状态； #TCP断开连接 先引入两个概念，首先调用close()是&amp;quot;主动关闭&amp;quot;(active close)，另一个是&amp;quot;被动关闭&amp;quot;(passive close)。一般我们连上ftp或者http，断开连接的都是客户端。看上面的图，&amp;quot;主动关闭&amp;quot;端状态要经历3个状态，而TIME_WAIT是属于“主动关闭”端最后的一个tcp状态。 client: 主动调用close()，发送 FIN 包，此时client就&amp;quot;主动关闭&amp;quot;端，进入 FIN_WAIT_1 状态； Server: server自然成为&amp;quot;被动关闭&amp;quot;端，收到来自client的 FIN 包，发送 ACK 包，代表client-&amp;gt;server单向tcp连接已经关闭，进入 CLOSE_WAIT 状态； Client: 接收到来自server的 ACK 包，啥都不做，client-&amp;gt;server单向的tcp连接已经断开，不能再发送应用层数据，进入 FIN_WAIT_2 状态； Server: server端给client端发送 FIN 包，代表准备关闭server-&amp;gt;client的tcp连接，server进入LAST_ACK 状态； Client: 收到来自server的 FIN 包，发送 ACK 包，此时进入 TIME_WAIT 状态； Server: 收到Client的 ACK 包，就进入closed状态，Server端此次socket tcp连接完全端口； Client: 持续TIME_WAIT状态&amp;quot;一段时间&amp;quot;； #理解TIME_WAIT 理解了上面的原理之后，接着就是正式介绍TIME_WAIT。TIME_WAIT的时间大多数情况下都是2倍的MSL（Maximum Segment Lifetime），MSL是一个数据包在网络上能生存的最长生命周期，一旦超过MSL的包就会被丢弃。从上面可以看到，TIME_WAIT是“主动关闭”端的最后一个状态，引入TIME_WAIT的原因有: 1.</description>
+    </item>
+    
+    <item>
+      <title>编译nginx status模块以及zabbix监控nginx状态</title>
+      <link>https://opsnotes.github.io/post/nginx/nginx_module/</link>
+      <pubDate>Fri, 11 Sep 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/nginx/nginx_module/</guid>
+      <description>&lt;h5 id=&#34;背景原因&#34;&gt;背景原因：&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;因刚换工作,突然发现nginx status状态没有被监控,然后在准备添加nginx status的时候,发现之前同事在编译nginx的时候没有编译nginx status模块,可恶,常用的模块都不编译.主要两部分,
+第一部分：编译nginx模块
+第二部分：zabbix 监控nginx status,其实之前写过,稍微把监控方式优化了下。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;一nginx-编译模块&#34;&gt;一、nginx 编译模块&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;1.下载nginx安装包
+root@gcs:/home/steven# wget http://nginx.org/download/nginx-1.6.3.tar.gz
+--2015-09-09 17:27:40--  http://nginx.org/download/nginx-1.6.3.tar.gz
+Resolving nginx.org (nginx.org)... 206.251.255.63, 2606:7100:1:69::3f
+Connecting to nginx.org (nginx.org)|206.251.255.63|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 805253 (786K) [application/octet-stream]
+Saving to: ‘nginx-1.6.3.tar.gz’
+
+100%[============================================================================================================&amp;gt;] 805,253      569KB/s   in 1.4s
+
+2015-09-09 17:27:42 (569 KB/s) - ‘nginx-1.6.3.tar.gz’ saved [805253/805253]
+
+root@gcs:/home/steven# ls
+nginx-1.6.3.tar.gz
+root@gcs:/home/steven#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>zabbix使用微信接口报警</title>
+      <link>https://opsnotes.github.io/post/weixin_actions/</link>
+      <pubDate>Mon, 31 Aug 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/weixin_actions/</guid>
+      <description>&lt;h1 id=&#34;安装部署之前需要先安装php关于php的安装部署我在这里就不详细说明了&#34;&gt;安装部署之前需要先安装php,关于PHP的安装部署,我在这里就不详细说明了。&lt;/h1&gt;
+&lt;h3 id=&#34;微信公众号设置&#34;&gt;微信公众号设置:&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1.先注册微信公主号
+2.选择需要给发送的人点击头像就可以得到如下链接。我们获取“tofakeid”的ID
+https://mp.weixin.qq.com/cgi-bin/singlesendpage?t=message/send&amp;amp;action=index&amp;amp;tofakeid=750362702&amp;amp;token=430276069&amp;amp;lang=zh_CN
+3.如图是对Geek这个用户选择发送：
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://opsnotes.github.io/img/weixin1.png&#34; alt=&#34;weixin&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>zabbix使用python mail报警</title>
+      <link>https://opsnotes.github.io/post/zabbix_python_mail/</link>
+      <pubDate>Thu, 13 Aug 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/zabbix_python_mail/</guid>
+      <description>前提: 好久不弄zabbix了,刚换工作,我司运维情况还在百废待兴,在zabiix使用邮件报警的适合我们使用python写得邮件报警,以前使用的是shell编写的脚本.之前的邮件报警和配置可以参考我以前写得文章.
+具体相关配置请参考我以前写得文章: http://opsnotes.net/2013/12/31/install_zabbix_06/
+http://opsnotes.net/2014/01/21/install_zabbix_07/
+如下是python mail脚本文件： root@dgz-zabbixserver01:/usr/lib/zabbix/alertscripts# cat mail.py #!/usr/bin/env python #coding:utf-8 import smtplib from email.mime.text import MIMEText import sys mail_host = &amp;#39;smtp.qq.com&amp;#39; mail_user = &amp;#39;username&amp;#39; mail_pass = &amp;#39;passwd&amp;#39; mail_postfix = &amp;#39;qq.com&amp;#39; def send_mail(to_list,subject,content): me = mail_user+&amp;#34;&amp;lt;&amp;#34;+mail_user+&amp;#34;@&amp;#34;+mail_postfix+&amp;#34;&amp;gt;&amp;#34; msg = MIMEText(content) msg[&amp;#39;Subject&amp;#39;] = subject msg[&amp;#39;From&amp;#39;] = me msg[&amp;#39;to&amp;#39;] = to_list try: s = smtplib.SMTP() s.connect(mail_host) s.login(mail_user,mail_pass) s.sendmail(me,to_list,msg.as_string()) s.close() return True except Exception,e: print str(e) return False if __name__ == &amp;#34;__main__&amp;#34;: send_mail(sys.</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(四)</title>
+      <link>https://opsnotes.github.io/post/docker/docker_images_ssh/</link>
+      <pubDate>Tue, 04 Aug 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker_images_ssh/</guid>
+      <description>Ubuntu 创建ssh容器方式 1.容器准备工作 ubuntu [root@test-devops ~]# docker run -it ubuntu:14.04 /bin/bash 2.更新安装软件 root@f7b000275a50:/# apt-get update 带宽如果慢 可以忽略 root@f7b000275a50:/# apt-get install openssh-server vim 3.创建目录启动服务 root@fb02b31b8ef1:/# mkdir -p /var/run/sshd root@fb02b31b8ef1:/# /usr/sbin/sshd -D &amp;amp; [1] 3237 root@fb02b31b8ef1:/# 4.查看端口 root@fb02b31b8ef1:/# netstat -atlnp Active Internet connections (servers and established) Proto Recv-Q Send-Q Local Address Foreign Address State PID/Program name tcp 0 0 0.0.0.0:22 0.0.0.0:* LISTEN 3237/sshd root@fb02b31b8ef1:/# ps aux USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND root 1 0.</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(六)</title>
+      <link>https://opsnotes.github.io/post/docker/docker_volume/</link>
+      <pubDate>Tue, 21 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker_volume/</guid>
+      <description>&lt;h3 id=&#34;重点思想&#34;&gt;重点思想:&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;数据卷可以在容器之间共享和重用  
+对数据卷的修改会立马生效  
+对数据卷的更新不会影响镜像  
+卷会一直存在,直到没有容器使用  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;语法操作&#34;&gt;语法操作：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1.数据卷的使用,类似linux下面的mount操作。
+在docker run 启动的时候 可以加-v参数来创建一个容器卷。注意多次创建可以使用-v标记多个数据卷。
+
+[root@docker ~]# docker run -d -P --name web -v /webapp training/webapp echo &amp;quot;hello world&amp;quot;
+d7a7b8a6e1a6f21828833ca3fc32fa15110704830ff5d19962728d0e269732b8
+
+2.本地硬盘挂载
+[root@docker ~]# docker run -d -P --name web -v /srv/webapp:/opt/webapp/ training/webapp echo &amp;quot;hello world&amp;quot;
+b9136b0dbe333ac0bbdae76925db6de4cf272433ec92cf65fd17660bd59f0c19
+[root@docker ~]#
+3.本地硬盘挂载一个只读的 -ro参数
+[root@docker ~]# docker run -d -P --name web -v /srv/webapp:/opt/webapp/:ro training/webapp echo &amp;quot;hello test&amp;quot;
+252a677db3a2cfe679c11983b1a27934820a31746ba0cdb49e6c6105cf80623e
+[root@docker ~]#
+
+4.挂载一个本地主机文件作为数据卷,建议一般不要挂载一个文件
+[root@docker ~]# docker run --rm -it -v ~/.bash_history:/.bash_history centos:6 /bin/bash
+[root@a5570545c53f /]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用flask发送邮件</title>
+      <link>https://opsnotes.github.io/post/python/flask-mail/</link>
+      <pubDate>Tue, 14 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/flask-mail/</guid>
+      <description>&lt;h4 id=&#34;安装flask-mail&#34;&gt;安装flask-mail&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;sudo pip install flask-mail
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;设置环境变量&#34;&gt;设置环境变量&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;export MAIL_USERNAME=&#39;XXXXX@qq.com&#39;    #发送邮件的邮箱
+export MAIL_PASSWORD=&#39;password&#39;      #发送邮件的邮箱密码
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;使用flask-mail发送邮件&#34;&gt;使用flask-mail发送邮件&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;    (venv)zhangkeyuan@opsnotes:~/Test/flask » cat flask-mail.py
+    #!/bin/env python
+    #-*- coding:utf-8 -*-
+    from flask import Flask, render_template
+    from flask.ext.mail import Mail,Message
+    import os
+
+
+    app = Flask(__name__)
+    ####SMTP server config
+    app.config[&amp;#39;MAIL_SERVER&amp;#39;] = &amp;#39;smtp.qq.com&amp;#39; #电子邮件服务器的地址
+    app.config[&amp;#39;MAIL_PORT&amp;#39;] = &amp;#39;25&amp;#39;   #邮箱服务器的端口
+    app.config[&amp;#39;MAIL_USE_TLS&amp;#39;] = True  #启用安全传输
+    app.config[&amp;#39;MAIL_USERNAME&amp;#39;] = os.environ.get(&amp;#39;MAIL_USERNAME&amp;#39;)  #邮件账户用户名,已定义环境变量
+    app.config[&amp;#39;MAIL_PASSWORD&amp;#39;] = os.environ.get(&amp;#39;MAIL_PASSWORD&amp;#39;)  #邮件账密码,已定义环境变量
+
+
+    mail = Mail(app)
+
+    @app.route(&amp;#39;/&amp;#39;)
+    def index():
+        msg = Message(&amp;#39;主题&amp;#39;,sender=os.environ.get(&amp;#39;MAIL_USERNAME&amp;#39;),recipients=[&amp;#39;431054426@qq.com&amp;#39;])
+        msg.body = &amp;#39;文本 body&amp;#39;
+        msg.html = &amp;#39;&amp;lt;b&amp;gt;测试flask发送邮件&amp;lt;/b&amp;gt;&amp;#39;
+        mail.send(msg)
+
+        return &amp;#39;&amp;lt;h1&amp;gt;邮件发送成功&amp;lt;/h1&amp;gt;&amp;#39;
+
+
+    if __name__ == &amp;#39;__main__&amp;#39;:
+        app.run(debug=True)
+    (venv)zhangkeyuan@opsnotes:~/Test/flask »
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>git日常使用经验总结</title>
+      <link>https://opsnotes.github.io/post/others/gitconfig/</link>
+      <pubDate>Thu, 09 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/others/gitconfig/</guid>
+      <description>&lt;h3 id=&#34;初始化一个git仓库&#34;&gt;初始化一个git仓库&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;初始化一个仓库,用如下命令。
+git init   
+创建一个文件
+echo &amp;quot;Git is a version contron system.&amp;quot;&amp;gt; readme.txt 
+提交一个文件，提交文件到仓库
+git add readme.txt
+git commit -m &amp;quot;write a readme file&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;案例1创建一个git库&#34;&gt;案例1:创建一个git库&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;[root@test-devops git]# yum install git -y
+[root@test-devops git]# mkdir /home/docker/git
+[root@test-devops git]# cd /home/docker/git
+[root@test-devops git]# git init
+[root@test-devops git]# git config --global user.name &amp;quot;Steven&amp;quot;
+[root@test-devops git]# git config --global user.email &amp;quot;admin@opsnotes.net&amp;quot;
+[root@test-devops git]# git add file1.txt
+[root@test-devops git]# git commit -m &#39;add file1.txt&#39;
+[master 812c99b] add file1.txt
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+ create mode 100644 file1.txt
+[root@test-devops git]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(一)</title>
+      <link>https://opsnotes.github.io/post/docker/docker_connection/</link>
+      <pubDate>Tue, 07 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker_connection/</guid>
+      <description>&lt;h3 id=&#34;docker容器的连接方式&#34;&gt;docker容器的连接方式:&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	容器有三种连接方式,attach exec nsenter工具,其他工具比较简单我们重点讲解下nsenter工具。 
+
+	1.首先我们已后台的方式登陆到容器。
+    [root@docker ~]# docker run -idt ubuntu
+    7d3d35cb9c40388aa799ba922f92e6f54f27c3a889a8c28d0feb42bf060766f4
+    You have new mail in /var/spool/mail/root
+    [root@docker ~]#
+    2.查看容器是不是启动
+    [root@docker ~]# docker ps
+    CONTAINER ID        IMAGE               COMMAND                CREATED             STATUS              PORTS               NAMES
+    7d3d35cb9c40        ubuntu:14.04        &amp;#34;/bin/bash&amp;#34;            8 seconds ago       Up 7 seconds                            elegant_brattain
+    6aa9905ab9bc        ubuntu:14.04        &amp;#34;/bin/bash -c &amp;#39;while   10 minutes ago      Up 5 minutes                            jovial_elion
+    [root@docker ~]# docker stop 6aa
+    6aa
+    [root@docker ~]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;exec用法&#34;&gt;exec用法：&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;    docker 1.3 版本之后自带命令,可以在容器直接运行命令,启动一个bash,
+    exec工具相对比较简单，
+    [root@docker ~]# docker exec -ti 7d3d35cb9c40 /bin/bash
+    root@7d3d35cb9c40:/#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(七)</title>
+      <link>https://opsnotes.github.io/post/docker/docker_importexport/</link>
+      <pubDate>Tue, 07 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker_importexport/</guid>
+      <description>&lt;h3 id=&#34;导出容器是指一个已经创建的容器到一个文件不管这个容器是否在运行状态&#34;&gt;导出容器是指一个已经创建的容器到一个文件，不管这个容器是否在运行状态。&lt;/h3&gt;
+&lt;h4 id=&#34;先查看容器&#34;&gt;先查看容器:&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;[root@docker tmp]# docker ps -a
+CONTAINER ID        IMAGE                    COMMAND                CREATED             STATUS                         PORTS               NAMES
+a457769fdd92        ubuntu:14.04             &amp;quot;/bin/bash&amp;quot;            33 minutes ago      Up 33 minutes                                      backstabbing_fermi
+7d3d35cb9c40        ubuntu:14.04             &amp;quot;/bin/bash&amp;quot;            49 minutes ago      Up 49 minutes                                      elegant_brattain
+6aa9905ab9bc        ubuntu:14.04             &amp;quot;/bin/bash -c &#39;while   59 minutes ago      Exited (-1) 49 minutes ago                         jovial_elion
+10f115a0aa25        ubuntu:14.04             &amp;quot;/bin/bash&amp;quot;            About an hour ago   Exited (0) About an hour ago                       compassionate_elion
+e192cf610bda        ubuntu:14.04             &amp;quot;/bin/echo test&amp;quot;       About an hour ago   Exited (0) About an hour ago                       goofy_pasteur
+c535b42dc3f2        ubuntu:14.04             &amp;quot;/bin/echo &#39;hello wo   About an hour ago   Exited (0) About an hour ago                       compassionate_wozniak
+713e34e2b463        ubuntu:14.04             &amp;quot;/bin/bash&amp;quot;            About an hour ago                                                      cocky_bell
+c72ad6c5adcd        ubuntu:14.04             &amp;quot;/bin/bash&amp;quot;            3 hours ago         Exited (0) 3 hours ago                             suspicious_feynman
+8703418b2dec        training/webapp:latest   &amp;quot;echo &#39;hello world&#39;&amp;quot;   3 hours ago         Exited (0) 3 hours ago                             pensive_curie
+7f3491707dd4        ubuntu:14.04             &amp;quot;/bin/bash&amp;quot;            3 hours ago         Exited (0) 3 hours ago                             ecstatic_poincare
+[root@docker tmp]#
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;分别导出a457769fdd92--7d3d35cb9c40--容器到test_for_runtar-test_for_stoptar&#34;&gt;分别导出a457769fdd92  7d3d35cb9c40  容器到test_for_run.tar test_for_stop.tar:&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;可以将这些文件传输到其他机器上来实现容器的迁移。
+[root@docker tmp]# docker export a457 &amp;gt; test_for_run.tar
+[root@docker tmp]# ls test_for_run.tar
+test_for_run.tar
+[root@docker tmp]# docker export 7d3 &amp;gt; test_for_stop.tar
+[root@docker tmp]# ls test_for_*
+test_for_run.tar  test_for_stop.tar
+[root@docker tmp]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(二)</title>
+      <link>https://opsnotes.github.io/post/docker/docker_container/</link>
+      <pubDate>Tue, 07 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker_container/</guid>
+      <description>&lt;h3 id=&#34;什么是容器&#34;&gt;什么是容器？&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	容器是docker镜像运行的一个实例,所不同的是,他带有额外的可写文件
+
+	docker的容器十分轻量级,用户可以随意删除或者创建
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;docker创建容器的方式&#34;&gt;docker创建容器的方式：&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	默认情况下docker create创建的容器是停止状态,一般我们可以使用docker start命令来启动容器,使用docker stop命令来停止容器。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;docker容器创建&#34;&gt;docker容器创建：&lt;/h3&gt;
+&lt;h4 id=&#34;一新建容器&#34;&gt;一、新建容器：&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;[root@docker ~]# docker create -it ubuntu:latest
+713e34e2b4638d824cf663ee0ec7dfc1a3664d6d0ba2fafd72202d3bfdde6a50
+[root@docker ~]#
+[root@docker ~]# docker ps -a
+CONTAINER ID        IMAGE                    COMMAND                CREATED             STATUS                         PORTS                     NAMES
+713e34e2b463        ubuntu:14.04             &amp;quot;/bin/bash&amp;quot;            18 seconds ago                                                               cocky_bell
+[root@docker ~]#
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;二启动容器有两种方式&#34;&gt;二、启动容器有两种方式&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	1.基于镜像新建一个容器并且启动
+	2.把在终止的状态容器重新启动
+	docker run 相当于 docker create + docker start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;三如下&#34;&gt;三、如下：&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	[root@docker ~]# docker run ubuntu /bin/echo &amp;#34;hello world&amp;#34;
+	hello world
+	You have new mail in /var/spool/mail/root
+	[root@docker ~]#
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(0)</title>
+      <link>https://opsnotes.github.io/post/docker/docker_install/</link>
+      <pubDate>Mon, 06 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker_install/</guid>
+      <description>&lt;h3 id=&#34;安装&#34;&gt;安装&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;    [root@docker-master yum.repos.d]#  curl https://git.oschina.net/feedao/Docker_shell/raw/start/ali-centos.sh | sh
+    [root@docker-master yum.repos.d]#  yum install docker-io
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;启动&#34;&gt;启动&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;    [root@docker-master yum.repos.d]# service docker start
+    Starting cgconfig service:                                 [  OK  ]
+    Starting docker:                                        [  OK  ]
+    [root@docker-master yum.repos.d]# chkconfig --level 35 docker on
+    [root@docker-master yum.repos.d]#
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;查看版本&#34;&gt;查看版本&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;    [root@test-devops mysql]#
+    [root@test-devops mysql]# docker version
+    Client version: 1.5.0
+    Client API version: 1.17
+    Go version (client): go1.3.3
+    Git commit (client): a8a31ef/1.5.0
+    OS/Arch (client): linux/amd64
+    Server version: 1.5.0
+    Server API version: 1.17
+    Go version (server): go1.3.3
+    Git commit (server): a8a31ef/1.5.0
+    [root@test-devops mysql]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(五)</title>
+      <link>https://opsnotes.github.io/post/docker/docker_images/</link>
+      <pubDate>Sun, 05 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/docker_images/</guid>
+      <description>&lt;h3 id=&#34;获取镜像&#34;&gt;获取镜像&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;[root@docker ~]# docker pull ubuntu
+Pulling repository ubuntu
+6d4946999d4f: Pulling dependent layers
+6d4946999d4f: Download complete
+428b411c28f0: Download complete
+435050075b3f: Download complete
+9fd3c8c9af32: Download complete
+Status: Downloaded newer image for ubuntu:latest
+[root@docker ~]#
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;可以使用如下方法下载一个特定的镜像&#34;&gt;可以使用如下方法下载一个特定的镜像&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;[root@docker ~]# docker pull ubuntu:12.10
+
+如上命令相当于docker pull registry.hub.docker.com/ubuntu:latest.是从docker默认的服务器下载latest镜像
+
+也可以从dockerpool地方下载镜像
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;下载完成之后就可以使用镜像&#34;&gt;下载完成之后就可以使用镜像：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;[root@docker ~]# docker run -t -i ubuntu /bin/bash
+root@b89ee17998ec:/#
+root@b89ee17998ec:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@b89ee17998ec:/# ifconfig
+eth0      Link encap:Ethernet  HWaddr 02:42:ac:11:00:02
+          inet addr:172.17.0.2  Bcast:0.0.0.0  Mask:255.255.0.0
+          inet6 addr: fe80::42:acff:fe11:2/64 Scope:Link
+          UP BROADCAST RUNNING  MTU:1500  Metric:1
+          RX packets:3 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:3 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:238 (238.0 B)  TX bytes:238 (238.0 B)
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+root@b89ee17998ec:/#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>elasticsearch&#43;logstash&#43;kibana分析windowns日志</title>
+      <link>https://opsnotes.github.io/post/install_elk_windows/</link>
+      <pubDate>Fri, 22 May 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_elk_windows/</guid>
+      <description>&lt;h3 id=&#34;项目背景&#34;&gt;项目背景&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;客户需求需要监控windows下面的IIS相关日志,无解只能上去安装部署了,但是这东西只在Linux上玩过，为了以后少走弯路特此记录下。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;准备工作&#34;&gt;准备工作：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1台windows2008 x86_64
+JAVA jdk包
+nssm包
+logstash包
+设置环境变量
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;下载java-jdk包-选择x86_64&#34;&gt;下载JAVA jdk包 选择x86_64&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;下载nssm-为了把启动logstash已服务器的方式启动&#34;&gt;下载nssm 为了把启动logstash已服务器的方式启动&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;https://nssm.cc/ci/nssm-2.24-23-gfb96938.zip  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;下载logstash142文件&#34;&gt;下载logstash1.4.2文件&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.zip  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;安装java包安装步骤省略&#34;&gt;安装JAVA包,安装步骤省略&lt;/h3&gt;
+&lt;h3 id=&#34;设置环境变量&#34;&gt;设置环境变量&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://opsnotes.github.io/img/logstash_env.png&#34; alt=&#34;elk&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;解压logstash-142zip包文件到clogstash-142-省略&#34;&gt;解压logstash-1.4.2.zip包文件到C:/logstash-1.4.2 省略&lt;/h3&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用saltstack部署zabbix agent</title>
+      <link>https://opsnotes.github.io/post/saltstack/saltstack_zabbix-angent/</link>
+      <pubDate>Wed, 29 Apr 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/saltstack/saltstack_zabbix-angent/</guid>
+      <description>&lt;h4 id=&#34;环境&#34;&gt;环境：&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;master：121.40.28.126
+client：121.41.118.184
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;客户端安装配置&#34;&gt;客户端安装配置&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;1.安装saltstack 客户端以及修改配置文件  
+[root@zy_mongo02 ~]# yum -y install salt-minion  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;查看zabbix模块结构&#34;&gt;查看zabbix模块结构&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;[root@srv-zy-ops salt]# tree zabbix/
+zabbix/
+├── config.sls
+├── file
+│   ├── zabbix-2.4.zip   ###包需要自己去下载
+│   ├── zabbix_agentd
+│   └── zabbix_agentd.conf
+├── init.sls
+└── install.sls
+
+1 directory, 6 files
+[root@srv-zy-ops salt]#
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;查看topsls配置文件&#34;&gt;查看top.sls配置文件&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;[root@srv-zy-ops salt]# cat top.sls
+base:
+&#39;*&#39;:
+    - zabbix.install
+    - zabbix.config
+[root@srv-zy-ops salt]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>mongodb集群之副本集安装配置</title>
+      <link>https://opsnotes.github.io/post/replset/</link>
+      <pubDate>Wed, 22 Apr 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/replset/</guid>
+      <description>准备工作: host zy_mongo01 副本集主节点 hostname 121.41.101.208 10.168.218.46 host zy_mongo02 副本集副本节点 hostname 121.41.118.184 10.168.217.186 host zy_mongo03 副本集副本节点 hostname 121.40.61.78 10.252.130.121 mongodb 目录: mkdir -p /data/mongodb/replset/data 存放mongo数据目录 mkdir -p /data/mongodb/replset 存放mongo文件目录 安装操作: tar xf mongodb-linux-x86_64-2.6.8.tgz mv mongodb-linux-x86_64-2.6.8 /data/mongodb/mongodb 启动: 在三台机器上做如下操作： /data/mongodb/mongodb/bin/mongod --dbpath /data/mongodb/replset/data/ --replSet repset 提示日志: 2015-04-21T11:17:23.238+0800 [rsStart] replSet can&amp;#39;t get local.system.replset config from self or any seed (EMPTYCONFIG) 2015-04-21T11:17:24.238+0800 [rsStart] replSet can&amp;#39;t get local.system.replset config from self or any seed (EMPTYCONFIG) 2015-04-21T11:17:25.</description>
+    </item>
+    
+    <item>
+      <title>Rsync&#43;inotify时间服务器之间文件实时同步</title>
+      <link>https://opsnotes.github.io/post/rsync&#43;inotify%E6%96%87%E4%BB%B6%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5/</link>
+      <pubDate>Wed, 22 Apr 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/rsync&#43;inotify%E6%96%87%E4%BB%B6%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5/</guid>
+      <description>rsync介绍 与传统的cp、tar备份方式相比，rsync具有安全性高、备份迅速、支持增量备份等优点，通过rsync可以解决对实时性要求不高的数据备份需求，例如定期的备份文件服务器数据到远端服务器，对本地磁盘定期做数据镜像等 随着应用系统规模的不断扩大，对数据的安全性和可靠性也提出的更好的要求，rsync在高端业务系统中也逐渐暴露出了很多不足，首先，rsync同步数据时，需要扫描所有文件后进行比对，进行差量传输。如果文件数量达到了百万甚至千万量级，扫描所有文件将是非常耗时的。而且正在发生变化的往往是其中很少的一部分，这是非常低效的方式。其次，rsync不能实时的去监测、同步数据，虽然它可以通过linux守护进程的方式进行触发同步，但是两次触发动作一定会有时间差，这样就导致了服务端和客户端数据可能出现不一致，无法在应用故障时完全的恢复数据。基于以上原因，rsync+inotify组合出现了！ inotify介绍 Inotify 是一种强大的、细粒度的、异步的文件系统事件监控机制，linux内核从2.6.13起，加入了Inotify支持，通过Inotify可以监控文件系统中添加、删除，修改、移动等各种细微事件，利用这个内核接口，第三方软件就可以监控文件系统下文件的各种变化情况，而inotify-tools就是这样的一个第三方软件。 在上面章节中，我们讲到，rsync可以实现触发式的文件同步，但是通过crontab守护进程方式进行触发，同步的数据和实际数据会有差异，而inotify可以监控文件系统的各种变化，当文件有任何变动时，就触发rsync同步，这样刚好解决了同步数据的实时性问题。 环境介绍 1、服务器相关信息
+Server1: OS: CentOS6.7 IP: 192.168.190.129 Dir: /home/ops/test Server2: OS: CentOS7 IP: 192.168.190.131 Dir: /home/ops/test 2、安装rsync服务,在CentOS6下面.yum安装的是rsync3.0.6.为了保持和CentOS7一致版本.所以源码安装
+[root@localhost local]# cd /home/ops/ [root@localhost ops]# wget https://rsync.samba.org/ftp/rsync/src/rsync-3.0.9.tar.gz [root@localhost ops]# cd rsync-3.0.9 [root@localhost rsync-3.0.9]# ./configure --prefix=/usr/local/rsysnc [root@localhost rsync-3.0.9]# make &amp;amp;&amp;amp; make install 3、创建密码文件
+[root@localhost rsync-3.0.9]# cd /usr/local/rsysnc/ [root@localhost rsysnc]# echo &amp;#34;rsync-password&amp;#34; &amp;gt; /usr/local/rsysnc/rsync.passwd [root@localhost rsysnc]# chmod 600 rsync.passwd 4、安装inotify 服务
+[root@localhost rsysnc]# cd /home/ops/ [root@localhost ops]# ls rsync-3.</description>
+    </item>
+    
+    <item>
+      <title>使用rinetd让ecs访问阿里内网RDS服务器</title>
+      <link>https://opsnotes.github.io/post/install_rinetd/</link>
+      <pubDate>Wed, 08 Apr 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_rinetd/</guid>
+      <description>&lt;h4 id=&#34;背景&#34;&gt;背景：&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;		由于阿里云RDS内网和外网只能选择其中一,并且内网流量是全部免费的,相比较对外网来说是快了好多倍,大多数的连接都是选择使用内网来连接RDS数据库的。
+	但是如果我们想通过外网访问和管理内网的RDS的怎么来实现尼?
+	我们可以使用rinetd来实现ecs访问rds服务器。 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;下载&#34;&gt;下载&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	wget http://www.linuxboy.net/linux/rc/rinetd.tar.gz&amp;amp;&amp;amp;tar -xvf rinetd.tar.gz&amp;amp;&amp;amp;cd rinetd  
+	sed -i &amp;#39;s/65536/65535/g&amp;#39; rinetd.c  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;安装&#34;&gt;安装&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;</description>
+    </item>
+    
+    <item>
+      <title>CentOS6.5安装elasticsearch&#43;logstash&#43;kibana </title>
+      <link>https://opsnotes.github.io/post/install_elk/</link>
+      <pubDate>Tue, 03 Mar 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_elk/</guid>
+      <description>&lt;h3 id=&#34;首先安装-java环境&#34;&gt;首先安装 java环境&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	yum install java-1.7.0-openjdk httpd  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;安装es环境-elasticsearch&#34;&gt;安装ES环境 elasticsearch&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.1.noarch.rpm &amp;amp;&amp;amp;  yum install elasticsearch-1.4.1.noarch.rpm -y   
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;安装logstash环境&#34;&gt;安装logstash环境&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python学习之邮件发送</title>
+      <link>https://opsnotes.github.io/post/python/pymail/</link>
+      <pubDate>Sun, 15 Feb 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/pymail/</guid>
+      <description>&lt;h4 id=&#34;测试环境&#34;&gt;测试环境&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;Python 2.7.6  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;脚本如下&#34;&gt;脚本如下&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;zhangkeyuan@opsnotes:~/Test/smtplib » cat simple2.py  
+#!/usr/bin/python  
+#coding: utf-8  
+import smtplib  
+from email.mime.text import MIMEText  
+HOST = &amp;quot;smtp.qq.com&amp;quot;  
+SUBJECT = u&amp;quot;博客流量数据统计&amp;quot;  
+TO = &amp;quot;zhangky@jiagouyun.com&amp;quot;  
+FROM = &amp;quot;431054426@qq.com&amp;quot;  
+msg = MIMEText(&amp;quot;&amp;quot;&amp;quot;  
+    &amp;lt;table width=&amp;quot;800&amp;quot; border=&amp;quot;0&amp;quot; cellspacing=&amp;quot;0&amp;quot; cellpadding=&amp;quot;4&amp;quot;&amp;gt;  
+    &amp;lt;tr&amp;gt;  
+        &amp;lt;td bgcolor=&amp;quot;#CECFAD&amp;quot; height=&amp;quot;20&amp;quot; style=&amp;quot;font-size:14px&amp;quot;&amp;gt;* 博客数据 &amp;lt;a href=&amp;quot;opsnotes.net&amp;quot;&amp;gt;更多&amp;gt;&amp;gt;&amp;lt;/a&amp;gt;&amp;lt;/td&amp;gt;  
+    &amp;lt;/tr&amp;gt;  
+    &amp;lt;tr&amp;gt;  
+        &amp;lt;td bgcolor=&amp;quot;#EFEBDE&amp;quot; height=&amp;quot;100&amp;quot; style=&amp;quot;font-size:13px&amp;quot;&amp;gt;  
+        1) 日访问量: &amp;lt;font color=red&amp;gt;154333&amp;lt;/font&amp;gt; 访问次数:12834 页面浏览:12345 点击数:12306 数据流量:521MB&amp;lt;br&amp;gt;  
+        2) 状态码信息&amp;lt;br&amp;gt;  
+        &amp;amp;nbsp;&amp;amp;nbsp;500:105 404:3264 503:214&amp;lt;br&amp;gt;  
+        3) 访问浏览信息&amp;lt;br&amp;gt;  
+        &amp;amp;nbsp;&amp;amp;nbsp;IE:50% firefox:10% chrome:30% other:10%&amp;lt;br&amp;gt;  
+        4) 页面信息&amp;lt;br&amp;gt;  
+        &amp;amp;nbsp;&amp;amp;nbsp/index.php 42153&amp;lt;br&amp;gt;  
+        &amp;amp;nbsp;&amp;amp;nbsp/viwe.php 21451&amp;lt;br&amp;gt;  
+        &amp;amp;nbsp;&amp;amp;nbsp/login.php 5112&amp;lt;br&amp;gt;  
+        &amp;lt;/td&amp;gt;  
+    &amp;lt;/tr&amp;gt;  
+    &amp;lt;/table&amp;gt;&amp;quot;&amp;quot;&amp;quot;,&amp;quot;html&amp;quot;,&amp;quot;utf-8&amp;quot;)  
+
+msg[&#39;Subject&#39;] = SUBJECT  
+msg[&#39;From&#39;] = FROM  
+msg[&#39;To&#39;] = TO  
+try:  
+        server = smtplib.SMTP()  
+        server.connect(HOST, &amp;quot;25&amp;quot;)  
+        server.starttls()  
+        server.login(&amp;quot;431054426@qq.com&amp;quot;,&amp;quot;XXWWXX))000&amp;quot;)  
+        server.sendmail(FROM, TO, msg.as_string())  
+        server.quit()  
+         print &amp;quot;邮件发送成功!&amp;quot;  
+except Exceotion, e:  
+        print &amp;quot;失败: &amp;quot;+str(e)  
+zhangkeyuan@opsnotes:~/Test/smtplib »  
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用paramiko来上传文件到远端服务器</title>
+      <link>https://opsnotes.github.io/post/python/paramiko_up/</link>
+      <pubDate>Mon, 01 Dec 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/paramiko_up/</guid>
+      <description>&lt;h3 id=&#34;需求&#34;&gt;需求：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;使用paramiko来批量上传文件到Linux远端服务器  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;脚本如下&#34;&gt;脚本如下：&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用paramiko在windows下批量登陆linux服务器</title>
+      <link>https://opsnotes.github.io/post/python/paramiko_ssh/</link>
+      <pubDate>Thu, 27 Nov 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/paramiko_ssh/</guid>
+      <description>&lt;h3 id=&#34;环境&#34;&gt;环境：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;windows8.1 X86_64  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;被测试的机器&#34;&gt;被测试的机器：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;192.168.100.228,192.168.100.240
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;脚本如下&#34;&gt;脚本如下：&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	#!/bin/env python
+	import paramiko
+	import os
+	import datetime
+	from ConfigParser import ConfigParser
+
+	ConfigFile = &amp;#39;ipaddr.txt&amp;#39;
+	config = ConfigParser()
+	config.read(ConfigFile)
+	hostname1=&amp;#39;&amp;#39;.join(config.get(&amp;#39;IP&amp;#39;,&amp;#39;ipaddr&amp;#39;))
+	address=hostname1.split(&amp;#39;;&amp;#39;)
+	print address
+	username = &amp;#39;root&amp;#39;
+	password = &amp;#39;123456&amp;#39;
+	port = 22
+	if __name__==&amp;#34;__main__&amp;#34;:
+		for ip in address:
+			paramiko.util.log_to_file(&amp;#39;paramiko-ssh1.log&amp;#39;)
+			ssh = paramiko.SSHClient()
+			ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+			ssh.connect(hostname=ip,username=username,password=password)
+			stdin,stdout,stderr=ssh.exec_command(&amp;#39;ifconfig eth0;free -m&amp;#39;)
+			print stdout.read()
+			ssh.close()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>在windows上安装paramiko模块</title>
+      <link>https://opsnotes.github.io/post/python/paramiko_windows/</link>
+      <pubDate>Mon, 24 Nov 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/python/paramiko_windows/</guid>
+      <description>&lt;h3 id=&#34;环境&#34;&gt;环境：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;windows8.1 X86_64  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;需求&#34;&gt;需求：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Python中使用SSH需要用到OpenSSH，而OpenSSH依赖于paramiko模块，而paramiko模块又依赖于   pycrypto模块，因此要在Python中使用SSH。所以我们需要先安装pycrypto工具，然后再安装paramiko模块才能使用。  
+安装Parmiko首先要保证Python 已经安装完成。  
+PS：	linux的安装相对简单,只需要下载安装就OK  
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>实战：Zabbix 聚合功能配置与应用</title>
+      <link>https://opsnotes.github.io/post/zabbix_juhe/</link>
+      <pubDate>Fri, 24 Oct 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/zabbix_juhe/</guid>
+      <description>&lt;h3 id=&#34;环境&#34;&gt;环境：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Server： CentOS6.3_X86   zabbix 2.0.8
+Clinet：  windows/Linux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;需求&#34;&gt;需求：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;由于业务需求的扩展,需要监控所有服务器的在线人数,然后把所有的在线人数都统计到一起.然后我们根据这一需求进行实施,前期准备工作我们都已经做完,zabbix的本地服务器的在线人数我们都已统计出来,我们现在要做的就是把本地统计好的数据汇聚到一起,然后图标展示出来。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;思路&#34;&gt;思路：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1．	首先创建一个组,把所有的host都添加到这个组里面
+2．	然后创建Template,来监控agent服务器的在线人数
+3．	然后我们在使用zabbix聚合把所有在agent的人数统计到一起
+4．	然后绘图查看是否成功
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用saltstack来源码安装mysql</title>
+      <link>https://opsnotes.github.io/post/saltstack/saltstack_mysql/</link>
+      <pubDate>Wed, 30 Jul 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/saltstack/saltstack_mysql/</guid>
+      <description>&lt;h2 id=&#34;环境&#34;&gt;环境：&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;salt_master:	192.168.100.228
+salt_client1:	192.168.100.245
+
+master client 版本一致
+[root@salt_server base]# salt --versions-report
+       Salt: 0.17.5
+     Python: 2.6.6 (r266:84292, Jun 18 2012, 14:18:47)
+     Jinja2: unknown
+   M2Crypto: 0.20.2
+ msgpack-python: 0.1.13
+   msgpack-pure: Not Installed
+   pycrypto: 2.0.1
+     PyYAML: 3.10
+      PyZMQ: 2.2.0.1
+        ZMQ: 3.2.3
+[root@salt_server base]# 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;开始安装部署文件&#34;&gt;开始安装部署文件：&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;top.sls文件
+[root@salt_server base]# cat top.sls 
+base:
+  &#39;salt_client*&#39;:
+      - mysql
+[root@salt_server base]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用saltstack来源码安装nginx</title>
+      <link>https://opsnotes.github.io/post/saltstack_nginx/</link>
+      <pubDate>Tue, 29 Jul 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/saltstack_nginx/</guid>
+      <description>&lt;h3 id=&#34;环境&#34;&gt;环境：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;salt_master: 192.168.100.228
+salt_client1: 192.168.100.245
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;结构&#34;&gt;结构：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;[root@salt_server base]# pwd
+/srv/salt/base
+[root@salt_server base]#
+[root@salt_server base]# cat top.sls 
+base:
+  &#39;salt_client*&#39;:
+      - nginx
+[root@salt_server base]# 
+[root@salt_server base]# tree nginx
+nginx
+├── conf.sls
+├── files
+│   ├── nginx
+│   ├── nginx-1.7.3.tar.gz
+│   ├── nginx.conf
+│   └── vhost.conf
+├── init.sls
+├── install.sls
+└── vhost.sls
+
+1 directory, 9 files
+[root@salt_server base]# 
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>在CentOS6上使用saltstack配置Apache ssh模块 </title>
+      <link>https://opsnotes.github.io/post/saltstack/saltstack_config_01/</link>
+      <pubDate>Fri, 04 Jul 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/saltstack/saltstack_config_01/</guid>
+      <description>&lt;p&gt;####如下的salt states是我们需要安装的，Salt的状态系统文件
+一、使用salt来同步一个第一个简单的文件 
+&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;修改master配置文件,切记需要重启master
+[root@salt_server ~]# vim /etc/salt/master
+file_roots:
+base:
+- /srv/salt/base
+默认这个目录是没有的,我们需要创建一个目录；然后我们需要创建一个文件top.sls,如果玩过puppet就知道这个文件就相当puppet文件的site.pp
+[root@salt_server ~]# mkdir /srv/salt/base
+[root@salt_server ~]# cd /srv/salt/base
+[root@salt_server base]# echo &amp;ldquo;test salt first file&amp;rdquo; &amp;raquo; first.txt
+[root@salt_server base]# salt &amp;lsquo;salt_client1&amp;rsquo; cp.get_file salt://first.txt /home/first.txt
+salt_client1:
+/home/first.txt
+[root@salt_server salt]# 
+在客户端查看
+[root@salt_client1 home]# pwd
+/home
+[root@salt_client1 home]# cat first.txt 
+test salt first file
+[root@salt_client1 home]# 
+二、来创建第一个文件
+[root@salt_server base]# pwd
+/srv/salt/base
+[root@salt_server base]# mkdir httpd
+[root@salt_server base]# cat top.sls
+base:
+&amp;lsquo;salt_client1&amp;rsquo;:
+- httpd.pack
+[root@salt_server base]#&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>初识salt之saltstack配置应用以及基础用法</title>
+      <link>https://opsnotes.github.io/post/saltstack/saltstack_config/</link>
+      <pubDate>Wed, 02 Jul 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/saltstack/saltstack_config/</guid>
+      <description>&lt;h3 id=&#34;实施如下&#34;&gt;实施如下：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;一、测试是否能管理client  
+    使用模块cmd.run 可以查看到client的ip地址  
+    [root@salt_server ~]# salt &#39;*&#39; cmd.run &#39;ip a&#39;     
+    salt_client1:    
+    lo: &amp;lt;LOOPBACK,UP,LOWER_UP&amp;gt; mtu 16436 qdisc noqueue state UNKNOWN  
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00  
+    inet 127.0.0.1/8 scope host lo   
+    inet6 ::1/128 scope host     
+    valid_lft forever preferred_lft forever     
+    eth0: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000   
+    link/ether 00:0c:29:f4:4f:0b brd ff:ff:ff:ff:ff:ff  
+    inet 192.168.100.245/24 brd 192.168.100.255 scope global eth0  
+    inet6 fe80::20c:29ff:fef4:4f0b/64 scope link   
+    valid_lft forever preferred_lft forever  
+    [root@salt_server ~]#   
+
+二、查看版本    
+[root@salt_server ~]# salt --versions-report  
+           Salt: 2014.1.0  
+         Python: 2.6.6 (r266:84292, Jun 18 2012, 14:18:47)
+         Jinja2: unknown
+       M2Crypto: 0.20.2
+ msgpack-python: 0.1.13
+   msgpack-pure: Not Installed
+       pycrypto: 2.0.1
+         PyYAML: 3.09
+          PyZMQ: 2.2.0.1
+            ZMQ: 3.2.4
+[root@salt_server ~]# 
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>初识saltstack在之CentOS6上安装Saltstack  </title>
+      <link>https://opsnotes.github.io/post/saltstack/install-saltstack/</link>
+      <pubDate>Thu, 26 Jun 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/saltstack/install-saltstack/</guid>
+      <description>&lt;p&gt;####系统环境：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[root@salt_server home]# ifconfig eth0 | grep &amp;quot;inet addr:&amp;quot; | awk -F: &#39;{print $2}&#39; | awk &#39;{print $1}&#39;      
+192.168.100.228      
+[root@salt_server home]# cat /etc/redhat-release       
+CentOS release 6.3 (Final)      
+[root@salt_server home]# uname -r      
+2.6.32-279.el6.x86_64      
+[root@salt_server home]#  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;####下载地址  &lt;br&gt;
+&lt;a href=&#34;http://ftp.linux.ncsu.edu/pub/epel/6/x86_64/&#34;&gt;http://ftp.linux.ncsu.edu/pub/epel/6/x86_64/&lt;/a&gt;   &lt;br&gt;
+####参考文章   &lt;br&gt;
+&lt;a href=&#34;http://docs.saltstack.cn/topics/installation/rhel.html&#34;&gt;http://docs.saltstack.cn/topics/installation/rhel.html&lt;/a&gt;&lt;br&gt;
+在安装之前需要注意几个包 &lt;br&gt;
+Python 不用说大家都知道 这玩意就python写的  &lt;br&gt;
+ZeroMQ 消息中间件相当于puppet的rabbitMQ、activeMQ   &lt;br&gt;
+PyCrypto  Python密码工具包   &lt;br&gt;
+M2Crypto    加密模块 是Python OpenSSL封装   &lt;br&gt;
+msgpack-python 高性能的消息交换格式   &lt;br&gt;
+YAML    不说大家都知道 文件格式   &lt;br&gt;
+Jinja2    解析Salt States (在master配置文件中配置)   &lt;br&gt;
+MarkupSafe    Implements a XML/HTML/XHTML Markup safe string for Python   &lt;br&gt;
+apache-libcloud    与大量的主流云服务提供者进行交互时统一API的Python类&lt;br&gt;
+在安装之前我们需要设置防火墙的端口  &lt;br&gt;
+lokkit  -p 4505:tcp -p 4506:tcp&lt;br&gt;
+#######一、安装master salt-master 2014.1.1版本  &lt;br&gt;
+下载安装 &lt;br&gt;
+记住路径下次直接安装不需要下载   &lt;br&gt;
+如果想本地保存需要缓存   &lt;br&gt;
+vim /etc/yum.conf   &lt;br&gt;
+keepcache=1 修改成1&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>zabbix优化记一次惨痛的zabbix数据库优化</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_11/</link>
+      <pubDate>Fri, 20 Jun 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_11/</guid>
+      <description>&lt;h3 id=&#34;记一次惨痛的zabbix数据库分表&#34;&gt;记一次惨痛的zabbix数据库分表&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;最近负责公司的zabbix项目，由于前期缺少整体性能架构的规划,导致后期出一系列的问题，玩zabbix的兄弟都知道，zabbix最大的瓶颈本身不在zabbix服务，而在mysql数据库的压力上，因此，优化zabbix其实就是优化zabbix的配置以及zabbix的mysql了;  
+    Zabbix 数据库常见的优化处理方法有两种：  
+        01.	优化数据库,对数据库进行分表处理;  
+        02.	清空数据库中的history, history_uint表;  
+    在接下来的方案我们就mysql数据库分表来进行优化；  
+具体思路：  
+    1.	首先下载脚本  
+        https://github.com/itnihao/zabbixdbpartitioning  
+        感谢hao哥提供脚本以及帮助。  
+    2.	前期准备工作,安全起见最好安装screen,也不怕程序卡死,关于screen的用法请参考http://www.kwx.gd/CentOSApp/CentOS-screen.html  
+        关闭zabbix的邮件报警,也可以关闭zabbix server服务,mysql本身会锁表  
+    3.	在screen模式下运行脚本，  
+        在这里需要注意的是，如果你的数据库特别大,最好先备份,然后在修改脚本,然后分表,在修改脚本的时候需要注意的几个地方我这里先列出来下,如下:  
+        首先修改zabbix 数据库和密码 默认情况下是都是zabbix 如果你的也是这样的话,那么不用修改,
+        然后修改配置文件的路径,根据自己的自定义的路径来修改脚本的路径  
+        如果手动备份了那么关闭脚本中备份.  
+    4.	然后来查看是否创建完成; 
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件zabbix使用key来监控IOPS</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_10/</link>
+      <pubDate>Mon, 16 Jun 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_10/</guid>
+      <description>&lt;h3 id=&#34;01在服务端创建zabbix组&#34;&gt;01.在服务端创建zabbix组&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件使用zabbix监控nginx status</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_09/</link>
+      <pubDate>Thu, 15 May 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_09/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;因业务需要需要用zabbix来监控nginx的status,具体是如下的做法：  
+1.	首先在nginx的配置文件中添加如下内容,需要注意的是nginx的文件格式，在allow中我们需要注意的是需要添加zabbix server的IP地址,不然无法采集到数据. 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://opsnotes.github.io/img/nginx01.png&#34; alt=&#34;zabbix&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用innobackupex在线备份及恢复mysql数据库 </title>
+      <link>https://opsnotes.github.io/post/innobackupex/</link>
+      <pubDate>Wed, 12 Mar 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/innobackupex/</guid>
+      <description>&lt;h1 id=&#34;概述&#34;&gt;概述&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;这几天一直在研究mysql备份这一块,前几天由于手误对线上生产数据库造成误操作，虽然没有太大影响,但是为了把风险度降到最低,因此最近一直在倒腾mysql的在线热备份,在线热备份有免费开源的,也收费的产品,在这里我们值讨论免费的产品，支持热备的的软件mysqlLVM以及接下来的这款Xtrabackup;Xtrabackup是由percona开发的一个开源软件，它是innodb热备工具ibbackup（收费的商业软件）的一个开源替代品。Xtrabackup由个部分组成:xtrabackup和innobackupex，其中xtrabackup工具用于备份innodb和 xtraDB引擎的表；而innobackupex工具用于备份myisam和innodb引擎的表，本文将介绍如何用innobackupex工具做全量和增量备份。    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;一安装解压&#34;&gt;一、安装解压&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件Zabbix搭建部署之使用脚本来发送zabbix邮件报警</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_07/</link>
+      <pubDate>Tue, 21 Jan 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_07/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;上篇文章中我们已经部署完成zabbix邮件报警的前期工作了,那么接下来我们来应用zabbix邮件报警，如果对邮件报警不了解可以看我的博文：  
+http://opsnotes.net/2013/12/31/install_zabbix_06/  
+
+01.	首先在创建之前修改zabbix配置文件，根据安装的位置来查找相应的路径：  
+[root@dota-db-14 alertscripts]# pwd  
+/usr/local/share/zabbix/alertscripts  
+[root@dota-db-14 alertscripts]#  
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件Zabbix搭建部署之使用mutt&#43;msmtp配置Zabbix邮件报警</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_06/</link>
+      <pubDate>Tue, 31 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_06/</guid>
+      <description>&lt;h3 id=&#34;企业级监控软件zabbix搭建部署之使用muttmsmtp配置zabbix邮件报警&#34;&gt;企业级监控软件Zabbix搭建部署之使用mutt+msmtp配置Zabbix邮件报警&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;[root@Zabbix-Server ~]# wget http://nchc.dl.sourceforge.net/sourceforge/msmtp/msmtp-1.4.17.tar.bz2   
+[root@Zabbix-Server ~]# tar xf msmtp-1.4.17.tar.bz2   
+[root@Zabbix-Server ~]# cd msmtp-1.4.17  
+[root@Zabbix-Server msmtp-1.4.17]# mkdir /usr/local/msmtp  
+[root@Zabbix-Server msmtp-1.4.17]# yum -y install gnutls-devel gnutls  
+[root@Zabbix-Server msmtp-1.4.17]# ./configure --prefix=/usr/local/msmtp
+[root@Zabbix-Server msmtp-1.4.17]# make    
+[root@Zabbix-Server msmtp-1.4.17]# make install  
+
+[root@Zabbix-Server msmtp-1.4.17]# cd /usr/local/msmtp/  
+[root@Zabbix-Server msmtp]# ls  
+bin  share  
+[root@Zabbix-Server msmtp]# mkdir etc		创建目录  
+[root@Zabbix-Server msmtp]# cd etc/  
+[root@Zabbix-Server etc]# ls  
+[root@Zabbix-Server etc]# vim msmtprc  创建配置文件  
+配置文件如下：   
+account default  
+host smtp.ym.163.com			#发送邮件服务器  
+port 25										#发送端口   
+from noreply@youlongteng.com		#发送的邮箱  
+auth login    
+tls off										#这里如果使用on的话会报 &amp;quot;msmtp: cannot use a secure authenti  cation method&amp;quot;错误  
+user noreply@youlongteng.com				#邮箱用户  
+password 123.com.					#邮箱的密码，明文保存的需要注意，可以设置权限  
+logfile /var/log/mmlog		#日志的路径  
+[root@Zabbix-Server etc]# ll /usr/local/msmtp/etc/msmtprc   
+-rwxr-xr-x 1 zabbix root 195 Oct 11 23:52 /usr/local/msmtp/etc/msmtprc  
+[root@Zabbix-Server etc]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件zabbix搭建部署之zabbix Services添加主机 </title>
+      <link>https://opsnotes.github.io/post/install_zabbix_04/</link>
+      <pubDate>Thu, 26 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_04/</guid>
+      <description>&lt;h3 id=&#34;企业级监控软件zabbix搭建部署之zabbix-services添加主机&#34;&gt;企业级监控软件zabbix搭建部署之zabbix Services添加主机&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;环境： CentOS6.X X86_64   
+      Version：zabbix 2.0.8    
+1.	首先登录到zabbix文件服务器替换zabbix替换文件字体   
+    [root@Zabbix-Server fonts]# mv DejaVuSans.ttf   DejaVuSans.ttf.w   
+    [root@Zabbix-Server fonts]# pwd   
+    /var/www/zabbix/fonts  
+    [root@Zabbix-Server fonts]# ls   
+    DejaVuSans.ttf.w  simhei.ttf  
+    [root@Zabbix-Server fonts]# mv simhei.ttf DejaVuSans.ttf  
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件zabbix搭建部署之Zabbix自定义端口阈值配置以及应用</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_05/</link>
+      <pubDate>Thu, 26 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_05/</guid>
+      <description>&lt;h3 id=&#34;企业级监控软件zabbix搭建部署之zabbix自定义端口阈值配置以及应用&#34;&gt;企业级监控软件zabbix搭建部署之Zabbix自定义端口阈值配置以及应用&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;环境：CentOS6.3 X86_64   
+软件：Zabbix 2.0.8   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;一配置zabiix自定义模板&#34;&gt;一．	配置zabiix自定义模板&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;    1.	首先登录zabbixweb服务端；
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件zabbix搭建部署之zabbix在WEB页面中的配置</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_02/</link>
+      <pubDate>Tue, 24 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_02/</guid>
+      <description>&lt;h3 id=&#34;企业级监控软件zabbix搭建部署之zabbix在web页面中的配置&#34;&gt;企业级监控软件zabbix搭建部署之zabbix在WEB页面中的配置&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;关于安装请看http://opsnotes.net/2013/12/22/install_zabbix_01/  
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件Zabbix搭建部署之Zabbix-Agents的安装部署</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_03/</link>
+      <pubDate>Mon, 23 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_03/</guid>
+      <description>&lt;h3 id=&#34;我们首先来安装基于linux的zabbix的客户端安装&#34;&gt;我们首先来安装基于Linux的Zabbix的客户端安装&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1.首先修改计算机的主机名字；其实计算机名字也不用修改都可以  
+
+[root@localhost ~]# hostname     
+Zabbix-Agent01  
+[root@localhost ~]# cat /etc/sysconfig/network  
+NETWORKING=yes  
+HOSTNAME=Zabbix-Agent01  
+[root@localhost ~]# 
+
+2.创建用户  
+useradd -s /sbin/nologin zabbix
+
+3.下载解压客户端  
+下载可以去zabbix官方下载www.zabbix.com  
+
+需要注意的是：在2.0后客户端安装的时候，会解压三个文件，sbin conf bin；然后我们把解压的三个目录复制到我们创建的zabbix目录下面
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>mysql5.5.25 自动化脚本安装</title>
+      <link>https://opsnotes.github.io/post/install_script_01/</link>
+      <pubDate>Sun, 22 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_script_01/</guid>
+      <description>mysql5.5.25 自动化脚本安装 #!/bin/bash#创作日期:2013.7.26#Mysql install directory and configuration files.******MYSQL_DIR=&amp;#34;/data/software&amp;#34;DATA_DIR=&amp;#34;/data/mysql/3306/data&amp;#34;BASE_DIR=&amp;#34;/usr/local/mysql&amp;#34;echo &amp;#34;please input mysql version:&amp;#34;read VERSIONecho &amp;#34;Your mysql version is mysql-$VERSION.tar.gz&amp;#34;if [ -e &amp;#34;$MYSQL_DIR/mysql-$VERSION.tar.gz&amp;#34; ]thenecho &amp;#34;Please waitting...&amp;#34;sleep 3#Install mysql package dependent.yum -y install gcc gcc-c++ gcc-g77 autoconf automake openssl zlib* fiex** libxml* \ncurses-devel libmcrypt* libtool-ltdl-devel* &amp;amp;&amp;amp; \#Install cmake.echo &amp;#34;The system is bing installed cmake,please waitting...&amp;#34;sleep 3tar -zxvf $MYSQL_DIR/cmake-2.</description>
+    </item>
+    
+    <item>
+      <title>企业级监控软件zabbix搭建部署之zabbix server的安装 </title>
+      <link>https://opsnotes.github.io/post/install_zabbix_01/</link>
+      <pubDate>Sun, 22 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_01/</guid>
+      <description>&lt;h3 id=&#34;企业级监控软件zabbix搭建部署之zabbix-server的安装&#34;&gt;企业级监控软件zabbix搭建部署之zabbix server的安装&lt;/h3&gt;
+&lt;h3 id=&#34;zabbix线上已经应用半年多了关于zabbix在生产环境中的使用心得以及一些经验写下来希望让大家少走弯路共同学习&#34;&gt;zabbix线上已经应用半年多了,关于zabbix在生产环境中的使用心得，以及一些经验写下来，希望让大家少走弯路，共同学习！&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	环境：  
+		Server:CentOS6.3_X86.64  
+		Zabbix:zabbix-2.0.8.tar  
+		Zabbix_agents:zabbix_agents_2.0.8.linux2_6.amd64.tar  
+
+	服务器命名规则：  
+		Zabbix-Server:192.168.100.239  
+		Zabbix-Agent01:192.168.100.240
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>About me</title>
+      <link>https://opsnotes.github.io/page/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/page/about/</guid>
+      <description>My name is Kenng I have the following qualities:  I like linux and cloud native I&#39;m extremely loyal to my family  Contact Me  Blog: https://opsnotes.github.io Mail: zky.linux@gmail.com  </description>
+    </item>
+    
+    <item>
+      <title>Kubernetest REST API</title>
+      <link>https://opsnotes.github.io/post/kubernetes/kubernetes_rest_api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/kubernetes/kubernetes_rest_api/</guid>
+      <description>启动proxy ➜ _posts kubectl proxy --port=8080 Starting to serve on 127.0.0.1:8080 查看APIserver ➜ http 127.0.0.1:8080 HTTP/1.1 200 OK Content-Length: 2644 Content-Type: application/json Date: Tue, 15 Jan 2019 05:19:42 GMT { &amp;#34;paths&amp;#34;: [ &amp;#34;/api&amp;#34;, &amp;#34;/api/v1&amp;#34;, &amp;#34;/apis&amp;#34;, &amp;#34;/apis/&amp;#34;, &amp;#34;/apis/admissionregistration.k8s.io&amp;#34;, &amp;#34;/apis/admissionregistration.k8s.io/v1beta1&amp;#34;, &amp;#34;/apis/apiextensions.k8s.io&amp;#34;, &amp;#34;/apis/apiextensions.k8s.io/v1beta1&amp;#34;, &amp;#34;/apis/apiregistration.k8s.io&amp;#34;, &amp;#34;/apis/apiregistration.k8s.io/v1&amp;#34;, &amp;#34;/apis/apiregistration.k8s.io/v1beta1&amp;#34;, &amp;#34;/apis/apps&amp;#34;, &amp;#34;/apis/apps/v1&amp;#34;, &amp;#34;/apis/apps/v1beta1&amp;#34;, &amp;#34;/apis/apps/v1beta2&amp;#34;, &amp;#34;/apis/authentication.k8s.io&amp;#34;, &amp;#34;/apis/authentication.k8s.io/v1&amp;#34;, &amp;#34;/apis/authentication.k8s.io/v1beta1&amp;#34;, &amp;#34;/apis/authorization.k8s.io&amp;#34;, &amp;#34;/apis/authorization.k8s.io/v1&amp;#34;, &amp;#34;/apis/authorization.k8s.io/v1beta1&amp;#34;, &amp;#34;/apis/autoscaling&amp;#34;, &amp;#34;/apis/autoscaling/v1&amp;#34;, &amp;#34;/apis/autoscaling/v2beta1&amp;#34;, &amp;#34;/apis/batch&amp;#34;, &amp;#34;/apis/batch/v1&amp;#34;, &amp;#34;/apis/batch/v1beta1&amp;#34;, &amp;#34;/apis/ceph.rook.io&amp;#34;, &amp;#34;/apis/ceph.rook.io/v1&amp;#34;, &amp;#34;/apis/certificates.k8s.io&amp;#34;, &amp;#34;/apis/certificates.k8s.io/v1beta1&amp;#34;, &amp;#34;/apis/compose.docker.com&amp;#34;, &amp;#34;/apis/compose.docker.com/v1beta1&amp;#34;, &amp;#34;/apis/compose.docker.com/v1beta2&amp;#34;, &amp;#34;/apis/events.k8s.io&amp;#34;, &amp;#34;/apis/events.k8s.io/v1beta1&amp;#34;, &amp;#34;/apis/extensions&amp;#34;, &amp;#34;/apis/extensions/v1beta1&amp;#34;, &amp;#34;/apis/networking.</description>
+    </item>
+    
+    <item>
+      <title>prometheus学习系列(一)</title>
+      <link>https://opsnotes.github.io/post/prometheus/01-%E5%AE%89%E8%A3%85prometheus%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/prometheus/01-%E5%AE%89%E8%A3%85prometheus%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid>
+      <description>下载源代码安装prometheus-operator的时候报错 git clone https://github.com/coreos/kube-prometheus.git 执行 kubectl apply -f manifests/ 报错 unable to recognize “manifests/0prometheus-operator-serviceMonitor.yaml”: no matches for kind “ServiceMonitor” in version “monitoring.coreos.com/v1” unable to recognize “manifests/alertmanager-alertmanager.yaml”: no matches for kind “Alertmanager” in version “monitoring.coreos.com/v1” unable to recognize &amp;#34;manifests/alertmanager-serviceMonitor.yaml&amp;#34;: no matches for kind &amp;#34;ServiceMonitor&amp;#34; in version &amp;#34;monitoring.coreos.com/v1&amp;#34; unable to recognize &amp;#34;manifests/kube-state-metrics-serviceMonitor.yaml&amp;#34;: no matches for kind &amp;#34;ServiceMonitor&amp;#34; in version &amp;#34;monitoring.coreos.com/v1&amp;#34; unable to recognize “manifests/node-exporter-serviceMonitor.yaml”: no matches for kind “ServiceMonitor” in version “monitoring.coreos.com/v1” unable to recognize “manifests/prometheus-prometheus.</description>
+    </item>
+    
+    <item>
+      <title>prometheus学习系列(三)</title>
+      <link>https://opsnotes.github.io/post/prometheus/03-%E5%9C%A8minikube%E4%B8%AD%E5%AE%89%E8%A3%85prometheus-operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/prometheus/03-%E5%9C%A8minikube%E4%B8%AD%E5%AE%89%E8%A3%85prometheus-operator/</guid>
+      <description>参考资料 GitHub - coreos/prometheus-operator: Prometheus Operator creates/configures/manages Prometheus clusters atop Kubernetes
+git clone kube-prometheus;需要注意的是,代码已经从原来的地址迁移到这个地址 git clone https://github.com/coreos/prometheus-operator.git minikube安装部署,请参考另外一篇文章 安装 # create namespace and CRDs kubectl apply -f manifests/setup # wait for CRD creation to complete until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo &amp;#34;&amp;#34;; done # create monitoring components kubectl apply -f manifests/ 查看 ➜ kube-prometheus git:(master) ✗ k get pods -n monitoring NAME READY STATUS RESTARTS AGE alertmanager-main-0 2/2 Running 4 104m alertmanager-main-1 2/2 Running 4 104m alertmanager-main-2 2/2 Running 4 104m grafana-58dc7468d7-tzsnh 1/1 Running 2 105m kube-state-metrics-769f4fd4d5-85f7p 3/3 Running 7 105m node-exporter-22l2n 2/2 Running 4 105m prometheus-adapter-5cd5798d96-ttfm2 1/1 Running 3 105m prometheus-k8s-0 3/3 Running 7 61m prometheus-k8s-1 3/3 Running 0 51m prometheus-operator-99dccdc56-klb8r 1/1 Running 4 105m ➜ kube-prometheus git:(master) ✗ 查看创建的服务,需要注意的是,我们需要修改prometheus-k8s和grafana这两个service的类型为NodePort;如下操作: ➜ kube-prometheus git:(master) ✗ k edit svc grafana -n monitoring ➜ kube-prometheus git:(master) ✗ k edit svc prometheus-k8s -n monitoring 查看修改完成的service; ➜ kube-prometheus git:(master) ✗ k get svc -n monitoring NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE alertmanager-main ClusterIP 10.</description>
+    </item>
+    
+    <item>
+      <title>prometheus学习系列(二)</title>
+      <link>https://opsnotes.github.io/post/prometheus/02-minikube-for-mac-install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/prometheus/02-minikube-for-mac-install/</guid>
+      <description>Prerequisites: * macOS 10.12 (Sierra) * A hypervisor such as Hyperkit, Parallels, VirtualBox, or VMware Fusion  Installation: brew install minikube
+Upgrading minikube: brew update brew upgrade minikube
+Hypervisor Setup for Hypervisor **Usage** Start a cluster using the hyperkit driver: minikube start —vm-driver**=**hyperkit To make hyperkit the default driver: minikube config set vm-driver hyperkit Increasing memory allocation: minikube config set memory 4096
+常用命令: Start a cluster by running: minikube start Access the Kubernetes Dashboard running within the minikube cluster: minikube dashboard minikube service list Stop your local cluster: minikube stop Delete your local cluster: minikube delete Delete all local clusters and profiles minikube delete —all</description>
+    </item>
+    
+    <item>
+      <title>prometheus学习系列(五)</title>
+      <link>https://opsnotes.github.io/post/prometheus/05-prometheus-operator%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%8E%A7nginx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/prometheus/05-prometheus-operator%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%8E%A7nginx/</guid>
+      <description>目标 在生产环境中,我们需要除了监控kubernetes中的一些资源对象、节点以及组件,有时候还需要根据实际的业务添加自定义监控.添加自定义步骤如下: 1. 先创建一个ServiceMonitor对象,用于为Prometheus添加监控项 2. 将ServiceMonitor对象关联metrics数据接口的一个Service对象; 3. Service对象可以正确获取metrics数据
+查看nginx完整的带metrics的文件 ➜ manifests git:(master) ✗ cat nginx.yaml apiVersion: apps/v1 kind: Deployment metadata: name: nginx labels: app: nginx spec: replicas: 1 selector: matchLabels: app: nginx template: metadata: labels: app: nginx spec: containers: - name: nginx image: billy98/nginx-prometheus-metrics:latest ports: - name: http-metrics containerPort: 9527 - name: web containerPort: 80 - name: test containerPort: 1314 imagePullPolicy: IfNotPresent --- apiVersion: v1 kind: Service metadata: labels: app: nginx name: nginx namespace: default spec: ports: - name: http-metrics port: 9527 protocol: TCP targetPort: 9527 - name: web port: 80 protocol: TCP targetPort: 80 - name: test port: 1314 protocol: TCP targetPort: 1314 selector: app: nginx type: NodePort ➜ manifests git:(master) ✗ 配置prometheus监控 ➜ manifests git:(master) ✗ cat prometheus-serviceMonitornginx.</description>
+    </item>
+    
+    <item>
+      <title>prometheus学习系列(六)</title>
+      <link>https://opsnotes.github.io/post/prometheus/06-prometheus-mail-&#43;-wechat%E6%8A%A5%E8%AD%A6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/prometheus/06-prometheus-mail-&#43;-wechat%E6%8A%A5%E8%AD%A6/</guid>
+      <description>首先把alertmanager-main这个service改为NodePort的server. ➜ manifests git:(master) ✗ k get svc -n monitoring NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE alertmanager-main NodePort 10.96.120.87 &amp;lt;none&amp;gt; 9093:31175/TCP 29h alertmanager-operated ClusterIP None &amp;lt;none&amp;gt; 9093/TCP,9094/TCP,9094/UDP 29h grafana NodePort 10.96.163.124 &amp;lt;none&amp;gt; 3000:31263/TCP 29h kube-state-metrics ClusterIP None &amp;lt;none&amp;gt; 8443/TCP,9443/TCP 29h node-exporter ClusterIP None &amp;lt;none&amp;gt; 9100/TCP 29h prometheus-adapter ClusterIP 10.96.121.50 &amp;lt;none&amp;gt; 443/TCP 29h prometheus-k8s NodePort 10.96.129.132 &amp;lt;none&amp;gt; 9090:30525/TCP 29h prometheus-operated ClusterIP None &amp;lt;none&amp;gt; 9090/TCP 29h prometheus-operator ClusterIP None &amp;lt;none&amp;gt; 8080/TCP 29h ➜ manifests git:(master) ✗ 可以使用svc“alertmanager-main”的nodeport查看Alertmanager的Status状态,获取访问prometheus地址和alertmanager地址.</description>
+    </item>
+    
+    <item>
+      <title>prometheus学习系列(四)</title>
+      <link>https://opsnotes.github.io/post/prometheus/04-prometheus-service-%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/prometheus/04-prometheus-service-%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0%E9%85%8D%E7%BD%AE/</guid>
+      <description>注意所在操作都在,manifests目录下面创建, ➜ manifests git:(master) ✗ cat prometheus-additional.yaml - job_name: ‘kubernetes-service-endpoints&amp;#39; kubernetes_sd_configs: - role: endpoints relabel_configs: - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape] action: keep regex: true - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scheme] action: replace target_label: __scheme__ regex: (https?) - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path] action: replace target_label: __metrics_path__ regex: (.+) - source_labels: [__address__, __meta_kubernetes_service_annotation_prometheus_io_port] action: replace target_label: __address__ regex: ([^:]+)(?::\d+)?;(\d+) replacement: $1:$2 - action: labelmap regex: __meta_kubernetes_service_label_(.+) - source_labels: [__meta_kubernetes_namespace] action: replace target_label: kubernetes_namespace - source_labels: [__meta_kubernetes_service_name] action: replace target_label: kubernetes_name ➜ manifests git:(master) ✗ 使用这个文件创建一个secret对象并查看 ➜ manifests git:(master) ✗ kubectl create secret generic additional-configs --from-file=prometheus-additional.</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(九)</title>
+      <link>https://opsnotes.github.io/post/docker/dockerfile_centos_ssh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/dockerfile_centos_ssh/</guid>
+      <description>&lt;h4 id=&#34;使用dockerfile创建基于centos的ssh容器&#34;&gt;使用dockerfile创建基于centos的ssh容器：&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;需求：
+   打包的镜像需要支持SSH key和密码登录
+1.首先创建目录/home/sshd_centos
+[root@test-devops sshd_centos]# pwd
+/home/sshd_centos
+[root@test-devops sshd_centos]#
+
+2.查看autorized.keys,需要注意的是,需要哪个机器使用key登录就把哪个客户的pub文件进去
+[root@test-devops sshd_centos]# cat authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0OaHTmgsdKIrPCgULUk1XyRGhicQbPPJgQN85QTZNfA2iuK7PmkhoPnXLaRtMZl4se6xsBEuCn0Yougx4vFRzszDv/62XxjErqqC0vQBEWL4KaGCmDgEtwaE3oOBPA+kfIU0XITZuZx7KdPsaX2pngrv+EK3urs5kYUbwfQzE8G9JcqhWmGUxNWx+SvyspH5GaEMvxdpmZtitevEDfAGTnfp0DvR/C/5EcieS9MBHOAMEwm5mzVzvTV+HEN2GMmZAuooEUGlzTVyCRzJvddzzPDsVKZzLPhA8QYWYGg/bSDkrh5IFYBc5T/yDhD6xBbbFG+R4vT98iOqB7m9vXst9 zhangkeyuan@zhangkeyuandeMacBook-Air.local
+[root@test-devops sshd_centos]#
+3.给文件授权
+[root@test-devops sshd_centos]# ll authorized_keys
+-rw------- 1 root root 424 7月   2 17:43 authorized_keys
+[root@test-devops sshd_centos]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>牛刀小试之docker容器系列(十)</title>
+      <link>https://opsnotes.github.io/post/docker/dockerfile_ubuntu_ssh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker/dockerfile_ubuntu_ssh/</guid>
+      <description>&lt;h4 id=&#34;使用dockerfile创建基于ubuntu的ssh容器&#34;&gt;使用dockerfile创建基于ubuntu的ssh容器：&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;1.创建目录
+[root@test-devops home]# mkdir sshd_ubuntu
+[root@test-devops home]# cd sshd_ubuntu/
+[root@test-devops sshd_ubuntu]# touch Dockerfile run.sh
+[root@test-devops sshd_ubuntu]#
+
+2.编写run.sh脚本和认证文件
+[root@test-devops sshd_ubuntu]# cat run.sh
+#!/bin/bash
+/usr/sbin/sshd -D
+[root@test-devops sshd_ubuntu]# chmod +x run.sh
+[root@test-devops sshd_ubuntu]#
+
+[root@test-devops sshd_ubuntu]# chmod 400 authorized_keys
+
+3.编写dockerFile
+[root@test-devops sshd_ubuntu]# cat Dockerfile
+# 继承的镜像
+FROM ubuntu:14.04
+
+# 作者信息
+MAINTAINER from steven (www.opsnotes.net)
+
+# 安装SSH服务和VIM服务
+RUN apt-get install -y openssh-server vim
+RUN mkdir -p /var/run/sshd
+RUN mkdir -p /root/.ssh
+RUN echo &#39;root:123qwer&#39; |chpasswd
+RUN sed -i &amp;quot;s/#UsePrivilegeSeparation.*/UsePrivilegeSeparation no/g&amp;quot; /etc/ssh/sshd_config
+RUN sed -i &amp;quot;s/UsePAM.*/UsePAM no/g&amp;quot; /etc/ssh/sshd_config
+RUN sed -i &#39;s/^PermitRootLogin without-password/PermitRootLogin yes/g&#39; /etc/ssh/sshd_config
+
+# 取消PAM限制
+RUN sed -i &#39;/pam_loginuid.so/c session    optional     pam_loginuid.so&#39;  /etc/pam.d/sshd
+
+# 复制文件，给脚本可执行权限
+ADD authorized_keys /root/.ssh/authorized_keys
+ADD run.sh /run.sh
+RUN chmod +x /run.sh
+
+# 设置开放端口
+EXPOSE 22
+
+# 设置自动开启命令
+CMD [&amp;quot;/run.sh&amp;quot;]
+[root@test-devops sshd_ubuntu]#
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

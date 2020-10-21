@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>自动化 on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/</link>
+    <description>Recent content in 自动化 on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Sun, 22 Dec 2013 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>mysql5.5.25 自动化脚本安装</title>
+      <link>https://opsnotes.github.io/post/install_script_01/</link>
+      <pubDate>Sun, 22 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_script_01/</guid>
+      <description>mysql5.5.25 自动化脚本安装 #!/bin/bash#创作日期:2013.7.26#Mysql install directory and configuration files.******MYSQL_DIR=&amp;#34;/data/software&amp;#34;DATA_DIR=&amp;#34;/data/mysql/3306/data&amp;#34;BASE_DIR=&amp;#34;/usr/local/mysql&amp;#34;echo &amp;#34;please input mysql version:&amp;#34;read VERSIONecho &amp;#34;Your mysql version is mysql-$VERSION.tar.gz&amp;#34;if [ -e &amp;#34;$MYSQL_DIR/mysql-$VERSION.tar.gz&amp;#34; ]thenecho &amp;#34;Please waitting...&amp;#34;sleep 3#Install mysql package dependent.yum -y install gcc gcc-c++ gcc-g77 autoconf automake openssl zlib* fiex** libxml* \ncurses-devel libmcrypt* libtool-ltdl-devel* &amp;amp;&amp;amp; \#Install cmake.echo &amp;#34;The system is bing installed cmake,please waitting...&amp;#34;sleep 3tar -zxvf $MYSQL_DIR/cmake-2.</description>
+    </item>
+    
+  </channel>
+</rss>

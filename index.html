@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>OpsNotes随思录 - OpsNotes随思录</title>
+  <meta name="author" content="Kenng zhang"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "OpsNotes随思录",
+    
+    "url": "https:\/\/opsnotes.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/opsnotes.github.io"
+  
+  
+  
+  
+}
+</script>
+
+<meta property="og:title" content="OpsNotes随思录" />
+<meta property="og:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+<meta property="og:url" content="https://opsnotes.github.io/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="OpsNotes随思录" />
+
+  <meta name="twitter:title" content="OpsNotes随思录" />
+  <meta name="twitter:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@opsnotes" />
+  <meta name="twitter:creator" content="@opsnotes" />
+  <link href='https://opsnotes.github.io/img/avatar-icon.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.62.2" />
+  <link rel="alternate" href="https://opsnotes.github.io/index.xml" type="application/rss+xml" title="OpsNotes随思录"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://opsnotes.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://opsnotes.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://opsnotes.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '46663382', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://opsnotes.github.io">OpsNotes随思录</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="arts打卡" href="/tags/arts%e6%89%93%e5%8d%a1">arts打卡</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="/tags/kubernetes">kubernetes</a>
+                
+                  <a href="/tags/prometheus">prometheus</a>
+                
+                  <a href="/tags/python">python</a>
+                
+                  <a href="/tags">Tags</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="OpsNotes随思录" href="https://opsnotes.github.io">
+            <img class="avatar-img" src="https://opsnotes.github.io/img/avatar-icon.png" alt="OpsNotes随思录" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="page-heading">
+              
+                <h1>OpsNotes随思录</h1>
+              
+              
+                <hr class="small">
+              
+              
+                
+                  <span class="page-subheading">我是Kenng,终身学习者, 关注 Kubernetes、Istio、DevOps、Prometheus、Python、Golang、云原生、微服务等技术</span>
+                
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+  <div role="main" class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+
+        <div class="posts-list">
+          
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/prometheus/%E8%85%BE%E8%AE%AF%E4%BA%91prometheus%E6%8C%81%E4%B9%85%E5%8C%96%E4%BF%AE%E6%94%B9%E5%8F%82%E6%95%B0/">
+        <h2 class="post-title">prometheus学习系列(七)</h2>
+        
+        <h3 class="post-subtitle">
+            修改prometheus持久化参数
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on October 21, 2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;95&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        修改config文件,在里面添加一行. spec: retention: 365d 完整的实例,更新完成之后,记得apply一下. [root@VM-64-25-centos manifests]# cat prometheus-prometheus.yaml apiVersion: monitoring.coreos.com/v1 kind: Prometheus metadata: labels: prometheus: k8s name: k8s namespace: monitoring spec: alerting: alertmanagers: - name: alertmanager-main namespace: monitoring port: web image: quay.io/prometheus/prometheus:v2.17.2 nodeSelector: kubernetes.io/os: linux podMonitorNamespaceSelector: {} podMonitorSelector: {} replicas: 2 resources: requests: memory: 500Mi ruleSelector: matchLabels: prometheus: k8s role: alert-rules securityContext: fsGroup: 2000 runAsNonRoot: true runAsUser: 1000 additionalScrapeConfigs: name: additional-configs key: prometheus-additional.yaml retention: 7d #添加一行,持久化7天 storage: volumeClaimTemplate: spec: storageClassName: prometheus-cfs resources: requests: storage: 100Gi serviceAccountName: prometheus-k8s serviceMonitorNamespaceSelector: {} serviceMonitorSelector: {} version: v2.
+        <a href="https://opsnotes.github.io/post/prometheus/%E8%85%BE%E8%AE%AF%E4%BA%91prometheus%E6%8C%81%E4%B9%85%E5%8C%96%E4%BF%AE%E6%94%B9%E5%8F%82%E6%95%B0/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/prometheus/">prometheus</a>&nbsp;
+        
+        <a href="https://opsnotes.github.io/tags/kubernetes/">“kubernetes”</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/artsweekly/week06/">
+        <h2 class="post-title">ARTS第六周</h2>
+        
+        <h3 class="post-subtitle">
+            ARTS第六周(2020年3月2日~2020年3月8日)
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on March 7, 2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;30&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h3 id="读书">读书</h3>
+<h4 id="本周在读的书">本周在读的书.</h4>
+<p><a href="https://book.douban.com/subject/30316322/">猜测和偏见 (豆瓣)</a></p>
+<p><a href="https://book.douban.com/subject/34836784/">定投十年财务自由 (豆瓣)</a></p>
+<p><a href="https://book.douban.com/subject/3192669/">狙击涨停板 (豆瓣)</a></p>
+<h3 id="tip">Tip</h3>
+<p>学习人脉扩展,具体参考PDF</p>
+<p><a href="/img/%E4%BA%BA%E8%84%89%E6%89%A9%E5%B1%95.pdf">人脉扩展</a></p>
+<h3 id="share">Share</h3>
+<ol>
+<li>
+<p><a href="https://www.daolf.com/posts/best-programming-books/">📕 The 25 most recommended programming books of all-time. · daolf</a></p>
+</li>
+<li>
+<p><a href="https://zouying.life/2020/02/11/home-networking/">https://zouying.life/2020/02/11/home-networking/</a></p>
+</li>
+<li>
+<p><a href="https://blog.rxliuli.com/p/54be2845/">优化 Google Chrome 的使用体验 | 琉璃の夢</a></p>
+</li>
+</ol>
+
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/arts%E6%89%93%E5%8D%A1/">ARTS打卡</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/artsweekly/week05/">
+        <h2 class="post-title">ARTS第五周</h2>
+        
+        <h3 class="post-subtitle">
+            ARTS第五周(2020年1月13日~2020年1月19日)
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 19, 2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;23&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h3 id="读书">读书</h3>
+<h4 id="本周在读的书">本周在读的书.</h4>
+<p><a href="https://book.douban.com/subject/26759508/">硅谷钢铁侠 (豆瓣)</a>
+时间管理在学习
+<a href="https://book.douban.com/subject/34925941/">变量2 (豆瓣)</a></p>
+<h3 id="tip">Tip</h3>
+<p>prometheus持续学习
+思维的认知提升和改变
+<a href="https://opsnotes.github.io/tags/prometheus/">Overview of all pages with the tag #prometheus - OpsNotes随思录</a></p>
+<h3 id="share">Share</h3>
+<pre><code>1. https://medium.com/swlh/kubernetes-configmap-confuguration-and-reload-strategy-9f8a286f3a44</code></pre>
+
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/arts%E6%89%93%E5%8D%A1/">ARTS打卡</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/posts/artsweekly/week05/">
+        <h2 class="post-title">ARTS第五周</h2>
+        
+        <h3 class="post-subtitle">
+            ARTS第五周(2020年1月13日~2020年1月19日)
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 19, 2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;29&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h3 id="读书">读书</h3>
+<h4 id="本周在读的书">本周在读的书.</h4>
+<p><a href="https://book.douban.com/subject/26759508/">硅谷钢铁侠 (豆瓣)</a></p>
+<p>时间管理在学习</p>
+<p><a href="https://book.douban.com/subject/34925941/">变量2 (豆瓣)</a></p>
+<h3 id="tip">Tip</h3>
+<pre><code>1. prometheus持续学习
+</code></pre>
+<p><a href="https://opsnotes.github.io/tags/prometheus/">Overview of all pages with the tag #prometheus - OpsNotes随思录</a></p>
+<pre><code>2. 思维的认知提升和改变
+</code></pre>
+<h3 id="share">Share</h3>
+<p><a href="https://medium.com/swlh/kubernetes-configmap-confuguration-and-reload-strategy-9f8a286f3a44">Kubernetes ConfigMap Configuration and Reload Strategy</a></p>
+
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/arts%E6%89%93%E5%8D%A1/">ARTS打卡</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/artsweekly/week04/">
+        <h2 class="post-title">ARTS第四周</h2>
+        
+        <h3 class="post-subtitle">
+            ARTS第四周(2020年1月6日~2020年1月12日)
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 12, 2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;24&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h3 id="读书">读书</h3>
+<h4 id="本周在读的书">本周在读的书.</h4>
+<p><a href="https://book.douban.com/subject/26759508/">硅谷钢铁侠 (豆瓣)</a>
+时间管理在学习</p>
+<h3 id="读书笔记">读书笔记</h3>
+<p>可以查看《津巴多时间观念》笔记</p>
+<p><a href="/img/%E6%B4%A5%E5%B7%B4%E5%A4%9A%E6%97%B6%E9%97%B4%E8%A7%82%E5%BF%B5.pdf">津巴多时间观念</a></p>
+<h3 id="tip">Tip</h3>
+<p>prometheus技巧在学习</p>
+<p><a href="http://opsnotes.net/categories/prometheus/">Category: prometheus</a></p>
+<h3 id="share">Share</h3>
+<p><a href="https://medium.com/@AlertOps/a-devops-periodic-table-of-critical-alert-monitoring-system-integrations-204b5ca1f5c2">A DevOps Periodic Table of Critical Alert Monitoring System Integrations</a></p>
+<p><a href="https://itnext.io/kubernetes-monitoring-with-prometheus-in-15-minutes-8e54d1de2e13">https://itnext.io/kubernetes-monitoring-with-prometheus-in-15-minutes-8e54d1de2e13</a></p>
+
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/arts%E6%89%93%E5%8D%A1/">ARTS打卡</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/artsweekly/week03/">
+        <h2 class="post-title">ARTS第三周</h2>
+        
+        <h3 class="post-subtitle">
+            ARTS第三周(2019年12月30日~2020年1月5日)
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 6, 2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;50&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h3 id="读书">读书</h3>
+<h4 id="本周在读书">本周在读书.</h4>
+<p><a href="https://book.douban.com/subject/26895993/">刻意练习 (豆瓣)</a>
+<a href="https://book.douban.com/subject/26759508/">硅谷钢铁侠 (豆瓣)</a>
+<a href="https://book.douban.com/subject/26936065/">请停止无效努力 (豆瓣)</a> 已读完</p>
+<h4 id="读书笔记">读书笔记</h4>
+<p>可以查看《如何使用正确的方法快入进阶》笔记</p>
+<p><a href="/img/%E5%81%9C%E6%AD%A2%E6%97%A0%E6%95%88%E5%8A%AA%E5%8A%9B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.pdf">停止无效努力读书笔记</a></p>
+<h3 id="tip">Tip</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">学会在hexo中插入PDF文档
+1. 安装hexo-pdf插件
+ npm install --save hexo-pdf
+
+2. 在source目录下面和_posts同级的目录创建pdf目录把pdf文件放在里面
+/Users/Learning/Learning materials/opsnotes/source
+mkdir pdf
+
+3. 在文章中引用
+&lt;br&gt;
+{% pdf /pdf/停止无效努力读书笔记.pdf %}
+&lt;br&gt;
+</code></pre></div><h3 id="share">Share</h3>
+<pre><code>1. 看了2篇英文文档
+</code></pre>
+<p><a href="https://medium.com/notbinary/the-twelve-factor-container-8d1edc2a49d4">The Twelve-Factor Container - Notbinary - Medium</a></p>
+<p><a href="https://medium.com/swlh/kubernetes-configmap-confuguration-and-reload-strategy-9f8a286f3a44">Kubernetes ConfigMap Configuration and Reload Strategy</a></p>
+
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/arts%E6%89%93%E5%8D%A1/">ARTS打卡</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/2019%E5%B9%B4%E6%80%BB%E7%BB%932020%E5%B9%B4%E6%89%93%E7%AE%97/">
+        <h2 class="post-title">2019年总结,2020年打算</h2>
+        
+        <h3 class="post-subtitle">
+            2019年总结,2020年打算
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 1, 2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;44&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h1 id="2019总结">2019总结</h1>
+<h4 id="前言">前言</h4>
+<div class="highlight"><pre class="chroma"><code class="language-md" data-lang="md">	2019年的总结拖了好久,终于还是忍不住写下来了.2019年总体而言对自己的各方面是不满意的.
+</code></pre></div><h4 id="写作">写作</h4>
+<div class="highlight"><pre class="chroma"><code class="language-md" data-lang="md">	基本没有写blog和公众号,虽然做了很多笔记,负分
+</code></pre></div><h4 id="工作">工作</h4>
+<div class="highlight"><pre class="chroma"><code class="language-md" data-lang="md">	今年算马马虎虎,能做的基本做了,自己对自己的状态还是不满意
+	管理方面也没有得到多大提升
+	能力方面也是吃老本的样子,在突破阶段
+</code></pre></div><h4 id="读书">读书</h4>
+<div class="highlight"><pre class="chroma"><code class="language-md" data-lang="md">	每个月大概读书有2本的样子.
+	技术书籍明显减少,多了一些科技人文方面的书籍,年初的时候给自己的目标定义是30本书,大概算只完成了70%的样子.
+	开发能力也没有多大的提升,动手能力还是比较差
+</code></pre></div><h4 id="生活">生活</h4>
+<p><strong>满意的事情:</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-md" data-lang="md">	太太怀孕了
+	健身能持久的坚持下来,算对自己最大的鼓励,不过第四季度松懈下来了.
+	喝酒变少了.
+	看待事情、生活更加理性了.
+</code></pre></div><p><strong>不满意的事情:</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-md" data-lang="md">	驾照没有考
+	旅游没有去
+	处理生活的琐碎还是不太得心应手
+	打游戏比较厉害浪费很多时间
+</code></pre></div><h1 id="2020展望">2020展望</h1>
+<h4 id="2020年要准备做的事情">2020年要准备做的事情</h4>
+<p><strong>个人方面:</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-md" data-lang="md">	健身持续不断的坚持下去.每周最少2次
+	2020年争取每个月读3本书
+	坚持学好L1和L2的课程.做好笔记
+	ARTS打卡能坚持下去
+	每个月能写2篇技术文章
+	把编程继续坚持学下去
+	坚持不打游戏
+</code></pre></div><p><strong>生活方面</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-md" data-lang="md">	多挣点奶粉钱
+	考驾照
+	出去旅游一次
+	能多陪家人
+	出去走一走
+</code></pre></div><p><strong>工作方面</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-md" data-lang="md">	能增加自己管理方面的突破
+	多参加几场技术大会
+	和业界的技术朋友多交流
+</code></pre></div>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/%E5%B9%B4%E5%BA%95%E6%80%BB%E7%BB%93/">年底总结</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/artsweekly/week02/">
+        <h2 class="post-title">ARTS第二周</h2>
+        
+        <h3 class="post-subtitle">
+            ARTS第二周(2019年12月23日~29日)
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on December 27, 2019
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;35&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h3 id="读书">读书</h3>
+<h4 id="本周在读书">本周在读书.</h4>
+<p><a href="https://book.douban.com/subject/26895993//">刻意练习 (豆瓣)</a></p>
+<p><a href="https://book.douban.com/subject/26936065/">请停止无效努力 (豆瓣)</a></p>
+<h4 id="读书笔记">读书笔记</h4>
+<p>可以查看《如何使用正确的方法快入进阶》笔记</p>
+<p><a href="/img/%E5%81%9C%E6%AD%A2%E6%97%A0%E6%95%88%E5%8A%AA%E5%8A%9B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.pdf">停止无效努力读书笔记</a></p>
+<h3 id="tip">Tip</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">MAC下面微信无法截图问题
+解决catalina系统中微信或其他APP截图无法正常使用
+1. 选择Security&amp;privacy
+2. 在隐私你们旋转,screen recording,选择wechat.重新登录就好.
+</code></pre></div><h3 id="share">Share</h3>
+<pre><code>1. 看了2篇英文文档
+</code></pre>
+<p><a href="https://medium.com/free-code-camp/distributed-systems-when-you-should-build-them-and-how-to-scale-a-step-by-step-guide-37e76a177218">Distributed Systems: When you should build them, and how to scale. A step-by-step guide.</a></p>
+<p><a href="https://medium.com/notbinary/the-twelve-factor-container-8d1edc2a49d4">https://medium.com/notbinary/the-twelve-factor-container-8d1edc2a49d4</a></p>
+
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/arts%E6%89%93%E5%8D%A1/">ARTS打卡</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/artsweekly/week01/">
+        <h2 class="post-title">ARTS第一周</h2>
+        
+        <h3 class="post-subtitle">
+            ARTS第一周（2019年12月16日~22日)
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on December 19, 2019
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;23&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h3 id="algorithm">Algorithm</h3>
+<p>Algorithm
+链接： <a href="https://leetcode-cn.com/problems/add-two-numbers">https://leetcode-cn.com/problems/add-two-numbers</a></p>
+<h3 id="tip">Tip</h3>
+<p>[SuperUser] How to expand * on Bash command line</p>
+<p>我是在Linux命令行上误操作时，发现通配符被自动扩展出来，于是通过搜索，找到了该“隐藏”的功能键：</p>
+<p>输入命令ls *后，按键：<!-- raw HTML omitted --> + x + *，可以看到该目录下的文件列表，被扩展出来，可以继续进行编辑。</p>
+<p>而在过去，我通常都需要手工对ls命令的结果进行选择和拷贝。</p>
+<h3 id="share">Share</h3>
+<p>分享一篇CSDN上的技术文章：</p>
+
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/arts%E6%89%93%E5%8D%A1/">ARTS打卡</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/others/hexo-%E6%96%B0%E5%BB%BA%E8%8F%9C%E5%8D%95menu-%E5%AD%98%E6%94%BE%E5%BD%92%E6%A1%A3%E6%96%87%E7%AB%A0/">
+        <h2 class="post-title">Hexo新建菜单(menu)存放归档文章</h2>
+        
+        <h3 class="post-subtitle">
+            Hexo新建菜单(menu)存放归档文章
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on December 19, 2019
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;99&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        最近开始跟着耗子叔学“ARTS打卡”，想在首页上建一个名为“ARTS打卡”的的菜单，然后相关的“ARTS打卡”文章都放在该分类下。 生成post(文章)时默认生成categories配置项在项目目录下找到/scaffolds/post.md,添加文章的categories的配置,如下: ➜ opsnotes git:(master) ✗ cat scaffolds/post.md --- title: {{ title }} date: {{ date }} tags: --- ➜ opsnotes git:(master) ✗ 写文章时，配置 categories下面我开始写一篇关于 Python 的文章,文章里面配置categories. ➜ opsnotes git:(master) ✗ cat source/_posts/ARTS-Weekly/ARTS第一周\(2019年12月16日\~22日\).md --- title: ARTS第一周（2019年12月16日~22日） tags: ARTS打卡 categories: ARTS打卡 date: 2019-12-19 13:42:23 --- ➜ opsnotes git:(master) ✗ 使用“hexog g”更新之后,会生成文件.这时你会发现/public/categories/文件夹下，已经生成了“ARTS打卡”的文件夹. 首页显示ARTS打卡菜单. 这里就是要在博客首页上显示 python 菜单的时候了，首先打开你主题的配置文件/themes/cactus/_config.yml(我这里是用的cactus).找到menu,这里添加一行. nav: home: / articles: /archives/ ARTS: /categories/ARTS打卡/ ###新添加的 projects: https://github.com/opsnotes about: /about/ search: /search/ 菜单名称配置 上面的步骤做完以后，如果你着急刷新页面看了效果，就会看到新菜单的名称是menu.python，显然不是我们想要的，那就继续往下看首先查看项目目录下的/_config.yml的language配置，我的是这样的 ➜ opsnotes git:(master) ✗ cat themes/cactus/languages/zh-CN.
+        <a href="https://opsnotes.github.io/post/others/hexo-%E6%96%B0%E5%BB%BA%E8%8F%9C%E5%8D%95menu-%E5%AD%98%E6%94%BE%E5%BD%92%E6%A1%A3%E6%96%87%E7%AB%A0/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/hexo/">hexo</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/kubernetes/kubernetes-dashboard-install/">
+        <h2 class="post-title">kubernetes dashboard install</h2>
+        
+        <h3 class="post-subtitle">
+            kubernetes dashboard install
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on November 29, 2019
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;48&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h3 id="install-dashboard">install dashboard</h3>
+<pre><code>1. 参考资料[GitHub - kubernetes/dashboard: General-purpose web UI for Kubernetes clusters](https://github.com/kubernetes/dashboard)
+
+2. install dashboard
+</code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
+</code></pre></div><pre><code>3. 启动proxy
+</code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">kubectl proxy
+如果启动报错，查看pod是否运行
+</code></pre></div><pre><code>4. 访问url
+</code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/.
+</code></pre></div><pre><code>5. 生成token,参考资料https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
+</code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk ‘{print $1}’)
+</code></pre></div><pre><code>6. 在dashboar界面输入token即可
+</code></pre>
+<p><img src="/img/kubernetes-dashboard-01.png" alt="k8s"></p>
+<p><img src="/img/kubernetes-dashboard-02.png" alt="k8s"></p>
+
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/kubernetes/">kubernetes</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/kubernetes/helm-install-istio/">
+        <h2 class="post-title">helm install istio</h2>
+        
+        <h3 class="post-subtitle">
+            helm install istio
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on November 28, 2019
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;213&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        先决条件 1. 已知安装mac下面的docker-desktop 2. kubernetes环境已部署完成 3. Helm已经安装完成 4. 保证网络正常GFW 5. 参考资料（[Istio / Traffic Management](https://istio.io/docs/concepts/traffic-management/)）  使用helm install 1. Create a namespace for the istio-system components:  ➜ kubectl version Client Version: version.Info{Major:&#34;1&#34;, Minor:&#34;15&#34;, GitVersion:&#34;v1.15.0&#34;, GitCommit:&#34;e8462b5b5dc2584fdcd18e6bcfe9f1e4d970a529&#34;, GitTreeState:&#34;clean&#34;, BuildDate:&#34;2019-06-19T16:40:16Z&#34;, GoVersion:&#34;go1.12.5&#34;, Compiler:&#34;gc&#34;, Platform:&#34;darwin/amd64&#34;} Server Version: version.Info{Major:&#34;1&#34;, Minor:&#34;14&#34;, GitVersion:&#34;v1.14.8&#34;, GitCommit:&#34;211047e9a1922595eaa3a1127ed365e9299a6c23&#34;, GitTreeState:&#34;clean&#34;, BuildDate:&#34;2019-10-15T12:02:12Z&#34;, GoVersion:&#34;go1.12.10&#34;, Compiler:&#34;gc&#34;, Platform:&#34;linux/amd64&#34;} ➜ ➜ kubectl create namespace istio-system namespace/istio-system created ➜ 2. Install all the Istio [Custom Resource Definitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions) (CRDs) using kubectl apply:  ➜ code git clone https://github.
+        <a href="https://opsnotes.github.io/post/kubernetes/helm-install-istio/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/kubernetes/">kubernetes</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+        </div>
+
+        
+          <ul class="pager main-pager">
+            
+            
+              <li class="next">
+                <a href="https://opsnotes.github.io/page/2/">Older Posts &rarr;</a>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+
+      
+    <div class="page-meta">
+  
+  
+  
+</div>
+
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:zky.linux@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/username" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/opsnotes" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/opsnotes" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://username.slack.com/" title="Slack">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-slack fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://reddit.com/u/keengz" title="Reddit">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-reddit-alien fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/XXXXXXX/username" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/kenng.z" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://telegram.me/Ke_zz" title="Telegram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://weibo.com/angerdevil" title="Weibo">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="/index.xml" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="opsnotes.net">Kenng zhang</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://opsnotes.github.io">OpsNotes随思录</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.62.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://opsnotes.github.io/js/main.js"></script>
+<script src="https://opsnotes.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://opsnotes.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/</link>
+    <description>Recent content in Tags on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Wed, 21 Oct 2020 15:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://opsnotes.github.io/tags/kubernetes/</link>
+      <pubDate>Wed, 21 Oct 2020 15:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>prometheus</title>
+      <link>https://opsnotes.github.io/tags/prometheus/</link>
+      <pubDate>Wed, 21 Oct 2020 15:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/prometheus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ARTS打卡</title>
+      <link>https://opsnotes.github.io/tags/arts%E6%89%93%E5%8D%A1/</link>
+      <pubDate>Sat, 07 Mar 2020 11:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/arts%E6%89%93%E5%8D%A1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>年底总结</title>
+      <link>https://opsnotes.github.io/tags/%E5%B9%B4%E5%BA%95%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Wed, 01 Jan 2020 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/%E5%B9%B4%E5%BA%95%E6%80%BB%E7%BB%93/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hexo</title>
+      <link>https://opsnotes.github.io/tags/hexo/</link>
+      <pubDate>Thu, 19 Dec 2019 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/hexo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>G云测试</title>
+      <link>https://opsnotes.github.io/tags/g%E4%BA%91%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Fri, 01 Dec 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/g%E4%BA%91%E6%B5%8B%E8%AF%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>grafana</title>
+      <link>https://opsnotes.github.io/tags/grafana/</link>
+      <pubDate>Sun, 01 Oct 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/grafana/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>读书</title>
+      <link>https://opsnotes.github.io/tags/%E8%AF%BB%E4%B9%A6/</link>
+      <pubDate>Tue, 08 Aug 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/%E8%AF%BB%E4%B9%A6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zabbix</title>
+      <link>https://opsnotes.github.io/tags/zabbix/</link>
+      <pubDate>Wed, 03 May 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/zabbix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>saltstack</title>
+      <link>https://opsnotes.github.io/tags/saltstack/</link>
+      <pubDate>Thu, 27 Apr 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/saltstack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>“zabbix discovery”</title>
+      <link>https://opsnotes.github.io/tags/zabbix-discovery/</link>
+      <pubDate>Thu, 27 Apr 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/zabbix-discovery/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openvpn</title>
+      <link>https://opsnotes.github.io/tags/openvpn/</link>
+      <pubDate>Wed, 15 Mar 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/openvpn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mac</title>
+      <link>https://opsnotes.github.io/tags/mac/</link>
+      <pubDate>Thu, 08 Dec 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/mac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>职场</title>
+      <link>https://opsnotes.github.io/tags/%E8%81%8C%E5%9C%BA/</link>
+      <pubDate>Fri, 14 Oct 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/%E8%81%8C%E5%9C%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pyenv</title>
+      <link>https://opsnotes.github.io/tags/pyenv/</link>
+      <pubDate>Sat, 10 Sep 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/pyenv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>https://opsnotes.github.io/tags/python/</link>
+      <pubDate>Sat, 10 Sep 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ansible</title>
+      <link>https://opsnotes.github.io/tags/ansible/</link>
+      <pubDate>Thu, 19 May 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/ansible/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nginx</title>
+      <link>https://opsnotes.github.io/tags/nginx/</link>
+      <pubDate>Thu, 19 May 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://opsnotes.github.io/tags/docker/</link>
+      <pubDate>Fri, 06 May 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java</title>
+      <link>https://opsnotes.github.io/tags/java/</link>
+      <pubDate>Fri, 06 May 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql</title>
+      <link>https://opsnotes.github.io/tags/mysql/</link>
+      <pubDate>Thu, 24 Mar 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker安装</title>
+      <link>https://opsnotes.github.io/tags/docker%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Tue, 15 Mar 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/docker%E5%AE%89%E8%A3%85/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kafka zookeeper</title>
+      <link>https://opsnotes.github.io/tags/kafka-zookeeper/</link>
+      <pubDate>Fri, 15 Jan 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/kafka-zookeeper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tcp</title>
+      <link>https://opsnotes.github.io/tags/tcp/</link>
+      <pubDate>Tue, 01 Dec 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/tcp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zabbix weixin</title>
+      <link>https://opsnotes.github.io/tags/zabbix-weixin/</link>
+      <pubDate>Mon, 31 Aug 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/zabbix-weixin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>“mail”</title>
+      <link>https://opsnotes.github.io/tags/mail/</link>
+      <pubDate>Tue, 14 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/mail/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://opsnotes.github.io/tags/git/</link>
+      <pubDate>Thu, 09 Jul 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ELK</title>
+      <link>https://opsnotes.github.io/tags/elk/</link>
+      <pubDate>Fri, 22 May 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/elk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mongodb</title>
+      <link>https://opsnotes.github.io/tags/mongodb/</link>
+      <pubDate>Wed, 22 Apr 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/mongodb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rsync inotify</title>
+      <link>https://opsnotes.github.io/tags/rsync-inotify/</link>
+      <pubDate>Wed, 22 Apr 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/rsync-inotify/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RDS</title>
+      <link>https://opsnotes.github.io/tags/rds/</link>
+      <pubDate>Wed, 08 Apr 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/rds/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rinetd</title>
+      <link>https://opsnotes.github.io/tags/rinetd/</link>
+      <pubDate>Wed, 08 Apr 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/rinetd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>paramiko</title>
+      <link>https://opsnotes.github.io/tags/paramiko/</link>
+      <pubDate>Mon, 01 Dec 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/paramiko/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zabbix server</title>
+      <link>https://opsnotes.github.io/tags/zabbix-server/</link>
+      <pubDate>Fri, 24 Oct 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/zabbix-server/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zabbix优化</title>
+      <link>https://opsnotes.github.io/tags/zabbix%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Fri, 20 Jun 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/zabbix%E4%BC%98%E5%8C%96/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>“innobackupex”</title>
+      <link>https://opsnotes.github.io/tags/innobackupex/</link>
+      <pubDate>Wed, 12 Mar 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/innobackupex/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zabbix clinet</title>
+      <link>https://opsnotes.github.io/tags/zabbix-clinet/</link>
+      <pubDate>Thu, 26 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/zabbix-clinet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>自动化</title>
+      <link>https://opsnotes.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/</link>
+      <pubDate>Sun, 22 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

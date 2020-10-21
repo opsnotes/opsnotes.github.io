@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zabbix clinet on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/zabbix-clinet/</link>
+    <description>Recent content in zabbix clinet on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Thu, 26 Dec 2013 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/zabbix-clinet/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>企业级监控软件zabbix搭建部署之zabbix Services添加主机 </title>
+      <link>https://opsnotes.github.io/post/install_zabbix_04/</link>
+      <pubDate>Thu, 26 Dec 2013 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_04/</guid>
+      <description>&lt;h3 id=&#34;企业级监控软件zabbix搭建部署之zabbix-services添加主机&#34;&gt;企业级监控软件zabbix搭建部署之zabbix Services添加主机&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;环境： CentOS6.X X86_64   
+      Version：zabbix 2.0.8    
+1.	首先登录到zabbix文件服务器替换zabbix替换文件字体   
+    [root@Zabbix-Server fonts]# mv DejaVuSans.ttf   DejaVuSans.ttf.w   
+    [root@Zabbix-Server fonts]# pwd   
+    /var/www/zabbix/fonts  
+    [root@Zabbix-Server fonts]# ls   
+    DejaVuSans.ttf.w  simhei.ttf  
+    [root@Zabbix-Server fonts]# mv simhei.ttf DejaVuSans.ttf  
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

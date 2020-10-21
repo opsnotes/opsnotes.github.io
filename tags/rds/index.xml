@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RDS on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/rds/</link>
+    <description>Recent content in RDS on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Wed, 08 Apr 2015 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/rds/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用rinetd让ecs访问阿里内网RDS服务器</title>
+      <link>https://opsnotes.github.io/post/install_rinetd/</link>
+      <pubDate>Wed, 08 Apr 2015 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_rinetd/</guid>
+      <description>&lt;h4 id=&#34;背景&#34;&gt;背景：&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;		由于阿里云RDS内网和外网只能选择其中一,并且内网流量是全部免费的,相比较对外网来说是快了好多倍,大多数的连接都是选择使用内网来连接RDS数据库的。
+	但是如果我们想通过外网访问和管理内网的RDS的怎么来实现尼?
+	我们可以使用rinetd来实现ecs访问rds服务器。 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;下载&#34;&gt;下载&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;	wget http://www.linuxboy.net/linux/rc/rinetd.tar.gz&amp;amp;&amp;amp;tar -xvf rinetd.tar.gz&amp;amp;&amp;amp;cd rinetd  
+	sed -i &amp;#39;s/65536/65535/g&amp;#39; rinetd.c  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;安装&#34;&gt;安装&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

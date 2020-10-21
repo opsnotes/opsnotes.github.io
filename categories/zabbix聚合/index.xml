@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zabbix聚合 on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/categories/zabbix%E8%81%9A%E5%90%88/</link>
+    <description>Recent content in zabbix聚合 on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Fri, 24 Oct 2014 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/categories/zabbix%E8%81%9A%E5%90%88/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>实战：Zabbix 聚合功能配置与应用</title>
+      <link>https://opsnotes.github.io/post/zabbix_juhe/</link>
+      <pubDate>Fri, 24 Oct 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/zabbix_juhe/</guid>
+      <description>&lt;h3 id=&#34;环境&#34;&gt;环境：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Server： CentOS6.3_X86   zabbix 2.0.8
+Clinet：  windows/Linux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;需求&#34;&gt;需求：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;由于业务需求的扩展,需要监控所有服务器的在线人数,然后把所有的在线人数都统计到一起.然后我们根据这一需求进行实施,前期准备工作我们都已经做完,zabbix的本地服务器的在线人数我们都已统计出来,我们现在要做的就是把本地统计好的数据汇聚到一起,然后图标展示出来。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;思路&#34;&gt;思路：&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1．	首先创建一个组,把所有的host都添加到这个组里面
+2．	然后创建Template,来监控agent服务器的在线人数
+3．	然后我们在使用zabbix聚合把所有在agent的人数统计到一起
+4．	然后绘图查看是否成功
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kubernetes on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/kubernetes/</link>
+    <description>Recent content in kubernetes on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Wed, 21 Oct 2020 15:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>prometheus学习系列(七)</title>
+      <link>https://opsnotes.github.io/post/prometheus/%E8%85%BE%E8%AE%AF%E4%BA%91prometheus%E6%8C%81%E4%B9%85%E5%8C%96%E4%BF%AE%E6%94%B9%E5%8F%82%E6%95%B0/</link>
+      <pubDate>Wed, 21 Oct 2020 15:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/prometheus/%E8%85%BE%E8%AE%AF%E4%BA%91prometheus%E6%8C%81%E4%B9%85%E5%8C%96%E4%BF%AE%E6%94%B9%E5%8F%82%E6%95%B0/</guid>
+      <description>修改config文件,在里面添加一行. spec: retention: 365d 完整的实例,更新完成之后,记得apply一下. [root@VM-64-25-centos manifests]# cat prometheus-prometheus.yaml apiVersion: monitoring.coreos.com/v1 kind: Prometheus metadata: labels: prometheus: k8s name: k8s namespace: monitoring spec: alerting: alertmanagers: - name: alertmanager-main namespace: monitoring port: web image: quay.io/prometheus/prometheus:v2.17.2 nodeSelector: kubernetes.io/os: linux podMonitorNamespaceSelector: {} podMonitorSelector: {} replicas: 2 resources: requests: memory: 500Mi ruleSelector: matchLabels: prometheus: k8s role: alert-rules securityContext: fsGroup: 2000 runAsNonRoot: true runAsUser: 1000 additionalScrapeConfigs: name: additional-configs key: prometheus-additional.yaml retention: 7d #添加一行,持久化7天 storage: volumeClaimTemplate: spec: storageClassName: prometheus-cfs resources: requests: storage: 100Gi serviceAccountName: prometheus-k8s serviceMonitorNamespaceSelector: {} serviceMonitorSelector: {} version: v2.</description>
+    </item>
+    
+    <item>
+      <title>kubernetes dashboard install</title>
+      <link>https://opsnotes.github.io/post/kubernetes/kubernetes-dashboard-install/</link>
+      <pubDate>Fri, 29 Nov 2019 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/kubernetes/kubernetes-dashboard-install/</guid>
+      <description>install dashboard 1. 参考资料[GitHub - kubernetes/dashboard: General-purpose web UI for Kubernetes clusters](https://github.com/kubernetes/dashboard) 2. install dashboard  kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml 3. 启动proxy  kubectl proxy 如果启动报错，查看pod是否运行 4. 访问url  http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/. 5. 生成token,参考资料https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md  kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk ‘{print $1}’) 6. 在dashboar界面输入token即可  </description>
+    </item>
+    
+    <item>
+      <title>helm install istio</title>
+      <link>https://opsnotes.github.io/post/kubernetes/helm-install-istio/</link>
+      <pubDate>Thu, 28 Nov 2019 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/kubernetes/helm-install-istio/</guid>
+      <description>先决条件 1. 已知安装mac下面的docker-desktop 2. kubernetes环境已部署完成 3. Helm已经安装完成 4. 保证网络正常GFW 5. 参考资料（[Istio / Traffic Management](https://istio.io/docs/concepts/traffic-management/)）  使用helm install 1. Create a namespace for the istio-system components:  ➜ kubectl version Client Version: version.Info{Major:&amp;#34;1&amp;#34;, Minor:&amp;#34;15&amp;#34;, GitVersion:&amp;#34;v1.15.0&amp;#34;, GitCommit:&amp;#34;e8462b5b5dc2584fdcd18e6bcfe9f1e4d970a529&amp;#34;, GitTreeState:&amp;#34;clean&amp;#34;, BuildDate:&amp;#34;2019-06-19T16:40:16Z&amp;#34;, GoVersion:&amp;#34;go1.12.5&amp;#34;, Compiler:&amp;#34;gc&amp;#34;, Platform:&amp;#34;darwin/amd64&amp;#34;} Server Version: version.Info{Major:&amp;#34;1&amp;#34;, Minor:&amp;#34;14&amp;#34;, GitVersion:&amp;#34;v1.14.8&amp;#34;, GitCommit:&amp;#34;211047e9a1922595eaa3a1127ed365e9299a6c23&amp;#34;, GitTreeState:&amp;#34;clean&amp;#34;, BuildDate:&amp;#34;2019-10-15T12:02:12Z&amp;#34;, GoVersion:&amp;#34;go1.12.10&amp;#34;, Compiler:&amp;#34;gc&amp;#34;, Platform:&amp;#34;linux/amd64&amp;#34;} ➜ ➜ kubectl create namespace istio-system namespace/istio-system created ➜ 2. Install all the Istio [Custom Resource Definitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions) (CRDs) using kubectl apply:  ➜ code git clone https://github.</description>
+    </item>
+    
+    <item>
+      <title>kubernetes故障之Orphaned pod</title>
+      <link>https://opsnotes.github.io/post/kubernetes/kubernetes_orphaned/</link>
+      <pubDate>Mon, 04 Nov 2019 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/kubernetes/kubernetes_orphaned/</guid>
+      <description>查看日志 [root@iZbp1c4tqwd9kaykklejmxZ ~]# journalctl -u kubelet -f -- Logs begin at Fri 2019-10-04 11:50:57 CST. -- Nov 01 13:28:21 iZbp1c4tqwd9kaykklejmxZ kubelet[9731]: E1101 13:28:21.575137 9731 kubelet_volumes.go:154] Orphaned pod &amp;#34;bb5c8fa3-b4b1-11e9-96a8-0a1877e1c33d&amp;#34; found, but volume paths are still present on disk : There were a total of 1 errors similar to this. Turn up verbosity to see them. Nov 01 13:28:22 iZbp1c4tqwd9kaykklejmxZ kubelet[9731]: W1101 13:28:22.826291 9731 reflector.go:270] object-&amp;#34;monitoring&amp;#34;/&amp;#34;grafana-dashboard-statefulset&amp;#34;: watch of *v1.ConfigMap ended with: too old resource version: 2345008003 (2345014010) Nov 01 13:28:23 iZbp1c4tqwd9kaykklejmxZ kubelet[9731]: E1101 13:28:23.</description>
+    </item>
+    
+    <item>
+      <title>kubernetes故障之pod迁移</title>
+      <link>https://opsnotes.github.io/post/kubernetes/kubernetes_safely-drain-node/</link>
+      <pubDate>Fri, 05 Jul 2019 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/kubernetes/kubernetes_safely-drain-node/</guid>
+      <description>相关操作命令 # 查看节点 kubectl get nodes # 设置节点为不可调度 kubectl cordon &amp;lt;NodeName&amp;gt; # 设置节点为可调度 kubectl uncordon &amp;lt;NodeName&amp;gt; # pod漂移到可调度的node节点上 kubectl drain &amp;lt;不可调度的node,上面有pod&amp;gt; --force --ignore-daemonsets 实际操作,把”cn-hangzhou.i-bp1bt6np98dbi2xmno0o,cn-hangzhou.i-bp1bt6np98dbi2xmno0p”设置为不可调度 # 查看node节点 kube-shell&amp;gt; kubectl get nodes NAME STATUS ROLES AGE VERSION cn-hangzhou.i-bp1bt6np98dbi2xmno0o Ready &amp;lt;none&amp;gt; 24d v1.12.6-aliyun.1 cn-hangzhou.i-bp1bt6np98dbi2xmno0p Ready &amp;lt;none&amp;gt; 24d v1.12.6-aliyun.1 cn-hangzhou.i-bp1cu5nvk55l2usiufx5 Ready &amp;lt;none&amp;gt; 35m v1.12.6-aliyun.1 kube-shell&amp;gt; # 设置node节点为不可调度 kube-shell&amp;gt; kubectl cordon cn-hangzhou.i-bp1bt6np98dbi2xmno0o node/cn-hangzhou.i-bp1bt6np98dbi2xmno0o cordoned kube-shell&amp;gt; kubectl cordon cn-hangzhou.i-bp1bt6np98dbi2xmno0p node/cn-hangzhou.i-bp1bt6np98dbi2xmno0p cordoned kube-shell&amp;gt; kubectl drain命令漂移不可调度node上的pod节点 # 查看修改调度后的node节点信息,其中2个node不可调度 kube-shell&amp;gt; kubectl get nodes NAME STATUS ROLES AGE VERSION cn-hangzhou.</description>
+    </item>
+    
+    <item>
+      <title>Docker for Mac install Kubernetes</title>
+      <link>https://opsnotes.github.io/post/docker_for_mac_install_kubernetes/</link>
+      <pubDate>Sat, 01 Dec 2018 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/docker_for_mac_install_kubernetes/</guid>
+      <description>install Docker for Mac 使用brew 方式安装,注意是在docker版本18.06之后才开始支持  brew cask install docker  从官方下载docker.dmg文件  https://store.docker.com/editions/community/docker-ce-desktop-mac  安装完成之后如图展示,使用docker账号密码登陆就可以启动 安装完成之后界面 设置 Docker 中国官方镜像加速 registry mirror https://registry.docker-cn.com 因为墙的原因我们预先从阿里云服务器上下载Kubernetes所需要的镜像.不然我们在启用Kubernetes应用之后,会一直显示,Kubernetes 正在启动. ➜ images cat images k8s.gcr.io/kube-proxy-amd64:v1.10.3=registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy-amd64:v1.10.3 k8s.gcr.io/kube-controller-manager-amd64:v1.10.3=registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager-amd64:v1.10.3 k8s.gcr.io/kube-scheduler-amd64:v1.10.3=registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler-amd64:v1.10.3 k8s.gcr.io/kube-apiserver-amd64:v1.10.3=registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver-amd64:v1.10.3 k8s.gcr.io/k8s-dns-dnsmasq-nanny-amd64:1.14.8=registry.cn-hangzhou.aliyuncs.com/google_containers/k8s-dns-dnsmasq-nanny-amd64:1.14.8 k8s.gcr.io/k8s-dns-sidecar-amd64:1.14.8=registry.cn-hangzhou.aliyuncs.com/google_containers/k8s-dns-sidecar-amd64:1.14.8 k8s.gcr.io/k8s-dns-kube-dns-amd64:1.14.8=registry.cn-hangzhou.aliyuncs.com/google_containers/k8s-dns-kube-dns-amd64:1.14.8 k8s.gcr.io/pause-amd64:3.1=registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 k8s.gcr.io/kubernetes-dashboard-amd64:v1.10.0=registry.cn-hangzhou.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.10.0 k8s.gcr.io/etcd-amd64:3.1.12=registry.cn-hangzhou.aliyuncs.com/google_containers/etcd-amd64:3.1.12 #gcr.io/kubernetes-helm/tiller:v2.10.0=registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.10.0 ➜ images cat load_images.sh #/bin/bash file=&amp;#34;images&amp;#34; if [ -f &amp;#34;$file&amp;#34; ] then echo &amp;#34;$file found.&amp;#34; while IFS=&amp;#39;=&amp;#39; read -r key value do #echo &amp;#34;${key}=${value}&amp;#34; docker pull ${value} docker tag ${value} ${key} docker rmi ${value} done &amp;lt; &amp;#34;$file&amp;#34; else echo &amp;#34;$file not found.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetest REST API</title>
+      <link>https://opsnotes.github.io/post/kubernetes/kubernetes_rest_api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/kubernetes/kubernetes_rest_api/</guid>
+      <description>启动proxy ➜ _posts kubectl proxy --port=8080 Starting to serve on 127.0.0.1:8080 查看APIserver ➜ http 127.0.0.1:8080 HTTP/1.1 200 OK Content-Length: 2644 Content-Type: application/json Date: Tue, 15 Jan 2019 05:19:42 GMT { &amp;#34;paths&amp;#34;: [ &amp;#34;/api&amp;#34;, &amp;#34;/api/v1&amp;#34;, &amp;#34;/apis&amp;#34;, &amp;#34;/apis/&amp;#34;, &amp;#34;/apis/admissionregistration.k8s.io&amp;#34;, &amp;#34;/apis/admissionregistration.k8s.io/v1beta1&amp;#34;, &amp;#34;/apis/apiextensions.k8s.io&amp;#34;, &amp;#34;/apis/apiextensions.k8s.io/v1beta1&amp;#34;, &amp;#34;/apis/apiregistration.k8s.io&amp;#34;, &amp;#34;/apis/apiregistration.k8s.io/v1&amp;#34;, &amp;#34;/apis/apiregistration.k8s.io/v1beta1&amp;#34;, &amp;#34;/apis/apps&amp;#34;, &amp;#34;/apis/apps/v1&amp;#34;, &amp;#34;/apis/apps/v1beta1&amp;#34;, &amp;#34;/apis/apps/v1beta2&amp;#34;, &amp;#34;/apis/authentication.k8s.io&amp;#34;, &amp;#34;/apis/authentication.k8s.io/v1&amp;#34;, &amp;#34;/apis/authentication.k8s.io/v1beta1&amp;#34;, &amp;#34;/apis/authorization.k8s.io&amp;#34;, &amp;#34;/apis/authorization.k8s.io/v1&amp;#34;, &amp;#34;/apis/authorization.k8s.io/v1beta1&amp;#34;, &amp;#34;/apis/autoscaling&amp;#34;, &amp;#34;/apis/autoscaling/v1&amp;#34;, &amp;#34;/apis/autoscaling/v2beta1&amp;#34;, &amp;#34;/apis/batch&amp;#34;, &amp;#34;/apis/batch/v1&amp;#34;, &amp;#34;/apis/batch/v1beta1&amp;#34;, &amp;#34;/apis/ceph.rook.io&amp;#34;, &amp;#34;/apis/ceph.rook.io/v1&amp;#34;, &amp;#34;/apis/certificates.k8s.io&amp;#34;, &amp;#34;/apis/certificates.k8s.io/v1beta1&amp;#34;, &amp;#34;/apis/compose.docker.com&amp;#34;, &amp;#34;/apis/compose.docker.com/v1beta1&amp;#34;, &amp;#34;/apis/compose.docker.com/v1beta2&amp;#34;, &amp;#34;/apis/events.k8s.io&amp;#34;, &amp;#34;/apis/events.k8s.io/v1beta1&amp;#34;, &amp;#34;/apis/extensions&amp;#34;, &amp;#34;/apis/extensions/v1beta1&amp;#34;, &amp;#34;/apis/networking.</description>
+    </item>
+    
+    <item>
+      <title>prometheus学习系列(三)</title>
+      <link>https://opsnotes.github.io/post/prometheus/03-%E5%9C%A8minikube%E4%B8%AD%E5%AE%89%E8%A3%85prometheus-operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/prometheus/03-%E5%9C%A8minikube%E4%B8%AD%E5%AE%89%E8%A3%85prometheus-operator/</guid>
+      <description>参考资料 GitHub - coreos/prometheus-operator: Prometheus Operator creates/configures/manages Prometheus clusters atop Kubernetes
+git clone kube-prometheus;需要注意的是,代码已经从原来的地址迁移到这个地址 git clone https://github.com/coreos/prometheus-operator.git minikube安装部署,请参考另外一篇文章 安装 # create namespace and CRDs kubectl apply -f manifests/setup # wait for CRD creation to complete until kubectl get servicemonitors --all-namespaces ; do date; sleep 1; echo &amp;#34;&amp;#34;; done # create monitoring components kubectl apply -f manifests/ 查看 ➜ kube-prometheus git:(master) ✗ k get pods -n monitoring NAME READY STATUS RESTARTS AGE alertmanager-main-0 2/2 Running 4 104m alertmanager-main-1 2/2 Running 4 104m alertmanager-main-2 2/2 Running 4 104m grafana-58dc7468d7-tzsnh 1/1 Running 2 105m kube-state-metrics-769f4fd4d5-85f7p 3/3 Running 7 105m node-exporter-22l2n 2/2 Running 4 105m prometheus-adapter-5cd5798d96-ttfm2 1/1 Running 3 105m prometheus-k8s-0 3/3 Running 7 61m prometheus-k8s-1 3/3 Running 0 51m prometheus-operator-99dccdc56-klb8r 1/1 Running 4 105m ➜ kube-prometheus git:(master) ✗ 查看创建的服务,需要注意的是,我们需要修改prometheus-k8s和grafana这两个service的类型为NodePort;如下操作: ➜ kube-prometheus git:(master) ✗ k edit svc grafana -n monitoring ➜ kube-prometheus git:(master) ✗ k edit svc prometheus-k8s -n monitoring 查看修改完成的service; ➜ kube-prometheus git:(master) ✗ k get svc -n monitoring NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE alertmanager-main ClusterIP 10.</description>
+    </item>
+    
+    <item>
+      <title>prometheus学习系列(二)</title>
+      <link>https://opsnotes.github.io/post/prometheus/02-minikube-for-mac-install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/prometheus/02-minikube-for-mac-install/</guid>
+      <description>Prerequisites: * macOS 10.12 (Sierra) * A hypervisor such as Hyperkit, Parallels, VirtualBox, or VMware Fusion  Installation: brew install minikube
+Upgrading minikube: brew update brew upgrade minikube
+Hypervisor Setup for Hypervisor **Usage** Start a cluster using the hyperkit driver: minikube start —vm-driver**=**hyperkit To make hyperkit the default driver: minikube config set vm-driver hyperkit Increasing memory allocation: minikube config set memory 4096
+常用命令: Start a cluster by running: minikube start Access the Kubernetes Dashboard running within the minikube cluster: minikube dashboard minikube service list Stop your local cluster: minikube stop Delete your local cluster: minikube delete Delete all local clusters and profiles minikube delete —all</description>
+    </item>
+    
+    <item>
+      <title>prometheus学习系列(五)</title>
+      <link>https://opsnotes.github.io/post/prometheus/05-prometheus-operator%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%8E%A7nginx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/prometheus/05-prometheus-operator%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%8E%A7nginx/</guid>
+      <description>目标 在生产环境中,我们需要除了监控kubernetes中的一些资源对象、节点以及组件,有时候还需要根据实际的业务添加自定义监控.添加自定义步骤如下: 1. 先创建一个ServiceMonitor对象,用于为Prometheus添加监控项 2. 将ServiceMonitor对象关联metrics数据接口的一个Service对象; 3. Service对象可以正确获取metrics数据
+查看nginx完整的带metrics的文件 ➜ manifests git:(master) ✗ cat nginx.yaml apiVersion: apps/v1 kind: Deployment metadata: name: nginx labels: app: nginx spec: replicas: 1 selector: matchLabels: app: nginx template: metadata: labels: app: nginx spec: containers: - name: nginx image: billy98/nginx-prometheus-metrics:latest ports: - name: http-metrics containerPort: 9527 - name: web containerPort: 80 - name: test containerPort: 1314 imagePullPolicy: IfNotPresent --- apiVersion: v1 kind: Service metadata: labels: app: nginx name: nginx namespace: default spec: ports: - name: http-metrics port: 9527 protocol: TCP targetPort: 9527 - name: web port: 80 protocol: TCP targetPort: 80 - name: test port: 1314 protocol: TCP targetPort: 1314 selector: app: nginx type: NodePort ➜ manifests git:(master) ✗ 配置prometheus监控 ➜ manifests git:(master) ✗ cat prometheus-serviceMonitornginx.</description>
+    </item>
+    
+    <item>
+      <title>prometheus学习系列(六)</title>
+      <link>https://opsnotes.github.io/post/prometheus/06-prometheus-mail-&#43;-wechat%E6%8A%A5%E8%AD%A6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/prometheus/06-prometheus-mail-&#43;-wechat%E6%8A%A5%E8%AD%A6/</guid>
+      <description>首先把alertmanager-main这个service改为NodePort的server. ➜ manifests git:(master) ✗ k get svc -n monitoring NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE alertmanager-main NodePort 10.96.120.87 &amp;lt;none&amp;gt; 9093:31175/TCP 29h alertmanager-operated ClusterIP None &amp;lt;none&amp;gt; 9093/TCP,9094/TCP,9094/UDP 29h grafana NodePort 10.96.163.124 &amp;lt;none&amp;gt; 3000:31263/TCP 29h kube-state-metrics ClusterIP None &amp;lt;none&amp;gt; 8443/TCP,9443/TCP 29h node-exporter ClusterIP None &amp;lt;none&amp;gt; 9100/TCP 29h prometheus-adapter ClusterIP 10.96.121.50 &amp;lt;none&amp;gt; 443/TCP 29h prometheus-k8s NodePort 10.96.129.132 &amp;lt;none&amp;gt; 9090:30525/TCP 29h prometheus-operated ClusterIP None &amp;lt;none&amp;gt; 9090/TCP 29h prometheus-operator ClusterIP None &amp;lt;none&amp;gt; 8080/TCP 29h ➜ manifests git:(master) ✗ 可以使用svc“alertmanager-main”的nodeport查看Alertmanager的Status状态,获取访问prometheus地址和alertmanager地址.</description>
+    </item>
+    
+    <item>
+      <title>prometheus学习系列(四)</title>
+      <link>https://opsnotes.github.io/post/prometheus/04-prometheus-service-%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/prometheus/04-prometheus-service-%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0%E9%85%8D%E7%BD%AE/</guid>
+      <description>注意所在操作都在,manifests目录下面创建, ➜ manifests git:(master) ✗ cat prometheus-additional.yaml - job_name: ‘kubernetes-service-endpoints&amp;#39; kubernetes_sd_configs: - role: endpoints relabel_configs: - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape] action: keep regex: true - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scheme] action: replace target_label: __scheme__ regex: (https?) - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path] action: replace target_label: __metrics_path__ regex: (.+) - source_labels: [__address__, __meta_kubernetes_service_annotation_prometheus_io_port] action: replace target_label: __address__ regex: ([^:]+)(?::\d+)?;(\d+) replacement: $1:$2 - action: labelmap regex: __meta_kubernetes_service_label_(.+) - source_labels: [__meta_kubernetes_namespace] action: replace target_label: kubernetes_namespace - source_labels: [__meta_kubernetes_service_name] action: replace target_label: kubernetes_name ➜ manifests git:(master) ✗ 使用这个文件创建一个secret对象并查看 ➜ manifests git:(master) ✗ kubectl create secret generic additional-configs --from-file=prometheus-additional.</description>
+    </item>
+    
+  </channel>
+</rss>

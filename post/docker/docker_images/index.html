@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>牛刀小试之docker容器系列(五) - OpsNotes随思录</title>
+  <meta name="description" content="kubernetes docker">
+  <meta name="author" content="Kenng zhang"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "OpsNotes随思录",
+    
+    "url": "https:\/\/opsnotes.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/opsnotes.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io\/post\/docker\/docker_images\/",
+          "name": "牛刀小试之docker容器系列(五)"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Kenng zhang"
+  },
+  "headline": "牛刀小试之docker容器系列(五)",
+  "description" : "kubernetes docker",
+  "inLanguage" : "en",
+  "wordCount":  996 ,
+  "datePublished" : "2015-07-05T20:18:57",
+  "dateModified" : "2015-07-05T20:18:57",
+  "image" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+  "keywords" : [ "docker" ],
+  "mainEntityOfPage" : "https:\/\/opsnotes.github.io\/post\/docker\/docker_images\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/opsnotes.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="牛刀小试之docker容器系列(五)" />
+<meta property="og:description" content="kubernetes docker">
+<meta property="og:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+<meta property="og:url" content="https://opsnotes.github.io/post/docker/docker_images/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="OpsNotes随思录" />
+
+  <meta name="twitter:title" content="牛刀小试之docker容器系列(五)" />
+  <meta name="twitter:description" content="kubernetes docker">
+  <meta name="twitter:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@opsnotes" />
+  <meta name="twitter:creator" content="@opsnotes" />
+  <link href='https://opsnotes.github.io/img/avatar-icon.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.62.2" />
+  <link rel="alternate" href="https://opsnotes.github.io/index.xml" type="application/rss+xml" title="OpsNotes随思录"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://opsnotes.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://opsnotes.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://opsnotes.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '46663382', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://opsnotes.github.io">OpsNotes随思录</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="arts打卡" href="/tags/arts%e6%89%93%e5%8d%a1">arts打卡</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="/tags/kubernetes">kubernetes</a>
+                
+                  <a href="/tags/prometheus">prometheus</a>
+                
+                  <a href="/tags/python">python</a>
+                
+                  <a href="/tags">Tags</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="OpsNotes随思录" href="https://opsnotes.github.io">
+            <img class="avatar-img" src="https://opsnotes.github.io/img/avatar-icon.png" alt="OpsNotes随思录" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 
+      
+         
+          data-img-src-1="https://tva1.sinaimg.cn/large/006tNbRwly1g9tpqtdm7xj31ee0lygth.jpg" 
+         
+         
+      ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>牛刀小试之docker容器系列(五)</h1>
+                  
+                    
+                      <h2 class="post-subheading">牛刀小试之docker镜像相关配置</h2>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 5, 2015
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;996&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>牛刀小试之docker容器系列(五)</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">牛刀小试之docker镜像相关配置</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 5, 2015
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;996&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <h3 id="获取镜像">获取镜像</h3>
+<pre><code>[root@docker ~]# docker pull ubuntu
+Pulling repository ubuntu
+6d4946999d4f: Pulling dependent layers
+6d4946999d4f: Download complete
+428b411c28f0: Download complete
+435050075b3f: Download complete
+9fd3c8c9af32: Download complete
+Status: Downloaded newer image for ubuntu:latest
+[root@docker ~]#
+</code></pre>
+<h3 id="可以使用如下方法下载一个特定的镜像">可以使用如下方法下载一个特定的镜像</h3>
+<pre><code>[root@docker ~]# docker pull ubuntu:12.10
+
+如上命令相当于docker pull registry.hub.docker.com/ubuntu:latest.是从docker默认的服务器下载latest镜像
+
+也可以从dockerpool地方下载镜像
+</code></pre>
+<h3 id="下载完成之后就可以使用镜像">下载完成之后就可以使用镜像：</h3>
+<pre><code>[root@docker ~]# docker run -t -i ubuntu /bin/bash
+root@b89ee17998ec:/#
+root@b89ee17998ec:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@b89ee17998ec:/# ifconfig
+eth0      Link encap:Ethernet  HWaddr 02:42:ac:11:00:02
+          inet addr:172.17.0.2  Bcast:0.0.0.0  Mask:255.255.0.0
+          inet6 addr: fe80::42:acff:fe11:2/64 Scope:Link
+          UP BROADCAST RUNNING  MTU:1500  Metric:1
+          RX packets:3 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:3 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:238 (238.0 B)  TX bytes:238 (238.0 B)
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+root@b89ee17998ec:/#
+</code></pre>
+<h3 id="查看镜像">查看镜像：</h3>
+<pre><code>[root@docker ~]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED                  VIRTUAL SIZE
+ubuntu              trusty-20150612     6d4946999d4f        Less than a second ago   188.3 MB
+ubuntu              14.04               6d4946999d4f        Less than a second ago   188.3 MB
+ubuntu              14.04.2             6d4946999d4f        Less than a second ago   188.3 MB
+ubuntu              latest              6d4946999d4f        Less than a second ago   188.3 MB
+ubuntu              trusty              6d4946999d4f        Less than a second ago   188.3 MB
+registry            latest              a90be6e49f98        3 months ago             405.2 MB
+centos              centos7             acc1b23376ec        3 months ago             224 MB
+centos              latest              acc1b23376ec        3 months ago             224 MB
+&lt;none&gt;              &lt;none&gt;              3039b31f25fe        3 months ago             222 MB
+ubuntu              12.04               28a945b4333c        3 months ago             130.3 MB
+ubuntu              12.04.5             28a945b4333c        3 months ago             130.3 MB
+&lt;none&gt;              &lt;none&gt;              04c5d3b7b065        3 months ago             192.7 MB
+jpetazzo/nsenter    latest              6ed3da1d7fa6        4 months ago             367.7 MB
+training/webapp     latest              31fa814ba25a        10 months ago            278.6 MB
+[root@docker ~]#
+</code></pre>
+<h3 id="参数分析">#参数分析</h3>
+<pre><code>REPOSITORY 来自哪个仓库
+TAG  标签
+ IMAGE ID  镜像的ID 这个是唯一的
+CREATED  镜像的创建时间
+VIRTUAL SIZE 镜像的大小
+</code></pre>
+<h3 id="注意点">#注意点：</h3>
+<pre><code>TAG 的很多镜像 其实IMAGE ID是一样的,为什么尼？
+是因为他们都是同时指向一个镜像文件
+</code></pre>
+<h3 id="查看镜像的详细信息">查看镜像的详细信息</h3>
+<pre><code>[root@docker ~]# docker inspect 6d4946999d4f
+[{
+    &quot;Architecture&quot;: &quot;amd64&quot;,
+    &quot;Author&quot;: &quot;&quot;,
+    &quot;Comment&quot;: &quot;&quot;,
+    &quot;Config&quot;: {
+        &quot;AttachStderr&quot;: false,
+        &quot;AttachStdin&quot;: false,
+        &quot;AttachStdout&quot;: false,
+        &quot;Cmd&quot;: [
+            &quot;/bin/bash&quot;
+        ],
+        &quot;CpuShares&quot;: 0,
+        &quot;Cpuset&quot;: &quot;&quot;,
+        &quot;Domainname&quot;: &quot;&quot;,
+        &quot;Entrypoint&quot;: null,
+        &quot;Env&quot;: null,
+        &quot;ExposedPorts&quot;: null,
+        &quot;Hostname&quot;: &quot;d3659c5e113e&quot;,
+        &quot;Image&quot;: &quot;9fd3c8c9af32dddb1793ccb5f6535e12d735eacae16f8f8c4214f42f33fe3d29&quot;,
+        &quot;Memory&quot;: 0,
+        &quot;MemorySwap&quot;: 0,
+        &quot;NetworkDisabled&quot;: false,
+        &quot;OnBuild&quot;: null,
+        &quot;OpenStdin&quot;: false,
+        &quot;PortSpecs&quot;: null,
+        &quot;StdinOnce&quot;: false,
+        &quot;Tty&quot;: false,
+        &quot;User&quot;: &quot;&quot;,
+        &quot;Volumes&quot;: null,
+        &quot;WorkingDir&quot;: &quot;&quot;
+    },
+    &quot;Container&quot;: &quot;9201d6220b01338011f2f21c28429d2155625625392e6654fe378c2772cc46bd&quot;,
+    &quot;ContainerConfig&quot;: {
+        &quot;AttachStderr&quot;: false,
+        &quot;AttachStdin&quot;: false,
+        &quot;AttachStdout&quot;: false,
+        &quot;Cmd&quot;: [
+            &quot;/bin/sh&quot;,
+            &quot;-c&quot;,
+            &quot;#(nop) CMD [\&quot;/bin/bash\&quot;]&quot;
+        ],
+        &quot;CpuShares&quot;: 0,
+        &quot;Cpuset&quot;: &quot;&quot;,
+        &quot;Domainname&quot;: &quot;&quot;,
+        &quot;Entrypoint&quot;: null,
+        &quot;Env&quot;: null,
+        &quot;ExposedPorts&quot;: null,
+        &quot;Hostname&quot;: &quot;d3659c5e113e&quot;,
+        &quot;Image&quot;: &quot;9fd3c8c9af32dddb1793ccb5f6535e12d735eacae16f8f8c4214f42f33fe3d29&quot;,
+        &quot;Memory&quot;: 0,
+        &quot;MemorySwap&quot;: 0,
+        &quot;NetworkDisabled&quot;: false,
+        &quot;OnBuild&quot;: null,
+        &quot;OpenStdin&quot;: false,
+        &quot;PortSpecs&quot;: null,
+        &quot;StdinOnce&quot;: false,
+        &quot;Tty&quot;: false,
+        &quot;User&quot;: &quot;&quot;,
+        &quot;Volumes&quot;: null,
+        &quot;WorkingDir&quot;: &quot;&quot;
+    },
+    &quot;Created&quot;: &quot;2015-06-12T15:32:30.680894574Z&quot;,
+    &quot;DockerVersion&quot;: &quot;1.6.0&quot;,
+    &quot;Id&quot;: &quot;6d4946999d4fb403f40e151ecbd13cb866da125431eb1df0cdfd4dc72674e3c6&quot;,
+    &quot;Os&quot;: &quot;linux&quot;,
+    &quot;Parent&quot;: &quot;9fd3c8c9af32dddb1793ccb5f6535e12d735eacae16f8f8c4214f42f33fe3d29&quot;,
+    &quot;Size&quot;: 0,
+    &quot;VirtualSize&quot;: 188310849
+}
+][root@docker ~]#
+</code></pre>
+<h3 id="查找镜像">查找镜像：</h3>
+<pre><code>[root@docker ~]# docker search mysql
+NAME                  DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+mysql                 MySQL is a widely used, open-source relati...   795       [OK]
+tutum/mysql           MySQL Server image - listens in port 3306....   123                  [OK]
+mysql/mysql-server    Optimized MySQL Server Docker images. Crea...   24                   [OK]
+centurylink/mysql     Image containing mysql. Optimized to be li...   23                   [OK]
+sameersbn/mysql                                                       13                   [OK]
+appcontainers/mysql   CentOS 6.6 based Customizable MySQL 5.5 Co...   3                    [OK]
+azukiapp/mysql        Docker image to run MySQL by Azuki - http:...   2                    [OK]
+frodenas/mysql        A Docker Image for MySQL                        1                    [OK]
+phpmentors/mysql      MySQL server image                              1                    [OK]
+marvambass/mysql      MySQL Server based on Ubuntu 14.04              1                    [OK]
+[root@docker ~]#
+
+可以看到很多关键字的镜像 包括名字 描述 和镜像的使用欢迎度 是否官方创建,感觉是不是有点像github
+--automated=false 只显示自动创建的镜像
+--no-trunc=false 输出信息不截断显示
+-s, --stars=0 显示指定星级的镜像
+</code></pre>
+<h3 id="删除镜像">删除镜像：</h3>
+<pre><code>1.查看镜像
+[root@docker ~]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED                  VIRTUAL SIZE
+ubuntu              trusty-20150612     6d4946999d4f        Less than a second ago   188.3 MB
+ubuntu              14.04               6d4946999d4f        Less than a second ago   188.3 MB
+ubuntu              14.04.2             6d4946999d4f        Less than a second ago   188.3 MB
+ubuntu              latest              6d4946999d4f        Less than a second ago   188.3 MB
+ubuntu              trusty              6d4946999d4f        Less than a second ago   188.3 MB
+registry            latest              a90be6e49f98        3 months ago             405.2 MB
+centos              centos7             acc1b23376ec        3 months ago             224 MB
+centos              latest              acc1b23376ec        3 months ago             224 MB
+&lt;none&gt;              &lt;none&gt;              3039b31f25fe        3 months ago             222 MB
+ubuntu              12.04               28a945b4333c        3 months ago             130.3 MB
+ubuntu              12.04.5             28a945b4333c        3 months ago             130.3 MB
+&lt;none&gt;              &lt;none&gt;              04c5d3b7b065        3 months ago             192.7 MB
+jpetazzo/nsenter    latest              6ed3da1d7fa6        4 months ago             367.7 MB
+training/webapp     latest              31fa814ba25a        10 months ago            278.6 MB
+2.删除镜像
+[root@docker ~]# docker rmi 28a945b4333c 
+Untagged: ubuntu:12.04
+Untagged: ubuntu:12.04.5
+[root@docker ~]# 
+3.查看镜像 是否删除成功
+[root@docker ~]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED                  VIRTUAL SIZE
+ubuntu              14.04               6d4946999d4f        Less than a second ago   188.3 MB
+ubuntu              14.04.2             6d4946999d4f        Less than a second ago   188.3 MB
+ubuntu              latest              6d4946999d4f        Less than a second ago   188.3 MB
+ubuntu              trusty              6d4946999d4f        Less than a second ago   188.3 MB
+ubuntu              trusty-20150612     6d4946999d4f        Less than a second ago   188.3 MB
+registry            latest              a90be6e49f98        3 months ago             405.2 MB
+centos              centos7             acc1b23376ec        3 months ago             224 MB
+centos              latest              acc1b23376ec        3 months ago             224 MB
+&lt;none&gt;              &lt;none&gt;              3039b31f25fe        3 months ago             222 MB
+&lt;none&gt;              &lt;none&gt;              04c5d3b7b065        3 months ago             192.7 MB
+jpetazzo/nsenter    latest              6ed3da1d7fa6        4 months ago             367.7 MB
+training/webapp     latest              31fa814ba25a        10 months ago            278.6 MB
+[root@docker ~]#
+4.查看正在运行的状态
+[root@docker ~]# docker ps -a
+CONTAINER ID        IMAGE                    COMMAND                CREATED              STATUS                          PORTS                     NAMES
+8703418b2dec        training/webapp:latest   &quot;echo 'hello world'&quot;   About a minute ago   Exited (0) About a minute ago                             pensive_curie
+7f3491707dd4        ubuntu:14.04             &quot;/bin/bash&quot;            17 minutes ago       Exited (0) 17 minutes ago                                 ecstatic_poincare
+b89ee17998ec        ubuntu:14.04             &quot;/bin/bash&quot;            18 minutes ago       Exited (0) 17 minutes ago                                 tender_babbage
+0aced9db36e2        training/webapp:latest   &quot;python app.py&quot;        3 months ago         Exited (0) 9 weeks ago          0.0.0.0:49153-&gt;5000/tcp   web
+436efb7b9933        28a945b4333c             &quot;/bin/bash&quot;            3 months ago         Exited (0) 9 weeks ago                                    berserk_thompson
+7582b0eaf376        04c5d3b7b065             &quot;/bin/bash&quot;            3 months ago         Exited (0) 3 months ago                                   desperate_feynman
+
+5.使用 -f 可以强制删除,但是需要注意的是,强制删除会造成一些相关遗留的问题。
+</code></pre>
+<h3 id="创建镜像">创建镜像</h3>
+<pre><code>1.基于已有镜像的方式创建
+相关参数
+docker commit -a “作者信息” -m ”提交信息“ -p ”提交时暂停容器运行“
+
+操作如下, 需要记住镜像ID
+1.1.修改本地镜像文件,创建一个文件夹
+[root@docker ~]# docker run -ti ubuntu:14.04 /bin/bash
+root@c72ad6c5adcd:/# touch test
+root@c72ad6c5adcd:/# exit
+exit
+[root@docker ~]#
+1.2.使用镜像来打包
+[root@docker ~]# docker commit -m 'added a new file' -a 'docker Steven' c72ad6c5adcd test
+e72d99a75afcda1e8836018ce5ea33ffe8cfc2161f81b82a70748812de56f385
+[root@docker ~]#
+1.3.查看是否创建成功
+[root@docker ~]# docker images test
+REPOSITORY          TAG                 IMAGE ID            CREATED              VIRTUAL SIZE
+test                latest              e72d99a75afc        About a minute ago   188.3 MB
+[root@docker ~]#
+</code></pre>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://opsnotes.github.io/tags/docker/">docker</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fdocker%2fdocker_images%2f&amp;text=%e7%89%9b%e5%88%80%e5%b0%8f%e8%af%95%e4%b9%8bdocker%e5%ae%b9%e5%99%a8%e7%b3%bb%e5%88%97%28%e4%ba%94%29&amp;via=opsnotes" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fopsnotes.github.io%2fpost%2fdocker%2fdocker_images%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fdocker%2fdocker_images%2f&amp;title=%e7%89%9b%e5%88%80%e5%b0%8f%e8%af%95%e4%b9%8bdocker%e5%ae%b9%e5%99%a8%e7%b3%bb%e5%88%97%28%e4%ba%94%29" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fdocker%2fdocker_images%2f&amp;title=%e7%89%9b%e5%88%80%e5%b0%8f%e8%af%95%e4%b9%8bdocker%e5%ae%b9%e5%99%a8%e7%b3%bb%e5%88%97%28%e4%ba%94%29" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fdocker%2fdocker_images%2f&amp;title=%e7%89%9b%e5%88%80%e5%b0%8f%e8%af%95%e4%b9%8bdocker%e5%ae%b9%e5%99%a8%e7%b3%bb%e5%88%97%28%e4%ba%94%29" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fdocker%2fdocker_images%2f&amp;description=%e7%89%9b%e5%88%80%e5%b0%8f%e8%af%95%e4%b9%8bdocker%e5%ae%b9%e5%99%a8%e7%b3%bb%e5%88%97%28%e4%ba%94%29" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/docker/docker-nginx/">牛刀小试之docker容器系列(八)</a></li>
+                
+                    <li><a href="/post/docker/docker_apache_php/">牛刀小试之docker容器系列(三)</a></li>
+                
+                    <li><a href="/post/docker/docker_images_ssh/">牛刀小试之docker容器系列(四)</a></li>
+                
+                    <li><a href="/post/docker/docker_volume/">牛刀小试之docker容器系列(六)</a></li>
+                
+                    <li><a href="/post/docker/docker_connection/">牛刀小试之docker容器系列(一)</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://opsnotes.github.io/post/install_elk_windows/" data-toggle="tooltip" data-placement="top" title="elasticsearch&#43;logstash&#43;kibana分析windowns日志">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://opsnotes.github.io/post/docker/docker_install/" data-toggle="tooltip" data-placement="top" title="牛刀小试之docker容器系列(0)">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:zky.linux@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/username" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/opsnotes" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/opsnotes" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://username.slack.com/" title="Slack">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-slack fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://reddit.com/u/keengz" title="Reddit">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-reddit-alien fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/XXXXXXX/username" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/kenng.z" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://telegram.me/Ke_zz" title="Telegram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://weibo.com/angerdevil" title="Weibo">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="opsnotes.net">Kenng zhang</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://opsnotes.github.io">OpsNotes随思录</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.62.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://opsnotes.github.io/js/main.js"></script>
+<script src="https://opsnotes.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://opsnotes.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

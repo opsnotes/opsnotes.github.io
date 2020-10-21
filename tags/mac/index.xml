@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mac on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/mac/</link>
+    <description>Recent content in Mac on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Thu, 08 Dec 2016 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/mac/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mac技巧:为终端设置Shadowsocks代理</title>
+      <link>https://opsnotes.github.io/post/mac%E6%8A%80%E5%B7%A7-%E4%B8%BA%E7%BB%88%E7%AB%AF%E8%AE%BE%E7%BD%AEshadowsocks%E4%BB%A3%E7%90%86/</link>
+      <pubDate>Thu, 08 Dec 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/mac%E6%8A%80%E5%B7%A7-%E4%B8%BA%E7%BB%88%E7%AB%AF%E8%AE%BE%E7%BD%AEshadowsocks%E4%BB%A3%E7%90%86/</guid>
+      <description>准备工作 1.首先要有ShadowSocks 2.要有翻墙账号 3.安装配置自行Google install brew install polipo config # 设置每次登陆启动polipo ln -sfv /usr/local/opt/polipo/*.plist ~/Library/LaunchAgents # 修改配置文件&amp;#34;homebrew.mxcl.polipo.plist&amp;#34; ~/Documents ⮀ cat /usr/local/opt/polipo/homebrew.mxcl.polipo.plist &amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;!DOCTYPE plist PUBLIC &amp;#34;-//Apple//DTD PLIST 1.0//EN&amp;#34; &amp;#34;http://www.apple.com/DTDs/PropertyList-1.0.dtd&amp;#34;&amp;gt; &amp;lt;plist version=&amp;#34;1.0&amp;#34;&amp;gt; &amp;lt;dict&amp;gt; &amp;lt;key&amp;gt;Label&amp;lt;/key&amp;gt; &amp;lt;string&amp;gt;homebrew.mxcl.polipo&amp;lt;/string&amp;gt; &amp;lt;key&amp;gt;RunAtLoad&amp;lt;/key&amp;gt; &amp;lt;true/&amp;gt; &amp;lt;key&amp;gt;KeepAlive&amp;lt;/key&amp;gt; &amp;lt;true/&amp;gt; &amp;lt;key&amp;gt;ProgramArguments&amp;lt;/key&amp;gt; &amp;lt;array&amp;gt; &amp;lt;string&amp;gt;/usr/local/opt/polipo/bin/polipo&amp;lt;/string&amp;gt; &amp;lt;string&amp;gt;socksParentProxy=127.0.0.1:1080&amp;lt;/string&amp;gt; #### 需要添加的文件 &amp;lt;/array&amp;gt; &amp;lt;!-- Set `ulimit -n 65536`. The default macOS limit is 256, that&amp;#39;s not enough for Polipo (displays &amp;#39;too many files open&amp;#39; errors). It seems like you have no reason to lower this limit (and unlikely will want to raise it).</description>
+    </item>
+    
+  </channel>
+</rss>

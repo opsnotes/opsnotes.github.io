@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nginx on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/categories/nginx/</link>
+    <description>Recent content in nginx on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Wed, 09 Mar 2016 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/categories/nginx/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用nginx模块简单防止ddos攻击</title>
+      <link>https://opsnotes.github.io/post/nginx/nginx_ddos/</link>
+      <pubDate>Wed, 09 Mar 2016 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/nginx/nginx_ddos/</guid>
+      <description>第一种方法： 官方模块：http://nginx.org/en/docs/http/ngx_http_limit_conn_module.html  1.在Nginx配置文件nginx.conf的http选项中添加如下内容
+ 在nginx.conf的配置中添加了Nginx白名单 ### Nginx Limint config geo $limited{ default 1; 127.0.0.1 0; 192.168.100.18 0; } map $limited $limit{ 1 $binary_remote_addr; 0 &amp;quot;&amp;quot;; } limit_req_zone $limit zone=one:10m rate=5r/s;  2.在虚拟目录中直接应用
+[root@frontend-01 ~]# cat /etc/nginx/conf.d/test.conf server{ listen 80; server_name yourdomain.com; root /yourdist/; access_log /yourdomain.com.access.log json; error_log /yourdomain.com.error.log warn; location /test/api/v3/ { ## 只针对api接口调用做Nginx IP地址限速 limit_req zone=one burst=10 nodelay; proxy_pass http://test; proxy_set_header X-Forwarded-For $remote_addr; proxy_set_header X-Forwarded-Host $server_name; proxy_set_header Host $host; add_header Access-Control-Allow-Origin *; add_header Access-Control-Allow-Headers &amp;quot;accept, content-type&amp;quot;; } location /test/auth/v3/ { proxy_pass http://test; proxy_set_header X-Forwarded-For $remote_addr; proxy_set_header X-Forwarded-Host $server_name; proxy_set_header Host $host; add_header Access-Control-Allow-Origin *; add_header Access-Control-Allow-Headers &amp;quot;accept, content-type&amp;quot;; } } [root@frontend-01 ~]#  3.</description>
+    </item>
+    
+  </channel>
+</rss>

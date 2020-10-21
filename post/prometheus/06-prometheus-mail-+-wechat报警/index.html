@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>prometheus学习系列(六) - OpsNotes随思录</title>
+  <meta name="description" content="“kubernetes prometheus&#34;">
+  <meta name="author" content="Kenng zhang"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "OpsNotes随思录",
+    
+    "url": "https:\/\/opsnotes.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/opsnotes.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io\/post\/prometheus\/06-prometheus-mail-\x2b-wechat%E6%8A%A5%E8%AD%A6\/",
+          "name": "Prometheus学习系列(六)"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Kenng zhang"
+  },
+  "headline": "prometheus学习系列(六)",
+  "description" : "“kubernetes prometheus\x22",
+  "inLanguage" : "en",
+  "wordCount":  628 ,
+  "datePublished" : "0001-01-01T00:00:00",
+  "dateModified" : "0001-01-01T00:00:00",
+  "image" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+  "keywords" : [ "prometheus, “kubernetes”" ],
+  "mainEntityOfPage" : "https:\/\/opsnotes.github.io\/post\/prometheus\/06-prometheus-mail-\x2b-wechat%E6%8A%A5%E8%AD%A6\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/opsnotes.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="prometheus学习系列(六)" />
+<meta property="og:description" content="“kubernetes prometheus&#34;">
+<meta property="og:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+<meta property="og:url" content="https://opsnotes.github.io/post/prometheus/06-prometheus-mail-&#43;-wechat%E6%8A%A5%E8%AD%A6/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="OpsNotes随思录" />
+
+  <meta name="twitter:title" content="prometheus学习系列(六)" />
+  <meta name="twitter:description" content="“kubernetes prometheus&#34;">
+  <meta name="twitter:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@opsnotes" />
+  <meta name="twitter:creator" content="@opsnotes" />
+  <link href='https://opsnotes.github.io/img/avatar-icon.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.62.2" />
+  <link rel="alternate" href="https://opsnotes.github.io/index.xml" type="application/rss+xml" title="OpsNotes随思录"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://opsnotes.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://opsnotes.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://opsnotes.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '46663382', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://opsnotes.github.io">OpsNotes随思录</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="arts打卡" href="/tags/arts%e6%89%93%e5%8d%a1">arts打卡</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="/tags/kubernetes">kubernetes</a>
+                
+                  <a href="/tags/prometheus">prometheus</a>
+                
+                  <a href="/tags/python">python</a>
+                
+                  <a href="/tags">Tags</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="OpsNotes随思录" href="https://opsnotes.github.io">
+            <img class="avatar-img" src="https://opsnotes.github.io/img/avatar-icon.png" alt="OpsNotes随思录" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 
+      
+         
+          data-img-src-1="https://tva1.sinaimg.cn/large/006tNbRwly1g9tpqtdm7xj31ee0lygth.jpg" 
+         
+         
+      ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>prometheus学习系列(六)</h1>
+                  
+                    
+                      <h2 class="post-subheading">prometheus mail &#43; wechat报警</h2>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 1, 0001
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;628&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>prometheus学习系列(六)</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">prometheus mail &#43; wechat报警</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on January 1, 0001
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;628&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <h4 id="首先把alertmanager-main这个service改为nodeport的server">首先把alertmanager-main这个service改为NodePort的server.</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">➜  manifests git:(master) ✗ k get svc -n monitoring
+NAME                    TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
+alertmanager-main       NodePort    10.96.120.87    &lt;none&gt;        9093:31175/TCP               29h
+alertmanager-operated   ClusterIP   None            &lt;none&gt;        9093/TCP,9094/TCP,9094/UDP   29h
+grafana                 NodePort    10.96.163.124   &lt;none&gt;        3000:31263/TCP               29h
+kube-state-metrics      ClusterIP   None            &lt;none&gt;        8443/TCP,9443/TCP            29h
+node-exporter           ClusterIP   None            &lt;none&gt;        9100/TCP                     29h
+prometheus-adapter      ClusterIP   10.96.121.50    &lt;none&gt;        443/TCP                      29h
+prometheus-k8s          NodePort    10.96.129.132   &lt;none&gt;        9090:30525/TCP               29h
+prometheus-operated     ClusterIP   None            &lt;none&gt;        9090/TCP                     29h
+prometheus-operator     ClusterIP   None            &lt;none&gt;        8080/TCP                     29h
+➜  manifests git:(master) ✗
+</code></pre></div><h4 id="可以使用svcalertmanager-main的nodeport查看alertmanager的status状态获取访问prometheus地址和alertmanager地址">可以使用svc“alertmanager-main”的nodeport查看Alertmanager的Status状态,获取访问prometheus地址和alertmanager地址.</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">➜  alertmanager git:(master) minikube service list
+</code></pre></div><p><img src="/img/pro-04.01.png" alt=""></p>
+<h4 id="这些配置在manifests中的alertmanager-secretyaml文件中">这些配置在manifests中的alertmanager-secret.yaml文件中</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">➜  manifests git:(master) ✗ pwd
+/Users/steven/code/prometheus/kube-prometheus/manifests
+➜  manifests git:(master) ✗ cat alertmanager-secret.yaml
+apiVersion: v1
+data:
+  alertmanager.yaml: Imdsb2JhbCI6CiAgInJlc29sdmVfdGltZW91dCI6ICI1bSIKInJlY2VpdmVycyI6Ci0gIm5hbWUiOiAibnVsbCIKInJvdXRlIjoKICAiZ3JvdXBfYnkiOgogIC0gIm5hbWVzcGFjZSIKICAiZ3JvdXBfaW50ZXJ2YWwiOiAiNW0iCiAgImdyb3VwX3dhaXQiOiAiMzBzIgogICJyZWNlaXZlciI6ICJudWxsIgogICJyZXBlYXRfaW50ZXJ2YWwiOiAiMTJoIgogICJyb3V0ZXMiOgogIC0gIm1hdGNoIjoKICAgICAgImFsZXJ0bmFtZSI6ICJXYXRjaGRvZyIKICAgICJyZWNlaXZlciI6ICJudWxsIg==
+kind: Secret
+metadata:
+  name: alertmanager-main
+  namespace: monitoring
+type: Opaque
+➜  manifests git:(master) ✗
+</code></pre></div><h4 id="将alertmanager-secretyaml对应的value值用base64进行解码发现这里面的内容和web页面查看的内容一样">将alertmanager-secret.yaml对应的value值用base64进行解码,发现这里面的内容和web页面查看的内容一样.</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">➜  manifests git:(master) ✗ echo &#34;Imdsb2JhbCI6CiAgInJlc29sdmVfdGltZW91dCI6ICI1bSIKInJlY2VpdmVycyI6Ci0gIm5hbWUiOiAibnVsbCIKInJvdXRlIjoKICAiZ3JvdXBfYnkiOgogIC0gIm5hbWVzcGFjZSIKICAiZ3JvdXBfaW50ZXJ2YWwiOiAiNW0iCiAgImdyb3VwX3dhaXQiOiAiMzBzIgogICJyZWNlaXZlciI6ICJudWxsIgogICJyZXBlYXRfaW50ZXJ2YWwiOiAiMTJoIgogICJyb3V0ZXMiOgogIC0gIm1hdGNoIjoKICAgICAgImFsZXJ0bmFtZSI6ICJXYXRjaGRvZyIKICAgICJyZWNlaXZlciI6ICJudWxsIg==&#34; | base64 -d
+&#34;global&#34;:
+  &#34;resolve_timeout&#34;: &#34;5m&#34;
+&#34;receivers&#34;:
+- &#34;name&#34;: &#34;null&#34;
+&#34;route&#34;:
+  &#34;group_by&#34;:
+  - &#34;namespace&#34;
+  &#34;group_interval&#34;: &#34;5m&#34;
+  &#34;group_wait&#34;: &#34;30s&#34;
+  &#34;receiver&#34;: &#34;null&#34;
+  &#34;repeat_interval&#34;: &#34;12h&#34;
+  &#34;routes&#34;:
+  - &#34;match&#34;:
+      &#34;alertname&#34;: &#34;Watchdog&#34;
+    &#34;receiver&#34;: &#34;null&#34;%                                                                                                                                       ➜  manifests git:(master) ✗
+</code></pre></div><h4 id="创建yaml文件">创建yaml文件</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">➜  manifests git:(master) ✗ pwd
+/Users/steven/code/prometheus/kube-prometheus/manifests
+➜  manifests git:(master) ✗ cat alertmanager.yaml
+global:
+  resolve_timeout: 5m
+  smtp_smarthost: &#39;smtp.qq.com:465&#39;
+  smtp_from: &#39;431054426@qq.com&#39;
+  smtp_auth_username: &#39;431054426@qq.com&#39;
+  smtp_auth_password: ‘****’ # 生成的token
+  smtp_require_tls: false   # 默认是true需要改成false
+
+templates:
+  - &#34;/etc/alertmanager/config/*.tmpl&#34;
+
+route:
+  group_by: [&#39;job&#39;,&#39;cluster&#39;,&#39;service&#39;]
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 12h
+  receiver: ‘wechat‘
+  routes:
+  - receiver: ‘email’
+    group_wait: 10s
+    match:
+      alertname: KubeCPUOvercommit # 报警对象
+
+receivers:
+- name: ‘email’
+  email_configs:
+  - to: &#39;zky.linux@gmail.com&#39;
+    send_resolved: true
+- name: &#39;wechat&#39;
+  wechat_configs:
+  - corp_id: ‘*****’ # 在企业中也可以找到
+    to_party: &#39;8&#39;
+    to_user: &#39;steven&#39;
+    agent_id: &#39;1000028&#39;
+    api_secret: ‘****’ # 可以在微信新建的应用中找到
+    send_resolved: true
+
+inhibit_rules:
+  - source_match:
+      severity: &#39;critical&#39;
+    target_match:
+      severity: &#39;warning&#39;
+    equal: [&#39;alertname&#39;, &#39;dev&#39;, &#39;instance&#39;]
+➜  manifests git:(master) ✗
+</code></pre></div><h4 id="查看wechattmpl文件">查看wechat.tmpl文件</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">➜  manifests git:(master) ✗ cat wechat.tmpl
+{{ define &#34;wechat.default.message&#34; }}
+{{- if gt (len .Alerts.Firing) 0 -}}
+{{- range $index, $alert := .Alerts -}}
+{{- if eq $index 0 -}}
+告警类型: {{ $alert.Labels.alertname }}
+告警级别: {{ $alert.Labels.severity }}
+
+=====================
+{{- end }}
+===告警详情===
+告警详情: {{ $alert.Annotations.message }}
+故障时间: {{ $alert.StartsAt.Format &#34;2006-01-02 15:04:05&#34; }}
+===参考信息===
+{{ if gt (len $alert.Labels.instance) 0 -}}故障实例ip: {{ $alert.Labels.instance }};{{- end -}}
+{{- if gt (len $alert.Labels.namespace) 0 -}}故障实例所在namespace: {{ $alert.Labels.namespace }};{{- end -}}
+{{- if gt (len $alert.Labels.node) 0 -}}故障物理机ip: {{ $alert.Labels.node }};{{- end -}}
+{{- if gt (len $alert.Labels.pod_name) 0 -}}故障pod名称: {{ $alert.Labels.pod_name }}{{- end }}
+=====================
+{{- end }}
+{{- end }}
+
+{{- if gt (len .Alerts.Resolved) 0 -}}
+{{- range $index, $alert := .Alerts -}}
+{{- if eq $index 0 -}}
+告警类型: {{ $alert.Labels.alertname }}
+告警级别: {{ $alert.Labels.severity }}
+
+=====================
+{{- end }}
+===告警详情===
+告警详情: {{ $alert.Annotations.message }}
+故障时间: {{ $alert.StartsAt.Format &#34;2006-01-02 15:04:05&#34; }}
+恢复时间: {{ $alert.EndsAt.Format &#34;2006-01-02 15:04:05&#34; }}
+===参考信息===
+{{ if gt (len $alert.Labels.instance) 0 -}}故障实例ip: {{ $alert.Labels.instance }};{{- end -}}
+{{- if gt (len $alert.Labels.namespace) 0 -}}故障实例所在namespace: {{ $alert.Labels.namespace }};{{- end -}}
+{{- if gt (len $alert.Labels.node) 0 -}}故障物理机ip: {{ $alert.Labels.node }};{{- end -}}
+{{- if gt (len $alert.Labels.pod_name) 0 -}}故障pod名称: {{ $alert.Labels.pod_name }};{{- end }}
+=====================
+{{- end }}
+{{- end }}
+{{- end }}
+➜  manifests git:(master) ✗
+</code></pre></div><h4 id="删除原来的secret对象用我们刚才创建的文件来创建secret">删除原来的Secret对象,用我们刚才创建的文件来创建Secret</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">➜  manifests git:(master) ✗ k get secrets -n monitoring | grep aler
+alertmanager-main                 Opaque                                2      18h
+alertmanager-main-token-lqf7k     kubernetes.io/service-account-token   3      2d3h
+➜  manifests git:(master) ✗
+➜  manifests git:(master) ✗ k delete secrets alertmanager-main -n monitoring
+secret &#34;alertmanager-main&#34; deleted
+➜  manifests git:(master) ✗ k create secret generic alertmanager-main --from-file=./alertmanager.yaml --from-file=./wechat.tmpl -n monitoring
+secret/alertmanager-main created
+➜  manifests git:(master) ✗
+</code></pre></div><h4 id="验证">验证</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">➜  manifests git:(master) ✗ k delete secrets alertmanager-main -n monitoring
+secret &#34;alertmanager-main&#34; deleted
+➜  manifests git:(master) ✗ k create secret generic alertmanager-main --from-file=./alertmanager.yaml --from-file=./wechat.tmpl -n monitoring
+secret/alertmanager-main created
+➜  manifests git:(master) ✗ k get secrets -n monitoring | grep aler
+alertmanager-main                 Opaque                                2      6s
+alertmanager-main-token-lqf7k     kubernetes.io/service-account-token   3      2d3h
+➜  manifests git:(master) ✗
+</code></pre></div><h4 id="验证是否收到邮件需要注意的是小心别当成垃圾邮件">验证是否收到邮件,需要注意的是,小心别当成垃圾邮件.</h4>
+<p><img src="/img/pro-04.02.png" alt=""></p>
+<p><img src="/img/pro-04.03.png" alt=""></p>
+<h4 id="alertmanager的config文件已变更">alertmanager的config文件已变更</h4>
+<p><img src="/img/pro-04.04.png" alt=""></p>
+<h4 id="可以登录pods查看到我们创建的2个文件">可以登录pods查看到我们创建的2个文件</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">➜  manifests git:(master) ✗ k exec -it alertmanager-main-0 /bin/sh -n monitoring
+Defaulting container name to alertmanager.
+Use &#39;kubectl describe pod/alertmanager-main-0 -n monitoring&#39; to see all of the containers in this pod.
+/alertmanager $ ls /etc/alertmanager/config/
+alertmanager.yaml  wechat.tmpl
+/alertmanager $
+</code></pre></div>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://opsnotes.github.io/tags/prometheus/">prometheus</a>&nbsp;
+            
+              <a href="https://opsnotes.github.io/tags/kubernetes/">“kubernetes”</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fprometheus%2f06-prometheus-mail-%2b-wechat%25E6%258A%25A5%25E8%25AD%25A6%2f&amp;text=prometheus%e5%ad%a6%e4%b9%a0%e7%b3%bb%e5%88%97%28%e5%85%ad%29&amp;via=opsnotes" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fopsnotes.github.io%2fpost%2fprometheus%2f06-prometheus-mail-%2b-wechat%25E6%258A%25A5%25E8%25AD%25A6%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fprometheus%2f06-prometheus-mail-%2b-wechat%25E6%258A%25A5%25E8%25AD%25A6%2f&amp;title=prometheus%e5%ad%a6%e4%b9%a0%e7%b3%bb%e5%88%97%28%e5%85%ad%29" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fprometheus%2f06-prometheus-mail-%2b-wechat%25E6%258A%25A5%25E8%25AD%25A6%2f&amp;title=prometheus%e5%ad%a6%e4%b9%a0%e7%b3%bb%e5%88%97%28%e5%85%ad%29" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fprometheus%2f06-prometheus-mail-%2b-wechat%25E6%258A%25A5%25E8%25AD%25A6%2f&amp;title=prometheus%e5%ad%a6%e4%b9%a0%e7%b3%bb%e5%88%97%28%e5%85%ad%29" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fprometheus%2f06-prometheus-mail-%2b-wechat%25E6%258A%25A5%25E8%25AD%25A6%2f&amp;description=prometheus%e5%ad%a6%e4%b9%a0%e7%b3%bb%e5%88%97%28%e5%85%ad%29" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/prometheus/%E8%85%BE%E8%AE%AF%E4%BA%91prometheus%E6%8C%81%E4%B9%85%E5%8C%96%E4%BF%AE%E6%94%B9%E5%8F%82%E6%95%B0/">prometheus学习系列(七)</a></li>
+                
+                    <li><a href="/post/prometheus/01-%E5%AE%89%E8%A3%85prometheus%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">prometheus学习系列(一)</a></li>
+                
+                    <li><a href="/post/prometheus/03-%E5%9C%A8minikube%E4%B8%AD%E5%AE%89%E8%A3%85prometheus-operator/">prometheus学习系列(三)</a></li>
+                
+                    <li><a href="/post/prometheus/02-minikube-for-mac-install/">prometheus学习系列(二)</a></li>
+                
+                    <li><a href="/post/prometheus/05-prometheus-operator%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%8E%A7nginx/">prometheus学习系列(五)</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://opsnotes.github.io/post/prometheus/04-prometheus-service-%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0%E9%85%8D%E7%BD%AE/" data-toggle="tooltip" data-placement="top" title="prometheus学习系列(四)">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://opsnotes.github.io/post/prometheus/05-prometheus-operator%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%8E%A7nginx/" data-toggle="tooltip" data-placement="top" title="prometheus学习系列(五)">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:zky.linux@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/username" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/opsnotes" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/opsnotes" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://username.slack.com/" title="Slack">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-slack fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://reddit.com/u/keengz" title="Reddit">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-reddit-alien fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/XXXXXXX/username" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/kenng.z" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://telegram.me/Ke_zz" title="Telegram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://weibo.com/angerdevil" title="Weibo">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="opsnotes.net">Kenng zhang</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://opsnotes.github.io">OpsNotes随思录</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.62.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://opsnotes.github.io/js/main.js"></script>
+<script src="https://opsnotes.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://opsnotes.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

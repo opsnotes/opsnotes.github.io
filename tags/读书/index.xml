@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>读书 on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/%E8%AF%BB%E4%B9%A6/</link>
+    <description>Recent content in 读书 on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Tue, 08 Aug 2017 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/%E8%AF%BB%E4%B9%A6/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2017年读书计划</title>
+      <link>https://opsnotes.github.io/post/reading-program/</link>
+      <pubDate>Tue, 08 Aug 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/reading-program/</guid>
+      <description>准备读的书: 1.Pthon黑帽子黑客与渗透测试编程之道 2.黑客 3.Kubernetes权威指南 4.云原生应用架构实践 已读的书: 1.PaaS实现与运维管理：基于Mesos +Docker+ELK的实战指南 2.从行动开始：自我管理的科学 3.精通saltstack 4.docker容器与容器云 5.Python Web开发实战 6.腾讯传 7.持续交付发布可靠软件的系统方法 8.Pthon黑帽子黑客与渗透测试编程之道 9.黑客 10.Python 学习手册第四版 11.深度工作 12.番茄工作法 13.高效人士的七个习惯 </description>
+    </item>
+    
+    <item>
+      <title>2016年读书计划</title>
+      <link>https://opsnotes.github.io/post/%E8%AF%BB%E4%B9%A6/</link>
+      <pubDate>Thu, 05 Jan 2017 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/%E8%AF%BB%E4%B9%A6/</guid>
+      <description>正在读的书 6.PaaS实现与运维管理：基于Mesos +Docker+ELK的实战指南 7.Python 学习手册第四版 8.互联网生态:重构商业规则 9.黑客 12.我的互联网方法论 14.编写高质量代码 已读的书 1.拆掉思维里的墙 2.高性能linux服务器构建实战 3.MacTalk 人生元编程 http://item.jd.com/11398297.html 4.SaltStack技术入门与实战 http://item.jd.com/11804150.html(好友沈灿的书) 5.自动化运维软件设计实战 http://item.jd.com/11734638.html 6.皮囊 7.奔跑吧Ansible http://item.jd.com/11839215.html 8.活着 9.ELK Stack权威指南 http://item.jd.com/10038199385.html(好友三斗的书) 10.海量运维运营规划 http://item.jd.com/11366105.html(重读) 11.vim使用技巧 12.黑客与画家 13.重新定义公司:谷歌是如何运营的 14.技术管理之巅 15.精进 采铜 16.Ansible自动化运维：技术与最佳实践 http://item.jd.com/11917729.html(好友沈灿的书) 17.跟任何人都聊得来:最受世界500强企业欢迎的沟通课 18.为什么精英都是清单控 19.梦在青春在 20.周鸿祎自述：我的互联网方法论 21.毅力: 如何培养自律的习惯 22.凤凰项目:一个IT运维的传奇故事 23.DevOps实践：驭DevOps之力强化技术栈并优化IT运行 </description>
+    </item>
+    
+  </channel>
+</rss>

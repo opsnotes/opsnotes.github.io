@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>在CentOS6上使用saltstack配置Apache ssh模块  - OpsNotes随思录</title>
+  <meta name="description" content="对文章的简要描述 SEO used for description">
+  <meta name="author" content="Kenng zhang"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "OpsNotes随思录",
+    
+    "url": "https:\/\/opsnotes.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/opsnotes.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io\/post\/saltstack\/saltstack_config_01\/",
+          "name": "在 cent o s6上使用saltstack配置 apache ssh模块 "
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Kenng zhang"
+  },
+  "headline": "在CentOS6上使用saltstack配置Apache ssh模块 ",
+  "description" : "对文章的简要描述 SEO used for description",
+  "inLanguage" : "en",
+  "wordCount":  626 ,
+  "datePublished" : "2014-07-04T20:18:57",
+  "dateModified" : "2014-07-04T20:18:57",
+  "image" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+  "keywords" : [ "saltstack" ],
+  "mainEntityOfPage" : "https:\/\/opsnotes.github.io\/post\/saltstack\/saltstack_config_01\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/opsnotes.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="在CentOS6上使用saltstack配置Apache ssh模块 " />
+<meta property="og:description" content="对文章的简要描述 SEO used for description">
+<meta property="og:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+<meta property="og:url" content="https://opsnotes.github.io/post/saltstack/saltstack_config_01/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="OpsNotes随思录" />
+
+  <meta name="twitter:title" content="在CentOS6上使用saltstack配置Apache ssh模块 " />
+  <meta name="twitter:description" content="对文章的简要描述 SEO used for description">
+  <meta name="twitter:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@opsnotes" />
+  <meta name="twitter:creator" content="@opsnotes" />
+  <link href='https://opsnotes.github.io/img/avatar-icon.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.62.2" />
+  <link rel="alternate" href="https://opsnotes.github.io/index.xml" type="application/rss+xml" title="OpsNotes随思录"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://opsnotes.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://opsnotes.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://opsnotes.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '46663382', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://opsnotes.github.io">OpsNotes随思录</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="arts打卡" href="/tags/arts%e6%89%93%e5%8d%a1">arts打卡</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="/tags/kubernetes">kubernetes</a>
+                
+                  <a href="/tags/prometheus">prometheus</a>
+                
+                  <a href="/tags/python">python</a>
+                
+                  <a href="/tags">Tags</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="OpsNotes随思录" href="https://opsnotes.github.io">
+            <img class="avatar-img" src="https://opsnotes.github.io/img/avatar-icon.png" alt="OpsNotes随思录" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 
+      
+         
+          data-img-src-1="https://tva1.sinaimg.cn/large/006tNbRwly1g9tpqtdm7xj31ee0lygth.jpg" 
+         
+         
+      ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>在CentOS6上使用saltstack配置Apache ssh模块 </h1>
+                  
+                    
+                      <h2 class="post-subheading">在CentOS6上使用saltstack配置Apache ssh模块 </h2>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 4, 2014
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;626&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>在CentOS6上使用saltstack配置Apache ssh模块 </h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">在CentOS6上使用saltstack配置Apache ssh模块 </h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 4, 2014
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;3&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;626&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>####如下的salt states是我们需要安装的，Salt的状态系统文件
+一、使用salt来同步一个第一个简单的文件 
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;修改master配置文件,切记需要重启master
+[root@salt_server ~]# vim /etc/salt/master
+file_roots:
+base:
+- /srv/salt/base
+默认这个目录是没有的,我们需要创建一个目录；然后我们需要创建一个文件top.sls,如果玩过puppet就知道这个文件就相当puppet文件的site.pp
+[root@salt_server ~]# mkdir /srv/salt/base
+[root@salt_server ~]# cd /srv/salt/base
+[root@salt_server base]# echo &ldquo;test salt first file&rdquo; &raquo; first.txt
+[root@salt_server base]# salt &lsquo;salt_client1&rsquo; cp.get_file salt://first.txt /home/first.txt
+salt_client1:
+/home/first.txt
+[root@salt_server salt]# 
+在客户端查看
+[root@salt_client1 home]# pwd
+/home
+[root@salt_client1 home]# cat first.txt 
+test salt first file
+[root@salt_client1 home]# 
+二、来创建第一个文件
+[root@salt_server base]# pwd
+/srv/salt/base
+[root@salt_server base]# mkdir httpd
+[root@salt_server base]# cat top.sls
+base:
+&lsquo;salt_client1&rsquo;:
+- httpd.pack
+[root@salt_server base]#</p>
+<p>如下解释：
+base:命名规则,也可以使用其他的来代替
+&lsquo;salt_client1&rsquo;:指的是对象，我们这里设定的是salt_client1可以安装,其他的客户端就不能安装了，如果其他想安装可以用正则匹配
+- httpd.pack这个指httpd目录下面的pack.sls  在17.0.5 需要创建这个文件
+详解资源文件
+apache: 是安装软件的名字
+pkg： salt安装包的方式
+service：salt服务管理
+file.managed: salt文件管理
+[root@salt_server salt]# mkdir pkgconf
+[root@salt_server salt]# mkdir httpd
+[root@salt_server httpd]# pwd
+/srv/salt/httpd
+[root@salt_server httpd]# cat pack.sls  如果换成init就不需要在top.sls中跟后缀文件了 直接写成httpd即可。
+apache:
+pkg:
+- name: httpd
+- installed
+service:
+- name: httpd
+- running
+- reload: True
+- watch:
+- file: /etc/httpd/conf/httpd.conf
+/etc/httpd/conf/httpd.conf:
+file.managed:
+- source: salt://httpd/httpd.conf    文件需要存在
+- user: root
+- group: root
+- mode: 644
+- backup: minion
+[root@salt_server httpd]#
+扩展以后的
+apache:
+pkg:
+- name: httpd
+- installed
+service:
+- name: httpd
+- running
+- reload: True
+- watch:
+- pkg: apache
+- file: /etc/httpd/conf/httpd.conf
+- user: apache
+user.present:
+- uid: 48
+- gid: 48
+- shell: /sbin/nologin
+- require:
+- group: apache 
+group.present:
+- gid: 48
+- require:
+- pkg: apache
+/etc/httpd/conf/httpd.conf:
+file.managed:
+- source: salt://httpd/httpd.conf
+- user: root
+- group: root
+- mode: 644
+- backup: minion
+[root@salt_server salt]#
+解释下这pack.sls这个YAML文件
+第1行：apache 表示申明这个ID：
+第2,5行：调用了pkg、service 这两个state，pkg使用系统本地的软件包管理器管理将要安装的软件，service管理系统守护进程。
+第3,5,6,7行：是调用了函数，这个函数定义了包和服务将要达到的状态，这里表示包包的名字以及包会被安装以及安装后会启动。
+我们需要注意一个问题：
+source: salt://httpd/httpd.conf  需要保证source下面这个httpd.conf文件是可用的
+pkg、service 下面的子文件内容是表示function，这个function定义了需要安装的服务,id，状态
+require  这个参数我们其实也可以在这个sls文件中调用,它确保了apache服务只有在成功安装软件包后才会启动。
+service  这个state下面的watch和require基本相似,都能保证被监视或需要的state在自己之前执行，但是watch还有其他作用。
+测试：
+[root@salt_server salt]# salt &lsquo;salt_client1&rsquo; state.highstate test=True
+[root@salt_server salt]# salt &lsquo;salt_client1&rsquo; state.highstate -v
+也可以在客户端拉去
+[root@salt_client1 ~]# salt-call state.highstate
+安装ssh-clients的第一种方法：
+如下是成功用salt来安装ssh-clients安装代码：
+[root@salt_server ssh]# vim ssh.sls 
+sshd:
+pkg:
+- name: openssh-server这里也可以选择openssh-clients,这是需要安装的名字
+- installed
+user.present:
+- uid: 74
+- gid: 74
+- shell: /sbin/nologin
+- require:
+- group: sshd
+group.present:
+- gid: 74
+- require:
+- pkg: sshd
+service:
+- name: sshd
+- running
+- reload: True</p>
+<p>############如果没有文件的存在 可以不加：
+/etc/ssh/sshd_config:
+file.managed:
+- source: salt://ssh/sshd_config
+- user: root
+- group: root
+- mode: 644
+- backup: minion
+[root@salt_server ssh]#</p>
+<pre><code>安装ssh-clients的第二种方法：
+当以一种可扩展的方式建立Salt States时，需要用到多个SLS文件。上面的例子是在单一的SLS文件中，不过可以用两个或多个文件组合成一个状态树State Tree。
+在第二个方法中我们需要注意一个参数
+include 参数   是声明的意思
+如下案例是: SSH State Tree 
+[root@salt_server ssh]# pwd
+/srv/salt/base/ssh
+[root@salt_server ssh]# tree  
+├── init.sls
+├── server.sls
+├── sshd_config
+└── ssh.sls.bak
+0 directories, 5 files
+[root@salt_server ssh]# 
+
+如下两个配置文件
+init.sls配置文件：
+[root@salt_server ssh]# cat init.sls 
+openssh-clients:
+pkg.installed
+/etc/ssh/sshd_config:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+        - pkg: openssh-clients
+[root@salt_server ssh]#
+
+server.sls配置文件：
+[root@salt_server ssh]# cat server.sls
+include:
+  - ssh
+openssh-server:
+  pkg.installed
+sshd:
+    service.running:
+    - require:
+        - pkg: openssh-clients
+        - pkg: openssh-server
+        - file: /etc/ssh/sshd_config 
+/etc/ssh/sshd_config:
+    file.managed:
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+        - pkg: openssh-server
+[root@salt_server ssh]#
+然后我们看下top文件
+[root@salt_server base]# pwd
+/srv/salt/base
+[root@salt_server base]# cat top.sls   需要注意的是在ssh文件中不要跟init/server
+base:
+  '*':
+    - ssh
+[root@salt_server base]# tree ssh/
+ssh/
+├── init.sls
+├── server.sls
+├── sshd_config
+└── ssh.sls.bak
+0 directories, 5 files
+[root@salt_server base]#
+使用渲染器配置apache：
+我们在我们原来的基础上来修改我们的pack.sls文件
+首先先备份：
+[root@salt_server httpd]# cp -a pack.sls pack.sls.bak
+[root@salt_server httpd]# pwd
+/srv/salt/base/httpd
+[root@salt_server httpd]#
+如下是渲染配置文件的状态,需要注意YMAL格式不要错误，  在如下的案例中其中调用了GRAINS模板；
+[root@salt_server httpd]# cat /srv/salt/base/httpd/pack.sls
+apache:
+  pkg.installed:
+   {%if grains['os'] == 'CentOS'%}
+     - name: httpd
+    {% endif %}
+  service.running:
+    {% if grains['os'] == 'CentOS'%}
+      - name: httpd
+    {% endif %}
+      - watch:
+        - pkg: apache
+        - user: apache	
+  user.present:
+    - uid: 48
+    - gid: 48
+    - shell: /sbin/nologin
+    - require:
+       - group: apache 
+  group.present:
+    - gid: 48
+    - require:
+       - pkg: apache
+/etc/httpd/conf/httpd.conf:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 644
+    - backup: minion
+[root@salt_server httpd]# 
+测试是否正常“
+[root@salt_server httpd]# salt 'salt_client1' state.highstate test=True
+如果报错可以在客户端minion上如下debug
+[root@salt_client1 ~]# salt-call state.highstate -l debug
+minion也可以以前台调试模式启动:salt-minion -l debug
+扩展httpd/pack.sls
+[root@salt_server httpd]# echo www.opsnotes.net &gt;&gt; index.html
+在配置文件最后添加 如下 几行  
+[root@salt_server httpd]# tail -n 7 pack.sls
+/var/www/html/index.html:
+  file:
+    - managed
+    - source: salt://httpd/index.html
+    - require:
+        - pkg: httpd
+[root@salt_server httpd]# pwd
+/srv/salt/base/httpd
+[root@salt_server httpd]# 
+先在一台机器上测试：
+[root@salt_server httpd]# salt 'salt_client1' state.highstate test=True
+更新：
+[root@salt_server httpd]# salt '*' state.highstate 
+查看文件是否更新成功：
+[root@salt_server httpd]# salt -L 'salt_client1,salt_client2' cmd.run 'ls /var/www/html'
+salt_client2:
+   index.html
+salt_client1:
+   index.html
+[root@salt_server httpd]#
+</code></pre>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://opsnotes.github.io/tags/saltstack/">saltstack</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fsaltstack%2fsaltstack_config_01%2f&amp;text=%e5%9c%a8CentOS6%e4%b8%8a%e4%bd%bf%e7%94%a8saltstack%e9%85%8d%e7%bd%aeApache%20ssh%e6%a8%a1%e5%9d%97%20&amp;via=opsnotes" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fopsnotes.github.io%2fpost%2fsaltstack%2fsaltstack_config_01%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fsaltstack%2fsaltstack_config_01%2f&amp;title=%e5%9c%a8CentOS6%e4%b8%8a%e4%bd%bf%e7%94%a8saltstack%e9%85%8d%e7%bd%aeApache%20ssh%e6%a8%a1%e5%9d%97%20" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fsaltstack%2fsaltstack_config_01%2f&amp;title=%e5%9c%a8CentOS6%e4%b8%8a%e4%bd%bf%e7%94%a8saltstack%e9%85%8d%e7%bd%aeApache%20ssh%e6%a8%a1%e5%9d%97%20" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fsaltstack%2fsaltstack_config_01%2f&amp;title=%e5%9c%a8CentOS6%e4%b8%8a%e4%bd%bf%e7%94%a8saltstack%e9%85%8d%e7%bd%aeApache%20ssh%e6%a8%a1%e5%9d%97%20" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fopsnotes.github.io%2fpost%2fsaltstack%2fsaltstack_config_01%2f&amp;description=%e5%9c%a8CentOS6%e4%b8%8a%e4%bd%bf%e7%94%a8saltstack%e9%85%8d%e7%bd%aeApache%20ssh%e6%a8%a1%e5%9d%97%20" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/zabbix/%E4%BD%BF%E7%94%A8saltstack%E9%83%A8%E7%BD%B2zabbix%E7%9B%91%E6%8E%A7mysql%E4%B8%BB%E4%BB%8E/">使用saltstack部署zabbix监控mysql主从</a></li>
+                
+                    <li><a href="/post/zabbix/%E4%BD%BF%E7%94%A8salt%E6%89%B9%E9%87%8F%E9%83%A8%E7%BD%B2zabbix%E7%AB%AF%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8F%91%E7%8E%B0/">使用salt批量部署zabbix自动发现监控(二)</a></li>
+                
+                    <li><a href="/post/saltstack/saltstack_zabbix-angent/">使用saltstack部署zabbix agent</a></li>
+                
+                    <li><a href="/post/saltstack/saltstack_mysql/">使用saltstack来源码安装mysql</a></li>
+                
+                    <li><a href="/post/saltstack_nginx/">使用saltstack来源码安装nginx</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://opsnotes.github.io/post/saltstack/saltstack_config/" data-toggle="tooltip" data-placement="top" title="初识salt之saltstack配置应用以及基础用法">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://opsnotes.github.io/post/saltstack_nginx/" data-toggle="tooltip" data-placement="top" title="使用saltstack来源码安装nginx">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:zky.linux@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/username" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/opsnotes" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/opsnotes" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://username.slack.com/" title="Slack">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-slack fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://reddit.com/u/keengz" title="Reddit">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-reddit-alien fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/XXXXXXX/username" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/kenng.z" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://telegram.me/Ke_zz" title="Telegram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://weibo.com/angerdevil" title="Weibo">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="opsnotes.net">Kenng zhang</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://opsnotes.github.io">OpsNotes随思录</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.62.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://opsnotes.github.io/js/main.js"></script>
+<script src="https://opsnotes.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://opsnotes.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

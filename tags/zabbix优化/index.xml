@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zabbix优化 on OpsNotes随思录</title>
+    <link>https://opsnotes.github.io/tags/zabbix%E4%BC%98%E5%8C%96/</link>
+    <description>Recent content in zabbix优化 on OpsNotes随思录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
+    <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
+    <lastBuildDate>Fri, 20 Jun 2014 20:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://opsnotes.github.io/tags/zabbix%E4%BC%98%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>zabbix优化记一次惨痛的zabbix数据库优化</title>
+      <link>https://opsnotes.github.io/post/install_zabbix_11/</link>
+      <pubDate>Fri, 20 Jun 2014 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/install_zabbix_11/</guid>
+      <description>&lt;h3 id=&#34;记一次惨痛的zabbix数据库分表&#34;&gt;记一次惨痛的zabbix数据库分表&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;最近负责公司的zabbix项目，由于前期缺少整体性能架构的规划,导致后期出一系列的问题，玩zabbix的兄弟都知道，zabbix最大的瓶颈本身不在zabbix服务，而在mysql数据库的压力上，因此，优化zabbix其实就是优化zabbix的配置以及zabbix的mysql了;  
+    Zabbix 数据库常见的优化处理方法有两种：  
+        01.	优化数据库,对数据库进行分表处理;  
+        02.	清空数据库中的history, history_uint表;  
+    在接下来的方案我们就mysql数据库分表来进行优化；  
+具体思路：  
+    1.	首先下载脚本  
+        https://github.com/itnihao/zabbixdbpartitioning  
+        感谢hao哥提供脚本以及帮助。  
+    2.	前期准备工作,安全起见最好安装screen,也不怕程序卡死,关于screen的用法请参考http://www.kwx.gd/CentOSApp/CentOS-screen.html  
+        关闭zabbix的邮件报警,也可以关闭zabbix server服务,mysql本身会锁表  
+    3.	在screen模式下运行脚本，  
+        在这里需要注意的是，如果你的数据库特别大,最好先备份,然后在修改脚本,然后分表,在修改脚本的时候需要注意的几个地方我这里先列出来下,如下:  
+        首先修改zabbix 数据库和密码 默认情况下是都是zabbix 如果你的也是这样的话,那么不用修改,
+        然后修改配置文件的路径,根据自己的自定义的路径来修改脚本的路径  
+        如果手动备份了那么关闭脚本中备份.  
+    4.	然后来查看是否创建完成; 
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
