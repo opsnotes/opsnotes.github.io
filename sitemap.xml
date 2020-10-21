@@ -48,12 +48,12 @@
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/tags/prometheus/</loc>
+    <loc>https://opsnotes.github.io/categories/prometheus/</loc>
     <lastmod>2020-10-21T15:18:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/categories/prometheus/</loc>
+    <loc>https://opsnotes.github.io/tags/prometheus/</loc>
     <lastmod>2020-10-21T15:18:57+08:00</lastmod>
   </url>
   
@@ -88,12 +88,12 @@
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/categories/%E5%B9%B4%E5%BA%95%E6%80%BB%E7%BB%93/</loc>
+    <loc>https://opsnotes.github.io/tags/%E5%B9%B4%E5%BA%95%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2020-01-01T20:18:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/tags/%E5%B9%B4%E5%BA%95%E6%80%BB%E7%BB%93/</loc>
+    <loc>https://opsnotes.github.io/categories/%E5%B9%B4%E5%BA%95%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2020-01-01T20:18:57+08:00</lastmod>
   </url>
   
@@ -183,12 +183,12 @@
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/categories/grafana/</loc>
+    <loc>https://opsnotes.github.io/tags/grafana/</loc>
     <lastmod>2017-10-01T20:18:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/tags/grafana/</loc>
+    <loc>https://opsnotes.github.io/categories/grafana/</loc>
     <lastmod>2017-10-01T20:18:57+08:00</lastmod>
   </url>
   
@@ -223,12 +223,12 @@
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/categories/saltstack/</loc>
+    <loc>https://opsnotes.github.io/tags/saltstack/</loc>
     <lastmod>2017-04-27T20:18:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/tags/saltstack/</loc>
+    <loc>https://opsnotes.github.io/categories/saltstack/</loc>
     <lastmod>2017-04-27T20:18:57+08:00</lastmod>
   </url>
   
@@ -248,12 +248,12 @@
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/tags/openvpn/</loc>
+    <loc>https://opsnotes.github.io/categories/openvpn/</loc>
     <lastmod>2017-03-15T20:18:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/categories/openvpn/</loc>
+    <loc>https://opsnotes.github.io/tags/openvpn/</loc>
     <lastmod>2017-03-15T20:18:57+08:00</lastmod>
   </url>
   
@@ -273,12 +273,12 @@
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/tags/mac/</loc>
+    <loc>https://opsnotes.github.io/categories/mac/</loc>
     <lastmod>2016-12-08T20:18:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/categories/mac/</loc>
+    <loc>https://opsnotes.github.io/tags/mac/</loc>
     <lastmod>2016-12-08T20:18:57+08:00</lastmod>
   </url>
   
@@ -423,12 +423,12 @@
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/tags/mysql/</loc>
+    <loc>https://opsnotes.github.io/categories/mysql/</loc>
     <lastmod>2016-03-24T20:18:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/categories/mysql/</loc>
+    <loc>https://opsnotes.github.io/tags/mysql/</loc>
     <lastmod>2016-03-24T20:18:57+08:00</lastmod>
   </url>
   
@@ -473,12 +473,12 @@
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/tags/tcp/</loc>
+    <loc>https://opsnotes.github.io/categories/tcp/</loc>
     <lastmod>2015-12-01T20:18:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/categories/tcp/</loc>
+    <loc>https://opsnotes.github.io/tags/tcp/</loc>
     <lastmod>2015-12-01T20:18:57+08:00</lastmod>
   </url>
   
@@ -548,12 +548,12 @@
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/categories/git/</loc>
+    <loc>https://opsnotes.github.io/tags/git/</loc>
     <lastmod>2015-07-09T20:18:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/tags/git/</loc>
+    <loc>https://opsnotes.github.io/categories/git/</loc>
     <lastmod>2015-07-09T20:18:57+08:00</lastmod>
   </url>
   
@@ -668,12 +668,12 @@
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/categories/paramiko/</loc>
+    <loc>https://opsnotes.github.io/tags/paramiko/</loc>
     <lastmod>2014-12-01T20:18:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://opsnotes.github.io/tags/paramiko/</loc>
+    <loc>https://opsnotes.github.io/categories/paramiko/</loc>
     <lastmod>2014-12-01T20:18:57+08:00</lastmod>
   </url>
   
