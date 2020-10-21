@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Linux性能优化(一) - OpsNotes随思录</title>
+  <meta name="description" content="“performance optimization&#34;">
+  <meta name="author" content="Kenng zhang"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "OpsNotes随思录",
+    
+    "url": "https:\/\/opsnotes.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/opsnotes.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/opsnotes.github.io\/post\/linux_performance_optimization\/01.%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E5%B9%B3%E5%9D%87%E8%B4%9F%E8%BD%BD\/",
+          "name": "Linux性能优化(一)"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Kenng zhang"
+  },
+  "headline": "Linux性能优化(一)",
+  "description" : "“performance optimization\x22",
+  "inLanguage" : "en",
+  "wordCount":  2008 ,
+  "datePublished" : "2020-10-21T16:18:57",
+  "dateModified" : "2020-10-21T16:18:57",
+  "image" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+  "keywords" : [ "Linux" ],
+  "mainEntityOfPage" : "https:\/\/opsnotes.github.io\/post\/linux_performance_optimization\/01.%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E5%B9%B3%E5%9D%87%E8%B4%9F%E8%BD%BD\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/opsnotes.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/opsnotes.github.io\/img\/avatar-icon.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Linux性能优化(一)" />
+<meta property="og:description" content="“performance optimization&#34;">
+<meta property="og:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+<meta property="og:url" content="https://opsnotes.github.io/post/linux_performance_optimization/01.%E5%A6%82%E4%BD%95%E7%90%86%E8%A7%A3%E5%B9%B3%E5%9D%87%E8%B4%9F%E8%BD%BD/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="OpsNotes随思录" />
+
+  <meta name="twitter:title" content="Linux性能优化(一)" />
+  <meta name="twitter:description" content="“performance optimization&#34;">
+  <meta name="twitter:image" content="https://opsnotes.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@opsnotes" />
+  <meta name="twitter:creator" content="@opsnotes" />
+  <link href='https://opsnotes.github.io/img/avatar-icon.png' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.62.2" />
+  <link rel="alternate" href="https://opsnotes.github.io/index.xml" type="application/rss+xml" title="OpsNotes随思录"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://opsnotes.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://opsnotes.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://opsnotes.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '46663382', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://opsnotes.github.io">OpsNotes随思录</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="arts打卡" href="/tags/arts%e6%89%93%e5%8d%a1">arts打卡</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">文章分类</a>
+              <div class="navlinks-children">
+                
+                  <a href="/tags/kubernetes">kubernetes</a>
+                
+                  <a href="/tags/prometheus">prometheus</a>
+                
+                  <a href="/tags/python">python</a>
+                
+                  <a href="/tags/Linux">Linux</a>
+                
+                  <a href="/tags">Tags</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="OpsNotes随思录" href="https://opsnotes.github.io">
+            <img class="avatar-img" src="https://opsnotes.github.io/img/avatar-icon.png" alt="OpsNotes随思录" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 
+      
+         
+          data-img-src-1="https://tva1.sinaimg.cn/large/006tNbRwly1g9tpqtdm7xj31ee0lygth.jpg" 
+         
+         
+      ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>Linux性能优化(一)</h1>
+                  
+                    
+                      <h2 class="post-subheading">如何理解平均负载</h2>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on October 21, 2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;10&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2008&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Linux性能优化(一)</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">如何理解平均负载</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on October 21, 2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;10&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2008&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <h3 id="uptime">uptime</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"># uptime                                                                                                                         root@iZbp14ipzpabr30yllskn4Z
+ 14:37:58 up 403 days,  1:48,  4 users,  load average: 0.74, 0.63, 0.60
+ ~
+#  而最后三个数字呢，依次则是过去 1 分钟、5 分钟、15 分钟的平均负载（Load Average）。
+</code></pre></div><h3 id="平均负载">平均负载</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">
+   平均负载是指单位时间内，系统处**于可运行状态和不可中断状态**的平均进程数，也就是**平均活跃进程数**，它和 CPU 使用率并没有直接关系。这里我先解释下，可运行状态和不可中断状态这俩词儿。
+
+所谓可运行状态的进程，是指正在使用 CPU 或者正在等待 CPU 的进程，也就是我们常用 ps 命令看到的，处于 R 状态（Running 或 Runnable）的进程。
+
+</code></pre></div><p><strong>不可中断状态实际上是系统对进程和硬件设备的一种保护机制。</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">既然平均的是活跃进程数，那么最理想的，就是每个 CPU 上都刚好运行着一个进程，这样每个 CPU 都得到了充分利用。比如当平均负载为 2 时，意味着什么呢？
+
+	* 在只有 2 个 CPU 的系统上，意味着所有的 CPU 都刚好被完全占用。
+	* 在 4 个 CPU 的系统上，意味着 CPU 有 50% 的空闲。
+	* 而在只有 1 个 CPU 的系统中，则意味着有一半的进程竞争不到 CPU。
+</code></pre></div><h3 id="查看cpu个数">查看CPU个数</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@VM-64-25-centos ~]# grep &#39;model name&#39; /proc/cpuinfo  | wc -l
+8
+[root@VM-64-25-centos ~]#
+</code></pre></div><h3 id="平均负载为多少时合理">平均负载为多少时合理</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">* 如果 1 分钟、5 分钟、15 分钟的三个值基本相同，或者相差不大，那就说明系统负载很平稳。
+* 但如果 1 分钟的值远小于 15 分钟的值，就说明系统最近 1 分钟的负载在减少，而过去 15 分钟内却有很大的负载。
+* 反过来，如果 1 分钟的值远大于 15 分钟的值，就说明最近 1 分钟的负载在增加，这种增加有可能只是临时性的，也有可能还会持续增加下去，所以就需要持续观察。一旦 1 分钟的平均负载接近或超过了 CPU 的个数，就意味着系统正在发生过载的问题，这时就得分析调查是哪里导致的问题，并要想办法优化了。
+
+那么，在实际生产环境中，平均负载多高时，需要我们重点关注呢？
+
+**在我看来，当平均负载高于 CPU 数量 70% 的时候，**你就应该分析排查负载高的问题了。一旦负载过高，就可能导致进程响应变慢，进而影响服务的正常功能。
+
+**但 70% 这个数字并不是绝对的**，最推荐的方法，还是把系统的平均负载监控起来，然后根据更多的历史数据，判断负载的变化趋势。当发现负载有明显升高趋势时，比如说负载翻倍了，你再去做分析和调查。
+</code></pre></div><h3 id="平均负载与-cpu-使用率">平均负载与 CPU 使用率</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">现实工作中，我们经常容易把平均负载和 CPU 使用率混淆，所以在这里，我也做一个区分。
+
+可能你会疑惑，既然平均负载代表的是活跃进程数，那平均负载高了，不就意味着 CPU 使用率高吗？
+
+我们还是要回到平均负载的含义上来，平均负载是指单位时间内，处于可运行状态和不可中断状态的进程数。所以，它不仅包括了正在使用 CPU 的进程，还包括等待 CPU 和等待 I/O 的进程。
+
+而 CPU 使用率，是单位时间内 CPU 繁忙情况的统计，跟平均负载并不一定完全对应。比如：
+
+* CPU 密集型进程，使用大量 CPU 会导致平均负载升高，此时这两者是一致的；
+* I/O 密集型进程，等待 I/O 也会导致平均负载升高，但 CPU 使用率不一定很高；
+* 大量等待 CPU 的进程调度也会导致平均负载升高，此时的 CPU 使用率也会比较高。
+</code></pre></div><h3 id="平均负载案例分析">平均负载案例分析</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">我们以三个示例分别来看这三种情况，并用 iostat、mpstat、pidstat 等工具，找出平均负载升高的根源。
+</code></pre></div><h4 id="测试准备工作">测试准备工作</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">机器配置：2 CPU，8GB 内存。预先安装 stress 和 sysstat 包，如 apt install stress sysstat。
+
+在这里，我先简单介绍一下 stress 和 sysstat。
+* stress 是一个 Linux 系统压力测试工具，这里我们用作异常进程模拟平均负载升高的场景。
+
+* 而 sysstat 包含了常用的 Linux 性能工具，用来监控和分析系统的性能。我们的案例会用到这个包的两个命令 mpstat 和 pidstat。
+* **mpstat 是一个常用的多核 CPU 性能分析工具，用来实时查看每个 CPU 的性能指标，以及所有 CPU 的平均指标。**
+* **pidstat 是一个常用的进程性能分析工具，用来实时查看进程的 CPU、内存、I/O 以及上下文切换等性能指标。**
+
+**此外，每个场景都需要你开三个终端，登录到同一台 Linux 机器中。**
+</code></pre></div><h4 id="先安装stress-sysstat">先安装stress sysstat</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@VM-64-25-centos ~]# yum -y install stress sysstat
+</code></pre></div><h4 id="rpm-update-sysstat">rpm update sysstat</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@VM-64-25-centos ~]# wget https://rpmfind.net/linux/centos/8.1.1911/AppStream/x86_64/os/Packages/sysstat-11.7.3-2.el8.x86_64.rpm
+--2020-10-12 16:12:25--  https://rpmfind.net/linux/centos/8.1.1911/AppStream/x86_64/os/Packages/sysstat-11.7.3-2.el8.x86_64.rpm
+Resolving rpmfind.net (rpmfind.net)... 195.220.108.108
+Connecting to rpmfind.net (rpmfind.net)|195.220.108.108|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 435888 (426K) [application/x-rpm]
+Saving to: ‘sysstat-11.7.3-2.el8.x86_64.rpm’
+
+100%[==========================================================================================================&gt;] 435,888     15.0KB/s   in 26s
+
+2020-10-12 16:12:53 (16.4 KB/s) - ‘sysstat-11.7.3-2.el8.x86_64.rpm’ saved [435888/435888]
+
+[root@VM-64-25-centos ~]# ls
+sysstat-11.7.3-2.el8.x86_64.rpm
+[root@VM-64-25-centos ~]# rpm -Uvh sysstat-11.7.3-2.el8.x86_64.rpm
+warning: sysstat-11.7.3-2.el8.x86_64.rpm: Header V3 RSA/SHA256 Signature, key ID 8483c65d: NOKEY
+Preparing...                          ################################# [100%]
+Updating / installing...
+   1:sysstat-11.7.3-2.el8             ################################# [ 50%]
+Cleaning up / removing...
+   2:sysstat-10.1.5-19.el7            ################################# [100%]
+[root@VM-64-25-centos ~]#
+</code></pre></div><h4 id="测试1-cpu密集型进程">测试1: CPU密集型进程</h4>
+<h4 id="首先我们在第一个终端运行--stress--命令模拟一个--cpu--使用率-100-的场景">首先，我们在第一个终端运行  stress  命令，模拟一个  CPU  使用率 100% 的场景：</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@VM-64-25-centos ~]# stress --cpu 1 --timeout 600
+stress: info: [5393] dispatching hogs: 1 cpu, 0 io, 0 vm, 0 hdd
+</code></pre></div><h4 id="在第二个终端能看到">在第二个终端能看到</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">top - 15:18:24 up 110 days,  6:27,  3 users,  load average: 0.98, 0.58, 0.27
+Tasks: 139 total,   2 running, 137 sleeping,   0 stopped,   0 zombie
+%Cpu0  :  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+%Cpu1  :  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+%Cpu2  :  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+%Cpu3  :  0.3 us,  0.3 sy,  0.0 ni, 99.3 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+%Cpu4  :100.0 us,  0.0 sy,  0.0 ni,  0.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+%Cpu5  :  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+%Cpu6  :  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+%Cpu7  :  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem : 32779660 total, 29352228 free,   439752 used,  2987680 buff/cache
+KiB Swap:        0 total,        0 free,        0 used. 31936472 avail Mem
+</code></pre></div><h4 id="在第三个终端使用mpstat查看">在第三个终端使用mpstat查看</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@VM-64-25-centos ~]# mpstat -P ALL 5
+Linux 3.10.0-1062.18.1.el7.x86_64 (VM-64-25-centos)     10/12/2020      _x86_64_        (8 CPU)
+
+03:16:54 PM  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle
+03:16:59 PM  all   12.56    0.00    0.05    0.00    0.00    0.00    0.00    0.00    0.00   87.39
+03:16:59 PM    0    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
+03:16:59 PM    1    0.00    0.00    0.00    0.20    0.00    0.00    0.00    0.00    0.00   99.80
+03:16:59 PM    2    0.00    0.00    0.20    0.00    0.00    0.00    0.00    0.00    0.00   99.80
+03:16:59 PM    3    0.00    0.00    0.20    0.00    0.00    0.00    0.00    0.00    0.00   99.80
+03:16:59 PM    4  100.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00
+03:16:59 PM    5    0.00    0.00    0.20    0.00    0.00    0.00    0.00    0.00    0.00   99.80
+03:16:59 PM    6    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
+03:16:59 PM    7    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
+</code></pre></div><h4 id="使用pidstat来查看那个进程导致cpu使用率100">使用pidstat来查看那个进程导致CPU使用率100%</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@VM-64-25-centos ~]# pidstat -u 5 1
+Linux 3.10.0-1062.18.1.el7.x86_64 (VM-64-25-centos)     10/12/2020      _x86_64_        (8 CPU)
+
+03:19:33 PM   UID       PID    %usr %system  %guest    %CPU   CPU  Command
+03:19:38 PM     0      5394  100.00    0.00    0.00  100.00     4  stress
+03:19:38 PM     0     27987    0.20    0.00    0.00    0.20     2  barad_agent
+03:19:38 PM     0     27988    0.60    0.40    0.00    1.00     2  barad_agent
+03:19:38 PM     0     28457    0.20    0.20    0.00    0.40     2  YDService
+
+Average:      UID       PID    %usr %system  %guest    %CPU   CPU  Command
+Average:        0      5394  100.00    0.00    0.00  100.00     -  stress
+Average:        0     27987    0.20    0.00    0.00    0.20     -  barad_agent
+Average:        0     27988    0.60    0.40    0.00    1.00     -  barad_agent
+Average:        0     28457    0.20    0.20    0.00    0.40     -  YDService
+[root@VM-64-25-centos ~]#
+</code></pre></div><h4 id="测试2-io密集型进程">测试2: I/O密集型进程</h4>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">首先还是运行 stress 命令，但这次模拟 I/O 压力，即7个线程不停地执行,sync：
+[root@VM-64-25-centos ~]# stress -i 7 --timeout 600
+stress: info: [9331] dispatching hogs: 0 cpu, 7 io, 0 vm, 0 hdd
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">在第二个终端查看uptime的变化,我的测试机器是8C的,可以多观察一会
+Every 2.0s: uptime                                                                                                          Mon Oct 12 15:37:01 2020
+
+ 15:37:01 up 110 days,  6:46,  3 users,  load average: 6.67, 3.71, 1.69
+</code></pre></div><p>在第三个终端查看CPU的变化</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"># 间隔5秒输出一组数据
+[root@VM-64-25-centos ~]# mpstat -P ALL 5 1
+Linux 3.10.0-1062.18.1.el7.x86_64 (VM-64-25-centos)     10/12/2020      _x86_64_        (8 CPU)
+
+03:37:28 PM  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle
+03:37:33 PM  all    0.10    0.00   26.70    0.90    0.00    0.07    0.00    0.00    0.00   72.22
+03:37:33 PM    0    0.00    0.00   80.24    2.59    0.00    0.20    0.00    0.00    0.00   16.97
+03:37:33 PM    1    0.20    0.00   41.43    1.20    0.00    0.00    0.00    0.00    0.00   57.17
+03:37:33 PM    2    0.20    0.00    0.20    0.00    0.00    0.60    0.00    0.00    0.00   99.00
+03:37:33 PM    3    0.20    0.00    0.40    0.00    0.00    0.00    0.00    0.00    0.00   99.40
+03:37:33 PM    4    0.00    0.00   19.20    1.00    0.00    0.00    0.00    0.00    0.00   79.80
+03:37:33 PM    5    0.00    0.00   30.86    1.20    0.00    0.00    0.00    0.00    0.00   67.94
+03:37:33 PM    6    0.20    0.00   26.40    1.00    0.00    0.00    0.00    0.00    0.00   72.40
+03:37:33 PM    7    0.00    0.00   14.60    0.60    0.00    0.00    0.00    0.00    0.00   84.80
+
+Average:     CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle
+Average:     all    0.10    0.00   26.70    0.90    0.00    0.07    0.00    0.00    0.00   72.22
+Average:       0    0.00    0.00   80.24    2.59    0.00    0.20    0.00    0.00    0.00   16.97
+Average:       1    0.20    0.00   41.43    1.20    0.00    0.00    0.00    0.00    0.00   57.17
+Average:       2    0.20    0.00    0.20    0.00    0.00    0.60    0.00    0.00    0.00   99.00
+Average:       3    0.20    0.00    0.40    0.00    0.00    0.00    0.00    0.00    0.00   99.40
+Average:       4    0.00    0.00   19.20    1.00    0.00    0.00    0.00    0.00    0.00   79.80
+Average:       5    0.00    0.00   30.86    1.20    0.00    0.00    0.00    0.00    0.00   67.94
+Average:       6    0.20    0.00   26.40    1.00    0.00    0.00    0.00    0.00    0.00   72.40
+Average:       7    0.00    0.00   14.60    0.60    0.00    0.00    0.00    0.00    0.00   84.80
+[root@VM-64-25-centos ~]#
+</code></pre></div><p><strong>从这里可以看到,1分钟的负载增加到6.67,其中一个CPU的系统CPU使用率达到80.24,而iowait达到2.59,说明平均负载的升高是由iowait导致的</strong></p>
+<p>那么是那个进程导致iowait这么高,我们用pidstat来查询,<strong>如图展示发现是stress进程导致的</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@VM-64-25-centos ~]# pidstat -u 5 1
+Linux 3.10.0-1062.18.1.el7.x86_64 (VM-64-25-centos)     10/12/2020      _x86_64_        (8 CPU)
+
+03:39:55 PM   UID       PID    %usr %system  %guest    %CPU   CPU  Command
+03:40:00 PM     0        18    0.00    0.20    0.00    0.20     2  migration/2
+03:40:00 PM     0       846    0.00    0.20    0.00    0.20     5  kworker/5:1H
+03:40:00 PM     0       969    0.00    0.20    0.00    0.20     7  kworker/7:1H
+03:40:00 PM     0      8401    0.00    0.20    0.00    0.20     3  kworker/u16:2
+03:40:00 PM     0      9332    0.00   23.40    0.00   23.40     0  stress
+03:40:00 PM     0      9333    0.00   52.40    0.00   52.40     5  stress
+03:40:00 PM     0      9334    0.00   31.40    0.00   31.40     4  stress
+03:40:00 PM     0      9335    0.00   26.60    0.00   26.60     6  stress
+03:40:00 PM     0      9336    0.00   19.00    0.00   19.00     0  stress
+03:40:00 PM     0      9337    0.00   36.20    0.00   36.20     7  stress
+03:40:00 PM     0      9338    0.00   14.60    0.00   14.60     1  stress
+03:40:00 PM     0     10203    0.00    0.40    0.00    0.40     2  kworker/u16:0
+03:40:00 PM     0     27987    0.20    0.00    0.00    0.20     2  barad_agent
+03:40:00 PM     0     27988    0.20    0.20    0.00    0.40     1  barad_agent
+03:40:00 PM     0     28539    0.00    0.20    0.00    0.20     5  YDEdr
+
+Average:      UID       PID    %usr %system  %guest    %CPU   CPU  Command
+Average:        0        18    0.00    0.20    0.00    0.20     -  migration/2
+Average:        0       846    0.00    0.20    0.00    0.20     -  kworker/5:1H
+Average:        0       969    0.00    0.20    0.00    0.20     -  kworker/7:1H
+Average:        0      8401    0.00    0.20    0.00    0.20     -  kworker/u16:2
+Average:        0      9332    0.00   23.40    0.00   23.40     -  stress
+Average:        0      9333    0.00   52.40    0.00   52.40     -  stress
+Average:        0      9334    0.00   31.40    0.00   31.40     -  stress
+Average:        0      9335    0.00   26.60    0.00   26.60     -  stress
+Average:        0      9336    0.00   19.00    0.00   19.00     -  stress
+Average:        0      9337    0.00   36.20    0.00   36.20     -  stress
+Average:        0      9338    0.00   14.60    0.00   14.60     -  stress
+Average:        0     10203    0.00    0.40    0.00    0.40     -  kworker/u16:0
+Average:        0     27987    0.20    0.00    0.00    0.20     -  barad_agent
+Average:        0     27988    0.20    0.20    0.00    0.40     -  barad_agent
+Average:        0     28539    0.00    0.20    0.00    0.20     -  YDEdr
+[root@VM-64-25-centos ~]#
+</code></pre></div><h4 id="测试3-大量进程的场景">测试3: 大量进程的场景</h4>
+<p>当系统中运行的进程超出CPU运行能力时,就会出现等待CPU的进程.</p>
+<p>比如,我们还是使用stress来测试,我们的CPU是8C,我们模拟20C.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@VM-64-25-centos ~]# stress -c 20 --timeout 600
+stress: info: [13688] dispatching hogs: 20 cpu, 0 io, 0 vm, 0 hdd
+</code></pre></div><p>使用uptime来看负载的变化,明显出现过载情况</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">Every 2.0s: uptime                                                                                                          Mon Oct 12 16:17:19 2020
+
+ 16:17:19 up 110 days,  7:26,  3 users,  load average: 5.14, 1.30, 1.77
+
+</code></pre></div><p>使用pidstat来查看进程</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[root@VM-64-25-centos ~]# pidstat -u 5 1
+Linux 3.10.0-1062.18.1.el7.x86_64 (VM-64-25-centos)     10/12/2020      _x86_64_        (8 CPU)
+
+04:19:51 PM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+04:19:56 PM     0     13099    0.20    0.00    0.00    0.60    0.20     1  watch
+04:19:56 PM     0     19633   42.20    0.00    0.00   57.80   42.20     1  stress
+04:19:56 PM     0     19634   40.60    0.00    0.00   59.80   40.60     3  stress
+04:19:56 PM     0     19635   40.40    0.00    0.00   59.40   40.40     0  stress
+04:19:56 PM     0     19636   39.00    0.00    0.00   61.40   39.00     2  stress
+04:19:56 PM     0     19637   36.20    0.00    0.00   63.80   36.20     6  stress
+04:19:56 PM     0     19638   41.80    0.00    0.00   58.40   41.80     5  stress
+04:19:56 PM     0     19639   42.00    0.00    0.00   57.40   42.00     2  stress
+04:19:56 PM     0     19640   40.20    0.00    0.00   60.20   40.20     4  stress
+04:19:56 PM     0     19641   40.60    0.00    0.00   59.40   40.60     4  stress
+04:19:56 PM     0     19642   38.80    0.00    0.00   61.40   38.80     4  stress
+04:19:56 PM     0     19643   41.40    0.00    0.00   58.80   41.40     5  stress
+04:19:56 PM     0     19644   43.20    0.00    0.00   57.20   43.20     3  stress
+04:19:56 PM     0     19645   36.60    0.00    0.00   64.00   36.60     0  stress
+04:19:56 PM     0     19646   38.40    0.00    0.00   61.60   38.40     7  stress
+04:19:56 PM     0     19647   38.60    0.00    0.00   61.20   38.60     5  stress
+04:19:56 PM     0     19648   40.20    0.00    0.00   59.80   40.20     0  stress
+04:19:56 PM     0     19649   43.00    0.00    0.00   57.20   43.00     6  stress
+04:19:56 PM     0     19650   38.60    0.00    0.00   61.60   38.60     1  stress
+04:19:56 PM     0     19651   37.40    0.00    0.00   62.60   37.40     2  stress
+04:19:56 PM     0     19652   40.60    0.00    0.00   59.80   40.60     7  stress
+04:19:56 PM     0     20344    0.00    0.20    0.00    0.00    0.20     1  pidstat
+04:19:56 PM     0     27988    0.00    0.20    0.00    0.00    0.20     2  barad_agent
+
+Average:      UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+Average:        0     13099    0.20    0.00    0.00    0.60    0.20     -  watch
+Average:        0     19633   42.20    0.00    0.00   57.80   42.20     -  stress
+Average:        0     19634   40.60    0.00    0.00   59.80   40.60     -  stress
+Average:        0     19635   40.40    0.00    0.00   59.40   40.40     -  stress
+Average:        0     19636   39.00    0.00    0.00   61.40   39.00     -  stress
+Average:        0     19637   36.20    0.00    0.00   63.80   36.20     -  stress
+Average:        0     19638   41.80    0.00    0.00   58.40   41.80     -  stress
+Average:        0     19639   42.00    0.00    0.00   57.40   42.00     -  stress
+Average:        0     19640   40.20    0.00    0.00   60.20   40.20     -  stress
+Average:        0     19641   40.60    0.00    0.00   59.40   40.60     -  stress
+Average:        0     19642   38.80    0.00    0.00   61.40   38.80     -  stress
+Average:        0     19643   41.40    0.00    0.00   58.80   41.40     -  stress
+Average:        0     19644   43.20    0.00    0.00   57.20   43.20     -  stress
+Average:        0     19645   36.60    0.00    0.00   64.00   36.60     -  stress
+Average:        0     19646   38.40    0.00    0.00   61.60   38.40     -  stress
+Average:        0     19647   38.60    0.00    0.00   61.20   38.60     -  stress
+Average:        0     19648   40.20    0.00    0.00   59.80   40.20     -  stress
+Average:        0     19649   43.00    0.00    0.00   57.20   43.00     -  stress
+Average:        0     19650   38.60    0.00    0.00   61.60   38.60     -  stress
+Average:        0     19651   37.40    0.00    0.00   62.60   37.40     -  stress
+Average:        0     19652   40.60    0.00    0.00   59.80   40.60     -  stress
+Average:        0     20344    0.00    0.20    0.00    0.00    0.20     -  pidstat
+Average:        0     27988    0.00    0.20    0.00    0.00    0.20     -  barad_agent
+[root@VM-64-25-centos ~]#
+</code></pre></div><p>可以看出，20个进程在争抢 8 个 CPU，每个进程等待 CPU 的时间（也就是代码块中的 %wait 列）高达 60%。这些超出 CPU 计算能力的进程，最终导致 CPU 过载。</p>
+<h3 id="理解平均负载">理解平均负载</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">平均负载提供了一个快速查看系统整体性能的手段，反映了整体的负载情况。但只看平均负载本身，我们并不能直接发现，到底是哪里出现了瓶颈。所以，在理解平均负载时，也要注意：
+* 平均负载高有可能是 CPU 密集型进程导致的；
+* 平均负载高并不一定代表 CPU 使用率高，还有可能是 I/O 更繁忙了；
+* 当发现负载高的时候，你可以使用 mpstat、pidstat 等工具，辅助分析负载的来源。
+
+pidstat输出中没有%wait的问题，是因为CentOS默认的sysstat稍微有点老，源码或者RPM升级到11.5.5版本以后就可以看到了。而Ubuntu的包一般都比较新，没有这个问题。
+</code></pre></div>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://opsnotes.github.io/tags/linux/">Linux</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fopsnotes.github.io%2fpost%2flinux_performance_optimization%2f01.%25E5%25A6%2582%25E4%25BD%2595%25E7%2590%2586%25E8%25A7%25A3%25E5%25B9%25B3%25E5%259D%2587%25E8%25B4%259F%25E8%25BD%25BD%2f&amp;text=Linux%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%28%e4%b8%80%29&amp;via=opsnotes" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fopsnotes.github.io%2fpost%2flinux_performance_optimization%2f01.%25E5%25A6%2582%25E4%25BD%2595%25E7%2590%2586%25E8%25A7%25A3%25E5%25B9%25B3%25E5%259D%2587%25E8%25B4%259F%25E8%25BD%25BD%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2flinux_performance_optimization%2f01.%25E5%25A6%2582%25E4%25BD%2595%25E7%2590%2586%25E8%25A7%25A3%25E5%25B9%25B3%25E5%259D%2587%25E8%25B4%259F%25E8%25BD%25BD%2f&amp;title=Linux%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%28%e4%b8%80%29" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fopsnotes.github.io%2fpost%2flinux_performance_optimization%2f01.%25E5%25A6%2582%25E4%25BD%2595%25E7%2590%2586%25E8%25A7%25A3%25E5%25B9%25B3%25E5%259D%2587%25E8%25B4%259F%25E8%25BD%25BD%2f&amp;title=Linux%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%28%e4%b8%80%29" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fopsnotes.github.io%2fpost%2flinux_performance_optimization%2f01.%25E5%25A6%2582%25E4%25BD%2595%25E7%2590%2586%25E8%25A7%25A3%25E5%25B9%25B3%25E5%259D%2587%25E8%25B4%259F%25E8%25BD%25BD%2f&amp;title=Linux%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%28%e4%b8%80%29" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fopsnotes.github.io%2fpost%2flinux_performance_optimization%2f01.%25E5%25A6%2582%25E4%25BD%2595%25E7%2590%2586%25E8%25A7%25A3%25E5%25B9%25B3%25E5%259D%2587%25E8%25B4%259F%25E8%25BD%25BD%2f&amp;description=Linux%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%28%e4%b8%80%29" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://opsnotes.github.io/post/prometheus/%E8%85%BE%E8%AE%AF%E4%BA%91prometheus%E6%8C%81%E4%B9%85%E5%8C%96%E4%BF%AE%E6%94%B9%E5%8F%82%E6%95%B0/" data-toggle="tooltip" data-placement="top" title="prometheus学习系列(七)">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:zky.linux@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/username" title="Facebook">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/opsnotes" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/opsnotes" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://username.slack.com/" title="Slack">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-slack fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://reddit.com/u/keengz" title="Reddit">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-reddit-alien fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/XXXXXXX/username" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/kenng.z" title="Instagram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://telegram.me/Ke_zz" title="Telegram">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://weibo.com/angerdevil" title="Weibo">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="opsnotes.net">Kenng zhang</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://opsnotes.github.io">OpsNotes随思录</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.62.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://opsnotes.github.io/js/main.js"></script>
+<script src="https://opsnotes.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://opsnotes.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+
