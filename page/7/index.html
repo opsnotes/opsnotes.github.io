@@ -235,6 +235,87 @@ if (!doNotTrack) {
           
           
             <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/saltstack/saltstack_config/">
+        <h2 class="post-title">初识salt之saltstack配置应用以及基础用法</h2>
+        
+        <h3 class="post-subtitle">
+            初识salt之saltstack配置应用以及基础用法 
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on July 2, 2014
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1036&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h3 id="实施如下">实施如下：</h3>
+<pre><code>一、测试是否能管理client  
+    使用模块cmd.run 可以查看到client的ip地址  
+    [root@salt_server ~]# salt '*' cmd.run 'ip a'     
+    salt_client1:    
+    lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 16436 qdisc noqueue state UNKNOWN  
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00  
+    inet 127.0.0.1/8 scope host lo   
+    inet6 ::1/128 scope host     
+    valid_lft forever preferred_lft forever     
+    eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000   
+    link/ether 00:0c:29:f4:4f:0b brd ff:ff:ff:ff:ff:ff  
+    inet 192.168.100.245/24 brd 192.168.100.255 scope global eth0  
+    inet6 fe80::20c:29ff:fef4:4f0b/64 scope link   
+    valid_lft forever preferred_lft forever  
+    [root@salt_server ~]#   
+
+二、查看版本    
+[root@salt_server ~]# salt --versions-report  
+           Salt: 2014.1.0  
+         Python: 2.6.6 (r266:84292, Jun 18 2012, 14:18:47)
+         Jinja2: unknown
+       M2Crypto: 0.20.2
+ msgpack-python: 0.1.13
+   msgpack-pure: Not Installed
+       pycrypto: 2.0.1
+         PyYAML: 3.09
+          PyZMQ: 2.2.0.1
+            ZMQ: 3.2.4
+[root@salt_server ~]# 
+</code></pre>
+        <a href="https://opsnotes.github.io/post/saltstack/saltstack_config/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/saltstack/">saltstack</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
     <a href="https://opsnotes.github.io/post/saltstack/install-saltstack/">
         <h2 class="post-title">初识saltstack在之CentOS6上安装Saltstack  </h2>
         
@@ -943,59 +1024,6 @@ useradd -s /sbin/nologin zabbix
 
 </article>
           
-            <article class="post-preview">
-    <a href="https://opsnotes.github.io/post/install_script_01/">
-        <h2 class="post-title">mysql5.5.25 自动化脚本安装</h2>
-        
-        <h3 class="post-subtitle">
-            mysql5.5.25 自动化脚本安装
-        </h3>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on December 22, 2013
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;205&nbsp;words
-  
-  
-    
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
-    
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        mysql5.5.25 自动化脚本安装 #!/bin/bash#创作日期:2013.7.26#Mysql install directory and configuration files.******MYSQL_DIR=&#34;/data/software&#34;DATA_DIR=&#34;/data/mysql/3306/data&#34;BASE_DIR=&#34;/usr/local/mysql&#34;echo &#34;please input mysql version:&#34;read VERSIONecho &#34;Your mysql version is mysql-$VERSION.tar.gz&#34;if [ -e &#34;$MYSQL_DIR/mysql-$VERSION.tar.gz&#34; ]thenecho &#34;Please waitting...&#34;sleep 3#Install mysql package dependent.yum -y install gcc gcc-c++ gcc-g77 autoconf automake openssl zlib* fiex** libxml* \ncurses-devel libmcrypt* libtool-ltdl-devel* &amp;&amp; \#Install cmake.echo &#34;The system is bing installed cmake,please waitting...&#34;sleep 3tar -zxvf $MYSQL_DIR/cmake-2.
-        <a href="https://opsnotes.github.io/post/install_script_01/" class="post-read-more">[Read More]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://opsnotes.github.io/tags/mysql/">mysql</a>&nbsp;
-        
-        <a href="https://opsnotes.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a>&nbsp;
-        
-    </div>
-    
-
-</article>
-          
         </div>
 
         
@@ -1131,7 +1159,7 @@ useradd -s /sbin/nologin zabbix
 
           &nbsp;&bull;&nbsp;&copy;
           
-            2020
+            2021
           
 
           

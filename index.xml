@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>zky.linux@gmail.com (Kenng zhang)</managingEditor>
     <webMaster>zky.linux@gmail.com (Kenng zhang)</webMaster>
-    <lastBuildDate>Wed, 21 Oct 2020 16:18:57 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 04 Jan 2021 20:18:57 +0800</lastBuildDate>
     
 	<atom:link href="https://opsnotes.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -73,6 +73,15 @@ Tip prometheus技巧在学习
 Category: prometheus
 Share A DevOps Periodic Table of Critical Alert Monitoring System Integrations
 https://itnext.io/kubernetes-monitoring-with-prometheus-in-15-minutes-8e54d1de2e13</description>
+    </item>
+    
+    <item>
+      <title>2020个人总结</title>
+      <link>https://opsnotes.github.io/post/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/2020%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Mon, 04 Jan 2021 20:18:57 +0800</pubDate>
+      <author>zky.linux@gmail.com (Kenng zhang)</author>
+      <guid>https://opsnotes.github.io/post/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/2020%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/</guid>
+      <description>2020个人总结 2020年病毒带来的恐慌对大多数人来说是不平淡的一年.于我个人而言,翻开2019年的总结,好惭愧好多事情没有做. 带着惭愧做一下2020年的反思和打算 驾照没有考,前半年新冠严重不敢去,加上宝宝出生,也就没有想去考的想法了. 旅游没有去.新冠肆虐可以算借口,不过今年是真的没有想法,也是因为太穷了. 个人读书方面,每月三本的读书没有完成,大概每个月能读1-2本的书.技术的书算是比较少,多的是一些科技人文方面的技术书籍.大多的书是通过微信读书这个APP和纸质书来读的,以前用Kindle、微信读书等一些app,现在重度的用微信读书APP,偶尔也可以听书的. 每月2篇的技术文章没有坚持完成,其实是没有以前那么热衷于技术了.也许是内心容易浮躁.一直尝试给自己找理由找借口,希望今年能持续改进了. 技术学习方面用的极客时间app上面买了不少课程,大概今年学完了有三四门课程. 上半年家里也发生了很多事情,都是些家常里短的事情,爷爷去世了,对我的冲击较大.很长时间才走出内心的阴霾. 当然开心的事情也有. 上半年宝宝出生了.我也成外了超级奶爸,肩上的担子重了.当然每天回家也是很开心快乐的.奶孩子是一件累并快乐的事情. 在家里人各种支持和救济的情况下,拼了老命在上海买了房子,想想看房这么久,都快成看房专家了.一路的艰难历程都能写本小说了.也从一个房产小白慢慢的知道里面的弯弯套套的.现在更是负债累累,努力拼命搬砖. 随着年龄的增长,脾气也是以暴易怒,经常莫名其妙的发火,之前看过一篇文章说,发火是因为自己的胸怀不够,不能正视自己的问题,应该多读书,能够坦然面对自己的不完美,接受生活中缺陷. 感情方面.偶尔有争吵.大多是鸡毛蒜皮的琐碎事情.多锻炼自己的心态,多耐心. 健身事情断了大半年,在体重持续并且油腻的情况之下,又重新拾起来了,经历的越多,越觉得身体是革命的本钱.没有好的身体一切都是浮云. 快年底的时候家里人来了一次上海,算是对2020年的结尾划上了一个句号. 2021年想想也没有大的目标. 小沐沐能健康快乐的成长,給足陪伴的时间. 多陪太太走一走逛一逛.至于旅游看疫情的控制吧. 多看点书,自己监督自己,每月2-3本吧😄,因为大家都知道读书是好事情,但是坚持的时候,缺很难做到. 争取每月1-2篇技术blog的输出,能发到博客和公众号.想把自己多年注册未用的公众号给用起来,尽量尝试一下.算是锻炼自己的写作能力. 万年不变的还是坚持健身,肚子瘦下来.弄点肌肉出来.可以秀起来💪. 有时间就去弄个驾照,看缘分也是不规划了. 有时间多撸点代码,算是锻炼智商了. 就这样吧. </description>
     </item>
     
     <item>

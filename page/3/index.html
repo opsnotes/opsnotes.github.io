@@ -235,6 +235,57 @@ if (!doNotTrack) {
           
           
             <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/openvpn-install/">
+        <h2 class="post-title">openvpn使用密码账号安装部署:</h2>
+        
+        <h3 class="post-subtitle">
+            openvpn使用密码账号安装部署
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on March 15, 2017
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;848&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        准备环境 系统: CentOS 6.7 X86_64 OpenVpn: 2.4.4 关闭Selinux [root@localhost 2.0]# sed -i &#39;/^SELINUX=/c\SELINUX=disabled&#39; /etc/selinux/config 安装epelrpm包,不然没有openvpn这个rpm,安装openvpn相关依赖的包 [root@localhost 2.0]# rpm -ivh http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm [root@localhost 2.0]# yum -y install openvpn easy-rsa openssl openssl-devel gcc vim 修改Easy-ras主服务信息. [root@localhost 2.0]# cd /usr/share/easy-rsa/2.0/ [root@localhost 2.0]# chmod +x * [root@localhost 2.0]# cp -a vars vars.20180111 [root@localhost 2.0]# vim vars ###找到这个文件修改其中的这几行信息 export KEY_COUNTRY=&#34;CN&#34; export KEY_PROVINCE=&#34;SH&#34; export KEY_CITY=&#34;SH&#34; export KEY_ORG=&#34;DFCF&#34; export KEY_EMAIL=&#34;zky.linux@gmail.com&#34; export KEY_OU=&#34;OPS&#34; [root@localhost 2.0]# 清除keys目录下所有与证书相关的文件， 注意：下面步骤生成的证书和密钥都在/usr/share/easy-rsa/2.0/keys目录里 [root@localhost 2.0]# source vars //提示可以忽略 [root@localhost 2.
+        <a href="https://opsnotes.github.io/post/openvpn-install/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/openvpn/">openvpn</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
     <a href="https://opsnotes.github.io/post/2016%E6%80%BB%E7%BB%93/">
         <h2 class="post-title">2016写给自己的总结</h2>
         
@@ -1257,92 +1308,6 @@ wget http://7d9qvq.com1.z0.glb.clouddn.com/Python-3.5.2.tgz
 
 </article>
           
-            <article class="post-preview">
-    <a href="https://opsnotes.github.io/post/ansible/ansible_zabbix/">
-        <h2 class="post-title">ansible源码安装zabbix agent</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on May 19, 2016
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;8&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1642&nbsp;words
-  
-  
-    
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
-    
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <h5 id="名词解释">名词解释</h5>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">	[root@iZ23nvakegvZ zabbix_agent]# ls  
-	files  需要安装包  
-	handlers  重启相关信息  
-	meta  galaxy_info相关信息  
-	tasks  安装部署的任务  
-	templates  相关的模板配置文件 
-	vars   变量配置文件  
-	[root@iZ23nvakegvZ zabbix_agent]#
-</code></pre></div><h5 id="目录结构">目录结构</h5>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">	[root@iZ23nvakegvZ zabbix_agent]# tree
-	
-	.
-	
-	├── hosts
-	├── roles
-	│   └── zabbix_agent
-	│       ├── files
-	│       │   └── zabbix-2.4.5.tar.gz
-	│       ├── handlers
-	│       ├── meta
-	│       │   └── main.yml
-	│       ├── tasks
-	│       │   ├── copy.yml
-	│       │   ├── delete.yml
-	│       │   ├── install.yml
-	│       │   └── main.yml
-	│       ├── templates
-	│       │   ├── zabbix_agentd
-	│       │   └── zabbix_agentd.conf
-	│       └── vars
-	│           └── main.yml
-	└── site.yml
-	
-	8 directories, 11 files
-	
-	[root@iZ23nvakegvZ zabbix_agent]#
-</code></pre></div>
-        <a href="https://opsnotes.github.io/post/ansible/ansible_zabbix/" class="post-read-more">[Read More]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://opsnotes.github.io/tags/ansible/">ansible</a>&nbsp;
-        
-        <a href="https://opsnotes.github.io/tags/nginx/">nginx</a>&nbsp;
-        
-    </div>
-    
-
-</article>
-          
         </div>
 
         
@@ -1478,7 +1443,7 @@ wget http://7d9qvq.com1.z0.glb.clouddn.com/Python-3.5.2.tgz
 
           &nbsp;&bull;&nbsp;&copy;
           
-            2020
+            2021
           
 
           

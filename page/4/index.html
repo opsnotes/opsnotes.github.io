@@ -235,6 +235,92 @@ if (!doNotTrack) {
           
           
             <article class="post-preview">
+    <a href="https://opsnotes.github.io/post/ansible/ansible_zabbix/">
+        <h2 class="post-title">ansible源码安装zabbix agent</h2>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on May 19, 2016
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;8&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1642&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
+    
+  
+  
+</span>
+
+
+    </p>
+    <div class="post-entry">
+        
+        <h5 id="名词解释">名词解释</h5>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">	[root@iZ23nvakegvZ zabbix_agent]# ls  
+	files  需要安装包  
+	handlers  重启相关信息  
+	meta  galaxy_info相关信息  
+	tasks  安装部署的任务  
+	templates  相关的模板配置文件 
+	vars   变量配置文件  
+	[root@iZ23nvakegvZ zabbix_agent]#
+</code></pre></div><h5 id="目录结构">目录结构</h5>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">	[root@iZ23nvakegvZ zabbix_agent]# tree
+	
+	.
+	
+	├── hosts
+	├── roles
+	│   └── zabbix_agent
+	│       ├── files
+	│       │   └── zabbix-2.4.5.tar.gz
+	│       ├── handlers
+	│       ├── meta
+	│       │   └── main.yml
+	│       ├── tasks
+	│       │   ├── copy.yml
+	│       │   ├── delete.yml
+	│       │   ├── install.yml
+	│       │   └── main.yml
+	│       ├── templates
+	│       │   ├── zabbix_agentd
+	│       │   └── zabbix_agentd.conf
+	│       └── vars
+	│           └── main.yml
+	└── site.yml
+	
+	8 directories, 11 files
+	
+	[root@iZ23nvakegvZ zabbix_agent]#
+</code></pre></div>
+        <a href="https://opsnotes.github.io/post/ansible/ansible_zabbix/" class="post-read-more">[Read More]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        <a href="https://opsnotes.github.io/tags/ansible/">ansible</a>&nbsp;
+        
+        <a href="https://opsnotes.github.io/tags/nginx/">nginx</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+          
+            <article class="post-preview">
     <a href="https://opsnotes.github.io/post/java%E4%B8%ADfor%E5%BE%AA%E7%8E%AF%E7%9A%84%E4%BC%98%E5%8C%96/">
         <h2 class="post-title">java中for循环的优化</h2>
         
@@ -1052,60 +1138,6 @@ https://mp.weixin.qq.com/cgi-bin/singlesendpage?t=message/send&amp;action=index&
 
 </article>
           
-            <article class="post-preview">
-    <a href="https://opsnotes.github.io/post/zabbix_python_mail/">
-        <h2 class="post-title">zabbix使用python mail报警</h2>
-        
-        <h3 class="post-subtitle">
-            zabbix使用python mail报警
-        </h3>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on August 13, 2015
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;74&nbsp;words
-  
-  
-    
-      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kenng zhang
-    
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        前提: 好久不弄zabbix了,刚换工作,我司运维情况还在百废待兴,在zabiix使用邮件报警的适合我们使用python写得邮件报警,以前使用的是shell编写的脚本.之前的邮件报警和配置可以参考我以前写得文章.
-具体相关配置请参考我以前写得文章: http://opsnotes.net/2013/12/31/install_zabbix_06/
-http://opsnotes.net/2014/01/21/install_zabbix_07/
-如下是python mail脚本文件： root@dgz-zabbixserver01:/usr/lib/zabbix/alertscripts# cat mail.py #!/usr/bin/env python #coding:utf-8 import smtplib from email.mime.text import MIMEText import sys mail_host = &#39;smtp.qq.com&#39; mail_user = &#39;username&#39; mail_pass = &#39;passwd&#39; mail_postfix = &#39;qq.com&#39; def send_mail(to_list,subject,content): me = mail_user+&#34;&lt;&#34;+mail_user+&#34;@&#34;+mail_postfix+&#34;&gt;&#34; msg = MIMEText(content) msg[&#39;Subject&#39;] = subject msg[&#39;From&#39;] = me msg[&#39;to&#39;] = to_list try: s = smtplib.SMTP() s.connect(mail_host) s.login(mail_user,mail_pass) s.sendmail(me,to_list,msg.as_string()) s.close() return True except Exception,e: print str(e) return False if __name__ == &#34;__main__&#34;: send_mail(sys.
-        <a href="https://opsnotes.github.io/post/zabbix_python_mail/" class="post-read-more">[Read More]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://opsnotes.github.io/tags/zabbix/">zabbix</a>&nbsp;
-        
-    </div>
-    
-
-</article>
-          
         </div>
 
         
@@ -1241,7 +1273,7 @@ http://opsnotes.net/2014/01/21/install_zabbix_07/
 
           &nbsp;&bull;&nbsp;&copy;
           
-            2020
+            2021
           
 
           
